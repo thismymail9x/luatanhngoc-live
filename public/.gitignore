@@ -1,0 +1,14 @@
+
+#
+robots.txt
+
+#-------------------------
+# themes
+#-------------------------
+themes/*
+!themes/echbayfour
+!themes/*.md
+!themes/*.theme
+
+# backup
+thirdparty-bak/*
