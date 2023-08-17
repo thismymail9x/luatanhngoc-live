@@ -1,9 +1,0 @@
-<style>
-:root {
---default-bg: {{default_bg}};
---sub-bg: {{sub_bg}};
---default2-bg: {{sub_bg}};
---default-color: {{default_color}};
---a-color: {{a_color}};
-}
-</style>

@@ -1,1 +1,0 @@
-/* sử dụng slider của flatsome */
