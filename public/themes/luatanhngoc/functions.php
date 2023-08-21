@@ -57,19 +57,21 @@ define(
  */
 
 use App\Libraries\UsersType;
-/*function register_admin_menu()
+function register_admin_menu()
 {
     return [
+        CUSTOM_ADMIN_URI => [
+            'role' => [ UsersType::ADMIN],
+            'name' => 'Tổng quan',
+            'icon' => 'fa fa-home',
+            'arr' => []
+        ],
         'admin/posts' => [
             'role' => [
                 UsersType::AUTHOR,
                 UsersType::MOD,
             ],
             'arr' => [
-//                'admin/mycomments' => [
-//                    'name' => 'Bình luận',
-//                    'icon' => 'fa fa-comment-o',
-//                ],
                 'admin/download/media_sync' => [
                     'name' => 'Đồng bộ ảnh',
                     'icon' => 'fa fa-refresh',
@@ -77,7 +79,7 @@ use App\Libraries\UsersType;
             ],
         ]
     ];
-}*/
+}
 
 
 /*
