@@ -17,12 +17,11 @@ use App\Libraries\TaxonomyType;
 $in_cache = $term_model->key_cache('home-top10');
 
 $data = $base_model->scache($in_cache);
-if ($data === null) {
+if (empty($data)) {
     $data = $post_model->get_posts_by([], [
         'limit' => 20,
         //'offset' => 0,
     ]);
-
     //
     $base_model->scache($in_cache, $data, 300);
 }

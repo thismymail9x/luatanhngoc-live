@@ -1,0 +1,84 @@
+/* TEST lúc nào cần test layout thì bật cái này lên */
+/*
+.row {
+    box-shadow: 0 0 5px #f00;
+}
+
+section {
+    box-shadow: 0 0 5px #00f;
+}
+*/
+
+/* khi có quyền admin thì cho phép hiển thị thanh debug */
+
+body.is-admin .show-if-admin,
+body.is-admin .show-view .wgr-view-path,
+body.is-admin.body-debug_enable #toolbarContainer,
+body.is-admin #toolbarContainer {
+    display: block !important;
+}
+
+body.is-admin #target_eb_iframe {
+    position: inherit;
+    position: unset;
+    top: auto;
+    left: auto;
+}
+
+/* */
+.click-goto-edit {
+    position: relative;
+    top: 0;
+    left: 0;
+    bottom: auto;
+    right: 0;
+    display: block !important;
+    padding: 0 !important;
+    border: 0 none !important;
+    opacity: 0.5;
+    z-index: 9999;
+    color: blue !important;
+}
+
+.col .click-goto-edit {
+    position: absolute;
+}
+
+.click-goto-edit span {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    z-index: 9;
+    bottom: auto;
+    line-height: normal;
+}
+
+.goto-taxonomy-edit span {
+    right: auto;
+    left: 50%;
+    top: -20px;
+}
+
+.click-goto-edit span i {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 1px 3px;
+    border-radius: 2px;
+    display: inline-block;
+    font-size: 10pt;
+}
+
+.goto-taxonomy-edit:hover,
+.goto-option-edit:hover,
+.col:hover .click-goto-edit {
+    opacity: 1;
+}
+
+.goto-taxonomy-edit:hover,
+.goto-option-edit:hover,
+.col:hover .click-goto-edit span i {
+    font-size: 11pt;
+}
+
+.goto-taxonomy-edit span i {
+    font-size: 25px !important;
+}

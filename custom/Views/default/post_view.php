@@ -27,6 +27,22 @@ $post_model->update_views( $data[ 'ID' ] );
                     <div class="fb-share-button" data-href="<?php echo $post_model->get_full_permalink($data);?>" data-layout="button" data-size="small"><a target="_blank" class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
                     <span class="item__eye"><i class="fa fa-eye" aria-hidden="true"></i> <?php echo $data['post_viewed']; ?></span>
                 </div>
+                <div class="menuPost">
+                    <div id="contentCategory" class="contentCategory collapsed">
+                        <div class="item-top">
+                            <i class="fa-solid fa-list-ol" style="color: #ffff00;"></i>
+                            <span>Mục lục bài viết</span>
+                            <i class="fa-solid fa-chevron-down icon__rotate" style="color: #ffff00;"></i>
+                        </div>
+                        <div class="item-bottom">
+                            <?php foreach (@ $data['contentCategory'] as $key => $value) { ?>
+                                <p class="parent"><a title="<?=$value['name']?>" href="#<?=$value['id']?>"><?=$value['name']?></a></p>
+                                <?php foreach ($value['children'] as $k => $v) { ?>
+                                    <p class="children"><a title="<?=$v['name']?>" href="#<?=$v['id']?>"><?=$v['name']?></a></p>
+                                <?php } } ?>
+                        </div>
+                    </div>
+                </div>
                 <div class="img-max-width">
                     <div class="medium global-details-content <?php echo $data['post_type']; ?>-details-content ul-default-style">
                         <?php
