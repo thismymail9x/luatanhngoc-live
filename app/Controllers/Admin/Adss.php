@@ -12,11 +12,11 @@ class Adss extends Posts
     protected $taxonomy = TaxonomyType::ADS;
     protected $tags = '';
 
-    protected $controller_slug = 'adss';
 
     //
     public function __construct()
     {
+        $this->controller_slug = PostType::controllerList(PostType::ADS);
         parent::__construct();
     }
 }

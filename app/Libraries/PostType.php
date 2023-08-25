@@ -59,7 +59,13 @@ class PostType
         self::MEDIA => 'Media',
         self::ORDER => 'Đơn hàng',
     );
-
+    // Danh sách controller cho phần editer posts -> post_type phân biệt theo controller để trả về url sau khi add/ edit
+    private static $arr_controller = array(
+        self::PROD => 'products',
+        //self::BLOG => 'blogs',
+        self::ADS => 'adss',
+        self::PAGE => 'pages',
+    );
     public static function arrStatus()
     {
         return array(
@@ -72,7 +78,16 @@ class PostType
 
         );
     }
-
+    public static function controllerList($key = '')
+    {
+        if ($key == '') {
+            return self::$arr_controller;
+        }
+        if (isset(self::$arr_controller[$key])) {
+            return self::$arr_controller[$key];
+        }
+        return 'posts';
+    }
     public static function typeList($key = '')
     {
         //echo $key . '<br>' . PHP_EOL;

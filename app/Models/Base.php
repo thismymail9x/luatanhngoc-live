@@ -23,7 +23,6 @@ class Base extends Csdl
     // nạp CSS, JS để tránh phải bấm Ctrl + F5
     public function get_add_css($f, $ops = [], $attr = [])
     {
-        //print_r( $ops );
         $f = str_replace(PUBLIC_PUBLIC_PATH, '', $f);
         $f = ltrim($f, '/');
         //echo $f . '<br>' . PHP_EOL;

@@ -1,0 +1,1 @@
+js_favoriteProduct = JSON.parse(js_favoriteProduct);(function(){for (var i=0;i<js_favoriteProduct.length;i++) {$('.product-detail[data-id="' +js_favoriteProduct[i].product_id +'"] .action-btn .btn-action-style .fa-heart').addClass("redcolor");}})();

@@ -11,16 +11,15 @@ $breadcrumb = '';
 echo (($html_lang == 'vn' || $html_lang == '') ? 'vi' : $html_lang); 
 ?>" class="no-js no-svg" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#"> 
 <head> 
-<?php 
- 
-require __DIR__ . '/includes/head_global.php'; 
-$base_model->add_css( 
-'css/users.css', 
+<?php
+require __DIR__ . '/includes/head_global.php';
+$base_model->add_css(
+    'themes/' . THEMENAME . '/css/users.css',
 [ 
 'cdn' => CDN_BASE_URL, 
 ] 
-); 
-?> 
+);
+?>
 </head> 
 <body class="<?php echo $seo['body_class']; ?> is-<?php echo $current_user_type; ?>"> 
 <?php 
@@ -34,6 +33,7 @@ include VIEWS_PATH . 'private_view.php';
 echo $footer; 
  
 require __DIR__ . '/includes/footer_global.php'; 
-?> 
+?>
+<iframe id="target_eb_iframe" name="target_eb_iframe" title="EB iframe" src="about:blank" width="99%" height="550" frameborder="0">AJAX form</iframe>
 </body> 
 </html>

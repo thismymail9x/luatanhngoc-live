@@ -1319,4 +1319,11 @@ class Term extends TermBase
         //
         return $data;
     }
+    /**
+     * Trả về danh sách controller theo từng taxonomy
+     **/
+    public function controllerByType()
+    {
+        return TaxonomyType::controllerList();
+    }
 }

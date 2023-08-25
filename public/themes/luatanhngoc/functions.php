@@ -56,6 +56,8 @@ define(
  * Ngoài các menu mặc định, với mỗi website có thể thêm các menu tùy chỉnh khác nhau vào đây theo công thức mẫu
  */
 
+use App\Libraries\PostType;
+use App\Libraries\TaxonomyType;
 use App\Libraries\UsersType;
 function register_admin_menu()
 {
@@ -72,12 +74,20 @@ function register_admin_menu()
                 UsersType::MOD,
             ],
             'arr' => [
-                'admin/download/media_sync' => [
-                    'name' => 'Đồng bộ ảnh',
-                    'icon' => 'fa fa-refresh',
+                'admin/posts/add' => [
+                    'name' => PostType::typeList(PostType::POST),
+                    'icon' => 'fa fa-plus',
+                ],
+                'admin/terms' => [
+                    'name' => TaxonomyType::typeList(TaxonomyType::POSTS, true),
+                    'icon' => 'fa fa-cubes',
+                ],
+                'admin/tags' => [
+                    'name' => TaxonomyType::typeList(TaxonomyType::TAGS, true),
+                    'icon' => 'fa fa-tag',
                 ],
             ],
-        ]
+        ],
     ];
 }
 
