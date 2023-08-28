@@ -49,11 +49,18 @@ else {
             </div>
         </div>
     </section>
-    <section id="wide-nav" class="header-bottom text-center">
-        <?php
-        $menu_model->the_menu('top-nav-menu');
-        ?>
-    </section>
+    <div class="row row-collapse">
+        <div class="col medium-12 small-12 large-12">
+            <div class="col-inner">
+                <section id="wide-nav" class="header-bottom text-center">
+                    <?php
+                    $menu_model->the_menu('top-nav-menu');
+                    ?>
+                </section>
+            </div>
+        </div>
+    </div>
+
 <?php
 } // END desktop
 

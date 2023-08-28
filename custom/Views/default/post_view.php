@@ -35,11 +35,11 @@ $post_model->update_views( $data[ 'ID' ] );
                             <i class="fa-solid fa-chevron-down icon__rotate" style="color: #ffff00;"></i>
                         </div>
                         <div class="item-bottom">
-                            <?php foreach (@ $data['contentCategory'] as $key => $value) { ?>
-                                <p class="parent"><a title="<?=$value['name']?>" href="#<?=$value['id']?>"><?=$value['name']?></a></p>
-                                <?php foreach ($value['children'] as $k => $v) { ?>
-                                    <p class="children"><a title="<?=$v['name']?>" href="#<?=$v['id']?>"><?=$v['name']?></a></p>
-                                <?php } } ?>
+<!--                            --><?php //foreach (@ $data['contentCategory'] as $key => $value) { ?>
+<!--                                <p class="parent"><a title="--><?//=$value['name']?><!--" href="#--><?//=$value['id']?><!--">--><?//=$value['name']?><!--</a></p>-->
+<!--                                --><?php //foreach ($value['children'] as $k => $v) { ?>
+<!--                                    <p class="children"><a title="--><?//=$v['name']?><!--" href="#--><?//=$v['id']?><!--">--><?//=$v['name']?><!--</a></p>-->
+<!--                                --><?php //} } ?>
                         </div>
                     </div>
                 </div>

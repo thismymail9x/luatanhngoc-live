@@ -104,8 +104,7 @@ class Base extends Csdl
         if (isset($ops['preload'])) {
             return '<link rel="preload" as="script" href="' . $ops['cdn'] . $f . '?v=' . filemtime(PUBLIC_PUBLIC_PATH . $f) . '">';
         }
-        //print_r( $attr );
-        return '<script src="' . $ops['cdn'] . $f . '?v=' . filemtime(PUBLIC_PUBLIC_PATH . $f) . '" ' . implode(' ', $attr) . '></script>';
+        return '<script src="' . $ops['cdn'] .DYNAMIC_BASE_URL. $f . '?v=' . filemtime(PUBLIC_PUBLIC_PATH . $f) . '" ' . implode(' ', $attr) . '></script>';
     }
     // thêm 1 file
     public function add_js($f, $ops = [], $attr = [])

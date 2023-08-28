@@ -13,8 +13,12 @@ echo (($html_lang == 'vn' || $html_lang == '') ? 'vi' : $html_lang);
 <head> 
 <?php
 require __DIR__ . '/includes/head_global.php';
-$base_model->add_css(
-    'themes/' . THEMENAME . '/css/users.css',
+$base_model->adds_css(
+    [
+        'css/users.css',
+        'themes/' . THEMENAME . '/css/users.css',
+
+    ],
 [ 
 'cdn' => CDN_BASE_URL, 
 ] 

@@ -80,7 +80,7 @@ class C extends Home
     public function user_add()
     {
         $id = $this->MY_get('id', 0);
-        $postController = new \App\Controllers\Admin\Posts();
+//        $postController = new \App\Controllers\Admin\Posts();
         //
         $file_view = 'add';
 
@@ -133,10 +133,18 @@ class C extends Home
             $data['post_content'] = str_replace($k, view($v), $data['post_content']);
         }
 
-        //
-        $this->teamplate['main'] = view(
+
+        $this->teamplate['breadcrumb'] = view(
+            'breadcrumb_view',
+            array(
+                'breadcrumb' => $this->breadcrumb
+            )
+        );
+        $this->teamplate['main'] =  view(
             'posts/'. $file_view,
             array(
+                'seo' => $this->base_model->default_seo('Thông tin tài khoản', $this->getClassName(__CLASS__) . '/' . __FUNCTION__),
+                'session_data' => $this->session_data,
                 'controller_slug' => $this->controller_slug,
                 'lang_key' => $this->lang_key,
                 'post_tags' => $post_tags,
@@ -148,6 +156,7 @@ class C extends Home
                 'post_arr_status' => $this->post_arr_status,
                 'taxonomy' => $this->taxonomy,
                 'tags' => $this->tags,
+                'post_cat' => $post_cat,
                 'post_type' => $this->post_type,
                 'name_type' => $this->name_type,
                 'preview_url' => $this->MY_get('preview_url', ''),
@@ -159,7 +168,8 @@ class C extends Home
                 'arr_taxnomy_controller' => TaxonomyType::controllerList(),
             )
         );
-        return view('posts', $this->teamplate);
+        return view('layout_view', $this->teamplate);
+
     }
 
 }

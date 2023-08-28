@@ -110,7 +110,7 @@ function add_and_show_post_avt(for_id, add_img_tag, img_size, input_type) {
 	str.push(
 		' <button type="button" data-for="' +
 			for_id.substr(1) +
-			'" class="btn btn-info add-image-' +
+			'" class="btn btn-small btn-info add-image-' +
 			for_id.replace(/\#|\./gi, "-") +
 			'" onclick="WgrWp_popup_upload( \'' +
 			for_id.substr(1) +
@@ -341,7 +341,6 @@ function WGR_show_real_post_avt(insert_to, data_src, arr_all_srcs) {
 	}
 	return false;
 }
-
 function WGR_load_textediter(for_id, ops) {
 	if (typeof ops == "undefined") {
 		ops = {};
@@ -377,7 +376,7 @@ function WGR_load_textediter(for_id, ops) {
 		];
 		ops["toolbar"] = arr_toolbar.join(" | ");
 	}
-	//console.log(ops);
+	// console.log(ops,'ccc');
 
 	//
 	tinymce.init({
@@ -600,16 +599,16 @@ function WGR_load_textediter(for_id, ops) {
 
 // tạo nút xóa một số attr trong editer để tránh xung đột mã HTML với website -> hay gặp khi copy nội dung từ web khác về
 function btn_remove_editer_style(for_id) {
-	console.log(for_id);
+	//console.log(for_id);
 	$(for_id).after(
 		"<button type='button' onclick=\"return cleanup_style_in_editer('" +
 			for_id.substr(1) +
-			'\');" class="btn btn-secondary">Xóa style</button> '
+			'\');" class="btn btn-small btn-secondary">Xóa style</button> '
 	);
 	$(for_id).after(
 		"<button type='button' onclick=\"return cleanup_class_in_editer('" +
 			for_id.substr(1) +
-			'\');" class="btn btn-secondary">Xóa class CSS</button> '
+			'\');" class="btn btn-small btn-secondary">Xóa class CSS</button> '
 	);
 }
 

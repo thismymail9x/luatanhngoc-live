@@ -269,7 +269,7 @@ post_status: post_arr_status,
 quick_menu_list: quick_menu_list, 
 post_pending: post_pending,
 });
-console.log(prev_post); 
+
 WGR_vuejs('#oi_other_posts', { 
 prev_post: prev_post, 
 next_post: next_post, 
