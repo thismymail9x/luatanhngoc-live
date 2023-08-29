@@ -710,6 +710,17 @@ class Posts extends Admin
         //
         //echo ADMIN_ROOT_VIEWS;
 
+        // tạo dữ liệu danh mục của bài viết mục đích dùng để tạo menu
+        $contentAction = $data['post_content'];
+//        $resultCategory = $this->createCategoryArray($contentAction);
+//        $data['post_content'] = $resultCategory['post_content'];
+        // dùng để foreah ra danh mục của bài viết
+//        $data['content_category'] = $resultCategory['category_array'];
+        // đổi nội dung bài viết = các key có sẵn
+//        foreach (REPLACE_CONTENT as $k => $v) {
+//            $data['post_content'] = str_replace($k, view($v), $data['post_content']);
+//        }
+
         //
         $this->teamplate_admin['content'] = view(
             'admin/' . $this->add_view_path . '/' . $file_view,
@@ -737,6 +748,8 @@ class Posts extends Admin
                 // mảng tham số tùy chỉnh dành cho các custom post type
                 'meta_custom_type' => [],
                 'meta_custom_desc' => [],
+                // thêm phần controller slug theo từng taxonomy
+                'arr_taxnomy_controller' => TaxonomyType::controllerList(),
             )
         );
         return view('admin/admin_teamplate', $this->teamplate_admin);
@@ -941,7 +954,7 @@ class Posts extends Admin
 
         //
         if ($post_status == PostType::DELETED) {
-            $check_slug = $this->base_model->select('post_name', $this->table, [
+            $check_slug = $this->base_model->select('post_name,post_status', $this->table, [
                 'ID' => $id,
                 'post_status !=' => $post_status,
             ], [
@@ -952,6 +965,12 @@ class Posts extends Admin
                 //'offset' => 2,
                 'limit' => 1
             ]);
+            // hungtd check quyền xóa bài viết (ko cho xóa bài viết public nếu ko phải là admin)
+            if ($this->session_data['member_type'] != UsersType::ADMIN && $check_slug['post_status'] == PostType::PUBLICITY) {
+               return $this->base_model->alert('Bạn không có quyền xóa bài viết này', 'error');
+            }
+
+
             //print_r( $check_slug );
             //var_dump( strpos( $check_slug[ 'post_name' ], '___' . $post_status ) );
             if (
@@ -985,6 +1004,7 @@ class Posts extends Admin
     // xóa (tạm ẩn) 1 bản ghi
     public function delete()
     {
+
         return $this->before_delete_restore(PostType::DELETED);
     }
 
@@ -1305,5 +1325,74 @@ class Posts extends Admin
 
         //
         return $this->post_model->get_admin_permalink($post_type, $id, $this->controller_slug) . $this->get_preview_url();
+    }
+    /**
+     * @param $postContent
+     * @return array
+     * hàm tạo mảng danh mục của bài viết
+     * trả về mảng + nội dung đã add id
+     */
+    protected function createCategoryArray($postContent)
+    {
+        if ($postContent=='') {
+            return ;
+        }
+        $category_array = array();
+        $dom = new \DOMDocument();
+        libxml_use_internal_errors(true);
+        $dom->loadHTML(mb_convert_encoding($postContent, 'HTML-ENTITIES', 'UTF-8'));
+        $h2_list = $dom->getElementsByTagName('h2');
+        foreach ($h2_list as $index => $h2) {
+            $h2_id = $this->convert_vi_to_en_slug($h2->nodeValue, true);
+            $h2->setAttribute('id', $h2_id);
+            $category_array[$h2_id] = array(
+                'id' => $h2_id,
+                'name' => $h2->nodeValue,
+                'children' => array(),
+            );
+            $next_node = $h2->nextSibling;
+            while ($next_node) {
+                if ($next_node->nodeName == 'h3') {
+                    $h3_id = $this->convert_vi_to_en_slug($next_node->nodeValue, true);
+                    $next_node->setAttribute('id', $h3_id);
+                    $category_array[$h2_id]['children'][$h3_id] = array(
+                        'id' => $h3_id,
+                        'name' => $next_node->nodeValue,
+                    );
+                } elseif ($next_node->nodeName == 'h2') {
+                    break;
+                }
+                $next_node = $next_node->nextSibling;
+            }
+            $postContent = $dom->saveHTML();
+        }
+        return array('category_array' => $category_array, 'post_content' => $postContent);
+    }
+    protected function convert_vi_to_en_slug($str,$number=false) {
+        $str = preg_replace("/(à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ)/", "a", $str);
+        $str = preg_replace("/(è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ)/", "e", $str);
+        $str = preg_replace("/(ì|í|ị|ỉ|ĩ)/", "i", $str);
+        $str = preg_replace("/(ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ)/", "o", $str);
+        $str = preg_replace("/(ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ)/", "u", $str);
+        $str = preg_replace("/(ỳ|ý|ỵ|ỷ|ỹ)/", "y", $str);
+        $str = preg_replace("/(đ)/", "d", $str);
+        $str = preg_replace("/(À|Á|Ạ|Ả|Ã|Â|Ầ|Ấ|Ậ|Ẩ|Ẫ|Ă|Ằ|Ắ|Ặ|Ẳ|Ẵ)/", "A", $str);
+        $str = preg_replace("/(È|É|Ẹ|Ẻ|Ẽ|Ê|Ề|Ế|Ệ|Ể|Ễ)/", "E", $str);
+        $str = preg_replace("/(Ì|Í|Ị|Ỉ|Ĩ)/", "I", $str);
+        $str = preg_replace("/(Ò|Ó|Ọ|Ỏ|Õ|Ô|Ồ|Ố|Ộ|Ổ|Ỗ|Ơ|Ờ|Ớ|Ợ|Ở|Ỡ)/", "O", $str);
+        $str = preg_replace("/(Ù|Ú|Ụ|Ủ|Ũ|Ư|Ừ|Ứ|Ự|Ử|Ữ)/", "U", $str);
+        $str = preg_replace("/(Ỳ|Ý|Ỵ|Ỷ|Ỹ)/", "Y", $str);
+        $str = preg_replace("/(Đ)/", "D", $str);
+        $str = str_replace(" ", "-", str_replace("&*#39;","",$str));
+        if ($number== true){
+            $first_char = substr($str, 0, 1);
+            if (is_numeric($first_char)) {
+                $str = "_" . $str;
+            }
+        }
+        $str = str_replace("?", "-", str_replace("&*#39;","",$str));
+        $str = preg_replace("/[.,?!]/", "-", $str);
+        $str = strtolower($str);
+        return $str;
     }
 }

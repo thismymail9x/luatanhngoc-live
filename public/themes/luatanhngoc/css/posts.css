@@ -1,0 +1,35 @@
+.wgr-wp-upload {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+    padding-top: 30px;
+    z-index: 9999;
+}
+
+.wgr-wp-upload iframe {
+    background: #fff;
+}
+label {
+    padding: 8px 0;
+}
+.select2.select2-container {
+    width: 100% !important;
+}
+select {
+    width: 100%;
+}
+.form-control, .form-select {
+    font-size: 13px;
+}
+label {
+    font-size: 15px;
+    font-weight: 700;
+    color: #4d4d4d;
+}
+.btn-success {
+    padding: 4px 30px;
+}

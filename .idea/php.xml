@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< HEAD
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0">
+=======
+  <component name="PhpProjectSharedConfiguration" php_language_level="7.4">
+>>>>>>> 03c4dd896fb88a7a093d0ec302b8c7a3fdad0662
     <option name="suggestChangeDefaultLanguageLevel" value="false" />
   </component>
 </project>

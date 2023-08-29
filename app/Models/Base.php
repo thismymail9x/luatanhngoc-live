@@ -23,7 +23,6 @@ class Base extends Csdl
     // nạp CSS, JS để tránh phải bấm Ctrl + F5
     public function get_add_css($f, $ops = [], $attr = [])
     {
-        //print_r( $ops );
         $f = str_replace(PUBLIC_PUBLIC_PATH, '', $f);
         $f = ltrim($f, '/');
         //echo $f . '<br>' . PHP_EOL;
@@ -105,8 +104,7 @@ class Base extends Csdl
         if (isset($ops['preload'])) {
             return '<link rel="preload" as="script" href="' . $ops['cdn'] . $f . '?v=' . filemtime(PUBLIC_PUBLIC_PATH . $f) . '">';
         }
-        //print_r( $attr );
-        return '<script src="' . $ops['cdn'] . $f . '?v=' . filemtime(PUBLIC_PUBLIC_PATH . $f) . '" ' . implode(' ', $attr) . '></script>';
+        return '<script src="' . $ops['cdn'] .DYNAMIC_BASE_URL. $f . '?v=' . filemtime(PUBLIC_PUBLIC_PATH . $f) . '" ' . implode(' ', $attr) . '></script>';
     }
     // thêm 1 file
     public function add_js($f, $ops = [], $attr = [])

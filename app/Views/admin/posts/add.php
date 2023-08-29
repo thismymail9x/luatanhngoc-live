@@ -140,21 +140,29 @@ continue;
 </label> 
 <div class="controls"> 
 <?php 
-if ($k == 'post_category') { 
+if ($k == 'post_category') {
+    $url_add_term = 'admin/terms/add/?taxonomy=' . $taxonomy;
+    if (isset($arr_taxnomy_controller[$taxonomy])) {
+        $url_add_term = 'admin/' . $arr_taxnomy_controller[$taxonomy] . '/add';
+    }
 ?> 
 <select data-select="<?php $post_model->echo_meta_post($data, $k); ?>" name="post_meta[<?php echo $k; ?>][]" id="post_meta_<?php echo $k; ?>" multiple> 
 <option value="">[ Chọn <?php echo $v; ?> ]</option> 
 </select> 
-&nbsp; <a href="admin/terms/add/?taxonomy=<?php echo $taxonomy; ?>" target="_blank" class="bluecolor"><i class="fa fa-plus"></i> Thêm <?php echo $v; ?> mới</a> 
+&nbsp; <a href="<?php echo $url_add_term; ?>" target="_blank" class="bluecolor"><i class="fa fa-plus"></i> Thêm <?php echo $v; ?> mới</a>
 <?php 
-} else if ($k == 'post_tags') { 
+} else if ($k == 'post_tags') {
+    $url_add_term = 'admin/terms/add/?taxonomy=' . $tags;
+    if (isset($arr_taxnomy_controller[$tags])) {
+        $url_add_term = 'admin/' . $arr_taxnomy_controller[$tags] . '/add';
+    }
 ?> 
 <select data-select="<?php $post_model->echo_meta_post($data, $k); ?>" name="post_meta[<?php echo $k; ?>][]" id="post_meta_<?php echo $k; ?>" multiple> 
 <option value="">[ Chọn 
 <?php echo $v; ?> ] 
 </option> 
 </select> 
-&nbsp; <a href="admin/terms/add/?taxonomy=<?php echo $tags; ?>" target="_blank" class="bluecolor"><i class="fa fa-plus"></i> Thêm 
+&nbsp; <a href="<?php echo $url_add_term; ?>" target="_blank" class="bluecolor"><i class="fa fa-plus"></i> Thêm
 <?php echo $v; ?> mới 
 </a> 
 <?php 
@@ -261,7 +269,7 @@ post_status: post_arr_status,
 quick_menu_list: quick_menu_list, 
 post_pending: post_pending,
 });
-console.log(prev_post); 
+
 WGR_vuejs('#oi_other_posts', { 
 prev_post: prev_post, 
 next_post: next_post, 

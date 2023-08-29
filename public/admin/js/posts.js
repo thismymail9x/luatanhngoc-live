@@ -148,7 +148,6 @@ $(window).on("load", function () {
 		}, 3000);
 	}
 });
-
 /*
  * tạo các option con cho phần select Danh mục cha
  */
@@ -162,7 +161,7 @@ if (
 		post_cat,
 		"post_meta_post_category",
 		function (data, jd) {
-			console.log(data);
+			// console.log(data);
 
 			//
 			$("#post_meta_post_category")
