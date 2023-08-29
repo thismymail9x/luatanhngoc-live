@@ -1,6 +1,7 @@
 <?php
 
 if ($session_data['member_type'] != $is_admin) {
+
     foreach ($arr_admin_menu as $k => $v) {
         if (!isset($v['role'])) {
             echo '<!-- Admin role not found! -->';
@@ -12,6 +13,7 @@ if ($session_data['member_type'] != $is_admin) {
             $arr_admin_menu[$k] = null;
             continue;
         }
+        // duyệt với từng phần tử cụ thể
         foreach ($v['arr'] as $k_sub => $v_sub) {
             if (
                 isset($v_sub['role']) &&
@@ -19,13 +21,15 @@ if ($session_data['member_type'] != $is_admin) {
                 !in_array($session_data['member_type'], $v_sub['role'])
             ) {
                 echo '<!-- Permission sub deny! -->';
-                $v['arr'] = null;
+                $v['arr'][$k_sub] = null;
                 $arr_admin_menu[$k] = $v;
                 continue;
             }
         }
     }
 }
+//print_r($arr_admin_menu);
+//die('xx');
 if ($debug_enable === true) {
     $body_class .= ' body-debug_enable';
 }

@@ -8,7 +8,7 @@ class AdminMenu
     {
         return [
             CUSTOM_ADMIN_URI => [
-                'role' => [],
+                'role' => [ UsersType::ADMIN],
                 'name' => 'Tổng quan',
                 'icon' => 'fa fa-home',
                 'arr' => []
@@ -27,6 +27,9 @@ class AdminMenu
                         'icon' => 'fa fa-plus',
                     ],
                     'admin/terms' => [
+                        'role' => [
+                            UsersType::MOD,
+                        ],
                         'name' => TaxonomyType::typeList(TaxonomyType::POSTS, true),
                         'icon' => 'fa fa-cubes',
                     ],
@@ -37,6 +40,9 @@ class AdminMenu
                     ],
                     */
                     'admin/tags' => [
+                        'role' => [
+                            UsersType::MOD,
+                        ],
                         'name' => TaxonomyType::typeList(TaxonomyType::TAGS, true),
                         'icon' => 'fa fa-tag',
                     ],
@@ -53,7 +59,7 @@ class AdminMenu
             ],
             'admin/adss' => [
                 'role' => [
-                    UsersType::AUTHOR,
+//                    UsersType::AUTHOR,
                     UsersType::MOD,
                 ],
                 'name' => PostType::typeList(PostType::ADS),
@@ -95,8 +101,8 @@ class AdminMenu
             */
             'admin/pages' => [
                 'role' => [
-                    UsersType::AUTHOR,
-                    UsersType::MOD,
+                    UsersType::ADMIN,
+//                    UsersType::MOD,
                 ],
                 'name' => PostType::typeList(PostType::PAGE),
                 'icon' => 'fa fa-file',
@@ -110,8 +116,8 @@ class AdminMenu
             // product -> sử dụng chức năng của woocomerce
             'admin/products' => [
                 'role' => [
-                    UsersType::AUTHOR,
-                    UsersType::MOD,
+                    UsersType::ADMIN,
+//                    UsersType::MOD,
                 ],
                 'name' => PostType::typeList(PostType::PROD),
                 'icon' => 'fa fa-newspaper-o',
@@ -151,8 +157,8 @@ class AdminMenu
             ],
             'admin/contacts' => [
                 'role' => [
-                    UsersType::AUTHOR,
-                    UsersType::MOD,
+                    UsersType::ADMIN,
+//                    UsersType::MOD,
                 ],
                 'name' => CommentType::typeList(CommentType::CONTACT),
                 'icon' => 'fa fa-envelope-o',
@@ -169,7 +175,7 @@ class AdminMenu
             ],
             'admin/menus' => [
                 'role' => [
-                    UsersType::MOD,
+                    UsersType::ADMIN,
                 ],
                 'name' => PostType::typeList(PostType::MENU),
                 'icon' => 'fa fa-bars',
@@ -182,7 +188,7 @@ class AdminMenu
             ],
             'admin/users' => [
                 'role' => [
-                    UsersType::MOD,
+                    UsersType::ADMIN,
                 ],
                 'name' => UsersType::ALL,
                 'tag' => 'Members',

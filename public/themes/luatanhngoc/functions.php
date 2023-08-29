@@ -59,37 +59,45 @@ define(
 use App\Libraries\PostType;
 use App\Libraries\TaxonomyType;
 use App\Libraries\UsersType;
-function register_admin_menu()
-{
-    return [
-        CUSTOM_ADMIN_URI => [
-            'role' => [ UsersType::ADMIN],
-            'name' => 'Tổng quan',
-            'icon' => 'fa fa-home',
-            'arr' => []
-        ],
-        'admin/posts' => [
-            'role' => [
-                UsersType::AUTHOR,
-                UsersType::MOD,
-            ],
-            'arr' => [
-                'admin/posts/add' => [
-                    'name' => PostType::typeList(PostType::POST),
-                    'icon' => 'fa fa-plus',
-                ],
-                'admin/terms' => [
-                    'name' => TaxonomyType::typeList(TaxonomyType::POSTS, true),
-                    'icon' => 'fa fa-cubes',
-                ],
-                'admin/tags' => [
-                    'name' => TaxonomyType::typeList(TaxonomyType::TAGS, true),
-                    'icon' => 'fa fa-tag',
-                ],
-            ],
-        ],
-    ];
-}
+//function register_admin_menu()
+//{
+//    return [
+//        CUSTOM_ADMIN_URI => [
+//            'role' => [ UsersType::ADMIN],
+//            'name' => 'Tổng quan',
+//            'icon' => 'fa fa-home',
+//            'arr' => []
+//        ],
+//        'admin/posts' => [
+//            'role' => [
+//                UsersType::AUTHOR,
+//                UsersType::MOD,
+//            ],
+//            'arr' => [
+//                'admin/posts/add' => [
+//                    'name' => PostType::typeList(PostType::POST),
+//                    'icon' => 'fa fa-plus',
+//                ],
+//                'admin/terms' => [
+//                    'role' => [
+//                        UsersType::ADMIN,
+////                        UsersType::MOD,
+//                    ],
+//                    'name' => TaxonomyType::typeList(TaxonomyType::POSTS, true),
+//                    'icon' => 'fa fa-cubes',
+//                ],
+//                'admin/tags' => [
+//                    'role' => [
+//                        UsersType::AUTHOR,
+//                        UsersType::MOD,
+//                    ],
+//                    'name' => TaxonomyType::typeList(TaxonomyType::TAGS, true),
+//                    'icon' => 'fa fa-tag',
+//                ],
+//            ],
+//        ],
+//    ];
+//}
 
 
 /*
