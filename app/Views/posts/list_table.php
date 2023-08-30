@@ -1,45 +1,28 @@
 <?php 
  
 ?> 
-<table class="table table-bordered table-striped with-check table-list eb-table"> 
-<thead> 
-<tr> 
-<th><input type="checkbox" class="input-checkbox-all" /></th> 
+<table class="table table-bordered table-striped with-check table-list eb-table ">
+<thead>
+<tr class="data-table-header cursor-pointer">
 <th>Tiêu đề 
 <?php echo $name_type; ?> 
 </th> 
-<th>Ảnh đại diện</th> 
-<th>Danh mục</th> 
+<th>Danh mục</th>
 <th>Trạng thái</th> 
-<th colspan="2">Ngày tạo/ <a :href="'admin/' + controller_slug + '?order_by=post_modified'">Cập nhật cuối <i class="fa fa-sort"></i></a></th> 
-<th>Lang</th> 
-<th>STT</th> 
-<th>&nbsp;</th> 
+<th>Thao tác</th>
 </tr> 
-</thead> 
+</thead>
 <tbody id="admin_main_list"> 
-<tr :data-id="v.ID" v-for="v in data"> 
-<td width="50" class="text-center"><input type="checkbox" :value="v.ID" class="input-checkbox-control" /> 
+<tr :data-id="v.ID" v-for="v in data">
 </td> 
 <td> 
-<div><a :href="v.admin_permalink" class="bold">{{v.post_title}} <i class="fa fa-edit"></i></a></div> 
+<div><a :href="v.admin_permalink" class="bold">{{v.post_title}} <i class="fa fa-edit"></i></a></div>
 <div><a :href="v.the_permalink" target="_blank" class="small blackcolor">{{v.the_permalink}} <i class="fa fa-eye"></i></a></div> 
-</td> 
-<td> 
-<div class="img-max-width"> 
-<a :href="v.admin_permalink" class="post-admin-thumbnail"><img :src="v.thumbnail" data-class="each-to-img-src" /></a> 
-</div> 
-</td> 
-<td :data-id="v.main_category_key" :data-taxonomy="taxonomy" :data-uri="'admin/' + controller_slug" class="each-to-taxonomy">&nbsp;</td> 
-<td :class="'post_status post_status-' + v.post_status">{{PostType_arrStatus[v.post_status]}}</td> 
-<td>{{v.post_date.substr(0, 16)}}</td> 
-<td>{{v.post_modified.substr(0, 16)}}</td> 
-<td width="90">{{v.lang_key}}</td> 
-<td width="60"><input type="number" :data-id="v.ID" :value="v.menu_order" size="5" class="form-control s change-update-menu_order" /></td> 
-<td width="90" class="text-center"> 
-<?php 
-include ADMIN_ROOT_VIEWS . 'posts/list_action.php'; 
-?> 
+</td>
+<td :data-id="v.main_category_key" :data-taxonomy="taxonomy"  class="each-to-taxonomy">&nbsp;</td>
+<td :class="'post_status post_status-' + v.post_status">{{PostType_arrStatus[v.post_status]}}</td>
+<td width="100" class="text-center align-items-center justify-content-center">
+   <span v-if="v.post_status == drafStatus " class="btn btn-sm btn-primary receivePost">Nhận viết</span>
 </td> 
 </tr> 
 </tbody> 

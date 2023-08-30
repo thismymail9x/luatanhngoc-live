@@ -1,0 +1,28 @@
+.receivePost {
+    padding: 0.05rem 0.5rem;
+    font-size: .875rem;
+    border-radius: 0.2rem;
+    color: #fff;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+.menuPost li{
+    padding: 8px 12px;
+    border-bottom: 1px solid #cccccc;
+}
+.menuPost li a{
+  color: unset;
+}
+select {
+    padding: 8px;
+
+    border-radius: 4px;
+    border: 1px solid #cccccc;
+}
+.each-to-group-taxonomy {
+    margin: 0 10px 0 12px;
+}
+.btn-success {
+    border-radius: 4px;
+    padding: 6px 12px;
+}

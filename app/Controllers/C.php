@@ -198,10 +198,9 @@ class C extends Home
 
         if ($result_id > 0) {
             // tạo thành công thì xuất thông báo, và chuyển đến trang danh sách bài viết
-            return redirect()->to($this->get_user_permalink($result_id));
             $this->base_model->alert('Tạo bài viết thành công!', $this->get_user_permalink($result_id));
         }
-        $this->base_model->alert('Lỗi tạo ' . $this->name_type . ' mới', 'error');
+        $this->base_model->alert('Lỗi tạo bài viết mới', 'error');
     }
 
     public function get_user_permalink($id = 0, $controller_slug = 'c')
@@ -327,21 +326,6 @@ class C extends Home
 
         // dọn dẹp cache liên quan đến post này -> reset cache
         $this->cleanup_cache($this->post_model->key_cache($id));
-        //
-        if (isset($data['post_title'])) {
-            // bổ sung thêm xóa cache với menu
-            if ($this->post_type == PostType::MENU || $this->post_type == PostType::HTML_MENU) {
-                $post_name = $this->base_model->_eb_non_mark_seo($data['post_title']);
-                //echo $post_name . '<br>' . PHP_EOL;
-                $this->cleanup_cache('get_the_menu-' . $post_name);
-            } // hoặc page
-            else if ($this->post_type == PostType::PAGE) {
-                $this->cleanup_cache('get_page-' . $data['post_name']);
-            } // hoặc ads
-            else if ($this->post_type == PostType::ADS) {
-                $this->cleanup_cache('get_the_ads-');
-            }
-        }
 
         // xóa cache cho term liên quan
         if (isset($_POST['post_meta']) && isset($_POST['post_meta']['post_category'])) {
@@ -354,7 +338,7 @@ class C extends Home
         //
         return true;
     }
-    // danh sách bài viết của user + các bài viết có trạng
+    // danh sách bài viết của user + các bài viết có trạng viết theo thuần CI4
     public function lists()
     {
         //
@@ -368,7 +352,6 @@ class C extends Home
         $by_keyword = $this->MY_get('s');
         $post_status = $this->MY_get('post_status');
         $by_term_id = $this->MY_get('term_id', 0);
-        $by_user_id = $this->MY_get('user_id', 0);
 
         // các kiểu điều kiện where
         if (!isset($ops['where'])) {
@@ -377,15 +360,11 @@ class C extends Home
         //$where[ $this->table . '.post_status !=' ] = PostType::DELETED;
         $where[$this->table . '.post_type'] = $this->post_type;
         $where[$this->table . '.lang_key'] = $this->lang_key;
-        if ($by_user_id > 0) {
-            $where[$this->table . '.post_author'] = $by_user_id;
-            $urlPartPage .= '&user_id=' . $by_user_id;
-            $for_action .= '&user_id=' . $by_user_id;
-        }
 
         // tìm kiếm theo từ khóa nhập vào
         $where_or_like = [];
         $where_in = [];
+        $where_or = [];
         if ($by_keyword != '') {
             $urlPartPage .= '&s=' . $by_keyword;
             $for_action .= '&s=' . $by_keyword;
@@ -428,12 +407,17 @@ class C extends Home
                 $post_status,
             ];
         }
+
         $where_in[$this->table . '.post_status'] = $by_post_status;
 
+        // mặc định sẽ hiển thị bài viết của người ấy tạo hoặc bài viết chưa được phân (để nhận bài)
+        $where[$this->table . '.post_author'] = $this->session_data['ID'];
+        $where_or[$this->table . '.post_status'] = [PostType::DRAFT];
         // tổng kết filter
         $filter = [
             'where_in' => $where_in,
             'or_like' => $where_or_like,
+            'or_where' => $where_or,
             // hiển thị mã SQL để check
             //'show_query' => 1,
             // trả về câu query để sử dụng cho mục đích khác
@@ -489,9 +473,6 @@ class C extends Home
                 'term_taxonomy' => 'term_relationships.term_taxonomy_id = term_taxonomy.term_taxonomy_id',
             ];
         }
-        //print_r($where);
-        //print_r($filter);
-
 
         //
         if (isset($ops['add_filter'])) {
@@ -559,7 +540,6 @@ class C extends Home
 
             //
             $data = $this->post_model->list_meta_post($data);
-            //print_r( $data );
 
             // xử lý dữ liệu cho angularjs
             foreach ($data as $k => $v) {
@@ -570,7 +550,7 @@ class C extends Home
                 //continue;
 
                 // lấy 1 số dữ liệu khác gán vào, để angularjs chỉ việc hiển thị
-                $v['admin_permalink'] = $this->post_model->get_admin_permalink($this->post_type, $v['ID'], $this->controller_slug);
+                $v['admin_permalink'] = $this->get_user_permalink( $v['ID']);
                 if ($v['post_type'] == PostType::ORDER) {
                     $v['the_permalink'] = '#';
                 } else {
@@ -611,7 +591,6 @@ class C extends Home
                 'post_status' => $post_status,
                 'by_keyword' => $by_keyword,
                 'by_term_id' => $by_term_id,
-                'by_user_id' => $by_user_id,
                 'controller_slug' => $this->controller_slug,
                 'pagination' => $pagination,
                 'totalThread' => $totalThread,
@@ -670,7 +649,7 @@ class C extends Home
 
             // nếu có giá trị của for -> thường là gọi từ admin lúc update -> không alert
             if ($for != '') {
-                $this->base_model->alert('Toàn bộ file cache đã được xóa',base_url('c/lists'));
+                $this->base_model->alert('Cập nhật dữ liệu bài viết thành công',base_url('c/lists'));
                 return false;
             }
 
@@ -685,7 +664,28 @@ class C extends Home
             }
             die(__CLASS__ . ':' . __LINE__);
         }
-        return redirect()->back();
     }
+    public function receivePost()
+    {
+        header('Content-type: application/json; charset=utf-8');
+        //
+        $id = $this->MY_post('id', '');
+        $post = $this->post_model->select_post($id, []);
 
+        if (empty($post) || (!empty($post) && $post['post_status'] == PostType::PRIVATELY)) {
+            $this->result_json_type([
+                'error' => 'Không nhận được bài viết',
+                'data' => $_POST
+            ]);
+        } else {
+            $this->post_model->update_post($id, ['post_status'=>PostType::PRIVATELY], [
+            ]);
+            $this->result_json_type([
+                'ok' => __LINE__,
+                'data' => $_POST
+            ]);
+        }
+
+
+    }
 }

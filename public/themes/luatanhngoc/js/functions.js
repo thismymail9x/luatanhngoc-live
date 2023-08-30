@@ -20,3 +20,31 @@ $(".auto-ckeditor").each(function () {
         );
     }
 });
+
+$('body').delegate('.receivePost','click',function () {
+    const trParent = $(this).closest('tr');
+    // Lấy nội dung văn bản của phần tử .bold nằm trong cùng thẻ tr
+    const name = trParent.find('.bold').text();
+    let id = trParent.data('id');
+    if (confirm('Xác nhận viết bài '+ name +'?')) {
+        jQuery.ajax({
+            type: "POST",
+            url: "c/receivePost",
+            dataType: "json",
+            data: {id: id},
+            timeout: 33 * 1000,
+            error: function (jqXHR, textStatus, errorThrown) {
+                jQueryAjaxError(jqXHR, textStatus, errorThrown, new Error().stack);
+            },
+            success: function (data) {
+                if (data.ok != undefined) {
+                    WGR_alert('Thành công')
+                }
+                if (data.error != undefined) {
+                    WGR_alert(data.error,'error')
+                }
+
+            },
+        });
+    }
+})

@@ -1,9 +1,9 @@
 // tạo select box các nhóm dữ liệu cho khung tìm kiếm
 function each_to_group_taxonomy() {
+
 	if ($(".each-to-group-taxonomy").length == 0) {
 		return false;
 	}
-
 	//
 	$(".each-to-group-taxonomy").each(function () {
 		var a = $(this).attr("data-taxonomy") || "";
@@ -18,10 +18,9 @@ function each_to_group_taxonomy() {
 		}
 		//console.log(a);
 		//console.log(jd);
-
 		// chạy ajax nạp dữ liệu của taxonomy
 		load_term_select_option(a, jd, function (data, jd) {
-			console.log(data);
+			//console.log(data);
 			if (data.length > 0) {
 				// tạo select
 				$("#" + jd)
@@ -44,7 +43,6 @@ function each_to_group_taxonomy() {
 
 //
 $(document).ready(function () {
-	//console.log(a);
 
 	//
 	each_to_group_taxonomy();

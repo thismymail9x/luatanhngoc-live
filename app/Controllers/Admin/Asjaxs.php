@@ -6,6 +6,8 @@
 
 namespace App\Controllers\Admin;
 
+use App\Libraries\PostType;
+
 class Asjaxs extends Admin
 {
     // chức năng này không cần nạp header
@@ -224,4 +226,5 @@ class Asjaxs extends Admin
             'error' => 'Lỗi cập nhật số thứ tự cho bài viết!'
         ]);
     }
+
 }

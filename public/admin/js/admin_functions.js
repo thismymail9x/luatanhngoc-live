@@ -870,8 +870,8 @@ function load_term_select_option(a, jd, _callBack, max_i) {
 			jQueryAjaxError(jqXHR, textStatus, errorThrown, new Error().stack);
 		},
 		success: function (data) {
-			//console.log(data);
-			//console.log(data.length);
+			// console.log(data,'ccc');
+			// console.log(data.length);
 
 			//
 			if (typeof data.error != "undefined") {
