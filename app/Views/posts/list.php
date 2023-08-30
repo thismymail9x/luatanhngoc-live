@@ -20,7 +20,7 @@ $base_model->add_css(  'themes/' . THEMENAME . '/css/post_list.css');
                     <?php echo $name_type; ?> (<?php echo $totalThread; ?>)</h3>
                 <div class="cf admin-search-form">
                     <div class="lf w-100">
-                        <form name="frm_admin_search_controller" action="./admin/<?php echo $controller_slug; ?>" method="get">
+                        <form name="frm_admin_search_controller" action="./<?php echo $controller_slug; ?>/lists" method="get">
                             <div class="cf">
                                 <div class="lf f25 mr-3">
                                     <input class="form-control" name="s" value="<?php echo $by_keyword; ?>"
