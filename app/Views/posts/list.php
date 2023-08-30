@@ -90,7 +90,7 @@ $WGR_config = [
 ];
 $base_model->JSON_parse([
     'WGR_config' => $WGR_config,
-    'drafStatus'=> PostType::DRAFT
+    'draftStatus'=> PostType::DRAFT
 ]);
 $base_model->JSON_parse(
     [

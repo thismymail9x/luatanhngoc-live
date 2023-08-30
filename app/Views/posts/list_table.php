@@ -22,7 +22,7 @@
 <td :data-id="v.main_category_key" :data-taxonomy="taxonomy"  class="each-to-taxonomy">&nbsp;</td>
 <td :class="'post_status post_status-' + v.post_status">{{PostType_arrStatus[v.post_status]}}</td>
 <td width="100" class="text-center align-items-center justify-content-center">
-   <span v-if="v.post_status == drafStatus " class="btn btn-sm btn-primary receivePost">Nhận viết</span>
+   <span v-if="v.post_status == draftStatus " class="btn btn-sm btn-primary receivePost">Nhận viết</span>
 </td> 
 </tr> 
 </tbody> 
