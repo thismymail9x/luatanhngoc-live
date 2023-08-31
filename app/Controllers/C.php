@@ -688,4 +688,9 @@ class C extends Home
 
 
     }
+
+    public function statistic()
+    {
+        return redirect()->to(base_url('/c/lists'));
+    }
 }

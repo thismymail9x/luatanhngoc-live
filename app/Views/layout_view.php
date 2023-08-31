@@ -17,9 +17,10 @@ $lang_model->the_text('home_schema', '<!-- -->');
 if (isset($seo['dynamic_schema'])) { 
 echo $seo['dynamic_schema']; 
 } 
-?> 
+?>
+
 </head> 
-<body data-session="<?php echo session_id(); ?>" class="<?php echo $seo['body_class']; ?> is-<?php echo $current_user_type . ' ' . $current_user_logged; ?>"> 
+<body data-session="<?php echo session_id(); ?>" class="page_dark <?php echo $seo['body_class']; ?> is-<?php echo $current_user_type . ' ' . $current_user_logged; ?>">
 <?php 
 echo $header; 
 echo $breadcrumb; 

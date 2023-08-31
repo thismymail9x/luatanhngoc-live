@@ -25,7 +25,7 @@ $base_model->adds_css(
 );
 ?>
 </head> 
-<body class="<?php echo $seo['body_class']; ?> is-<?php echo $current_user_type; ?>"> 
+<body class="page_dark <?php echo $seo['body_class']; ?> is-<?php echo $current_user_type; ?>">
 <?php 
 echo $header; 
 echo $breadcrumb; 

@@ -10,6 +10,7 @@
     --sub-color: red;
     --first-index: 1; /* Chỉ mục đầu tiên */
     --increment: 4; /* Số bước tăng */
+    --mainColor:#ffff00;
 }
 
 /* Merriweather Regular */
@@ -20,9 +21,26 @@
     font-display: swap;
     src: url("font/Merriweather/Merriweather-Bold.ttf");
 }
+@font-face {
+    font-family: "SF Pro Display";
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    src: url("font/sf-pro-display/SFPRODISPLAYREGULAR.OTF");
+}
+@font-face {
+    font-family: "SF Pro Text";
+    /*font-weight: 400;*/
+    /*font-style: normal;*/
+    /*font-display: swap;*/
+    src: url("font/SF_Pro_Text/SF-Pro-Text-Regular.otf");
+}
 
 body {
     color: #222;
+}
+.select2,.select2-results__option {
+    color: #212529;
 }
 
 /**
@@ -143,7 +161,7 @@ header .main-menu li a,
     font-weight: 400;
     padding: 0 10px;
     color: #222;
-    font-size: 13px;
+    font-size: 15px;
     line-height: 30px;
     transition-duration: 200ms;
     -webkit-transition-property: color;
@@ -172,7 +190,7 @@ header .main-menu .sub-menu {
     position: absolute;
     min-width: 220px;
     z-index: 9;
-    background: #fff;
+    background: #0667ac;
     box-shadow: 0 0 5px #ccc;
     border-top: 1px solid #04416d;
 }
@@ -570,7 +588,7 @@ li.item_dsp_row {
 /* desktop only */
 
 .main_nav .cf li a.active-menu-item {
-    border-bottom: 2px solid var(--default-bg);
+    border-bottom: 2px solid var(--mainColor);
 }
 
 .main_nav .cf li a:hover, .main-more-menu li a:hover, .main-menu-viewmore:hover {
@@ -595,13 +613,13 @@ li.item_dsp_row {
     font-size: 18px;
     font-family: "Merriweather", serif;
     font-weight: bold;
-    border-bottom: 1px solid #9f224e;
+    border-bottom: 1px solid var(--mainColor);
     color: #222;
     text-decoration: none;
 }
 
 .parent_name:hover {
-    color: #ff3333;
+    color: var(--mainColor);
 }
 
 .child_name {
@@ -666,7 +684,7 @@ li.item_dsp_row {
 }
 
 .tag_element a:hover {
-    background-color: #ff3333 !important;
+    background-color: #b3b300 !important;
     color: #fff;
 }
 
@@ -749,12 +767,12 @@ li.item_dsp_row {
 
 
 .global-a-posi .posts-list-title {
-    color: initial; /* Đặt màu mặc định */
+    /*color: initial; !* Đặt màu mặc định *!*/
     transition: color 0.2s ease-in-out; /* Thêm hiệu ứng transition */
 }
 
 .global-a-posi:hover .posts-list-title {
-    color: #ff3333 !important;
+    color: var(--mainColor) !important;
 }
 
 .title__more {
@@ -870,7 +888,7 @@ header .top-user-menu .eb-sub-menu {
 .box-xemnhieu .list-top-view .number-top-view {
     font-family: "Merriweather", serif;
     font-size: 48px;
-    color: #222;
+    color: var(--mainColor);
     font-weight: bold;
     position: absolute;
     top: -8px;
@@ -888,7 +906,7 @@ header .top-user-menu .eb-sub-menu {
 }
 
 .item-news .title-news a:hover {
-    color: #ff3333;
+    color:var(--mainColor);
 }
 
 .item-news .title-news span {
@@ -1350,7 +1368,6 @@ header .top-user-menu .eb-sub-menu {
 
     /* css footer */
     .section-footer-center {
-        background-color: #fff;
         padding: 40px 0 20px;
         border-top: 4px solid #e6e6e6;
     }
@@ -1364,7 +1381,6 @@ header .top-user-menu .eb-sub-menu {
     }
 
     .section-footer-center-line2 {
-        background-color: #fff;
         padding: 0;
         border-top: unset;
     }
@@ -1587,7 +1603,7 @@ header .top-user-menu .eb-sub-menu {
     .section-footer-center {
         background-color: #fff;
         padding: 0;
-        border-top: 4px solid #e6e6e6;
+        border-top: 4px solid #dce31e;
     }
 
     .section-footer-center .logo__footer {

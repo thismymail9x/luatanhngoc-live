@@ -34,9 +34,7 @@
             <p class="text-footer">Hotline: <a title="Click để liên lạc"
                                                href="tel:<?php echo $getconfig->phone; ?>"><?php echo $getconfig->phone; ?></a>
             </p>
-            <p class="text-footer">Giấy phép ĐKKD: 0109319605 </p>
-            <p class="text-footer">Giấy phép MXH: 01XK02022 </p>
-
+            <p class="text-footer">MST: 0110431256 </p>
         </div>
     </div>
     <div class="col medium-6 small-12 large-6">

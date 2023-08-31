@@ -18,14 +18,20 @@
 }
 
 .posts-list-title *{
-    /*font-family: "Merriweather",serif;*/
-    font-size: 17px;
+    font-family: "Merriweather",serif;
+    font-size: 15px;
     line-height: 160%;
     font-weight: 700;
 }
+.posts-home-top .posts-list-title *{
+    font-size: 20px;
+    padding-top: 20px;
+}
 
-
-
+.posts-list-title,
+.posts-list-info {
+    padding-left: 20px;
+}
 .posts-list.anhtren_chuduoi {}
 
 .posts-list.anhtren_chuduoi .posts-list-left,
@@ -35,6 +41,10 @@
 }
 
 .posts-list.anhtren_chuduoi .posts-list-left {}
+
+.posts-list.anhtren_chuduoi .posts-list-right {
+    padding-top: 10px;
+}
 
 .posts-list.anhtren_chuduoi .posts-list-title,
 .posts-list.anhtren_chuduoi .posts-list-info {
@@ -52,19 +62,4 @@
 
 .posts-list-time div {
     margin-right: 15px;
-}
-@media only screen and (min-width: 748px) {
-    .posts-home-top .posts-list-title *{
-        font-size: 20px;
-        padding-top: 20px;
-    }
-    .posts-list-title,
-    .posts-list-info {
-        padding-left: 15px;
-    }
-}
-@media only screen and (max-width: 788px) {
-    .posts-list-title {
-        padding-top: 15px;
-    }
 }

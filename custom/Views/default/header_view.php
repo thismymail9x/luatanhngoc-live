@@ -57,7 +57,7 @@ if ($isMobile == true) {
         </div>
     </div>
     <div class="bborder">
-        <div class="main-menu">
+        <div class="main-menu header__navbar">
             <div class="row row-collapse">
                 <div class="col medium-12 small-12 large-12">
                     <div class="col-inner main_nav">

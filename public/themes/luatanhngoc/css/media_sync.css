@@ -1,0 +1,8 @@
+.comment_content {
+    border-bottom: 2px #999 solid;
+    margin-bottom: 20px;
+}
+.comment_content img {
+    max-width: 250px;
+    height: auto;
+}

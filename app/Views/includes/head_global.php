@@ -165,6 +165,7 @@ $base_model->adds_css([
     'themes/' . THEMENAME . '/style.css',
     'themes/' . THEMENAME . '/css/posts_node.css',
     'themes/' . THEMENAME . '/css/products_node.css',
+    'themes/' . THEMENAME . '/css/global.css',
 ], [
     'cdn' => CDN_BASE_URL,
 ]);

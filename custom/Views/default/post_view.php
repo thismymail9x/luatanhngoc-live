@@ -44,7 +44,7 @@ $post_model->update_views( $data[ 'ID' ] );
                     </div>
                 </div>
                 <div class="img-max-width">
-                    <div class="medium global-details-content <?php echo $data['post_type']; ?>-details-content ul-default-style">
+                    <div class="global-details-content <?php echo $data['post_type']; ?>-details-content ul-default-style">
                         <?php
                         echo $data['post_content'];
                         ?>
