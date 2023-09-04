@@ -79,7 +79,7 @@ class UsersType
     public static function role($key)
     {
         // khách vãng lai và thành viên -> không có quyền gì ở đây cả
-        if ($key == self::GUEST || $key == self::MEMBER) {
+        if ($key == self::GUEST ) {
             return [];
         }
 
@@ -89,7 +89,7 @@ class UsersType
         ];
 
         // với tác giả -> cho thêm quyền liên quan đến bài viết, up ảnh
-        if ($key == self::MOD || $key == self::AUTHOR) {
+        if ($key == self::MOD || $key == self::AUTHOR || $key == self::MEMBER) {
             $arr[] = 'Comments';
             $arr[] = 'Posts';
             $arr[] = 'Terms';

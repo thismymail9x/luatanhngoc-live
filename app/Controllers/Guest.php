@@ -143,7 +143,7 @@ class Guest extends Csrf
                             $login_redirect = base_url(CUSTOM_ADMIN_URI);
                         }
                         // hungtd cập nhật nếu là nhân viên nội bộ cty thì đến trang bài viết luôn
-                        else if (!empty($session_data) && $session_data['member_type'] != UsersType::GUEST) {
+                        else if (!empty($session_data) && $session_data['member_type'] != UsersType::GUEST && $session_data['member_type'] != UsersType::MEMBER) {
                             $login_redirect = base_url(MEMBER_URI);
                         }
                         return $this->done_action_login($login_redirect);

@@ -43,7 +43,8 @@ class Admin extends Ajaxs
         //var_dump( $this->session_data );
 
         // nếu không có quyền admin -> báo lỗi nếu đang vào admin
-        if ($this->session_data['userLevel'] != UsersType::ADMIN_LEVEL) {
+        //hungtd tạm thời comment
+        if ($this->session_data['userLevel'] != UsersType::ADMIN_LEVEL &&  $this->session_data['member_type'] == UsersType::GUEST) {
             die('404 error line ' . __CLASS__ . ':' . __LINE__);
         }
 

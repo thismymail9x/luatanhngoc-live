@@ -9,7 +9,7 @@ if ($isMobile == true) {
 
     ?>
 
-    <div class="row row-collapse align-middle">
+    <div class="row row-collapse align-middle py-2">
         <div class="col medium-2 small-12 large-2">
             <div class="col-inner">
                 <?php
@@ -26,16 +26,26 @@ if ($isMobile == true) {
         </div>
         <div class="col medium-3 small-12 large-3">
             <div class="col-inner top-search">
-                <form method="get" action="search">
-                    <input type="search" name="s" class="form-control inputSearch" value="" placeholder="Tìm kiếm"
-                           onClick="this.select();" aria-required="true" required>
-                    <button type="submit" class="btn btn-primary btnSearch" aria-label="Search button"><i
-                                class="fa fa-search"></i></button>
+                <form method="get" action="search" class="header__top">
+                    <div class="itemInput">
+                        <div class="itemIcon">
+                            <i class="fa fa-search"></i>
+                        </div>
+                        <div class="elementInput">
+                            <input type="search" name="keyword" placeholder='Thêm "từ khóa" để tìm kiếm'>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
         <div class="col medium-5 small-12 large-5">
-            <div class="col-inner top-user-menu cf">
+            <div class="col-inner top-user-menu cf d-flex">
+                <a target="_blank" href="/" title="DMCA.com Protection Status" class="dmca-badge">
+                    <img style="height: 50px" src ="<?= base_url() ?>upload/2023/09/dich-vu-thong-bao-bo-cong-thuong-removebg-preview-thumbnail.png"  alt="DMCA.com Protection Status" />
+                </a>
+                <a target="_blank" href="https://www.dmca.com/Protection/Status.aspx?ID=64e71b30-ebd3-42bc-b908-4c0d404f0a0e&refurl=https://luatanhngoc.vn/vi/" title="DMCA.com Protection Status" class="dmca-badge">
+                    <img style="height: 30px" src ="https://images.dmca.com/Badges/DMCA_logo-grn-btn120w.png?ID=64e71b30-ebd3-42bc-b908-4c0d404f0a0e"  alt="DMCA.com Protection Status" />
+                </a>
                 <?php
 
                 // nếu đã đăng nhập -> hiển thị menu profile

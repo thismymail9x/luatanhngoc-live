@@ -7,7 +7,7 @@
             </div>
         </div>
         <div class="lf f70 posts-list-right fullsize-if-mobile">
-            <div class="posts-list-title">
+            <div class="posts-list-title limit-text-2">
                 <{{dynamic_title_tag}} itemprop="headline">{{post_title}}
             </
             {{dynamic_title_tag}}>
@@ -19,10 +19,9 @@
 
                 <!--                        <div class="lf each-to-vndate">{{post_date}}</div>-->
                 <div class="lf"><i class="fa fa-eye"></i> {{post_viewed}}</div>
-                <div class="lf"><i class="fa fa-comment-o"></i> {{comment_count}}</div>
+<!--                <div class="lf"><i class="fa fa-comment-o"></i> {{comment_count}}</div>-->
             </div>
-            <div class="posts-list-desc" itemprop="description">{{post_excerpt}}</div>
-            <div class="posts-list-more"><span>Chi tiết</span></div>
+            <div class="posts-list-desc limit-text-4" itemprop="description">{{post_excerpt}}</div>
         </div>
     </div>
 </div>

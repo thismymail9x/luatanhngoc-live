@@ -97,7 +97,22 @@ if ($getconfig->fb_app_id != '') {
     </style>
 <?php
 
-
+$base_model->add_css('themes/' . THEMENAME . '/plugins/carousel/dist/assets/owl.carousel.min.css', [
+    'cdn' => CDN_BASE_URL,
+]);
+$base_model->add_css('themes/' . THEMENAME . '/plugins/carousel/dist/assets/owl.theme.default.min.css', [
+    'cdn' => CDN_BASE_URL,
+]);
+$base_model->add_js('themes/' . THEMENAME . '/plugins/carousel/dist/owl.carousel.min.js', [
+    'cdn' => CDN_BASE_URL,
+], [
+    'defer'
+]);
+$base_model->add_js('themes/' . THEMENAME . '/js/templates/home.js', [
+    'cdn' => CDN_BASE_URL,
+], [
+    'defer'
+]);
 // nạp một số css ở dạng preload
 $arr_preload_bootstrap = [
     // bản full

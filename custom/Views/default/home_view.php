@@ -4,22 +4,23 @@
 //use App\Libraries\PostType;
 use App\Libraries\TaxonomyType;
 
-
 //
 //$html_text_only = $base_model->get_html_tmp('posts_node_text_only');
 //echo $html_text_only;
 
-
+$base_model->add_css('themes/' . THEMENAME . '/css/home.css', [
+    'cdn' => CDN_BASE_URL,
+]);
 /*
  * lấy các bài viết mới nhất
  */
 
 $in_cache = $term_model->key_cache('home-top10');
-
+$custom_code_model = new \App\Models\CustomCode();
 $data = $base_model->scache($in_cache);
 if (empty($data)) {
     $data = $post_model->get_posts_by([], [
-        'limit' => 20,
+        'limit' => 25,
         //'offset' => 0,
     ]);
     //
@@ -28,93 +29,169 @@ if (empty($data)) {
 //print_r($data);
 
 ?>
-<!--first row-->
-<div class="row home__view row__top-20">
-    <div class="col medium-8 small-12 large-8">
-        <div class="col-inner">
-            <div class="posts-home-top row posts-list posts-list100 cf">
+<?php //print_r($data);die('ccc'); ?>
+
+<section class="list__post">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="owl-carousel owl-theme" id="owl-carousel-post">
                 <?php
+                $i = 0;
+                foreach (@$data as $k => $v) {
+                    if ($v === NULL) {
+                        continue;
+                    }
+                    $i++;
+                    if ($i >= 14) {
+                        break;
+                    }
+                    ?>
 
-                // lấy bài đầu tiên
-                foreach ($data as $k => $v) {
-                    //echo '<!-- ';
-                    //print_r( $v );
-                    //echo ' -->';
 
-                    //
-                    $post_model->the_node($v, [
-                        //'taxonomy_post_size' => $taxonomy_post_size,
-                    ]);
+                        <a href="<?= base_url('/' . $v['post_permalink'] ); ?>" target="_blank">
+                            <div class="item">
+                                <div class="item__carousel">
+                                    <p class="title__post limit-text-3"><?= $v['post_title']; ?></p>
+                                    <div class="background__gradient">
+                                    </div>
+                                    <?php
+                                    $attachments = [$v['post_meta']['image_medium'],$v['post_meta']['image_large'],$v['post_meta']['image']];
+                                    $width = ['700w', '1024w', '1w']; ?>
+                                    <img alt="<?= $v['post_title']; ?>" title="<?= $v['post_title']; ?>"
+                                         src="<?php echo $attachments[2] ?>"
+                                         srcset="<?php foreach ($attachments as $key => $value) {
+                                             echo $value . ' ' . $width[$key] . ',';} ?>">
+                                </div>
+                            </div>
+                        </a>
+                    <?php $data[$k] = NULL;} ?>
+            </div>
+        </div>
+        <?php $h = 0;
+        foreach (@$data as $k => $v) {
+            if ($v === NULL) {
+                continue;
+            }
+            $h ++;
+            if ($h > 5) {
+                break;
+            }
+            ?>
+                <div class="col-md-3">
+                    <a href="<?= base_url('/' . $v['post_permalink'] ); ?>" target="_blank">
+                        <div class="item__home-big">
+                            <?php
+                            $attachments = [$v['post_meta']['image_medium'],$v['post_meta']['image_large'],$v['post_meta']['image']];
+                            $width = ['700w', '1024w', '1w']; ?>
+                            <img class="item__home-big-img" alt="<?= $v['post_title']; ?>"
+                                 title="<?= $v['post_title']; ?>"
+                                 src="<?php echo $attachments[2] ?>"
+                                 srcset="<?php foreach ($attachments as $key => $value) {
+                                     echo $value . ' ' . $width[$key] . ',';} ?>">
+                            <div class="content__item-big">
+                                <i class="text__time"><?= $v['post_date']; ?></i>
+                                <p class="text__title limit-text-2"
+                                   title="<?= $v['post_title']; ?>"><?= $v['post_title']; ?></p>
+                                <span class="eye-star">
+                                        <span title="Đánh giá">
+                                            <?= $v['post_status']?>
+                                            <i style="color: #ffff00" class="fa fa-star"></i>
+                                        </span>
+                                        <span title="Lượt xem">
+                                            <?=$v['post_viewed']?> <i class="fa fa-eye"></i>
+                                        </span>
+                                    </span>
+                            </div>
 
-                    // lấy xog hủy data đi
-                    $data[$k] = NULL;
+                        </div>
+                    </a>
+                </div>
+            <?php  $data[$k] = NULL; } ?>
 
-                    // lấy 1 tin chỗ này thôi
+        <div class="col-md-3">
+            <?php $m = 0; foreach (@$data as $k => $v) {
+                if ($v === NULL) {
+                    continue;
+                }
+                $m ++;
+                if ($m > 2) {
                     break;
                 }
-
                 ?>
-            </div>
-            <div class="row posts-list posts-list33 cf anhtren_chuduoi text_only">
-                <?php
+                    <a href="<?= base_url('/' . $v['post_permalink'] ); ?>" target="_blank">
+                        <div class="item__home-small">
+                            <?php
+                            $attachments = [$v['post_meta']['image_medium'],$v['post_meta']['image_large'],$v['post_meta']['image']];
+                            $width = ['700w', '1024w', '1w']; ?>
+                            <img class="item__home-small-img" alt="<?= $v['post_title']; ?>"
+                                 title="<?= $v['post_title']; ?>"
+                                 src="<?php echo $attachments[2] ?>"
+                                 srcset="<?php foreach ($attachments as $key => $value) {
+                                     echo $value . ' ' . $width[$key] . ',';} ?>">
+                            <div class="content__item-small">
+                                <i class="text__time"><?= $v['post_date']; ?></i>
+                                <p class="text__title limit-text-2"
+                                   title="<?= $v['post_title']; ?>"><?= $v['post_title']; ?></p>
 
-                // 3 bài tiếp theo
-                $i = 0;
-                foreach ($data as $k => $v) {
-                    if ($v === NULL) {
-                        continue;
-                    }
-                    $i++;
-                    if ($i > 3) {
-                        break;
-                    }
+                            </div>
+                            <span class="eye-star">
+                                        <span title="Đánh giá">
+                                           <?= $v['post_status']?>
+                                            <i style="color: #ffff00" class="fa fa-star"></i>
+                                        </span>
+                                        <span title="Lượt xem">
+                                            <?=$v['post_viewed']?> <i class="fa fa-eye"></i>
+                                        </span>
+                                    </span>
+                        </div>
 
-                    //
-                    $post_model->the_node($v, [
-                        //'taxonomy_post_size' => $taxonomy_post_size,
-                    ]);
-
-                    // lấy xog hủy data đi
-                    $data[$k] = NULL;
-                }
-
-                ?>
-            </div>
+                    </a>
+                <?php $data[$k] = NULL;
+            } ?>
         </div>
     </div>
-    <div class="col medium-4 small-12 large-4">
-        <div class="col-inner">
-            <!--            <h4 class="text-center top-menu-space10 s14 bold title__more">Top bài viết tuần</h4>-->
-            <div class="right-home-top posts-list posts-list100 cf">
-                <?php
+</section>
 
-                // 15 bài tiếp theo
-                $i = 0;
-                foreach ($data as $k => $v) {
-                    if ($v === NULL) {
-                        continue;
-                    }
-                    $i++;
-                    if ($i > 6) {
-                        break;
-                    }
-                    $post_model->the_node($v, [
-                        //'taxonomy_post_size' => $taxonomy_post_size,
-                    ]);
-                    $data[$k] = NULL;
-                }
-                ?>
-
-            </div>
-        </div>
-    </div>
-</div>
 <!--line row-->
-<div class="row hide__if-mobile">
-    <div class="col">
-        <hr>
+<!--<div class="row hide__if-mobile">-->
+<!--    <div class="col">-->
+<!--        <hr>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+<section class="row home__category">
+    <div class="top">
+        <p class="title__company"><?=$getconfig->company_name;?></p>
+        <div class="line"></div>
+        <p class="text"><?=$getconfig->solugan;?></p>
+        <p class="text introduce_company">
+            Công ty Luật Ánh Ngọc là một đơn vị chuyên cung cấp các dịch vụ pháp lý uy tín và chất lượng tại Việt Nam. Với kinh nghiệm nhiều năm trong lĩnh vực pháp luật, chúng tôi tự hào là một trong những Công ty luật hàng đầu, chuyên
+            <a href="">tư vấn pháp luật</a> và cung cấp <a href="">dịch vụ pháp lý</a> đa dạng. <br>
+            Chúng tôi cam kết mang đến cho khách hàng những giải pháp pháp lý toàn diện, bao gồm <a href="">dịch vụ đăng ký sở hữu trí tuệ</a>,
+            <a href="">dịch vụ đăng ký thành lập công ty</a>, và hỗ trợ thủ tục <a href="">làm giấy phép quảng cáo</a>. <br>Với đội ngũ
+            <a href="">luật sư</a> có chuyên môn cao và am hiểu sâu về lĩnh vực này, chúng tôi cam kết luôn đồng hành và tư vấn một cách tận tâm để giúp khách hàng giải quyết mọi vấn đề pháp lý một cách hiệu quả và nhanh chóng.
+            <br>
+            Hãy để <a href="">Công ty Luật</a> Ánh Ngọc trở thành đối tác đáng tin cậy của bạn trong mọi vấn đề liên quan đến pháp luật. Chúng tôi sẽ luôn sẵn sàng hỗ trợ bạn, đồng hành cùng bạn trên con đường phát triển kinh doanh và bảo vệ quyền lợi của bạn một cách tốt nhất.
+        </p>
     </div>
-</div>
+    <div class="bottom row">
+<!--        --><?php //foreach (@$term_data as $key =>$val) { ?>
+        <div class="col-6 col-md-3 col-xl-3 item"><a href="https://luatanhngoc.vn/vi/tu-van-phap-ly-doanh-nghiep"> <span class="circle"><i class="fa fa-building"></i></span> <span class="pElement">Tư vấn Ph&aacute;p l&yacute; doanh nghiệp</span> </a></div>
+<!--        --><?php //} ?>
+        <div class="col-6 col-md-3 col-xl-3 item"><a href="https://luatanhngoc.vn/vi/tu-van-luat-hon-nhan-gia-dinh"><span class="circle"><i class="fa fa-heartbeat"></i></span> <span class="pElement">Tư vấn Luật h&ocirc;n nh&acirc;n gia đ&igrave;nh</span> </a></div>
+        <div class="col-6 col-md-3 col-xl-3 item"><a href="https://luatanhngoc.vn/vi/tu-van-luat-so-huu-tri-tue"><span class="circle"><i class="fa fa-deaf"></i></span> <span class="pElement">Tư vấn luật Sở hữu tr&iacute; tuệ</span> </a></div>
+        <div class="col-6 col-md-3 col-xl-3 item"><a href="https://luatanhngoc.vn/vi/tu-van-cac-thu-tuc-hanh-chinh"><span class="circle"><i class="fa fa-university"></i></span><span class="pElement">Tư vấn thủ thục h&agrave;nh ch&iacute;nh</span></a></div>
+        <div class="col-6 col-md-3 col-xl-3 item"><a href="https://luatanhngoc.vn/vi/tu-van-luat-lao-dong"><span class="circle"><i class="fa fa-blind"></i></span> <span class="pElement ">Tư vấn Luật lao động</span> </a></div>
+        <div class="col-6 col-md-3 col-xl-3 item"><a href="https://luatanhngoc.vn/vi/tu-van-luat-hinh-su"><span class="circle"><i class="fa fa-user-secret"></i></span> <span class="pElement ">Tư vấn Luật h&igrave;nh sự</span> </a></div>
+        <div class="col-6 col-md-3 item"><a href="https://luatanhngoc.vn/vi/tu-van-luat-dan-su"><span class="circle"><i class="fa fa-male"></i></span> <span class="pElement ">Tư vấn Luật d&acirc;n sự</span> </a></div>
+        <div class="col-6 col-md-3 col-xl-3 item"><a href="https://luatanhngoc.vn/vi/tu-van-luat-dat-dai"> <span class="circle"><i class="fa fa-globe"></i></span> <span class="pElement">Tư vấn luật đất đai</span> </a></div>
+    </div>
+</section>
+
+
+
+
 <!--main row-->
 <div class="row">
     <div class="col medium-4 small-12 large-4 border__element hide__if-mobile">
@@ -122,19 +199,19 @@ if (empty($data)) {
             <div class="left_under row posts-list posts-list100 cf">
                 <?php
                 // 5 bài tiếp theo
-                $i = 0;
-                foreach ($data as $k => $v) {
+                $t = 0;
+                foreach (@$data as $k => $v) {
                     if ($v === NULL) {
                         continue;
                     }
-                    $i++;
-                    if ($i > 6) {
+                    $t++;
+                    if ($t > 6) {
                         break;
                     }
                     //
-//                    $custom_code_model->the_nodeV2($v, [
-//                        //'taxonomy_post_size' => $taxonomy_post_size,
-//                    ]);
+                    $custom_code_model->the_nodeV2($v, [
+                        //'taxonomy_post_size' => $taxonomy_post_size,
+                    ]);
 
                     // lấy xog hủy data đi
                     $data[$k] = NULL;
@@ -143,12 +220,12 @@ if (empty($data)) {
                 ?>
 
             </div>
-            <div class="first__slider">
-                <?php
-                // sau đó chèn 1 banner
-                $post_model->the_ads('home-left-center-slider');
-                ?>
-            </div>
+<!--            <div class="first__slider">-->
+<!--                --><?php
+//                // sau đó chèn 1 banner
+//                $post_model->the_ads('home-left-center-slider');
+//                ?>
+<!--            </div>-->
             <!--            <div class="second__slider">-->
             <!--            --><?php
             //            // sau đó chèn 1 banner
@@ -160,12 +237,12 @@ if (empty($data)) {
     </div>
     <div class="col medium-8 small-12 large-8">
         <div class="col-inner">
-            <div class="second__slider">
-                <?php
-                // sau đó chèn 1 banner
-                $post_model->the_ads('home-left-center-slider');
-                ?>
-            </div>
+<!--            <div class="second__slider">-->
+<!--                --><?php
+//                // sau đó chèn 1 banner
+//                $post_model->the_ads('home-left-center-slider');
+//                ?>
+<!--            </div>-->
             <?php
             /*
              * lấy danh mục và các bài viết của nó
@@ -186,6 +263,23 @@ if (empty($data)) {
                     'term_order' => 'DESC'
                 ]
             ]);
+            // chỉ lấy danh mục của phần dịch vụ luật sư
+            $term_child = $base_model->select('*', WGR_TERM_VIEW, [
+                'taxonomy' => TaxonomyType::POSTS,
+                'parent' => $term_data[0]['term_id'],
+            ], [
+
+                // hiển thị mã SQL để check
+                //'show_query' => 1,
+                // trả về câu query để sử dụng cho mục đích khác
+                //'get_query' => 1,
+                //'offset' => 0,
+                'limit' => 9,
+                'order_by' => [
+                    'term_order' => 'DESC'
+                ]
+            ]);
+
             $i = 0;
             // hiển thị danh sách danh mục
             foreach ($term_data as $keyy => $val) {
