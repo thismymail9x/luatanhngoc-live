@@ -47,7 +47,6 @@ if (empty($data)) {
                     }
                     ?>
 
-
                         <a href="<?= base_url('/' . $v['post_permalink'] ); ?>" target="_blank">
                             <div class="item">
                                 <div class="item__carousel">
