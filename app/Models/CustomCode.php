@@ -70,4 +70,44 @@ class CustomCode extends Post
         //
         return $this->build_the_node($data, $ops['custom_html'], $ops, $default_arr);
     }
+    public static function getSalaryType($content)
+    {
+        // type = 0 là ko tính tiền, type = 10 thì là 20k, type = 20 thì 30k, type = 30 thì là 40k
+        // các mốc type Số lượng từ	Thù lao (VND)
+        //1.600 -2.200 từ + 2 hình ảnh	20.000/1 bài viết
+        //2.200 -3000 từ + 3 hình ảnh	30.000/1 bài viết
+        //Trên 3.000 từ + 3 hình ảnh	40.000/1 bài viết
+        $type = SALARY_TYPE_0;
+        // số lượng thẻ img
+        $dom = new \DOMDocument();
+        libxml_use_internal_errors(true);
+        $dom->loadHTML(mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8'));
+        $numberImg = $dom->getElementsByTagName('img');
+        $numberImg = count($numberImg);
+        // lấy số lượng từ
+        $text = strip_tags($content);
+        $text = preg_replace('/\s+/', ' ', $text); // Loại bỏ các khoảng trắng thừa và thay thế bằng một khoảng trắng duy nhất
+        $text = trim($text); // Loại bỏ khoảng trắng ở đầu và cuối chuỗi
+        $words = explode(' ', $text);
+        $wordCount = count($words);
+        // nếu chỉ có 2 hình ảnh thì chỉ check số từ, đủ điều kiện thì cho type = 2
+
+        if ($numberImg == 2 ) {
+            if ($wordCount >= 1600) {
+                $type = SALARY_TYPE_1;
+            }
+        }
+        // nếu có 3 hình ảnh thì sẽ check content tương ứng
+        if ($numberImg >= 3) {
+            if ($wordCount >= 1600 && $wordCount < 2200) {
+                $type = SALARY_TYPE_1;
+            } elseif ($wordCount >= 2200 && $wordCount < 3000) {
+                $type = SALARY_TYPE_2;
+            } elseif ($wordCount >= 3000 ) {
+                $type = SALARY_TYPE_3;
+            }
+        }
+        return $type;
+    }
+
 }

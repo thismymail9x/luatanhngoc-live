@@ -58,15 +58,16 @@ include __DIR__ . '/list_table.php';
 } 
 ?> 
 </div> 
-<div class="public-part-page"> 
+<div class="public-part-page">
 <?php echo $pagination; ?> Trên tổng số 
 <?php echo $totalThread; ?> bản ghi. 
 </div> 
-<?php 
+<?php
 $base_model->JSON_parse( 
 [ 
 'json_data' => $data, 
-'PostType_arrStatus' => $post_arr_status, 
+'PostType_arrStatus' => $post_arr_status,
+    'UserType'=>\App\Libraries\UsersType::typeList()
 ] 
 ); 
 ?> 
@@ -79,10 +80,31 @@ taxonomy: '<?php echo $taxonomy; ?>',
 controller_slug: '<?php echo $controller_slug; ?>', 
 for_action: '<?php echo $for_action; ?>', 
 PostType_DELETED: '<?php echo PostType::DELETED; ?>', 
-PostType_arrStatus: PostType_arrStatus, 
+PostType_PUBLIC: '<?php echo PostType::PUBLICITY; ?>',
+session_data: '<?php echo $session_data['member_type']; ?>',
+ADMIN_ROLE: '<?php echo \App\Libraries\UsersType::ADMIN ?>',
+PostType_arrStatus: PostType_arrStatus,
 data: json_data, 
 }); 
-</script> 
+</script>
+    <style>
+        .changePostStatus {
+            display: block;
+            width: 95%;
+            padding: 0 0.75rem;
+            font-size: 14px;
+            font-weight: 400;
+            height: 28px;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border-radius: 0.25rem;
+            transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+            box-sizing: border-box;
+        }
+    </style>
 <?php 
 include ADMIN_ROOT_VIEWS . 'posts/sync_modal.php'; 
 $base_model->add_js('admin/js/post_list.js'); 

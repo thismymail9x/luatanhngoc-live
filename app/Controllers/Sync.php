@@ -221,6 +221,7 @@ class Sync extends BaseController
     // tạo view cho post để select dữ liệu cho tiện
     private function view_posts($has_table_change)
     {
+
         // nếu không xác định được sự thay đổi của bảng
         if ($has_table_change === false) {
             // kiểm tra xem có view này chưa
@@ -273,11 +274,14 @@ class Sync extends BaseController
                 $arr_term_relationships[] = 'r.' . $k;
             }
         }
+        // hungtd add cố định lấy các thông tin của users
+        $arr_author = ['u.user_nicename','u.display_name','u.avatar'];
+
         //print_r( $arr_term_relationships );
 
         // -> dùng CI query builder để tạo query -> tránh sql injection
         $sql = $this->base_model->select(
-            'posts.*,' . implode(',', $arr_term_taxonomy) . ',' . implode(',', $arr_term_relationships),
+            'posts.*,' . implode(',', $arr_term_taxonomy) . ',' . implode(',', $arr_term_relationships). ',' . implode(',', $arr_author),
             'posts',
             array(
                 // các kiểu điều kiện where
@@ -287,6 +291,7 @@ class Sync extends BaseController
                 'join' => array(
                     'term_relationships r' => 'r.object_id = posts.ID',
                     'term_taxonomy t' => 'r.term_taxonomy_id = t.term_taxonomy_id',
+                    'users u' => 'u.ID = posts.post_author',
                 ),
                 // hiển thị mã SQL để check
                 //'show_query' => 1,
@@ -297,7 +302,6 @@ class Sync extends BaseController
             )
         );
         //echo $sql . '<br>' . PHP_EOL;
-
         //
         //return false;
 

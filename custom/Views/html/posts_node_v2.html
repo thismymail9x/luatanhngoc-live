@@ -5,27 +5,20 @@
        <div class="posts-list-title">
            <{{dynamic_title_tag}} itemprop="headline">{{post_title}}
        </div>
-<!--       <div class="posts-list-time cf">-->
-
-<!--           <div class="lf posts-list-author">{{itemprop_author}}</div>-->
-
-<!--           &lt;!&ndash;                        <div class="lf each-to-vndate">{{post_date}}</div>&ndash;&gt;-->
-<!--           <div class="lf"><i class="fa fa-eye"></i> {{post_viewed}}</div>-->
-<!--           <div class="lf"><i class="fa fa-comment-o"></i> {{comment_count}}</div>-->
-<!--       </div>-->
+       <div class="posts-list-time cf">
+            <div class="lf">{{user_nicename}}</div>
+           <div class="lf"><i class="fa fa-eye"></i> {{post_viewed}}</div>
+       </div>
    </div>
-    <div class="cf border__custom">
+    <div class="cf">
         <div class="lf f30 posts-list-left fullsize-if-mobile">
             <div data-size="{{cf_posts_size}}" data-img="{{image}}" data-large-img="{{image_medium_large}}"
                  data-webp="{{image_webp}}" class="ti-le-global posts-list-avt each-to-bgimg">&nbsp;
             </div>
         </div>
         <div class="lf f70 posts-list-right fullsize-if-mobile">
-
         <div class="posts-list-info">
-
             <div class="posts-list-desc" itemprop="description">{{post_excerpt}}</div>
-            <div class="posts-list-more"><span>Chi tiết</span></div>
         </div>
     </div>
 </div>

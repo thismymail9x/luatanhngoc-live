@@ -338,7 +338,6 @@ class Layout extends Sync
         $data = $input;
         $data = $this->term_model->terms_meta_post([$data]);
         $data = $data[0];
-
         // đầu vào (input) chính là data rồi -> không cần gọi lại
         /*
         $data = $this->term_model->get_all_taxonomy( $taxonomy, $input[ 'term_id' ], [
@@ -415,7 +414,6 @@ class Layout extends Sync
             )
         );
         $this->current_tid = $data['term_id'];
-
         //
         //echo $file_view . '<br>' . PHP_EOL;
         $this->teamplate['main'] = view(
@@ -434,7 +432,6 @@ class Layout extends Sync
                 'current_tid' => $this->current_tid,
             )
         );
-
         // nếu có flash session -> trả về view luôn
         if ($this->hasFlashSession() === true) {
             return view('layout_view', $this->teamplate);
@@ -444,7 +441,6 @@ class Layout extends Sync
 
         $cache_save = $this->MY_cache($this->cache_key, $cache_value . '<!-- Served from: ' . __FUNCTION__ . ' -->');
         //var_dump( $cache_save );
-
         //
         return $cache_value;
     }

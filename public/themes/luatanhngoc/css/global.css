@@ -1749,11 +1749,14 @@
     }
 
     .list__post .content__item-big .text__time {
-        font-size: 11px;
+        font-size: 10px;
     }
-
+    .posts-list-desc {
+        font-size: 15px;
+    }
     .list__post .content__item-big .text__title {
         margin-bottom: 0;
+        font-weight: 600;
     }
     .list__post .content__item-big .eye-star {
         display: block;
@@ -1796,9 +1799,9 @@
         font-size: 10px;
     }
 
-    /*.list__post .item__home-small .content__item-small .text__title {*/
-    /*    font-size: 15px;*/
-    /*}*/
+    .list__post .item__home-small .content__item-small .text__title {
+        font-weight: 600;
+    }
 }
 
 .fz-13 {

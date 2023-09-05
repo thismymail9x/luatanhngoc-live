@@ -6,28 +6,46 @@ use App\Libraries\TaxonomyType;
 
 //
 $comment_model = new \App\Models\Comment();
-
+$base_model->add_css('themes/' . THEMENAME . '/js/post_node.css', [
+    'cdn' => CDN_BASE_URL,
+]);
+$base_model->add_css('themes/' . THEMENAME . '/js/posts_node.css', [
+    'cdn' => CDN_BASE_URL,
+]);
 // update lượt xem
 $post_model->update_views( $data[ 'ID' ] );
 
 ?>
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v17.0" nonce="JpTGkc9y"></script>
-<div class="row global-post-module ">
-    <div class="col medium-8 small-12 large-8">
+<div class="row global-post-module blog__child">
+    <div class="col medium-9 small-12 large-9">
         <div class="col-inner">
-            <div class="post_section">
-                <h1 data-type="<?php echo $data['post_type']; ?>" data-id="<?php echo $data['ID']; ?>"
-                    class="post-details-title global-details-title global-module-title">
-                    <?php
-                    echo $data['post_title'];
-                    ?>
-                </h1>
-                <div class="more__information-post">
-                    <div class="fb-share-button" data-href="<?php echo $post_model->get_full_permalink($data);?>" data-layout="button" data-size="small"><a target="_blank" class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
-                    <span class="item__eye"><i class="fa fa-eye" aria-hidden="true"></i> <?php echo $data['post_viewed']; ?></span>
+            <div class="blog__content container">
+                <div class="create-time">
+                    <div class="item-calendar"></div>
+                    <p class="text-time" title="Thời gian tạo"><?= date('d.m.Y',strtotime(@$data['post_date'])); ?>
+                        <span class="ml-3" title="Lượt xem"><i class="fa fa-eye"></i> <?=$data['post_viewed']?></span>
+                        <span class="float-right">Cỡ chữ: <i title="Giảm" class="decreaseSizeBtn fa-solid fa-arrow-down-wide-short cursor"></i> <i title="Tăng" class="increaseSizeBtn fa-solid fa-arrow-up-wide-short cursor"></i></span>
+                    </p>
                 </div>
-                <div class="menuPost">
+                <p>
+<!--            <span>--><?php //=@$data['full_name']?><!--</span>-->
+                </p>
+                <h1 class="title limit-text-2"><?= @$data['post_title']?></h1>
+
+                <div class="blog-avatar">
+                    <?php
+                    $attachments = [$data['post_meta']['image_medium'],$data['post_meta']['image_medium_large'],$data['post_meta']['image_large']];
+                    $width = ['700w','1024w','1200w']; ?>
+                    <img class="img__child" alt="<?= @$data['post_title']?>" src="<?php echo $attachments[2] ?>"
+                         srcset="<?php foreach ($attachments as $key=>$value) {
+                             echo $value.' '.$width[$key].',';} ?>">
+                </div>
+                <p class="introduce-blog">
+                    <?= @$data['post_excerpt']?>
+                </p>
+                <div class="menuPost" >
                     <div id="contentCategory" class="contentCategory collapsed">
                         <div class="item-top">
                             <i class="fa-solid fa-list-ol" style="color: #ffff00;"></i>
@@ -35,98 +53,35 @@ $post_model->update_views( $data[ 'ID' ] );
                             <i class="fa-solid fa-chevron-down icon__rotate" style="color: #ffff00;"></i>
                         </div>
                         <div class="item-bottom">
-<!--                            --><?php //foreach (@ $data['contentCategory'] as $key => $value) { ?>
-<!--                                <p class="parent"><a title="--><?//=$value['name']?><!--" href="#--><?//=$value['id']?><!--">--><?//=$value['name']?><!--</a></p>-->
+<!--                            --><?php //foreach (@$contentCategory as $key => $value) { ?>
+<!--                                <p class="parent"><a title="--><?php //=$value['name']?><!--" href="#--><?php //=$value['id']?><!--">--><?php //=$value['name']?><!--</a></p>-->
 <!--                                --><?php //foreach ($value['children'] as $k => $v) { ?>
-<!--                                    <p class="children"><a title="--><?//=$v['name']?><!--" href="#--><?//=$v['id']?><!--">--><?//=$v['name']?><!--</a></p>-->
+<!--                                    <p class="children"><a title="--><?php //=$v['name']?><!--" href="#--><?php //=$v['id']?><!--">--><?php //=$v['name']?><!--</a></p>-->
 <!--                                --><?php //} } ?>
                         </div>
                     </div>
                 </div>
-                <div class="img-max-width">
-                    <div class="global-details-content <?php echo $data['post_type']; ?>-details-content ul-default-style">
-                        <?php
-                        echo $data['post_content'];
-                        ?>
-                    </div>
-                    <br/>
+                <div id="contentPost" class="content">
+                    <p><?= @$data['post_content']?></p>
                 </div>
-            </div>
-            <div class="line__item"></div>
-            <div class="top__item">
-                <?php
-
-                // html_for_fb_comment
-                // lấy danh sách bình luận
-                $data_comment = $base_model->select('*', $comment_model->table, array(
-                    // các kiểu điều kiện where
-                    //$comment_model->primaryKey => $v[ 'comment_ID' ],
-                    'comment_type' => CommentType::COMMENT,
-                    'comment_post_ID' => $data['ID'],
-                ), array(
-                    /*
-                         'order_by' => array(
-                         $comment_model->primaryKey => 'DESC'
-                         ),
-                         */
-                    // hiển thị mã SQL để check
-                    //'show_query' => 1,
-                    // trả về câu query để sử dụng cho mục đích khác
-                    //'get_query' => 1,
-                    //'offset' => 2,
-                    //'limit' => 1
-                ));
-                //print_r( $data_comment );
-
-                //
-                $stt = 1;
-                foreach ($data_comment as $v) {
-                    $v['comment_content'] = str_replace('data-to-srcset', 'srcset', $v['comment_content']);
-
-                    ?>
-                    <div id="<?php echo $stt; ?>" class="comment_block row row-collapse">
-                        <div class="col medium-12 small-12 large-12">
-
-                            <div class="col-inner top-menu-space10 media-body">
-                                <div class="section__comment">
-                                    <div class="badged_small" data-stt="<?php echo $stt; ?>">
-                                        <?php echo $stt; ?>
-                                    </div>
-                                    <h4 class="comment_title">
-                                        <a title="<?php echo $v['comment_title']; ?>"><?php echo $v['comment_title']; ?></a>
-                                    </h4>
-                                </div>
-                                <div data-id="<?php echo $v['comment_ID']; ?>" class="comment_content s14">
-                                    <?php echo $v['comment_content']; ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <?php
-
-                    //
-                    $stt++;
-                }
-
-                ?>
-            </div>
-
         </div>
     </div>
-    <div class="col medium-4 small-12 large-4 more_post hide__if-mobile">
+    </div>
+
+    <div class="col medium-3 small-12 large-3 more_post hide__if-mobile">
         <div class="col-inner">
             <div class="menu__top">
                     <h5 class="title__menu-flash">Mục lục</h5>
-                    <?php foreach ($data_comment as $k => $v) { $k++;?>
-                        <div data-key="<?php echo $k; ?>" class="section__comment-small">
-                            <div class="badged_small-menu" data-stt="<?php echo $k; ?>">
-                                <?php echo $k; ?>
-                            </div>
-                            <h4 class="comment_title-small">
-                                <a title="<?php echo $v['comment_title']; ?>"><?php echo $v['comment_title']; ?></a>
-                            </h4>
-                        </div>
-                    <?php } ?>
+<!--                    --><?php //foreach (@$data_comment as $k => $v) { $k++;?>
+<!--                        <div data-key="--><?php //echo $k; ?><!--" class="section__comment-small">-->
+<!--                            <div class="badged_small-menu" data-stt="--><?php //echo $k; ?><!--">-->
+<!--                                --><?php //echo $k; ?>
+<!--                            </div>-->
+<!--                            <h4 class="comment_title-small">-->
+<!--                                <a title="--><?php //echo $v['comment_title']; ?><!--">--><?php //echo $v['comment_title']; ?><!--</a>-->
+<!--                            </h4>-->
+<!--                        </div>-->
+<!--                    --><?php //} ?>
             </div>
             <?php
             if (!empty($same_cat_data)) {

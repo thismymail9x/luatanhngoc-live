@@ -623,7 +623,9 @@ body.body-debug_enable #sidebar {
 }
 
 .change-update-menu_order.pending,
-.change-update-term_order.pending {
+.change-update-term_order.pending,
+.changePostStatus.pending
+{
     opacity: 0.1;
 }
 

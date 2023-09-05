@@ -737,7 +737,7 @@
     /*   */
     /*}*/
     .home__category .bottom {
-        margin: 40px 120px 20px;
+        margin: 40px 120px;
     }
     .home__category .bottom .item {
         display: flex;
@@ -749,7 +749,7 @@
         height: 176px;
         border-radius: 50%;
         background: linear-gradient(0deg,#ffff00,#b372bd);
-        border: 2px solid var(--bg-color);
+        /*border: 2px solid var(--mainColor);*/
         display: flex;
         justify-content: center;
         align-items: center;

@@ -26,3 +26,6 @@ select {
     border-radius: 4px;
     padding: 6px 12px;
 }
+.modal-content {
+    background-color: rgb(37 65 106/1);
+}

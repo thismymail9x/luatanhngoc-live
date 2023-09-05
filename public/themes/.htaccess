@@ -4,7 +4,7 @@ Deny from all
 Allow from 127.0.0.1
 
 # Allow access to files with extensions -> in apache
-<FilesMatch "\.(zip|xlsx|xls|mp3|css|js|map|htm?l|xml|json|webmanifest|tff|eot|woff?|gif|jpe?g|tiff?|png|webp|bmp|ico|svg|OTF|otf)$">
+<FilesMatch "\.(zip|xlsx|xls|mp3|css|js|map|htm?l|xml|json|webmanifest|tff|eot|woff?|gif|jpe?g|tiff?|png|webp|bmp|ico|svg|OTF?|otf?)$">
 Order allow,deny
 Allow from all
 </FilesMatch>

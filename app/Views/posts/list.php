@@ -96,6 +96,7 @@ $base_model->JSON_parse(
     [
         'json_data' => $data,
         'PostType_arrStatus' => $post_arr_status,
+        'UserType'=>\App\Libraries\UsersType::typeList()
     ]
 );
 ?>

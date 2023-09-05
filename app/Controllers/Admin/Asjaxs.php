@@ -6,7 +6,10 @@
 
 namespace App\Controllers\Admin;
 
+use App\Libraries\CommentType;
 use App\Libraries\PostType;
+use App\Models\Comment;
+use App\Models\CustomCode;
 
 class Asjaxs extends Admin
 {
@@ -41,6 +44,7 @@ class Asjaxs extends Admin
         //
         return $http_response;
     }
+
     public function check_ssl()
     {
         $test_url = DYNAMIC_BASE_URL . 'ajaxs/the_base_url';
@@ -114,8 +118,7 @@ class Asjaxs extends Admin
         //die( json_encode( $_POST ) );
 
         // SELECT dữ liệu từ 1 bảng bất kỳ
-        $data = $this->base_model->select('ID, user_email', 'users', array(
-            // các kiểu điều kiện where
+        $data = $this->base_model->select('ID, user_email', 'users', array(// các kiểu điều kiện where
         ), array(
             'where_in' => array(
                 'ID' => explode(',', $ids)
@@ -226,5 +229,140 @@ class Asjaxs extends Admin
             'error' => 'Lỗi cập nhật số thứ tự cho bài viết!'
         ]);
     }
+
+    /* hàm thay đổi trạng thái bài viết*/
+    public function change_post_status()
+    {
+        $customModel = new CustomCode();
+        $id = $this->MY_post('id', 0);
+        if ($id <= 0) {
+            $this->result_json_type([
+                'code' => __LINE__,
+                'error' => 'post id is zero!'
+            ]);
+        }
+
+        //
+        $post_status = $this->MY_post('post_status', 0);
+
+        $post = $this->post_model->select_post($id, [
+            'post_type' => PostType::POST,
+            //'lang_key' => $this->lang_key,
+        ]);
+        $salaryType = $customModel->getSalaryType($post['post_content']);
+        // UPDATE
+        $result_id = $this->base_model->update_multiple('posts', [
+            // SET
+            'post_status' => $post_status,
+            'salary_type' => $salaryType
+        ], [
+            // WHERE
+            'ID' => $id,
+        ], [
+            'debug_backtrace' => debug_backtrace()[1]['function'],
+            // hiển thị mã SQL để check
+            //'show_query' => 1,
+            // trả về câu query để sử dụng cho mục đích khác
+            //'get_query' => 1,
+            // mặc định sẽ remove các field không có trong bảng, nếu muốn bỏ qua chức năng này thì kích hoạt no_remove_field
+            //'no_remove_field' => 1
+        ]);
+
+        if ($result_id !== false) {
+            $this->result_json_type([
+                'ok' => __LINE__,
+                'data' => $_POST
+            ]);
+        }
+
+        //
+        $this->result_json_type([
+            'code' => __LINE__,
+            'error' => 'Lỗi cập nhật trạng thái cho bài viết!'
+        ]);
+    }
+
+    /* hàm lấy danh sách comment của bài viết*/
+    public function get_post_comments()
+    {
+        $id = $this->MY_post('id', 0);
+        if ($id <= 0) {
+            $this->result_json_type([
+                'code' => __LINE__,
+                'error' => 'post id is zero!'
+            ]);
+        }
+        $data = $this->base_model->select('comments.comment_date,comments.comment_content,users.member_type,users.user_nicename', 'comments', [
+            //'is_deleted' => DeletedStatus::DEFAULT,
+            'comment_post_ID' => $id,
+            'comment_type' => CommentType::COMMENT,
+            //'lang_key' => $this->lang_key
+        ], [
+            'join'=>[
+              'users'=>'users.ID = comments.comment_author'
+            ],
+            'order_by' => [
+                'comments.comment_date' => 'DESC'
+            ],
+            // hiển thị mã SQL để check
+            //'show_query' => 1,
+            // trả về câu query để sử dụng cho mục đích khác
+            //'get_query' => 1,
+            //'offset' => 0,
+//            'limit' => 1
+        ]);
+
+        $this->result_json_type([
+            'ok' => __LINE__,
+            'data' => $data
+        ]);
+
+    }
+
+    /* hàm lưu ghi chú cho bài viết*/
+    public function save_post_comment()
+    {
+        $commentModel = new Comment();
+        $id = $this->MY_post('id', 0);
+        $content = $this->MY_post('content', 0);
+        $dataInsert = [
+            'comment_post_ID' => $id,
+            'comment_content' => $content,
+            'comment_author' => $this->session_data['ID']
+        ];
+        $result_id = $commentModel->insert_comments($dataInsert);
+        if ($result_id <= 0) {
+            $this->result_json_type([
+                'code' => __LINE__,
+                'error' => 'Lỗi ko tạo được ghi chú!'
+            ]);
+        }
+        $data = $this->base_model->select('comments.comment_date,comments.comment_content,users.member_type,users.user_nicename', 'comments', [
+            //'is_deleted' => DeletedStatus::DEFAULT,
+            'comment_post_ID' => $id,
+            'comment_type' => CommentType::COMMENT,
+            //'lang_key' => $this->lang_key
+        ], [
+            'join'=>[
+                'users'=>'users.ID = comments.comment_author'
+            ],
+            'order_by' => [
+                'comments.comment_date' => 'DESC'
+            ],
+            // hiển thị mã SQL để check
+            //'show_query' => 1,
+            // trả về câu query để sử dụng cho mục đích khác
+            //'get_query' => 1,
+            //'offset' => 0,
+//            'limit' => 1
+        ]);
+
+        $this->result_json_type([
+            'ok' => __LINE__,
+            'data' => $data
+        ]);
+
+    }
+
 
 }

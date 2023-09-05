@@ -355,3 +355,17 @@ defined('WGR_CSP_CHILD_SRC') || define('WGR_CSP_CHILD_SRC', "'self' *.youtube.co
 
 // Khi cần thay đổi URL cho trang login thì đổi tham số này -> có thể tận dụng HTML của trang login thay vì tự code mới
 defined('ACTION_LOGIN_FORM') || define('ACTION_LOGIN_FORM', './guest/login');
+
+
+// constant tính lương
+define('SALARY_TYPE', array(
+    '1' => 0,
+    '10' => 20000,
+    '20' => 30000,
+    '30' => 40000
+));
+
+defined('SALARY_TYPE_0')        || define('SALARY_TYPE_0', 1); // thông số tinh lương cho kiểu 0 VND
+defined('SALARY_TYPE_1')        || define('SALARY_TYPE_1', 10); // thông số tinh lương cho kiểu 20000 VND
+defined('SALARY_TYPE_2')        || define('SALARY_TYPE_2', 20); // thông số tinh lương cho kiểu 30000 VND
+defined('SALARY_TYPE_3')        || define('SALARY_TYPE_3', 30); // thông số tinh lương cho kiểu 40000 VND

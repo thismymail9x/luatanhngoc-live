@@ -19,7 +19,8 @@
 
 .posts-list-title *{
     font-size: 15px;
-    font-weight: 700;
+    font-weight: 600;
+    line-height: 1.47059;
 }
 .posts-home-top .posts-list-title *{
     font-size: 20px;
