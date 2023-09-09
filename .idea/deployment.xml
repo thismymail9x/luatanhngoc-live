@@ -6,7 +6,7 @@
       <paths name="ftp">
         <serverdata>
           <mappings>
-            <mapping deploy="/domains/site.luatanhngoc.vn/public_html" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/domains/dev.luatanhngoc.vn/public_html" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>

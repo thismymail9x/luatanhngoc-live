@@ -2,6 +2,9 @@
 $base_model->add_css('themes/' . THEMENAME . '/css/home.css', [
     'cdn' => CDN_BASE_URL,
 ]);
+$base_model->add_css('themes/' . THEMENAME . '/css/our-story.css', [
+    'cdn' => CDN_BASE_URL,
+]);
 
 ?>
 <div class="global-page-module w90"> 

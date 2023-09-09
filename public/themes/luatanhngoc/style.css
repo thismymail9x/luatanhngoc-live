@@ -23,22 +23,6 @@
     src: url("font/Merriweather/Merriweather-Bold.ttf");
 }
 
-@font-face {
-    font-family: "SF Pro Display";
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-    src: url("font/sf-pro-display/SFPRODISPLAYREGULAR.OTF");
-}
-
-@font-face {
-    font-family: "SF Pro Text";
-    /*font-weight: 400;*/
-    /*font-style: normal;*/
-    /*font-display: swap;*/
-    src: url("font/SF_Pro_Text/SF-Pro-Text-Regular.otf");
-}
-
 body {
     color: #222;
 }
