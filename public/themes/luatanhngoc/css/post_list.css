@@ -1,11 +1,11 @@
-.receivePost {
-    padding: 0.05rem 0.5rem;
-    font-size: .875rem;
-    border-radius: 0.2rem;
-    color: #fff;
-    background-color: #0d6efd;
-    border-color: #0d6efd;
-}
+/*.receivePost {*/
+/*    padding: 0.05rem 0.5rem;*/
+/*    font-size: .875rem;*/
+/*    border-radius: 0.2rem;*/
+/*    color: #fff;*/
+/*    background-color: #0d6efd;*/
+/*    border-color: #0d6efd;*/
+/*}*/
 .menuPost li{
     padding: 8px 12px;
     border-bottom: 1px solid #cccccc;
@@ -22,10 +22,30 @@ select {
 .each-to-group-taxonomy {
     margin: 0 10px 0 12px;
 }
-.btn-success {
-    border-radius: 4px;
-    padding: 6px 12px;
-}
+
 .modal-content {
     background-color: rgb(37 65 106/1);
+}
+#app *{
+    font-size: 97%!important;
+}
+.custom_element_small, .custom_element {
+    /*display: block;*/
+    display: block;
+
+    padding: 0 0.75rem;
+    font-size: 14px;
+    font-weight: 400;
+    height: 28px;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    box-sizing: border-box;
+}
+.custom_element {
+    width: 95%;
 }

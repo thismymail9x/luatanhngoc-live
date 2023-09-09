@@ -6,6 +6,7 @@ namespace App\Controllers\Admin;
 use App\Libraries\TaxonomyType;
 use App\Libraries\LanguageCost;
 use App\Libraries\DeletedStatus;
+use App\Libraries\UsersType;
 
 //
 class Terms extends Admin
@@ -696,11 +697,19 @@ class Terms extends Admin
 
     public function delete()
     {
+        // phân quyền xóa bài viết
+        if ($this->session_data['userLevel'] != UsersType::ADMIN_LEVEL) {
+            die('Not Permission');
+        }
         return $this->before_delete_restore(DeletedStatus::DELETED);
     }
 
     public function restore()
     {
+        // phân quyền xóa bài viết
+        if ($this->session_data['userLevel'] != UsersType::ADMIN_LEVEL) {
+            die('Not Permission');
+        }
         return $this->before_delete_restore(DeletedStatus::FOR_DEFAULT);
     }
     public function remove($confirm_delete = false)

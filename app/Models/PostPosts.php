@@ -393,6 +393,7 @@ class PostPosts extends PostSlider
             'join' => [
                 'term_relationships' => 'term_relationships.object_id = ' . $this->table . '.ID',
                 'term_taxonomy' => 'term_relationships.term_taxonomy_id = term_taxonomy.term_taxonomy_id',
+                'users' => 'users.ID = ' . $this->table . '.post_author',
             ],
             // hiển thị mã SQL để check
             //'show_query' => 1,

@@ -18,66 +18,35 @@
 <!--        </div>-->
 <!--    </div>-->
 <!--</div>-->
-<div class="row row-collapse section-footer-center">
-    <div class="col medium-2 small-12 large-2">
-        <div class="col-inner logo__footer">
-            <?php
-            $option_model->the_logo($getconfig);
-            ?>
-        </div>
-        </div>
-    <div class="col medium-4 small-12 large-4">
-        <div class="col-inner">
-
-            <p class="text-footer">Chủ quản: <b><?php echo $getconfig->company_name; ?></b></p>
-            <p class="text-footer">Địa chỉ: <?php echo $getconfig->address; ?></p>
-            <p class="text-footer">Hotline: <a title="Click để liên lạc"
-                                               href="tel:<?php echo $getconfig->phone; ?>"><?php echo $getconfig->phone; ?></a>
+<section id="footer">
+    <img loading="lazy" class="lazyloaded" src="<?= base_url()?>upload/2023/09/logo-footer-luat-anh-ngoc.png" alt="Luật Ánh Ngọc" aria-hidden="" >
+    <section class="row first-row bottom">
+        <div class="col-xs-12 col-md-6 col-xl-6">
+            <a href="<?php echo base_url(); ?>"><img loading="lazy" class="logo"
+                                                     src="<?= base_url().$getconfig->logo ?>"
+                                                     alt="logo_anhngoc_footer">
+            </a>
+            <p class="phone"><a class="phone" href="tel:<?=$getconfig->phone?>"><?php echo preg_replace("/(\d{4})(\d{3})(\d{3})/", "$1.$2.$3", $getconfig->phone)?></a></p>
+            <p class="text"><a class="text" href="mailto:<?=$getconfig->emailcontact?>"><?=$getconfig->emailcontact?></a></p>
+            <p class="text">
+                <?=$getconfig->company_name?>
             </p>
-            <p class="text-footer">MST: 0110431256 </p>
+            <p class="text"><?=$getconfig->address?></p>
         </div>
-    </div>
-    <div class="col medium-6 small-12 large-6">
-        <div class="col-inner menu__footer-item">
-
+        <div class="col-xs-12 col-md-6 col-xl-6 center">
+            <p class="title">Liên kết</p>
             <?php
-
             $menu_model->the_menu('footer2-menu');
 
             ?>
         </div>
-    </div>
-</div>
-<div class="row section-footer-center section-footer-center-line2">
-    <div class="col medium-5 small-12 large-5">
-        <div class="col-inner">
-            <div class="item__bottom-footer">
-                <a class="banquyen" title="Điều khoản" href="">Điều khoản</a>
-                <a class="huongdan" title="Hướng dẫn" href="">Hướng dẫn</a>
+    </section>
+    <section class="footer-bottom">
+        <div class="row second-row">
+            <div class="col-xs-12 col-md-12">
+                                    <p class="left">© <?= date('Y') ?> <?=$getconfig->website?> Đã đăng ký Bản quyền</p>
             </div>
         </div>
-    </div>
-    <div class="col medium-6 small-12 large-6">
-        <div class="col-inner menu__footer-item">
-            <div class="item__top-footer">
-                <div class="second__top">
-                    <a title="Đến trang facebook" href="<?php echo $getconfig->facebook; ?>" class="item__facebook"></a>
-                    <a title="Đến trang youtube" href=<?php echo $getconfig->youtube; ?>"" class="item__youtube"></a>
-                    <a title="Đến trang tiktok" href="<?php echo $getconfig->tiktok; ?>" class="item__tiktok"></a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row row-collapse s14 text-center">
-    <div class="col medium-12 small-12 large-12">
-        <div class="col-inner">
-            <?php
+    </section>
+</section>
 
-            //
-            $lang_model->the_web_license($getconfig);
-
-            ?>
-        </div>
-    </div>
-</div>

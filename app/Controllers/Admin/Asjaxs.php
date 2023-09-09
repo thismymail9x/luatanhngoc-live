@@ -230,8 +230,8 @@ class Asjaxs extends Admin
         ]);
     }
 
-    /* hàm thay đổi trạng thái bài viết*/
-    public function change_post_status()
+    /* hàm duyệt bài viết*/
+    public function post_success()
     {
         $customModel = new CustomCode();
         $id = $this->MY_post('id', 0);
@@ -242,9 +242,6 @@ class Asjaxs extends Admin
             ]);
         }
 
-        //
-        $post_status = $this->MY_post('post_status', 0);
-
         $post = $this->post_model->select_post($id, [
             'post_type' => PostType::POST,
             //'lang_key' => $this->lang_key,
@@ -253,8 +250,9 @@ class Asjaxs extends Admin
         // UPDATE
         $result_id = $this->base_model->update_multiple('posts', [
             // SET
-            'post_status' => $post_status,
-            'salary_type' => $salaryType
+            'post_status' => PostType::PUBLICITY,
+            'salary_type' => $salaryType,
+            'post_success'=> date('Y-m-d H:i:s')
         ], [
             // WHERE
             'ID' => $id,

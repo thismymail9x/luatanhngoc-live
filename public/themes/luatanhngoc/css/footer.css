@@ -1,0 +1,1240 @@
+@media (max-width: 374.98px) {
+    #myBtn {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 30px;
+        z-index: 2;
+        font-size: 18px;
+        transition: top 1s;
+    }
+    #myBtn:hover {
+        background-color: red;
+        color: #fff;
+    }
+    footer .container .first-row {
+        margin: 0;
+    }
+    footer {
+        background-image: radial-gradient(circle at 15% -3%,#365280,#080e17 116%);
+        background-position: 50%;
+        background-repeat: no-repeat;
+        background-size: auto;
+        overflow: hidden;
+        position: relative;
+    }
+    #footer .title {
+        margin-bottom: 45px;
+        font-size: 18px;
+        color: var(--mainColor);
+        text-transform: uppercase;
+        
+        font-weight: 600;
+    }
+    #footer .col-6 a {
+        text-decoration: none;
+        color: rgba(186,217,252,.5);
+        font-size: 15px;
+        font-weight: 100;
+        
+    }
+    #footer .first-row .col-6 .phone {
+        color: #fff;
+        font-size: 20px;
+        margin-bottom: 6px;
+        
+    }
+    #footer .logo {
+        width: 200px;
+        margin-bottom: 25px;
+    }
+    #footer .title-email {
+        color: #fff;
+        font-size: 15px;
+        font-weight: 100;
+        margin-bottom: 18px;
+        
+    }
+
+    #footer .input {
+        padding: 12px 110px 12px 20px;
+        width: 100%;
+        font-size: 16px;
+        border-radius: 50px;
+        border: none;
+    }
+    #footer .input:focus {
+        outline: none;
+        box-shadow: rgba(204, 179, 255, 0.7) 0px 5px 15px;
+    }
+    #footer .submit-form {
+        border: none;
+        cursor: pointer;
+        position: absolute;
+        top: 4px;
+        right: 6px;
+        border-radius: 50px;
+        background-color: #328af1;
+        padding: 4px 20px;
+    }
+    #footer .submit-form:focus {
+        outline: none;
+    }
+    #footer .submit-form:hover {
+        background-image: linear-gradient(to right,#328af1,#21c8f6,rgba(50,138,241,0));
+        color: rgb(255 255 255/1);
+        box-shadow: rgba(204, 179, 255, 0.7) 0px 5px 5px;
+        transform: scale(0.9);
+        transition: 0.7s;
+    }
+    #footer form {
+        position: relative;
+    }
+    #footer .second-row .left {
+        text-align: center;
+        font-size: 16px;
+        color: #fff;
+        margin: 6px 0;
+        font-weight: 100;
+        
+    }
+    #footer .footer-bottom .container {
+        padding: 0;
+    }
+    #footer .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    #footer .second-row {
+        margin: 0;
+    }
+    #footer .second-row .col-6 {
+        margin-bottom: 0;
+    }
+    #footer .cf {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: -15px;
+        margin-left: -15px;
+        -ms-flex-direction: column;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+        margin-top: 0;
+        box-sizing: border-box;
+    }
+    #footer .cf li a{
+        text-decoration: none;
+        color: rgba(186,217,252,.5);
+        font-size: 15px;
+        font-weight: 100;
+        
+        display: block;
+        background-color: transparent;
+    }
+    #footer .cf li {
+        display: inline;
+        padding-left: 15px;
+        margin-bottom: 10px;
+        position: relative;
+    }
+
+    /*=====*/
+    #footer ul .sub-menu {
+        border-radius: 5px;
+        background-color: #0052cc;
+        margin-top: 10px;
+        margin-left: 3px;
+    }
+    #footer ul .sub-menu li {
+        max-width: 100%;
+        flex: 0 0 100%;
+        margin-bottom: 10px;
+    }
+    #footer .sub-menu .sub-menu {
+        margin-left: 3px;
+        min-width: 100%;
+        border-radius: 5px;
+        background-color: #003380;
+    }
+    #footer .top .top_div {
+        margin: 0 auto;
+        text-align: center;
+        width:100%;
+        letter-spacing: -.02em;
+    }
+     #footer .bottom {
+        background: url("../../../upload/2023/09/hinh-anh-footer.webp") no-repeat 0 0;
+        background-size: 176px;
+        padding-bottom: 40px;
+        padding-top: 40px;
+    }
+    img.lazyloaded {
+        opacity: 1;
+        transition: opacity .5s ease;
+        left: 0;
+        max-width: 400px;
+        position:absolute;
+        display: initial;
+        bottom: 0;
+    }
+    #footer .bottom .text {
+        color: rgba(186,217,252,.5);
+        font-size: 15px;
+        font-weight: 100;
+    }
+    #footer .bottom {
+        text-align: center;
+    }
+    #footer .bottom .title {
+        margin-bottom: 25px
+    }
+    img.lazyloaded_laywer {
+        display: none;
+        opacity: 0.03;
+        transition: opacity .5s ease;
+        left: 60%;
+        max-width: 400px;
+        position: absolute;
+        bottom: 0;
+    }
+    #footer .center {
+        margin-top: 30px;
+    }
+    #footer .first-row .phone {
+        color: #fff;
+        font-size: 20px;
+        margin-bottom: 6px;
+        
+    }
+}
+
+@media (min-width: 375px) and (max-width: 575.98px) {
+    #myBtn {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 30px;
+        z-index: 2;
+        font-size: 18px;
+        transition: top 1s;
+    }
+    #myBtn:hover {
+        background-color: red;
+        color: #fff;
+    }
+    footer .container .first-row {
+        margin: 0;
+    }
+    footer {
+        background-image: radial-gradient(circle at 15% -3%,#365280,#080e17 116%);
+        background-position: 50%;
+        background-repeat: no-repeat;
+        background-size: auto;
+        overflow: hidden;
+        position: relative;
+    }
+    #footer .title {
+        margin-bottom: 45px;
+        font-size: 18px;
+        color: var(--mainColor);
+        text-transform: uppercase;
+        
+        font-weight: 600;
+    }
+    #footer .col-6 a {
+        text-decoration: none;
+        color: rgba(186,217,252,.5);
+        font-size: 15px;
+        font-weight: 100;
+        
+    }
+    #footer .first-row .col-6 .phone {
+        color: #fff;
+        font-size: 20px;
+        margin-bottom: 6px;
+        
+    }
+    #footer .logo {
+        width: 200px;
+        margin-bottom: 25px;
+    }
+    #footer .title-email {
+        color: #fff;
+        font-size: 15px;
+        font-weight: 100;
+        margin-bottom: 18px;
+        
+    }
+
+    #footer .input {
+        padding: 12px 110px 12px 20px;
+        width: 100%;
+        font-size: 16px;
+        border-radius: 50px;
+        border: none;
+    }
+    #footer .input:focus {
+        outline: none;
+        box-shadow: rgba(204, 179, 255, 0.7) 0px 5px 15px;
+    }
+    #footer .submit-form {
+        border: none;
+        cursor: pointer;
+        position: absolute;
+        top: 4px;
+        right: 6px;
+        border-radius: 50px;
+        background-color: #328af1;
+        padding: 4px 20px;
+    }
+    #footer .submit-form:focus {
+        outline: none;
+    }
+    #footer .submit-form:hover {
+        background-image: linear-gradient(to right,#328af1,#21c8f6,rgba(50,138,241,0));
+        color: rgb(255 255 255/1);
+        box-shadow: rgba(204, 179, 255, 0.7) 0px 5px 5px;
+        transform: scale(0.9);
+        transition: 0.7s;
+    }
+    #footer form {
+        position: relative;
+    }
+
+    #footer .second-row .left {
+        text-align: center;
+        font-size: 16px;
+        color: #fff;
+        margin: 6px 0;
+        font-weight: 100;
+        
+    }
+    #footer .footer-bottom .container {
+        padding: 0;
+    }
+    #footer .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    #footer .second-row {
+        margin: 0;
+    }
+    #footer .second-row .col-6 {
+        margin-bottom: 0;
+    }
+    #footer .cf {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: -15px;
+        margin-left: -15px;
+        -ms-flex-direction: column;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+        margin-top: 0;
+        box-sizing: border-box;
+    }
+    #footer .cf li a{
+        text-decoration: none;
+        color: rgba(186,217,252,.5);
+        font-size: 15px;
+        font-weight: 100;
+        
+        display: block;
+        background-color: transparent;
+    }
+    #footer .cf li {
+        display: inline;
+        padding-left: 15px;
+        margin-bottom: 10px;
+        position: relative;
+    }
+
+    /*=====*/
+    #footer ul .sub-menu {
+        border-radius: 5px;
+        background-color: #0052cc;
+        margin-top: 10px;
+        margin-left: 3px;
+    }
+    #footer ul .sub-menu li {
+        max-width: 100%;
+        flex: 0 0 100%;
+        margin-bottom: 10px;
+    }
+    #footer .sub-menu .sub-menu {
+        margin-left: 3px;
+        min-width: 100%;
+        border-radius: 5px;
+        background-color: #003380;
+    }
+    #footer .top .top_div {
+        margin: 0 auto;
+        text-align: center;
+        width:100%;
+        letter-spacing: -.02em;
+    }
+     #footer .bottom {
+        background: url("../../../upload/2023/09/hinh-anh-footer.webp") no-repeat 0 0;
+        background-size: 176px;
+        padding-bottom: 40px;
+        padding-top: 40px;
+    }
+    img.lazyloaded {
+        opacity: 1;
+        transition: opacity .5s ease;
+        left: 0;
+        max-width: 400px;
+        position:absolute;
+        display: initial;
+        bottom: 0;
+    }
+    #footer .bottom .text {
+        color: rgba(186,217,252,.5);
+        font-size: 15px;
+        font-weight: 100;
+    }
+    #footer .bottom {
+        text-align: center;
+    }
+    #footer .bottom .title {
+        margin-bottom: 25px
+    }
+    img.lazyloaded_laywer {
+        display: none;
+        opacity: 0.03;
+        transition: opacity .5s ease;
+        left: 60%;
+        max-width: 400px;
+        position: absolute;
+        bottom: 0;
+    }
+    #footer .center {
+        margin-top: 30px;
+    }
+    #footer .first-row .phone {
+        color: #fff;
+        font-size: 20px;
+        margin-bottom: 6px;
+        
+    }
+}
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) and (max-width: 767.98px) {
+    #footer .center {
+        margin-top: 30px;
+    }
+    #myBtn {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 30px;
+        z-index: 2;
+        font-size: 18px;
+        transition: top 1s;
+    }
+    #myBtn:hover {
+        background-color: red;
+        color: #fff;
+    }
+    footer .container .first-row {
+        margin: 0;
+    }
+    footer {
+        background-image: radial-gradient(circle at 15% -3%,#365280,#080e17 116%);
+        background-position: 50%;
+        background-repeat: no-repeat;
+        background-size: auto;
+        overflow: hidden;
+        position: relative;
+    }
+    #footer .title {
+        margin-bottom: 40px;
+        font-size: 18px;
+        color: var(--mainColor);
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+    #footer .col-6 a {
+        text-decoration: none;
+        color: rgba(186,217,252,.5);
+        font-size: 15px;
+        font-weight: 100;
+        
+    }
+    #footer .first-row .col-6 .phone {
+        color: #fff;
+        font-size: 20px;
+        margin-bottom: 6px;
+        
+    }
+    #footer .logo {
+        width: 200px;
+        margin-bottom: 25px;
+    }
+    #footer .title-email {
+        color: #fff;
+        font-size: 15px;
+        font-weight: 100;
+        margin-bottom: 18px;
+        
+    }
+
+    #footer .input {
+        padding: 12px 110px 12px 20px;
+        width: 100%;
+        font-size: 16px;
+        border-radius: 50px;
+        border: none;
+    }
+    #footer .input:focus {
+        outline: none;
+        box-shadow: rgba(204, 179, 255, 0.7) 0px 5px 15px;
+    }
+    #footer .submit-form {
+        border: none;
+        cursor: pointer;
+        position: absolute;
+        top: 4px;
+        right: 6px;
+        border-radius: 50px;
+        background-color: #328af1;
+        padding: 4px 20px;
+    }
+    #footer .submit-form:focus {
+        outline: none;
+    }
+    #footer .submit-form:hover {
+        background-image: linear-gradient(to right,#328af1,#21c8f6,rgba(50,138,241,0));
+        color: rgb(255 255 255/1);
+        box-shadow: rgba(204, 179, 255, 0.7) 0px 5px 5px;
+        transform: scale(0.9);
+        transition: 0.7s;
+    }
+    #footer form {
+        position: relative;
+    }
+
+    #footer .second-row .left {
+        text-align: center;
+        font-size: 16px;
+        color: #fff;
+        margin: 6px 0;
+        font-weight: 100;
+        
+    }
+    #footer .footer-bottom .container {
+        padding: 0;
+    }
+    #footer .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    #footer .second-row {
+        margin: 0;
+    }
+    #footer .second-row .col-6 {
+        margin-bottom: 0;
+    }
+    #footer .cf {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        margin-right: -15px;
+        margin-left: -15px;
+        -ms-flex-direction: column;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+        margin-top: 0;
+        box-sizing: border-box;
+    }
+    #footer .cf li a{
+        text-decoration: none;
+        color: rgba(186,217,252,.5);
+        font-size: 15px;
+        font-weight: 100;
+        
+        display: block;
+        background-color: transparent;
+    }
+    #footer .cf li {
+        display: inline;
+        padding-left: 15px;
+        margin-bottom: 10px;
+        position: relative;
+    }
+    /*=====*/
+    #footer ul .sub-menu {
+        border-radius: 5px;
+        background-color: #0052cc;
+        margin-top: 10px;
+        margin-left: 3px;
+    }
+    #footer ul .sub-menu li {
+        max-width: 100%;
+        flex: 0 0 100%;
+        margin-bottom: 10px;
+    }
+    #footer .sub-menu .sub-menu {
+        margin-left: 3px;
+        min-width: 100%;
+        border-radius: 5px;
+        background-color: #003380;
+    }
+    #footer .top .top_div {
+        margin: 0 auto;
+        text-align: center;
+        width:100%;
+        letter-spacing: -.02em;
+    }
+     #footer .bottom {
+        background: url("../../../upload/2023/09/hinh-anh-footer.webp") no-repeat 0 0;
+        background-size: 176px;
+        padding-bottom: 40px;
+        padding-top: 40px;
+    }
+    img.lazyloaded {
+        opacity: 1;
+        transition: opacity .5s ease;
+        left: 0;
+        max-width: 400px;
+        position:absolute;
+        display: initial;
+        bottom: 0;
+    }
+    #footer .bottom .text {
+        color: rgba(186,217,252,.5);
+        font-size: 15px;
+        font-weight: 100;
+    }
+    #footer .bottom {
+        text-align: center;
+    }
+    img.lazyloaded_laywer {
+        display: none;
+        opacity: 0.03;
+        transition: opacity .5s ease;
+        left: 60%;
+        max-width: 400px;
+        position: absolute;
+        bottom: 0;
+    }
+    #footer .first-row .phone {
+        color: #fff;
+        font-size: 20px;
+        margin-bottom: 6px;
+        
+    }
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .w90 {
+        min-width: 250px;
+    }
+    #myBtn {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 30px;
+        z-index: 2;
+        font-size: 18px;
+        transition: top 1s;
+    }
+    #myBtn:hover {
+        background-color: red;
+        color: #fff;
+    }
+    footer .container .first-row {
+        margin: 0;
+    }
+    footer {
+        background-image: radial-gradient(circle at 15% -3%,#365280,#080e17 116%);
+        background-position: 50%;
+        background-repeat: no-repeat;
+        background-size: auto;
+        overflow: hidden;
+        position: relative;
+    }
+    #footer .title {
+        margin-bottom: 50px;
+        font-size: 18px;
+        text-transform: uppercase;
+        color: var(--mainColor);
+        font-weight: 600;
+    }
+    #footer .col-6 a {
+        text-decoration: none;
+        color: rgba(186,217,252,.5);
+        font-size: 15px;
+        font-weight: 100;
+        
+    }
+    #footer .first-row .col-6 .phone {
+        color: #fff;
+        font-size: 20px;
+        margin-bottom: 6px;
+        
+    }
+    #footer .logo {
+        width: 200px;
+        margin-bottom: 25px;
+    }
+    #footer .title-email {
+        color: #fff;
+        font-size: 15px;
+        font-weight: 100;
+        margin-bottom: 18px;
+        
+    }
+    #footer .center {
+        text-align: right;
+    }
+    #footer .input {
+        padding: 12px 110px 12px 20px;
+        width: 100%;
+        font-size: 16px;
+        border-radius: 50px;
+        border: none;
+    }
+    #footer .input:focus {
+        outline: none;
+        box-shadow: rgba(204, 179, 255, 0.7) 0px 5px 15px;
+    }
+    #footer .submit-form {
+        border: none;
+        cursor: pointer;
+        position: absolute;
+        top: 4px;
+        right: 6px;
+        border-radius: 50px;
+        background-color: #328af1;
+        padding: 4px 20px;
+    }
+    #footer .submit-form:focus {
+        outline: none;
+    }
+    #footer .submit-form:hover {
+        background-image: linear-gradient(to right,#328af1,#21c8f6,rgba(50,138,241,0));
+        color: rgb(255 255 255/1);
+        box-shadow: rgba(204, 179, 255, 0.7) 0px 5px 5px;
+        transform: scale(0.9);
+        transition: 0.7s;
+    }
+    #footer form {
+        position: relative;
+    }
+
+    #footer .second-row .left {
+        text-align: center;
+        font-size: 16px;
+        color: #fff;
+        margin: 16px 0;
+        font-weight: 100;
+        
+    }
+    #footer .footer-bottom .container {
+        padding: 0;
+    }
+    #footer .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    #footer .second-row {
+        margin: 0;
+    }
+    #footer .second-row .col-6 {
+        margin-bottom: 0;
+    }
+    #footer .cf {
+        margin-right: -15px;
+        margin-left: -15px;
+        -ms-flex-direction: column;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+        margin-top: 0;
+        box-sizing: border-box;
+    }
+    #footer .cf li a{
+        text-decoration: none;
+        color: rgba(186,217,252,.5);
+        font-size: 15px;
+        font-weight: 100;
+        
+        display: block;
+        background-color: transparent;
+    }
+    #footer .cf li {
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-bottom: 10px;
+        position: relative;
+    }
+    /*=====*/
+    #footer ul .sub-menu {
+        border-radius: 5px;
+        background-color: #0052cc;
+        margin-top: 10px;
+        margin-left: 3px;
+    }
+    #footer ul .sub-menu li {
+        max-width: 100%;
+        flex: 0 0 100%;
+        margin-bottom: 10px;
+    }
+    #footer .sub-menu .sub-menu {
+        margin-left: 3px;
+        min-width: 100%;
+        border-radius: 5px;
+        background-color: #003380;
+    }
+    #footer .top .top_div {
+        margin: 0 auto;
+        text-align: center;
+        width: 50%;
+        letter-spacing: -.02em;
+    }
+     #footer .bottom {
+        background: url("../../../upload/2023/09/hinh-anh-footer.webp") no-repeat 30% 0;
+        background-size: 176px;
+        padding-bottom: 40px;
+        padding-top: 40px;
+    }
+    img.lazyloaded {
+        opacity: 1;
+        transition: opacity .5s ease;
+        left: 0;
+        max-width: 400px;
+        position:absolute;
+        display: initial;
+        bottom: 0;
+    }
+    #footer .bottom .text {
+        color: rgba(186,217,252,.5);
+        font-size: 15px;
+        font-weight: 100;
+    }
+    img.lazyloaded_laywer {
+        opacity: 0.03;
+        transition: opacity .5s ease;
+        left: 60%;
+         max-width: 400px;
+        position: absolute;
+        display: initial;
+        bottom: 0;
+    }
+    #footer .first-row .phone {
+        color: #fff;
+        font-size: 20px;
+        margin-bottom: 6px;
+        
+    }
+}
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    #myBtn {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 30px;
+        z-index: 2;
+        font-size: 18px;
+        transition: top 1s;
+    }
+    #myBtn:hover {
+        background-color: red;
+        color: #fff;
+    }
+    footer .container .first-row {
+        margin: 0;
+    }
+    footer {
+        background-image: radial-gradient(circle at 15% -3%,#365280,#080e17 116%);
+        background-position: 50%;
+        background-repeat: no-repeat;
+        background-size: auto;
+        overflow: hidden;
+        position: relative;
+    }
+    #footer .title {
+        margin-bottom: 40px;
+        font-size: 18px;
+        color: var(--mainColor);
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+    #footer .col-6 a {
+        text-decoration: none;
+        color: rgba(186,217,252,.5);
+        font-size: 16px;
+        font-weight: 400;
+        
+    }
+    #footer .first-row .col-6 .phone {
+        color: #fff;
+        font-size: 25px;
+        margin-bottom: 6px;
+        
+    }
+    #footer .logo {
+        width: 200px;
+        margin-bottom: 25px;
+    }
+    #footer .title-email {
+        color: #fff;
+        font-size: 15px;
+        font-weight: 100;
+        margin-bottom: 18px;
+        
+    }
+    #footer .center {
+        text-align: right;
+    }
+    #footer .input {
+        padding: 12px 110px 12px 20px;
+        width: 77%;
+        font-size: 16px;
+        border-radius: 50px;
+        border: none;
+    }
+    #footer .input:focus {
+        outline: none;
+        box-shadow: rgba(204, 179, 255, 0.7) 0px 5px 15px;
+    }
+    #footer .submit-form {
+        border: none;
+        cursor: pointer;
+        position: absolute;
+        top: 4px;
+        right: 60px;
+        border-radius: 50px;
+        background-color: #328af1;
+        padding: 4px 20px;
+    }
+    #footer .submit-form:focus {
+        outline: none;
+    }
+    #footer .submit-form:hover {
+        background-image: linear-gradient(to right,#328af1,#21c8f6,rgba(50,138,241,0));
+        color: rgb(255 255 255/1);
+        box-shadow: rgba(204, 179, 255, 0.7) 0px 5px 5px;
+        transform: scale(0.9);
+        transition: 0.7s;
+    }
+    #footer form {
+        position: relative;
+    }
+
+    #footer .second-row .left {
+        text-align: center;
+        font-size: 16px;
+        color: #fff;
+        margin: 16px 0;
+        font-weight: 100;
+        
+    }
+    #footer .footer-bottom .container {
+        padding: 0;
+    }
+    #footer .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    #footer .second-row {
+        margin: 0;
+    }
+    #footer .second-row .col-6 {
+        margin-bottom: 0;
+    }
+    #footer .cf {
+        margin-right: -15px;
+        margin-left: -15px;
+        -ms-flex-direction: column;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+        margin-top: 0;
+        box-sizing: border-box;
+    }
+    #footer .cf li a{
+        text-decoration: none;
+        color: rgba(186,217,252,.5);
+        font-size: 16px;
+        font-weight: 400;
+        
+        display: block;
+        background-color: transparent;
+    }
+    #footer .cf li {
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-bottom: 10px;
+        position: relative;
+    }
+    /*=====*/
+    #footer ul .sub-menu {
+        border-radius: 5px;
+        background-color: #0052cc;
+        margin-top: 10px;
+        margin-left: 3px;
+    }
+    #footer ul .sub-menu li {
+        max-width: 100%;
+        flex: 0 0 100%;
+        margin-bottom: 10px;
+    }
+    #footer .sub-menu .sub-menu {
+        margin-left: 3px;
+        min-width: 100%;
+        border-radius: 5px;
+        background-color: #003380;
+    }
+    #footer .top .top_div {
+        margin: 0 auto;
+        text-align: center;
+        width: 50%;
+        letter-spacing: -.02em;
+    }
+     #footer .bottom {
+        background: url("../../../upload/2023/09/hinh-anh-footer.webp") no-repeat 30% 0;
+        background-size: 176px;
+        padding-bottom: 40px;
+        padding-top: 40px;
+    }
+    img.lazyloaded {
+        opacity: 1;
+        transition: opacity .5s ease;
+        left: 0;
+        max-width: 400px;
+        position:absolute;
+        display: initial;
+        bottom: 0;
+    }
+    #footer .bottom .text {
+        color: rgba(186,217,252,.5);
+        font-size: 16px;
+        font-weight: 400;
+    }
+    img.lazyloaded_laywer {
+        opacity: 0.03;
+        transition: opacity .5s ease;
+        left: 60%;
+         max-width: 400px;
+        position: absolute;
+        display: initial;
+        bottom: 0;
+    }
+    #footer .first-row .phone {
+        color: #fff;
+        font-size: 25px;
+        margin-bottom: 6px;
+        
+    }
+}
+
+/*pc*/
+@media (min-width: 1200px) {
+    #myBtn {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 30px;
+        z-index: 2;
+        font-size: 18px;
+        transition: top 1s;
+    }
+    #myBtn:hover {
+        background-color: red;
+        color: #fff;
+    }
+    footer {
+        background-image: radial-gradient(circle at 15% -3%,#365280,#080e17 116%);
+        background-position: 50%;
+        background-repeat: no-repeat;
+        background-size: auto;
+        overflow: hidden;
+        position: relative;
+    }
+    #footer .title {
+        margin-bottom: 12px;
+        font-size: 20px;
+        color: var(--mainColor);
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+    #footer .col-6 a {
+        text-decoration: none;
+        color: rgba(186,217,252,.5);
+        font-size: 16px;
+        font-weight: 400;
+        
+    }
+    #footer .first-row .col-6 .phone {
+        color: #fff;
+        font-size: 27px;
+        margin-bottom: 6px;
+        
+    }
+    #footer .logo {
+        width: 250px;
+    }
+    #footer .title-email {
+        color: #fff;
+        font-size: 16px;
+        font-weight: 100;
+        margin-bottom: 18px;
+        
+    }
+    #footer .center {
+       text-align: right;
+    }
+    #footer .input {
+        padding: 12px 110px 12px 20px;
+        width: 80%;
+        font-size: 16px;
+        border-radius: 50px;
+        border: none;
+    }
+    #footer .input:focus {
+        outline: none;
+        box-shadow: rgba(204, 179, 255, 0.7) 0px 5px 15px;
+    }
+    #footer .submit-form {
+        border: none;
+        cursor: pointer;
+        position: absolute;
+        top: 4px;
+        right: 60px;
+        border-radius: 50px;
+        background-color: #328af1;
+        padding: 4px 20px;
+    }
+    #footer .submit-form:focus {
+        outline: none;
+    }
+    #footer .submit-form:hover {
+        background-image: linear-gradient(to right,#328af1,#21c8f6,rgba(50,138,241,0));
+        color: rgb(255 255 255/1);
+        box-shadow: rgba(204, 179, 255, 0.7) 0px 5px 5px;
+        transform: scale(0.9);
+        transition: 0.7s;
+    }
+    #footer form {
+        position: relative;
+    }
+
+    #footer .second-row .left {
+        text-align: center ;
+        font-size: 16px;
+        color: #fff;
+        margin: 16px 0;
+        font-weight: 100;
+        
+
+    }
+    #footer .footer-bottom .container {
+        padding: 0;
+    }
+    #footer .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    #footer .second-row .col-6 {
+        margin-bottom: 0;
+    }
+    #footer .cf {
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin-right: -15px;
+        margin-left: -15px;
+        -ms-flex-direction: column;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+        margin-top: 0;
+        box-sizing: border-box;
+    }
+    #footer .cf li a{
+        text-decoration: none;
+        color: rgba(186,217,252,.5);
+        font-size: 16px;
+        font-weight: 400;
+        
+        display: block;
+        background-color: transparent;
+    }
+    #footer .cf li:hover {
+        color: var(--mainColor);
+    }
+
+    #footer .cf li {
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-bottom: 10px;
+        position: relative;
+    }
+    /*=====*/
+    #footer ul .sub-menu {
+        border-radius: 5px;
+        background-color: #0052cc;
+        margin-top: 10px;
+        margin-left: 3px;
+    }
+    #footer ul .sub-menu li {
+        max-width: 100%;
+        flex: 0 0 100%;
+        margin-bottom: 10px;
+    }
+    #footer .sub-menu .sub-menu {
+        margin-left: 3px;
+        min-width: 100%;
+        border-radius: 5px;
+        background-color: #003380;
+    }
+    #footer .top .top_div {
+        margin: 0 auto;
+        text-align: center;
+        width: 50%;
+        letter-spacing: -.02em;
+    }
+    #footer .bottom {
+        background: url("../../../upload/2023/09/hinh-anh-footer.webp") no-repeat 30% 0;
+        background-size: 176px;
+        padding-bottom: 40px;
+        padding-top: 40px;
+    }
+    img.lazyloaded {
+        opacity: 1;
+        transition: opacity .5s ease;
+        left: 0;
+        max-width: 400px;
+        position:absolute;
+        display: initial;
+        bottom: 0;
+    }
+    #footer .bottom .text {
+        color: rgba(186,217,252,.5);
+        font-size: 16px;
+        font-weight: 400;
+    }
+    img.lazyloaded_laywer {
+        opacity: 0.03;
+        transition: opacity .5s ease;
+        left: 60%;
+        top: 0;
+        position: absolute;
+        display: initial;
+        /*bottom: -40px;*/
+    }
+    #footer .first-row .phone {
+        color: #fff;
+        font-size: 27px;
+        margin-bottom: 6px;
+        
+    }
+}

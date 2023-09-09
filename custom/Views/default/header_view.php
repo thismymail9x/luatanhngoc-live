@@ -32,7 +32,7 @@ if ($isMobile == true) {
                             <i class="fa fa-search"></i>
                         </div>
                         <div class="elementInput">
-                            <input type="search" name="keyword" placeholder='Thêm "từ khóa" để tìm kiếm'>
+                            <input type="search" name="s" placeholder='VD: hôn ly hôn đơn phương, tư vấn luật, tư vấn pháp luật, đơn khởi kiện, công ty luật, luật sư tư vấn'>
                         </div>
                     </div>
                 </form>

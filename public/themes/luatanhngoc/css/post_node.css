@@ -62,3 +62,49 @@
 .posts-list-time div {
     margin-right: 15px;
 }
+.article__content .btn-seemore {
+    color: var(--mainColor);
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    width: 114px;
+}
+.blog__child {
+    position: relative;
+    overflow: hidden;
+}
+.article__content {
+    overflow: hidden;
+    transition: .3s;
+    line-height: 24px;
+}
+.article__content .short {
+    height: 110px;
+}
+.blog__content {
+    transition: .3s;
+
+}
+.blog__content.showall {
+    height: auto;
+
+}
+.article__content h1 {
+    font-size: 25px;
+    margin-bottom: 12px;
+    color: var(--mainColor);
+}
+.bg-article {
+    cursor: pointer;
+    background: linear-gradient(to bottom,rgba(255 255 255/0),rgba(24 39 63/62.5),rgba(24 39 63/1));
+    bottom: -22px;
+    height: 105px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    margin-bottom: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

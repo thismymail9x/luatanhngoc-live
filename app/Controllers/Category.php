@@ -6,6 +6,7 @@ namespace App\Controllers;
 use App\Libraries\DeletedStatus;
 use App\Libraries\TaxonomyType;
 use App\Libraries\PostType;
+use App\Models\CustomCode;
 
 //
 class Category extends Home
@@ -32,7 +33,15 @@ class Category extends Home
             'lang_key' => $this->lang_key,
             'taxonomy' => TaxonomyType::POSTS
         ));
+        foreach (REPLACE_CONTENT as $k => $v) {
+            $data['description'] = str_replace($k, view($v), $data['description']);
+        }
 
+        $customModel = new CustomCode();
+        $resultConvert =  $customModel->createCategoryArray($data['description']);
+        $data['description'] = $resultConvert['post_content'];
+        $data['pElement'] =  $customModel->getPElement($data['description']);
+        $data['contentCategory'] = $resultConvert['category_array'];
         //
         if (!empty($data)) {
             return $this->category($data, PostType::POST, TaxonomyType::POSTS, 'category_view', [

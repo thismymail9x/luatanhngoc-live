@@ -1,0 +1,1421 @@
+@media (max-width: 369.98px) {
+    .contact__base .contact__top {
+        background-image: url("../../../upload/2023/09/lien-he-cong-ty-luat-o-ha-noi.png");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+
+    .contact__base .contact__top .left__title {
+        font-size: 25px;
+        color:#01539C;
+
+    }
+    .contact__base .contact__top .row {
+        padding: 40px 0;
+    }
+
+    .contact__base .contact__top .left {
+        text-align: center;
+    }
+
+    .contact__base .contact__top .left h4 {
+        color: #01539C;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 700;
+        font-size: 25px;
+    }
+
+    .contact__base .contact__top .left p {
+        color: #1F1F20;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 400;
+        font-size: 15px;
+    }
+
+    /*div right*/
+    .contact__base .contact__top .right {
+        /*display: flex;*/
+    }
+    .contact__base .contact__top .right .top {
+        display: flex;
+        padding: 12px 0;
+        margin-right: 10px;
+    }
+    .contact__base .contact__top .right .bottom {
+        display: flex;
+        padding: 12px 0;
+        /*width: 50%;*/
+    }
+
+    .contact__base .contact__top .right .top {
+
+    }
+
+    .contact__base .contact__top .right .circle {
+        display: inline-block;
+        padding: 10px 10px 8px;
+        border-radius: 50%;
+        background-color: #b3b300;
+        margin-right: 8px;
+    }
+
+    .contact__base .contact__top .right .top .circle .icon {
+        background-image: url("../../images/home/support.svg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+    }
+
+    .contact__base .contact__top .right .bottom .circle .icon {
+        background-image: url("../../images/home/contact-email.svg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+    }
+
+    .contact__base .contact__top .right .text {
+        margin: auto 0;
+    }
+
+    .contact__base .contact__top .right .title {
+        color: #1F1F20;
+        font-size: 14px;
+        margin-bottom: 0;
+        font-weight: 400;
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    .contact__base .contact__top .right .text-under {
+        font-size: 17px;
+        color: #01539C;
+        font-weight: 700;
+        margin-bottom: 0;
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    /*form*/
+    .contact__base .contact__form {
+        padding: 30px 0 60px;
+    }
+
+    .contact__base .contact__form .title {
+        color: #01539C;
+        font-size: 25px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    .contact__base .contact__form form {
+        padding: 20px 8px;
+        border: 1px solid #ffff00;
+    }
+
+    .contact__base .contact__form .label {
+        font-size: 15px;
+        font-family: 'Open Sans', sans-serif;
+        background-color: #151f32;
+        position: absolute;
+        color: #ffff00;
+        top: -14px;
+        left: 16px;
+        padding: 0 6px;
+    }
+
+    .contact__base .contact__form .form-control {
+        background: transparent;
+        border-radius: 4px;
+        height: 42px;
+        color: rgb(216 227 238/1);
+    }
+
+    .contact__base .contact__form form .form-row {
+        margin: 0;
+    }
+
+
+    .contact__base .contact__form .form-group {
+        padding-left: 8px;
+        padding-right: 8px;
+        position: relative;
+    }
+
+    .contact__base .contact__form .form-group textarea {
+        height: 150px;
+    }
+
+    /*input file div*/
+    .contact__base .contact__form .form-row .input__file {
+        display: none;
+    }
+
+    .contact__base .contact__form .icon-file .file {
+        background-image: url("../../images/home/attachment.svg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+    }
+
+    .contact__base .contact__form .icon-file {
+        font-size: 15px;
+        background-color: #b3b300;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        border-radius: 4px;
+        justify-content: center;
+        padding: 10px 8px;
+    }
+
+    .contact__base .contact__form .bot__code {
+        display: flex;
+    }
+
+    .contact__base .contact__form .reload {
+        background-image: url("../../images/home/refresh.svg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        display: inline-block;
+        width: 22px;
+        height: 42px;
+        margin-left: 12px;
+        cursor: pointer;
+    }
+
+    .contact__base .contact__form .button__form {
+        display: flex;
+        justify-content: center;
+        padding: 10px 0;
+
+    }
+
+    .contact__base .contact__form .button__form .button:hover {
+        transition: 0.5s;
+        transform: translateY(-3px);
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+    }
+
+    .contact__base .contact__form .button {
+        border: none;
+        cursor: pointer;
+        border-radius: 20px;
+        background-color: #b3b300;
+        padding: 8px 40px;
+        font-size: 15px;
+        display: flex;
+        align-items: center;
+        color: #fff;
+        font-weight: 500;
+    }
+
+    .contact__base .contact__form .icon-button {
+        background-image: url("../../images/home/send.svg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        display: inline-block;
+        width: 25px;
+        height: 20px;
+        margin-right: 8px;
+    }
+    .contact__base .contact__form .left .contact_title {
+        text-align: center;
+        font-size: 16px;
+    }
+    .contact__base .contact__form .left {
+        font-size: 14px;
+        margin-top: 16px;
+    }
+}
+
+@media (min-width: 370px) and (max-width: 575.98px) {
+    .contact__base .contact__top {
+        background-image: url("../../../upload/2023/09/lien-he-cong-ty-luat-o-ha-noi.png");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+    .contact__base .contact__top .left__title {
+        font-size: 30px;
+        color:#01539C;
+
+    }
+
+    .contact__base .contact__top .row {
+        padding: 40px 0;
+    }
+
+    .contact__base .contact__top .left {
+        text-align: center;
+    }
+
+    .contact__base .contact__top .left h4 {
+        color: #01539C;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 700;
+        font-size: 25px;
+    }
+
+    .contact__base .contact__top .left p {
+        color: #1F1F20;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 400;
+        font-size: 15px;
+    }
+
+    /*div right*/
+    .contact__base .contact__top .right {
+        /*display: flex;*/
+    }
+    .contact__base .contact__top .right .top {
+        display: flex;
+        padding: 12px 0;
+        width: 40%;
+        margin-right: 10px;
+    }
+    .contact__base .contact__top .right .bottom {
+        display: flex;
+        padding: 12px 0;
+        /*width: 50%;*/
+    }
+
+    .contact__base .contact__top .right .top {
+
+    }
+
+    .contact__base .contact__top .right .circle {
+        display: inline-block;
+        padding: 10px 10px 8px;
+        border-radius: 50%;
+        background-color: #b3b300;
+        margin-right: 8px;
+    }
+
+    .contact__base .contact__top .right .top .circle .icon {
+        background-image: url("../../images/home/support.svg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+    }
+
+    .contact__base .contact__top .right .bottom .circle .icon {
+        background-image: url("../../images/home/contact-email.svg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+    }
+
+    .contact__base .contact__top .right .text {
+        margin: auto 0;
+    }
+
+    .contact__base .contact__top .right .title {
+        color: #1F1F20;
+        font-size: 14px;
+        margin-bottom: 0;
+        font-weight: 400;
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    .contact__base .contact__top .right .text-under {
+        font-size: 17px;
+        color: #01539C;
+        font-weight: 700;
+        margin-bottom: 0;
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    /*form*/
+    .contact__base .contact__form {
+        padding: 30px 0 60px;
+    }
+
+    .contact__base .contact__form .title {
+        color: #01539C;
+        font-size: 25px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    .contact__base .contact__form form {
+        padding: 20px 8px;
+        border: 1px solid #ffff00;
+    }
+
+    .contact__base .contact__form .label {
+        font-size: 15px;
+        font-family: 'Open Sans', sans-serif;
+        background-color: #151f32;
+        position: absolute;
+        color: #ffff00;
+        top: -14px;
+        left: 16px;
+        padding: 0 6px;
+    }
+
+    .contact__base .contact__form .form-control {
+        background: transparent;
+        border-radius: 4px;
+        height: 42px;
+        color: rgb(216 227 238/1);
+    }
+
+    .contact__base .contact__form form .form-row {
+        margin: 0;
+    }
+
+
+    .contact__base .contact__form .form-group {
+        padding-left: 8px;
+        padding-right: 8px;
+        position: relative;
+    }
+
+    .contact__base .contact__form .form-group textarea {
+        height: 150px;
+    }
+
+    /*input file div*/
+    .contact__base .contact__form .form-row .input__file {
+        display: none;
+    }
+
+    .contact__base .contact__form .icon-file .file {
+        background-image: url("../../images/home/attachment.svg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+    }
+
+    .contact__base .contact__form .icon-file {
+        font-size: 15px;
+        background-color: #b3b300;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        border-radius: 4px;
+        justify-content: center;
+        padding: 10px 8px;
+
+    }
+
+    .contact__base .contact__form .bot__code {
+        display: flex;
+    }
+
+    .contact__base .contact__form .reload {
+        background-image: url("../../images/home/refresh.svg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        display: inline-block;
+        width: 22px;
+        height: 42px;
+        margin-left: 12px;
+        cursor: pointer;
+    }
+
+    .contact__base .contact__form .button__form {
+        display: flex;
+        justify-content: center;
+        padding: 10px 0;
+
+    }
+
+    .contact__base .contact__form .button__form .button:hover {
+        transition: 0.5s;
+        transform: translateY(-3px);
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+    }
+
+    .contact__base .contact__form .button {
+        border: none;
+        cursor: pointer;
+        border-radius: 20px;
+        background-color: #b3b300;
+        padding: 8px 40px;
+        font-size: 15px;
+        display: flex;
+        align-items: center;
+        color: #fff;
+        font-weight: 500;
+    }
+
+    .contact__base .contact__form .icon-button {
+        background-image: url("../../images/home/send.svg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        display: inline-block;
+        width: 25px;
+        height: 20px;
+        margin-right: 8px;
+    }
+    .contact__base .contact__form .left .contact_title {
+        text-align: center;
+        font-size: 16px;
+    }
+    .contact__base .contact__form .left {
+        font-size: 14px;
+        margin-top: 16px;
+    }
+}
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .contact__base .contact__top {
+        background-image: url("../../../upload/2023/09/lien-he-cong-ty-luat-o-ha-noi.png");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+
+    .contact__base .contact__top .left__title {
+        font-size: 35px;
+        color:#01539C;
+
+    }
+    .contact__base .contact__top .row {
+        padding: 40px 0;
+    }
+
+    .contact__base .contact__top .left {
+        text-align: center;
+    }
+
+    .contact__base .contact__top .left h4 {
+        color: #01539C;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 700;
+        font-size: 25px;
+    }
+
+    .contact__base .contact__top .left p {
+        color: #1F1F20;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 400;
+        font-size: 15px;
+    }
+
+    /*div right*/
+    .contact__base .contact__top .right {
+        display: flex;
+    }
+
+    .contact__base .contact__top .right .top, .contact__base .contact__top .right .bottom {
+        display: flex;
+        padding: 12px 0;
+        margin-left: 16px;
+    }
+
+    .contact__base .contact__top .right .top {
+
+    }
+
+    .contact__base .contact__top .right .circle {
+        display: inline-block;
+        padding: 18px 18px 14px;
+        border-radius: 50%;
+        background-color: #b3b300;
+        margin-right: 30px;
+    }
+
+    .contact__base .contact__top .right .top .circle .icon {
+        background-image: url("../../images/home/support.svg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+    }
+
+    .contact__base .contact__top .right .bottom .circle .icon {
+        background-image: url("../../images/home/contact-email.svg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+    }
+
+    .contact__base .contact__top .right .text {
+        margin: auto 0;
+    }
+
+    .contact__base .contact__top .right .title {
+        color: #1F1F20;
+        font-size: 15px;
+        margin-bottom: 0;
+        font-weight: 400;
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    .contact__base .contact__top .right .text-under {
+        font-size: 20px;
+        color: #01539C;
+        font-weight: 700;
+        margin-bottom: 0;
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    /*form*/
+    .contact__base .contact__form {
+        padding: 30px 0 60px;
+    }
+
+    .contact__base .contact__form .title {
+        color: #01539C;
+        font-size: 28px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    .contact__base .contact__form form {
+        padding: 30px 16px;
+        border: 1px solid #ffff00;
+    }
+
+    .contact__base .contact__form .label {
+        font-size: 15px;
+        font-family: 'Open Sans', sans-serif;
+        background-color: #151f32;
+        position: absolute;
+        color: #ffff00;
+        top: -14px;
+        left: 16px;
+        padding: 0 6px;
+    }
+
+    .contact__base .contact__form .form-control {
+        background: transparent;
+        border-radius: 4px;
+        height: 42px;
+        color: rgb(216 227 238/1);
+    }
+
+    .contact__base .contact__form form .form-row {
+        margin: 0;
+    }
+
+    .contact__base .contact__form .form-group {
+        padding-left: 8px;
+        padding-right: 8px;
+        position: relative;
+    }
+
+    .contact__base .contact__form .form-group textarea {
+        height: 150px;
+    }
+
+    /*input file div*/
+    .contact__base .contact__form .form-row .input__file {
+        display: none;
+    }
+
+    .contact__base .contact__form .icon-file .file {
+        background-image: url("../../images/home/attachment.svg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+    }
+
+    .contact__base .contact__form .icon-file {
+        font-size: 15px;
+        background-color: #b3b300;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        border-radius: 4px;
+        justify-content: center;
+        padding: 10px 8px;
+    }
+
+    .contact__base .contact__form .bot__code {
+        display: flex;
+    }
+
+
+    .contact__base .contact__form .reload {
+        background-image: url("../../images/home/refresh.svg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        display: inline-block;
+        width: 22px;
+        height: 42px;
+        margin-left: 12px;
+        cursor: pointer;
+    }
+
+    .contact__base .contact__form .button__form {
+        display: flex;
+        justify-content: center;
+        padding: 10px 0;
+
+    }
+
+    .contact__base .contact__form .button__form .button:hover {
+        transition: 0.5s;
+        transform: translateY(-3px);
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+    }
+
+    .contact__base .contact__form .button {
+        border: none;
+        cursor: pointer;
+        border-radius: 20px;
+        background-color: #b3b300;
+        padding: 8px 40px;
+        font-size: 15px;
+        display: flex;
+        align-items: center;
+        color: #fff;
+        font-weight: 500;
+    }
+
+    .contact__base .contact__form .icon-button {
+        background-image: url("../../images/home/send.svg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        display: inline-block;
+        width: 25px;
+        height: 20px;
+        margin-right: 8px;
+    }
+    .contact__base .contact__form .left .contact_title {
+        text-align: center;
+        font-size: 18px;
+    }
+    .contact__base .contact__form .left {
+        font-size: 15px;
+        padding-right: 0;
+        margin-top: 20px;
+    }
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .contact__base .contact__top {
+        background-image: url("../../../upload/2023/09/lien-he-cong-ty-luat-o-ha-noi.png");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+    .contact__base .contact__top .left__title {
+        font-size: 25px;
+        color:#01539C;
+    }
+    .contact__base .contact__top .row {
+        padding: 40px 0;
+    }
+
+    .contact__base .contact__top .left {
+        margin: auto 0;
+    }
+
+    .contact__base .contact__top .left h4 {
+        color: #01539C;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 700;
+        font-size: 25px;
+    }
+
+    .contact__base .contact__top .left p {
+        color: #1F1F20;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 400;
+        font-size: 15px;
+    }
+
+    /*div right*/
+    .contact__base .contact__top .right {
+        border-left: 1px solid rgba(0, 119, 179, 0.2);
+        padding-left: 20px;
+    }
+
+    .contact__base .contact__top .right .top, .contact__base .contact__top .right .bottom {
+        display: flex;
+        padding: 12px 0;
+    }
+
+    .contact__base .contact__top .right .top {
+
+    }
+
+    .contact__base .contact__top .right .circle {
+        display: inline-block;
+        padding: 22px 22px 16px;
+        border-radius: 50%;
+        background-color: #b3b300;
+        margin-right: 30px;
+    }
+
+    .contact__base .contact__top .right .top .circle .icon {
+        background-image: url("../../images/home/support.svg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+    }
+
+    .contact__base .contact__top .right .bottom .circle .icon {
+        background-image: url("../../images/home/contact-email.svg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+    }
+
+    .contact__base .contact__top .right .text {
+        margin: auto 0;
+    }
+
+    .contact__base .contact__top .right .title {
+        color: #1F1F20;
+        font-size: 15px;
+        margin-bottom: 0;
+        font-weight: 400;
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    .contact__base .contact__top .right .text-under {
+        font-size: 20px;
+        color: #01539C;
+        font-weight: 700;
+        margin-bottom: 0;
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    /*form*/
+    .contact__base .contact__form {
+        padding: 30px 0 60px;
+    }
+
+    .contact__base .contact__form .title {
+        color: #01539C;
+        font-size: 30px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        text-align: center;
+        padding: 30px 0 40px;
+    }
+
+    .contact__base .contact__form form {
+        padding: 30px 16px;
+        border: 1px solid #ffff00;
+    }
+
+    .contact__base .contact__form .label {
+        font-size: 15px;
+        font-family: 'Open Sans', sans-serif;
+        background-color: #151f32;
+        position: absolute;
+        color: #ffff00;
+        top: -14px;
+        left: 16px;
+        padding: 0 6px;
+    }
+
+    .contact__base .contact__form .form-control {
+        background: transparent;
+        border-radius: 4px;
+        height: 42px;
+        color: rgb(216 227 238/1);
+    }
+
+    .contact__base .contact__form form .form-row {
+        margin: 0;
+    }
+
+
+    .contact__base .contact__form .form-group {
+        padding-left: 8px;
+        padding-right: 8px;
+        position: relative;
+    }
+
+    .contact__base .contact__form .form-group textarea {
+        height: 150px;
+    }
+
+    /*input file div*/
+    .contact__base .contact__form .form-row .input__file {
+        display: none;
+    }
+
+    .contact__base .contact__form .icon-file .file {
+        background-image: url("../../images/home/attachment.svg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+    }
+
+    .contact__base .contact__form .icon-file {
+        font-size: 15px;
+        background-color: #b3b300;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        border-radius: 4px;
+        justify-content: center;
+        padding: 10px 8px;
+    }
+
+    .contact__base .contact__form .bot__code {
+        display: flex;
+    }
+
+    .contact__base .contact__form .reload {
+        background-image: url("../../images/home/refresh.svg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        display: inline-block;
+        width: 22px;
+        height: 42px;
+        margin-left: 12px;
+        cursor: pointer;
+    }
+
+    .contact__base .contact__form .button__form {
+        display: flex;
+        justify-content: center;
+        padding: 10px 0;
+
+    }
+
+    .contact__base .contact__form .button__form .button:hover {
+        transition: 0.5s;
+        transform: translateY(-3px);
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+    }
+
+    .contact__base .contact__form .button {
+        border: none;
+        cursor: pointer;
+        border-radius: 25px;
+        background-color: #b3b300;
+        padding: 8px 40px;
+        font-size: 15px;
+        display: flex;
+        align-items: center;
+        color: #fff;
+        font-weight: 500;
+    }
+
+    .contact__base .contact__form .icon-button {
+        background-image: url("../../images/home/send.svg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        display: inline-block;
+        width: 35px;
+        height: 30px;
+        margin-right: 8px;
+    }
+    .contact__base .contact__form .left .contact_title {
+        text-align: center;
+        font-size: 18px;
+    }
+    .contact__base .contact__form .left {
+        font-size: 15px;
+        padding-right: 0;
+        margin-top: 20px;
+    }
+
+}
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .contact__base .contact__top {
+        background-image: url("../../../upload/2023/09/lien-he-cong-ty-luat-o-ha-noi.png");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+    .contact__base .contact__top .left__title {
+        font-size: 30px;
+        color:#01539C;
+    }
+
+    .contact__base .contact__top .row {
+        padding: 50px 0 50px;
+    }
+
+    .contact__base .contact__top .left {
+        margin: auto 0;
+    }
+
+    .contact__base .contact__top .left h4 {
+        color: #01539C;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 700;
+        font-size: 27px;
+    }
+
+    .contact__base .contact__top .left p {
+        color: #1F1F20;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 400;
+        font-size: 15px;
+    }
+
+    /*div right*/
+    .contact__base .contact__top .right {
+        border-left: 1px solid rgba(0, 119, 179, 0.2);
+        padding-left: 20px;
+    }
+
+    .contact__base .contact__top .right .top, .contact__base .contact__top .right .bottom {
+        display: flex;
+        padding: 12px 0;
+    }
+
+    .contact__base .contact__top .right .top {
+
+    }
+
+    .contact__base .contact__top .right .circle {
+        display: inline-block;
+        padding: 22px 22px 16px;
+        border-radius: 50%;
+        background-color: #b3b300;
+        margin-right: 30px;
+    }
+
+    .contact__base .contact__top .right .top .circle .icon {
+        background-image: url("../../images/home/support.svg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+    }
+
+    .contact__base .contact__top .right .bottom .circle .icon {
+        background-image: url("../../images/home/contact-email.svg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+    }
+
+    .contact__base .contact__top .right .text {
+        margin: auto 0;
+    }
+
+    .contact__base .contact__top .right .title {
+        color: #1F1F20;
+        font-size: 15px;
+        margin-bottom: 0;
+        font-weight: 400;
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    .contact__base .contact__top .right .text-under {
+        font-size: 20px;
+        color: #01539C;
+        font-weight: 700;
+        margin-bottom: 0;
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    /*form*/
+    .contact__base .contact__form {
+        padding: 50px 0 70px;
+    }
+
+    .contact__base .contact__form .title {
+        color: #01539C;
+        font-size: 35px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        text-align: center;
+        padding: 30px 0 40px;
+    }
+
+    .contact__base .contact__form form {
+        padding: 30px;
+        border: 1px solid #ffff00;
+    }
+
+    .contact__base .contact__form .label {
+        font-size: 15px;
+        font-family: 'Open Sans', sans-serif;
+        background-color: #151f32;
+        position: absolute;
+        color: #ffff00;
+        top: -14px;
+        left: 16px;
+        padding: 0 6px;
+    }
+
+    .contact__base .contact__form .form-control {
+        background: transparent;
+        border-radius: 4px;
+        height: 42px;
+        color: rgb(216 227 238/1);
+    }
+
+    .contact__base .contact__form form .form-row {
+        margin: 0;
+    }
+
+
+    .contact__base .contact__form .form-group {
+        padding-left: 8px;
+        padding-right: 8px;
+        position: relative;
+    }
+
+    .contact__base .contact__form .form-group textarea {
+        height: 200px;
+    }
+
+    /*input file div*/
+    .contact__base .contact__form .form-row .input__file {
+        display: none;
+    }
+
+    .contact__base .contact__form .icon-file .file {
+        background-image: url("../../images/home/attachment.svg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+    }
+
+    .contact__base .contact__form .icon-file {
+        font-size: 15px;
+        background-color: #b3b300;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        border-radius: 4px;
+        justify-content: center;
+        padding: 10px 8px;
+    }
+
+    .contact__base .contact__form .bot__code {
+        display: flex;
+    }
+
+    .contact__base .contact__form .reload {
+        background-image: url("../../images/home/refresh.svg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        display: inline-block;
+        width: 22px;
+        height: 42px;
+        margin-left: 16px;
+        cursor: pointer;
+    }
+
+    .contact__base .contact__form .button__form {
+        display: flex;
+        justify-content: center;
+        padding: 10px 0;
+
+    }
+
+    .contact__base .contact__form .button__form .button:hover {
+        transition: 0.5s;
+        transform: translateY(-3px);
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+    }
+
+    .contact__base .contact__form .button {
+        border: none;
+        cursor: pointer;
+        border-radius: 30px;
+        background-color: #b3b300;
+        padding: 12px 50px;
+        font-size: 15px;
+        display: flex;
+        align-items: center;
+        color: #fff;
+        font-weight: 500;
+    }
+
+    .contact__base .contact__form .icon-button {
+        background-image: url("../../images/home/send.svg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        display: inline-block;
+        width: 35px;
+        height: 30px;
+        margin-right: 8px;
+    }
+    .contact__base .contact__form .left .contact_title {
+        text-align: center;
+        font-size: 18px;
+    }
+    .contact__base .contact__form .left {
+        font-size: 15px;
+        padding-right: 0;
+        margin-top: 20px;
+    }
+}
+
+/*pc*/
+@media (min-width: 1200px) {
+    .contact__base .contact__top {
+        background-image: url("../../../upload/2023/09/lien-he-cong-ty-luat-o-ha-noi.png");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+    .contact__base .contact__top .left__title {
+        font-size: 1.75rem;
+        color:#01539C;
+    }
+    .contact__base .contact__top .row {
+        padding: 70px 0 70px;
+    }
+
+    .contact__base .contact__top .left {
+        margin: auto 0;
+    }
+
+    .contact__base .contact__top .left h4 {
+        color: #01539C;
+        font-weight: 700;
+        font-size: 30px;
+    }
+
+    .contact__base .contact__top .left p {
+        color: #1F1F20;
+        font-weight: 400;
+        font-size: 17px;
+    }
+
+    /*div right*/
+    .contact__base .contact__top .right {
+        border-left: 1px solid rgba(0, 119, 179, 0.2);
+        padding-left: 30px;
+    }
+
+    .contact__base .contact__top .right .top, .contact__base .contact__top .right .bottom {
+        display: flex;
+        padding: 20px 0;
+    }
+
+    .contact__base .contact__top .right .top {
+
+    }
+
+    .contact__base .contact__top .right .circle {
+        display: inline-block;
+        padding: 22px 22px 16px;
+        border-radius: 50%;
+        background-color: #b3b300;
+        margin-right: 30px;
+    }
+
+    .contact__base .contact__top .right .top .circle .icon {
+        background-image: url("../../images/home/support.svg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+    }
+
+    .contact__base .contact__top .right .bottom .circle .icon {
+        background-image: url("../../images/home/contact-email.svg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+    }
+
+    .contact__base .contact__top .right .text {
+        margin: auto 0;
+    }
+
+    .contact__base .contact__top .right .title {
+        color: #1F1F20;
+        font-size: 17px;
+        margin-bottom: 0;
+        font-weight: 400;
+    }
+
+    .contact__base .contact__top .right .text-under {
+        font-size: 20px;
+        color: #01539C;
+        font-weight: 700;
+        margin-bottom: 0;
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    /*form*/
+    .contact__base .contact__form {
+        padding: 60px 0 80px;
+    }
+
+    .contact__base .contact__form .title {
+        color: #01539C;
+        font-size: 40px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        text-align: center;
+        padding: 30px 0 40px;
+    }
+
+    .contact__base .contact__form form {
+        padding: 60px 30px;
+        border: 1px solid #ffff00;
+    }
+
+    .contact__base .contact__form .label {
+        font-size: 17px;
+        background-color: #151f32;
+        position: absolute;
+        color: #ffff00;
+        top: -14px;
+        left: 16px;
+        padding: 0 6px;
+    }
+
+    .contact__base .contact__form .form-control {
+        background: transparent;
+        border-radius: 4px;
+        height: 42px;
+        color: rgb(216 227 238/1);
+    }
+
+    .contact__base .contact__form form .form-row {
+        margin: 0;
+    }
+
+    .contact__base .contact__form .form-group {
+        padding-left: 8px;
+        padding-right: 8px;
+        position: relative;
+    }
+
+    .contact__base .contact__form .form-group textarea {
+        height: 200px;
+    }
+
+    /*input file div*/
+    .contact__base .contact__form .form-row .input__file {
+        display: none;
+    }
+
+    .contact__base .contact__form .icon-file .file {
+        background-image: url("../../images/home/attachment.svg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+    }
+
+    .contact__base .contact__form .icon-file {
+        font-size: 17px;
+        background-color: #b3b300;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        border-radius: 4px;
+        justify-content: center;
+        padding: 8px;
+
+    }
+
+    .contact__base .contact__form .bot__code {
+        display: flex;
+    }
+
+
+    .contact__base .contact__form .reload {
+        background-image: url("../../images/home/refresh.svg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        display: inline-block;
+        width: 22px;
+        height: 42px;
+        margin-left: 16px;
+        cursor: pointer;
+    }
+
+    .contact__base .contact__form .button__form {
+        display: flex;
+        justify-content: center;
+        padding: 20px 0 10px;
+
+    }
+
+    .contact__base .contact__form .button__form .button:hover {
+        transition: 0.5s;
+        transform: translateY(-3px);
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+    }
+
+    .contact__base .contact__form .button {
+        border: none;
+        cursor: pointer;
+        border-radius: 30px;
+        background-color: #b3b300;
+        padding: 14px 60px;
+        font-size: 15px;
+        display: flex;
+        align-items: center;
+        color: #fff;
+        font-weight: 500;
+    }
+
+    .contact__base .contact__form .icon-button {
+        background-image: url("../../../upload/2023/09/send.svg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        display: inline-block;
+        width: 35px;
+        height: 30px;
+        margin-right: 8px;
+    }
+    .contact__base .contact__form .left .contact_title {
+        text-align: center;
+        font-size: 19px;
+    }
+    .contact__base .contact__form .left {
+        font-size: 17px;
+        padding-right: 0;
+    }
+}
+.form-row {
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+.form-group {
+    margin-bottom: 1rem;
+}

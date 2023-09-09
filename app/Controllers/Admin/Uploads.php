@@ -4,6 +4,7 @@ namespace App\Controllers\Admin;
 
 // Libraries
 use App\Libraries\MediaType;
+use App\Libraries\UsersType;
 
 //
 class Uploads extends Admin
@@ -265,6 +266,10 @@ class Uploads extends Admin
 
     public function delete()
     {
+        // phân quyền xóa bài viết
+        if ($this->session_data['userLevel'] != UsersType::ADMIN_LEVEL) {
+            die('Not Permission');
+        }
         $id = $this->MY_get('id', 0);
         $id *= 1;
         if ($id <= 0) {

@@ -20,7 +20,7 @@ class PostAdmin extends Post
      * Tạo danh sách link để thêm menu trong admin cho tiện
      * Trả về danh sách các liên kết nội bộ trong website
      */
-    public function get_site_inlink($lang_key = '', $limit = 500, $clear_cache = false, $time = MINI_CACHE_TIMEOUT)
+    public function get_site_inlink($lang_key = '', $limit = 20, $clear_cache = false, $time = MINI_CACHE_TIMEOUT)
     {
         // cache
         if ($lang_key == '') {

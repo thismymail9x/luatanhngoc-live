@@ -181,6 +181,7 @@ $base_model->adds_css([
     'themes/' . THEMENAME . '/css/posts_node.css',
     'themes/' . THEMENAME . '/css/products_node.css',
     'themes/' . THEMENAME . '/css/global.css',
+    'themes/' . THEMENAME . '/css/footer.css',
 ], [
     'cdn' => CDN_BASE_URL,
 ]);

@@ -1,5 +1,9 @@
+<link rel="stylesheet" type="text/css" media="all" href="./thirdparty/select2-4.0.13/css/select2.min.css"/>
+
 <script src="./thirdparty/angular/angular.min.js"></script>
 <script src="./thirdparty/vuejs/vue<?php echo($debug_enable !== true ? '.min' : ''); ?>.js"></script>
+<script src="./thirdparty/select2-4.0.13/js/select2.min.js"></script>
+
 <?php
 use App\Libraries\PostType;
 $base_model->add_css('admin/css/posts_list.css');
@@ -23,19 +27,19 @@ $base_model->add_css(  'themes/' . THEMENAME . '/css/post_list.css');
                         <form name="frm_admin_search_controller" action="./<?php echo $controller_slug; ?>/lists" method="get">
                             <div class="cf">
                                 <div class="lf f25 mr-3">
-                                    <input class="form-control" name="s" value="<?php echo $by_keyword; ?>"
-                                           placeholder="Tìm kiếm <?php echo $name_type; ?>" autofocus aria-required="true" required>
+                                    <input class="form-control custom_element" name="s" value="<?php echo $by_keyword; ?>"
+                                           placeholder="Tìm kiếm <?php echo $name_type; ?>" autofocus aria-required="true" >
                                 </div>
-                                <div class="lf f25 hide-if-no-taxonomy">
+                                <div class="lf f30 hide-if-no-taxonomy">
                                     <select name="term_id" data-select="<?php echo $by_term_id; ?>" :data-taxonomy="taxonomy"
-                                            onChange="document.frm_admin_search_controller.submit();" class="each-to-group-taxonomy ">
+                                            onChange="document.frm_admin_search_controller.submit();" class="each-to-group-taxonomy custom_element">
                                         <option value="0">- Danh mục
                                             <?php echo $name_type; ?> -
                                         </option>
                                     </select>
                                 </div>
                                 <div class="lf f25">
-                                    <select name="post_status" :data-select="post_status"
+                                    <select class="custom_element" name="post_status" :data-select="post_status"
                                             onChange="document.frm_admin_search_controller.submit();">
                                         <option value="">- Trạng thái
                                             <?php echo $name_type; ?> -
@@ -43,8 +47,8 @@ $base_model->add_css(  'themes/' . THEMENAME . '/css/post_list.css');
                                         <option :value="k" v-for="(v, k) in PostType_arrStatus">{{v}}</option>
                                     </select>
                                 </div>
-                                <div class="lf f25">
-                                    <button type="submit" class="btn-success"><i class="fa fa-search"></i> Tìm kiếm</button>
+                                <div class="lf f20">
+                                    <button type="submit" class="btn btn-success custom_element_small"><i class="fa fa-search"></i> Tìm kiếm</button>
                                 </div>
                             </div>
                         </form>
@@ -90,7 +94,8 @@ $WGR_config = [
 ];
 $base_model->JSON_parse([
     'WGR_config' => $WGR_config,
-    'draftStatus'=> PostType::DRAFT
+    'draftStatus'=> PostType::DRAFT,
+    'privateStatus'=> PostType::PRIVATELY,
 ]);
 $base_model->JSON_parse(
     [

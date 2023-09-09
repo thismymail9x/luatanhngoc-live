@@ -139,9 +139,9 @@ class C extends Home
         // dùng để foreah ra danh mục của bài viết
 //        $data['content_category'] = $resultCategory['category_array'];
         // đổi nội dung bài viết = các key có sẵn
-        foreach (REPLACE_CONTENT as $k => $v) {
-            $data['post_content'] = str_replace($k, view($v), $data['post_content']);
-        }
+//        foreach (REPLACE_CONTENT as $k => $v) {
+//            $data['post_content'] = str_replace($k, view($v), $data['post_content']);
+//        }
         $this->teamplate['breadcrumb'] = view(
             'breadcrumb_view',
             array(
@@ -187,7 +187,7 @@ class C extends Home
         }
         $data['post_type'] = $this->post_type;
         // hungtd add logic là với quyền Tác giả bài viết sẽ ở trạng thái chờ duyệt
-        $data['post_status'] = PostType::PENDING;
+        $data['post_status'] = PostType::PRIVATELY;
         // random lượt xem bài viết
         $data['post_viewed'] = rand(1000, 5000);
 
@@ -346,7 +346,7 @@ class C extends Home
         // URL cho các action dùng chung
         $for_action = '';
         // URL cho phân trang
-        $urlPartPage =  $this->controller_slug . '?part_type=' . $this->post_type;
+        $urlPartPage =  $this->controller_slug . '/lists?part_type=' . $this->post_type;
 
         //
         $by_keyword = $this->MY_get('s');
@@ -364,7 +364,7 @@ class C extends Home
         // tìm kiếm theo từ khóa nhập vào
         $where_or_like = [];
         $where_in = [];
-        $where_or = [];
+        $or = [];
         if ($by_keyword != '') {
             $urlPartPage .= '&s=' . $by_keyword;
             $for_action .= '&s=' . $by_keyword;
@@ -412,12 +412,17 @@ class C extends Home
 
         // mặc định sẽ hiển thị bài viết của người ấy tạo hoặc bài viết chưa được phân (để nhận bài)
         $where[$this->table . '.post_author'] = $this->session_data['ID'];
-        $where_or[$this->table . '.post_status'] = [PostType::DRAFT];
+        if ($post_status == '' && $by_keyword == '' && $by_term_id == 0) {
+            $or[$this->table . '.post_status'] = PostType::DRAFT;
+        }
         // tổng kết filter
         $filter = [
+            'join'=>[
+                'users' => 'users.ID = ' . $this->table . '.post_author',
+            ],
             'where_in' => $where_in,
             'or_like' => $where_or_like,
-            'or_where' => $where_or,
+            'or' => $or,
             // hiển thị mã SQL để check
             //'show_query' => 1,
             // trả về câu query để sử dụng cho mục đích khác
@@ -468,10 +473,10 @@ class C extends Home
             $urlPartPage .= '&term_id=' . $by_term_id;
             $for_action .= '&term_id=' . $by_term_id;
 
-            $filter['join'] = [
+            $filter['join'] = array_merge([
                 'term_relationships' => 'term_relationships.object_id = ' . $this->table . '.ID',
                 'term_taxonomy' => 'term_relationships.term_taxonomy_id = term_taxonomy.term_taxonomy_id',
-            ];
+            ],$filter['join']);
         }
 
         //
@@ -481,11 +486,10 @@ class C extends Home
             }
         }
 
-
         /*
          * phân trang
          */
-        $totalThread = $this->base_model->select('COUNT(ID) AS c', $this->table, $where, $filter);
+        $totalThread = $this->base_model->select('COUNT(wp_posts.ID) AS c', $this->table, $where, $filter);
         //print_r( $totalThread );
         $totalThread = $totalThread[0]['c'];
         //print_r( $totalThread );
@@ -536,7 +540,7 @@ class C extends Home
                 ];
             }
             $filter['order_by'] = $order_by;
-            $data = $this->base_model->select('*', $this->table, $where, $filter);
+            $data = $this->base_model->select('posts.*,users.user_nicename', $this->table, $where, $filter);
 
             //
             $data = $this->post_model->list_meta_post($data);
@@ -665,6 +669,7 @@ class C extends Home
             die(__CLASS__ . ':' . __LINE__);
         }
     }
+    /* hàm nhận bài viết*/
     public function receivePost()
     {
         header('Content-type: application/json; charset=utf-8');
@@ -678,7 +683,10 @@ class C extends Home
                 'data' => $_POST
             ]);
         } else {
-            $this->post_model->update_post($id, ['post_status'=>PostType::PRIVATELY], [
+            $this->post_model->update_post($id, [
+                'post_status'=>PostType::PRIVATELY,
+                'post_author'=>$this->session_data['ID']
+            ], [
             ]);
             $this->result_json_type([
                 'ok' => __LINE__,
@@ -686,6 +694,31 @@ class C extends Home
             ]);
         }
 
+
+    }
+    /* xác nhận yêu cầu duyệt bài*/
+    public function sendAccept()
+    {
+        header('Content-type: application/json; charset=utf-8');
+        //
+        $id = $this->MY_post('id', '');
+        $post = $this->post_model->select_post($id, []);
+
+        if (empty($post) || (!empty($post) && $post['post_status'] == PostType::PENDING)) {
+            $this->result_json_type([
+                'error' => 'Gửi yêu cầu duyệt bài viết không thành công',
+                'data' => $_POST
+            ]);
+        } else {
+            $this->post_model->update_post($id, [
+                'post_status'=>PostType::PENDING,
+            ], [
+            ]);
+            $this->result_json_type([
+                'ok' => __LINE__,
+                'data' => $_POST
+            ]);
+        }
 
     }
 

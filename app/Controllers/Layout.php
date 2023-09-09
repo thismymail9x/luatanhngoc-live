@@ -564,7 +564,30 @@ class Layout extends Sync
             // chạy vòng lặp để lấy các key upload -> xác định tên input tự động
             foreach ($_FILES as $key => $upload_image) {
                 //echo $key . '<br>' . PHP_EOL;
+//
+                //$multi_up = true;
+                // không có size -> bỏ
+                if (!isset($upload_image['size'])) {
+                    continue;
+                } else {
+                    // size là dạng mảng -> multi upload
+                    if (is_array($upload_image['size'])) {
+                        // size quá nhỏ -> bỏ
+                        if (empty($upload_image['size']) || $upload_image['size'][0] < 1) {
+                            continue;
+                        }
+                    } else {
+                        //$multi_up = false;
+                        // giả lập muti up -> để lệnh sau có thể hoạt động được
+                        $upload_files[$key] = [$upload_files[$key]];
 
+                        //
+                        if ($upload_image['size'] < 1) {
+                            // size quá nhỏ -> bỏ
+                            continue;
+                        }
+                    }
+                }
                 //
                 foreach ($upload_files[$key] as $file) {
                     //print_r( $file );
@@ -927,10 +950,11 @@ class Layout extends Sync
                 return 'WARNING ' . strtolower(__FUNCTION__) . ':' . __LINE__ . '! Bạn không có quyền xem nội dung này...';
             }
         }
-        // nếu bài này không phải dạng public
+        // nếu bài này không phải dạng public, cập nhật thêm có thể xem bài chờ duyệt
         else if ($data['post_status'] != PostType::PUBLICITY) {
             // kiểm tra xem nếu không phải admin thì không cho xem
-            if (empty($this->session_data) || !isset($this->session_data['userLevel']) || $this->session_data['userLevel'] <= 0) {
+            if (empty($this->session_data) || !isset($this->session_data['userLevel'])  ) {
+//            if (empty($this->session_data) || !isset($this->session_data['userLevel']) || $this->session_data['userLevel'] <= 0 ) {
                 return 'ERROR ' . strtolower(__FUNCTION__) . ':' . __LINE__ . '! Không xác định được dữ liệu bài viết...';
             }
         }

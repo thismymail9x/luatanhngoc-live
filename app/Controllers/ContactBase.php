@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 //
+use App\Libraries\CommentType;
 use App\Libraries\PHPMaillerSend;
 use App\Language\Translate;
 
@@ -148,7 +149,7 @@ class ContactBase extends Home
 
             $submit = $this->MY_comment([
                 'redirect_to' => $redirect_to,
-                'comment_type' => $this->getClassName(__CLASS__)
+                'comment_type' => CommentType::CONTACT
             ]);
 
             // thiết lập thông tin người nhận

@@ -323,10 +323,10 @@ class PostQuery extends PostMeta
         return $result_update;
     }
 
-    public function select_post($post_id, $where = [], $filter = [], $select_col = '*')
+    public function select_post($post_id, $where = [], $filter = [], $select_col = 'posts.*,users.user_nicename')
     {
         if ($post_id > 0) {
-            $where['ID'] = $post_id;
+            $where['posts.ID'] = $post_id;
         }
         if (empty($where)) {
             return [];
@@ -334,8 +334,11 @@ class PostQuery extends PostMeta
 
         //
         $default_filter = [
+            'join' => [
+                'users' => 'users.ID = posts.post_author',
+            ],
             // hiển thị mã SQL để check
-            //'show_query' => 1,
+           // 'show_query' => 1,
             // trả về câu query để sử dụng cho mục đích khác
             //'get_query' => 1,
             //'offset' => 2,
@@ -375,7 +378,7 @@ class PostQuery extends PostMeta
         }
         if (!isset($ops['order_by'])) {
             $ops['order_by'] = [
-                'ID' => 'ASC'
+                'posts.ID' => 'ASC'
             ];
         }
         $ops['where_in']['post_status'] = [
@@ -385,6 +388,7 @@ class PostQuery extends PostMeta
             PostType::PRIVATELY,
             // cho admin xem trước
             PostType::DRAFT,
+            PostType::PENDING,
         ];
         //print_r($ops);
         //die(__CLASS__ . ':' . __LINE__);

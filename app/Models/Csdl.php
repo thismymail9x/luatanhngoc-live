@@ -373,6 +373,7 @@ class Csdl extends Session
                 $builder->join($k, $v, 'inner');
             }
         }
+
         if (isset($ops['left_join'])) {
             foreach ($ops['left_join'] as $k => $v) {
                 $builder->join($k, $v, 'left');
@@ -533,7 +534,14 @@ class Csdl extends Session
             }
             $builder->groupEnd();
         }
-
+        // or
+        if (isset($ops['or']) && !empty($ops['or'])) {
+            foreach ($ops['or'] as $k => $v) {
+                if (!empty($v)) {
+                    $builder->orWhere($k, $v);
+                }
+            }
+        }
         // group by
         if (isset($ops['group_by'])) {
             foreach ($ops['group_by'] as $k => $v) {
@@ -566,7 +574,8 @@ class Csdl extends Session
         if ($ops['limit'] > 0) {
             $builder->limit($ops['limit'], $ops['offset']);
         }
-
+//        print_r($builder->getCompiledSelect());
+//        die('cc');
         // trả về kết quả
         $a = array();
         $query = $builder->get();

@@ -22,9 +22,6 @@
     font-weight: 600;
     line-height: 1.47059;
 }
-.global-a-posi {
-    margin-bottom: 0;
-}
 
 
 .posts-list.anhtren_chuduoi {}
@@ -110,7 +107,6 @@
     }
 
     .menuPost .icon__rotate {
-        margin-top: 5px;
         font-size: 15px;
         float: right;
         transition: transform 0.5s ease-in-out;
@@ -172,7 +168,7 @@
         font-size: 18px;
         margin-bottom: 15px;
         font-weight: 700;
-        font-family: 'Montserrat', sans-serif;
+
     }
 
     .blog__child .blog__content .blog-avatar {
@@ -203,17 +199,19 @@
         margin-bottom: 20px;
         font-size: 15px;
         font-weight: 700;
-        font-family: 'Open Sans', sans-serif;
+
     }
     .blog__child .blog__content .content h2 span, .blog__child .blog__content .content h2  {
         font-size: 16px!important;
         font-weight: bold;
-        color: #ffff00;
+        color: #ffff00!important;
+        line-height: 1.4;
     }
     .blog__child .blog__content .content h3 span, .blog__child .blog__content .content h3  {
         font-size: 15px!important;
         font-weight: bold;
-        color: rgba(255, 255, 0,0.7);
+        color: rgba(255, 255, 0,0.7) !important;
+        line-height: 1.4;
     }
 
     .blog__child .blog__content .content a {
@@ -237,7 +235,7 @@
         margin-bottom: 0;
         font-size: 20px;
         letter-spacing: 0;
-        font-family: 'Montserrat', sans-serif;
+
         text-align: center;
     }
 
@@ -257,7 +255,7 @@
     .blog__child .other__blogs .text-time {
         margin-left: 10px;
         font-size: 14px;
-        font-family: 'Open Sans', sans-serif;
+
         color: #6E6E75;
     }
 
@@ -284,13 +282,13 @@
         transition: background-color .3s,border .3s;
         line-height: 1.5;
         font-weight: 700;
-        font-family: 'Montserrat', sans-serif;
+
     }
 
     .blog__child .other__blogs .card-text {
         color: #1F1F20;
         font-size: 14px;
-        font-family: 'Open Sans', sans-serif;
+
     }
     .blog__child .img__child {
         width: 100%;
@@ -345,7 +343,6 @@
     }
 
     .menuPost .icon__rotate {
-        margin-top: 5px;
         font-size: 15px;
         float: right;
         transition: transform 0.5s ease-in-out;
@@ -407,7 +404,7 @@
         font-size: 20px;
         margin-bottom: 15px;
         font-weight: 700;
-        font-family: 'Montserrat', sans-serif;
+
     }
 
     .blog__child .blog__content .blog-avatar {
@@ -438,17 +435,19 @@
         margin-bottom: 20px;
         font-size: 15px;
         font-weight: 700;
-        font-family: 'Open Sans', sans-serif;
+
     }
     .blog__child .blog__content .content h2 span, .blog__child .blog__content .content h2  {
         font-size: 16px!important;
         font-weight: bold;
-        color: #ffff00;
+        color: #ffff00!important;
+        line-height: 1.4;
     }
     .blog__child .blog__content .content h3 span, .blog__child .blog__content .content h3  {
         font-size: 15px!important;
         font-weight: bold;
-        color: rgba(255, 255, 0,0.7);
+        color: rgba(255, 255, 0,0.7) !important;
+        line-height: 1.4;
     }
 
     .blog__child .blog__content .content a {
@@ -472,7 +471,7 @@
         margin-bottom: 0;
         font-size: 20px;
         letter-spacing: 0;
-        font-family: 'Montserrat', sans-serif;
+
         text-align: center;
     }
 
@@ -492,7 +491,7 @@
     .blog__child .other__blogs .text-time {
         margin-left: 10px;
         font-size: 14px;
-        font-family: 'Open Sans', sans-serif;
+
         color: #6E6E75;
     }
 
@@ -519,13 +518,13 @@
         transition: background-color .3s,border .3s;
         line-height: 1.5;
         font-weight: 700;
-        font-family: 'Montserrat', sans-serif;
+
     }
 
     .blog__child .other__blogs .card-text {
         color: #1F1F20;
         font-size: 14px;
-        font-family: 'Open Sans', sans-serif;
+
     }
     .blog__child .img__child {
         width: 100%;
@@ -582,7 +581,6 @@
     }
 
     .menuPost .icon__rotate {
-        margin-top: 5px;
         font-size: 16px;
         float: right;
         transition: transform 0.5s ease-in-out;
@@ -644,7 +642,7 @@
         font-size: 25px;
         padding: 0 0 15px;
         font-weight: 700;
-        font-family: 'Montserrat', sans-serif;
+
     }
 
     .blog__child .blog__content .blog-avatar {
@@ -675,17 +673,19 @@
         margin-bottom: 20px;
         font-size: 16px;
         font-weight: 700;
-        font-family: 'Open Sans', sans-serif;
+
     }
     .blog__child .blog__content .content h2 span, .blog__child .blog__content .content h2  {
         font-size: 18px!important;
         font-weight: bold;
-        color: #ffff00;
+        color: #ffff00!important;
+        line-height: 1.4;
     }
     .blog__child .blog__content .content h3 span, .blog__child .blog__content .content h3  {
         font-size: 18px!important;
         font-weight: bold;
-        color: rgba(255, 255, 0,0.7);
+        color: rgba(255, 255, 0,0.7) !important;
+        line-height: 1.4;
     }
 
     .blog__child .blog__content .content a {
@@ -709,7 +709,7 @@
         margin-bottom: 0;
         font-size: 20px;
         letter-spacing: 0;
-        font-family: 'Montserrat', sans-serif;
+
         text-align: center;
     }
 
@@ -729,7 +729,7 @@
     .blog__child .other__blogs .text-time {
         margin-left: 10px;
         font-size: 14px;
-        font-family: 'Open Sans', sans-serif;
+
         color: #6E6E75;
     }
 
@@ -756,13 +756,13 @@
         transition: background-color .3s,border .3s;
         line-height: 1.5;
         font-weight: 700;
-        font-family: 'Montserrat', sans-serif;
+
     }
 
     .blog__child .other__blogs .card-text {
         color: #1F1F20;
         font-size: 14px;
-        font-family: 'Open Sans', sans-serif;
+
     }
     .blog__child .img__child {
         width: 100%;
@@ -819,7 +819,6 @@
     }
 
     .menuPost .icon__rotate {
-        margin-top: 5px;
         font-size: 16px;
         float: right;
         transition: transform 0.5s ease-in-out;
@@ -881,7 +880,7 @@
         font-size: 25px;
         margin-bottom: 20px;
         font-weight: 700;
-        font-family: 'Montserrat', sans-serif;
+
     }
 
     .blog__child .blog__content .blog-avatar {
@@ -912,17 +911,19 @@
         margin-bottom: 20px;
         font-size: 16px;
         font-weight: 700;
-        font-family: 'Open Sans', sans-serif;
+
     }
     .blog__child .blog__content .content h2 span, .blog__child .blog__content .content h2  {
         font-size: 20px!important;
         font-weight: bold;
-        color: #ffff00;
+        color: #ffff00!important;
+        line-height: 1.4;
     }
     .blog__child .blog__content .content h3 span, .blog__child .blog__content .content h3  {
         font-size: 18px!important;
         font-weight: bold;
-        color: rgba(255, 255, 0,0.7);
+        color: rgba(255, 255, 0,0.7) !important;
+        line-height: 1.4;
     }
 
     .blog__child .blog__content .content a {
@@ -942,7 +943,7 @@
         margin-bottom: 0;
         font-size: 25px;
         letter-spacing: 0;
-        font-family: 'Montserrat', sans-serif;
+
         text-align: center;
     }
 
@@ -962,7 +963,7 @@
     .blog__child .other__blogs .text-time {
         margin-left: 10px;
         font-size: 15px;
-        font-family: 'Open Sans', sans-serif;
+
         color: #6E6E75;
     }
 
@@ -989,13 +990,13 @@
         transition: background-color .3s,border .3s;
         line-height: 1.5;
         font-weight: 700;
-        font-family: 'Montserrat', sans-serif;
+
     }
 
     .blog__child .other__blogs .card-text {
         color: #1F1F20;
         font-size: 14px;
-        font-family: 'Open Sans', sans-serif;
+
     }
     .blog__child .img__child {
         width: 100%;
@@ -1112,7 +1113,7 @@
         font-size: 30px;
         margin-bottom: 30px;
         font-weight: 700;
-        font-family: 'Montserrat', sans-serif;
+
     }
 
     .blog__child .blog__content .blog-avatar {
@@ -1143,17 +1144,19 @@
         margin-bottom: 30px;
         font-size: 18px;
         font-weight: 700;
-        font-family: 'Open Sans', sans-serif;
+
     }
     .blog__child .blog__content .content h2 span, .blog__child .blog__content .content h2  {
         font-size: 20px!important;
         font-weight: bold;
-        color: #ffff00;
+        color: #ffff00!important;
+        line-height: 2;
     }
     .blog__child .blog__content .content h3 span, .blog__child .blog__content .content h3  {
         font-size: 20px!important;
         font-weight: bold;
-        color: rgba(255, 255, 0,0.7);
+        color: rgba(255, 255, 0,0.7) !important;
+        line-height: 1.8;
     }
 
     .blog__child .blog__content .content a {
@@ -1174,7 +1177,7 @@
         margin-bottom: 0;
         font-size: 30px;
         letter-spacing: 0;
-        font-family: 'Montserrat', sans-serif;
+
         text-align: center;
     }
 
@@ -1194,7 +1197,7 @@
     .blog__child .other__blogs .text-time {
         margin-left: 10px;
         font-size: 16px;
-        font-family: 'Open Sans', sans-serif;
+
         color: #6E6E75;
     }
 
@@ -1221,13 +1224,13 @@
         transition: background-color .3s,border .3s;
         line-height: 1.5;
         font-weight: 700;
-        font-family: 'Montserrat', sans-serif;
+
     }
 
     .blog__child .other__blogs .card-text {
         color: #1F1F20;
         font-size: 14px;
-        font-family: 'Open Sans', sans-serif;
+
     }
     .blog__child .img__child {
         width: 100%;
@@ -1348,7 +1351,7 @@
         font-size: 30px;
         margin-bottom: 30px;
         font-weight: 700;
-        font-family: 'Montserrat', sans-serif;
+
     }
 
     .blog__child .blog__content .blog-avatar {
@@ -1376,17 +1379,19 @@
         margin-bottom: 30px;
         font-size: 18px;
         font-weight: 700;
-        font-family: 'Open Sans', sans-serif;
+
     }
     .blog__child .blog__content .content h2 span, .blog__child .blog__content .content h2  {
         font-size: 22px!important;
         /*font-weight: bold;*/
-        color: #ffff00;
+        color: #ffff00!important;
+        line-height: 1.5;
     }
     .blog__child .blog__content .content h3 span, .blog__child .blog__content .content h3  {
         font-size: 20px!important;
         /*font-weight: bold;*/
-        color: rgba(255, 255, 0,0.7);
+        color: rgba(255, 255, 0,0.7) !important;
+        line-height: 1.5;
     }
 
     .blog__child .blog__content .content a {
@@ -1407,7 +1412,7 @@
         margin-bottom: 0;
         font-size: 30px;
         letter-spacing: 0;
-        font-family: 'Montserrat', sans-serif;
+
         text-align: center;
     }
 
@@ -1427,7 +1432,7 @@
     .blog__child .other__blogs .text-time {
         margin-left: 10px;
         font-size: 16px;
-        font-family: 'Open Sans', sans-serif;
+
         color: #6E6E75;
     }
 
@@ -1457,7 +1462,7 @@
         transition: background-color .3s,border .3s;
         line-height: 1.5;
         font-weight: 700;
-        font-family: 'Montserrat', sans-serif;
+
     }
 
     .blog__child .other__blogs .card-img {
@@ -1498,4 +1503,7 @@
 }
 .blog__content {
     text-align: justify;
+}
+#post_same_cat .global-a-posi {
+    margin-bottom: 0;
 }

@@ -85,6 +85,9 @@ class Search extends Csrf
 
             // tổng kết filter
             $filter = [
+                'join' => [
+                    'users' => 'users.ID = posts.post_author',
+                ],
                 /*
                 'where_in' => array(
                     'posts.post_type' => array(
@@ -125,7 +128,7 @@ class Search extends Csrf
             /*
              * phân trang
              */
-            $totalThread = $this->base_model->select('COUNT(ID) AS c', 'posts', $where, $filter);
+            $totalThread = $this->base_model->select('COUNT(wp_posts.ID) AS c', 'posts', $where, $filter);
             //print_r( $totalThread );
             $totalThread = $totalThread[0]['c'];
             //echo $totalThread . '<br>' . PHP_EOL;

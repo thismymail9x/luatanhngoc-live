@@ -10,7 +10,7 @@ include ADMIN_ROOT_VIEWS . 'posts/add_breadcrumb.php';
 <div class="control-group"> 
 <label class="control-label">Ngôn ngữ</label> 
 <div class="controls"> 
-<?php 
+<?php
 include ADMIN_ROOT_VIEWS . 'posts/change_lang.php'; 
 ?> 
 </div> 
@@ -53,7 +53,7 @@ if ($data['post_name'] != '') {
 </select> 
 </div> 
 </div> 
-<?php 
+<?php
 foreach ($meta_detault as $k => $v) { 
 if ( 
 in_array( 
@@ -142,7 +142,7 @@ include ADMIN_ROOT_VIEWS . 'posts/add_submit.php';
 ?> 
 </form> 
 </div> 
-<?php 
+<?php
 require __DIR__ . '/add_edit_menu_v2.php'; 
 ?> 
 </div> 
@@ -166,7 +166,7 @@ $('.ng-main-content').addClass('loaded');
 }); 
 }); 
 </script> 
-<?php 
+<?php
 $base_model->JSON_echo([ 
 ], [ 
 'preview_url' => $preview_url, 

@@ -52,7 +52,7 @@ if (empty($data)) {
                     }
                     ?>
 
-                        <a href="<?= base_url('/' . $v['post_permalink'] ); ?>" target="_blank">
+                        <a href="<?= base_url('/' . $v['post_permalink'] ); ?>" >
                             <div class="item">
                                 <div class="item__carousel">
                                     <p class="title__post limit-text-3"><?= $v['post_title']; ?></p>
@@ -82,7 +82,7 @@ if (empty($data)) {
             }
             ?>
                 <div class="col-md-3">
-                    <a href="<?= base_url('/' . $v['post_permalink'] ); ?>" target="_blank">
+                    <a href="<?= base_url('/' . $v['post_permalink'] ); ?>" >
                         <div class="item__home-big">
                             <?php
                             $attachments = [$v['post_meta']['image_medium'],$v['post_meta']['image_large'],$v['post_meta']['image']];
@@ -98,11 +98,12 @@ if (empty($data)) {
                                    title="<?= $v['post_title']; ?>"><?= $v['post_title']; ?></p>
                                 <span class="eye-star">
                                         <span title="Tác giả">
+                                             <i style="color: #ffff00" class="fa fa-star"></i>
                                             <?= $v['user_nicename']?>
-                                            <i style="color: #ffff00" class="fa fa-star"></i>
+
                                         </span>
                                         <span title="Lượt xem">
-                                            <?=$v['post_viewed']?> <i class="fa fa-eye"></i>
+                                            <i class="ml-1 fa fa-eye"></i> <?=$v['post_viewed']?>
                                         </span>
                                     </span>
                             </div>
@@ -122,7 +123,7 @@ if (empty($data)) {
                     break;
                 }
                 ?>
-                    <a href="<?= base_url('/' . $v['post_permalink'] ); ?>" target="_blank">
+                    <a href="<?= base_url('/' . $v['post_permalink'] ); ?>" >
                         <div class="item__home-small">
                             <?php
                             $attachments = [$v['post_meta']['image_medium'],$v['post_meta']['image_large'],$v['post_meta']['image']];
@@ -140,11 +141,11 @@ if (empty($data)) {
                             </div>
                             <span class="eye-star">
                                         <span title="Đánh giá">
-                                           <?= $v['post_status']?>
-                                            <i style="color: #ffff00" class="fa fa-star"></i>
+                                             <i style="color: #ffff00" class="fa fa-star"></i>
+                                           <?= $v['user_nicename']?>
                                         </span>
                                         <span title="Lượt xem">
-                                            <?=$v['post_viewed']?> <i class="fa fa-eye"></i>
+                                           <i class="ml-1 fa fa-eye"></i> <?=$v['post_viewed']?>
                                         </span>
                                     </span>
                         </div>
@@ -380,7 +381,7 @@ if (empty($data)) {
 
             foreach ($tags as $key => $tag) { ?>
                 <a title="Danh sách bài viết của thẻ gán" class="badge bg-info"
-                   href="<?php $term_model->the_term_permalink($tag); ?>"> <?php echo $tag['name'] ?></a>
+                   href="<?php $term_model->the_term_permalink($tag); ?>"># <?php echo $tag['name'] ?></a>
                 <?php
             } ?>
         </div>
@@ -713,7 +714,7 @@ if (empty($data)) {
         <img src="<?= base_url() ?>upload/2023/09/lienhe.png" alt="lien-he">
         <div class="page__bottom-item">
             <p>Hãy gửi vấn đề của bạn cho chúng tôi để được hỗ trợ và tư vấn nhanh nhất</p>
-            <button onclick="window.open(url_lien_he, '_blank')" title="Click để tạo liên hệ" role="button" class="button-92">Liên hệ</button>
+            <a  title="Click để tạo liên hệ" role="button" class="button-92">Liên hệ</a>
         </div>
     </div>
 </div>

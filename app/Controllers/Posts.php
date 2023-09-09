@@ -5,6 +5,7 @@ namespace App\Controllers;
 // Libraries
 use App\Libraries\PostType;
 use App\Libraries\TaxonomyType;
+use App\Models\CustomCode;
 
 //
 class Posts extends Csrf
@@ -28,7 +29,6 @@ class Posts extends Csrf
         //echo $id . ' <br>' . PHP_EOL;
         //echo $slug . ' <br>' . PHP_EOL;
         //echo 'post details <br>' . PHP_EOL;
-        //print_r($data);
 
         //
         $this->cache_key = $this->post_model->key_cache($id);
@@ -68,6 +68,8 @@ class Posts extends Csrf
         //$this->post_model->update_views( $data[ 'ID' ] );
 
         //
+//        print_r($data['post_content']);
+//        die('cc');
         $data['post_content'] = $this->replace_content($data['post_content']);
         //print_r( $data );
 
@@ -180,7 +182,7 @@ class Posts extends Csrf
         $parent_data = [];
         if ($data['post_parent'] > 0) {
             $parent_data = $this->base_model->select(
-                '*',
+                '*,users.user_nicename ',
                 'posts',
                 array(
                     // các kiểu điều kiện where
@@ -188,6 +190,9 @@ class Posts extends Csrf
                     'post_status' => PostType::PUBLICITY
                 ),
                 array(
+                    'join' => [
+                        'users' => 'users.ID = posts.post_author',
+                    ],
                     // hiển thị mã SQL để check
                     //'show_query' => 1,
                     // trả về câu query để sử dụng cho mục đích khác
@@ -236,6 +241,10 @@ class Posts extends Csrf
         foreach (REPLACE_CONTENT as $k => $v) {
             $data['post_content'] = str_replace($k, view($v), $data['post_content']);
         }
+
+        $customModel = new CustomCode();
+        $resultConvert =  $customModel->createCategoryArray($data['post_content']);
+        $data['post_content'] =$resultConvert['post_content'];
         $this->teamplate['main'] = view(
             $this->file_view,
             array(
@@ -244,6 +253,7 @@ class Posts extends Csrf
                 'same_cat_data' => $same_cat_data,
                 'seo' => $seo,
                 'data' => $data,
+                'contentCategory' => $resultConvert['category_array'],
             )
         );
 

@@ -21,9 +21,10 @@
 </td>
 <td :data-id="v.main_category_key" :data-taxonomy="taxonomy"  class="each-to-taxonomy">&nbsp;</td>
 <td :class="'post_status post_status-' + v.post_status">{{PostType_arrStatus[v.post_status]}}</td>
-<td width="100" class="text-center align-items-center justify-content-center">
-   <span v-if="v.post_status == draftStatus " class="btn btn-sm btn-primary receivePost">Nhận viết</span>
-    <span title="Tạo note cho bài viết" class="btn btn-sm " data-bs-toggle="modal" :data-whatever="v.post_title" data-bs-target="#noteModal" :data-id="v.ID" ><i class="fa fa-comment"></i></span>
+<td width="120" class="text-center align-items-center justify-content-center">
+   <span v-if="v.post_status == draftStatus " title="Nhận bài viết" :class="'btn btn-sm btn-primary receivePost receivePost_'+v.ID"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></span>
+    <span title="Tạo note cho bài viết" class="btn btn-sm btn-secondary" data-bs-toggle="modal" :data-whatever="v.post_title" data-bs-target="#noteModal" :data-id="v.ID" ><i class="fa fa-comment"></i></span>
+    <span v-if="v.post_status == privateStatus " title="Yêu cầu duyệt bài" :class="'btn btn-sm btn-success sendAccept sendAccept'+v.ID"><i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
 
 </td>
 </tr> 

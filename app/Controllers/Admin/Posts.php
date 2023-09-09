@@ -101,6 +101,7 @@ class Posts extends Admin
         //
         $by_keyword = $this->MY_get('s');
         $post_status = $this->MY_get('post_status');
+        $post_author = $this->MY_get('post_author');
         $by_term_id = $this->MY_get('term_id', 0);
         $by_user_id = $this->MY_get('user_id', 0);
 
@@ -202,12 +203,19 @@ class Posts extends Admin
                 $post_status,
             ];
         }
+        // tìm kiếm theo tác giả
+        if ($post_author != '') {
+            $where[$this->table . '.post_author'] = $post_author;
+        }
         $where_in[$this->table . '.post_status'] = $by_post_status;
 
         // tổng kết filter
         $filter = [
             'where_in' => $where_in,
             'or_like' => $where_or_like,
+            'join'=>[
+                'users' => 'users.ID = ' . $this->table . '.post_author',
+            ],
             // hiển thị mã SQL để check
             //'show_query' => 1,
             // trả về câu query để sử dụng cho mục đích khác
@@ -258,11 +266,12 @@ class Posts extends Admin
             $urlPartPage .= '&term_id=' . $by_term_id;
             $for_action .= '&term_id=' . $by_term_id;
 
-            $filter['join'] = [
+            $filter['join'] = array_merge([
                 'term_relationships' => 'term_relationships.object_id = ' . $this->table . '.ID',
                 'term_taxonomy' => 'term_relationships.term_taxonomy_id = term_taxonomy.term_taxonomy_id',
-            ];
+            ],$filter['join']);
         }
+
         //print_r($where);
         //print_r($filter);
 
@@ -278,7 +287,7 @@ class Posts extends Admin
         /*
          * phân trang
          */
-        $totalThread = $this->base_model->select('COUNT(ID) AS c', $this->table, $where, $filter);
+        $totalThread = $this->base_model->select('COUNT(wp_posts.ID) AS c', $this->table, $where, $filter);
         //print_r( $totalThread );
         $totalThread = $totalThread[0]['c'];
         //print_r( $totalThread );
@@ -336,7 +345,7 @@ class Posts extends Admin
                 ];
             }
             $filter['order_by'] = $order_by;
-            $data = $this->base_model->select('*', $this->table, $where, $filter);
+            $data = $this->base_model->select('posts.*,users.user_nicename', $this->table, $where, $filter);
 
             //
             $data = $this->post_model->list_meta_post($data);
@@ -375,6 +384,27 @@ class Posts extends Admin
             $data = [];
             $pagination = '';
         }
+        $authors = $this->base_model->select(
+            'users.* ',
+            'users',
+            array(
+//                // các kiểu điều kiện where
+//                'ID' => $data['post_parent'],
+//                'post_status' => PostType::PUBLICITY
+            ),
+            array(
+                'join' => [
+                    'posts' => 'users.ID = posts.post_author',
+                ],
+                'group_by'=>['users.ID'],
+                // hiển thị mã SQL để check
+                //'show_query' => 1,
+                // trả về câu query để sử dụng cho mục đích khác
+                //'get_query' => 1,
+                //'offset' => 2,
+//                'limit' => 5
+            )
+        );
 
         //
         $this->teamplate_admin['content'] = view(
@@ -383,6 +413,7 @@ class Posts extends Admin
                 'for_action' => $for_action,
                 'by_post_status' => $by_post_status,
                 'post_status' => $post_status,
+                'post_author' => $post_author,
                 'by_keyword' => $by_keyword,
                 'by_term_id' => $by_term_id,
                 'by_user_id' => $by_user_id,
@@ -391,6 +422,7 @@ class Posts extends Admin
                 'totalThread' => $totalThread,
                 'main_category_key' => $this->main_category_key,
                 'data' => $data,
+                'authors' => $authors,
                 'taxonomy' => $this->taxonomy,
                 'post_type' => $this->post_type,
                 'name_type' => $this->name_type,
@@ -405,8 +437,7 @@ class Posts extends Admin
 
     public function add($ops = [])
     {
-//        print_r($this->session_data);
-//        die('xccvcv');
+
         $id = $this->MY_get('id', 0);
         $auto_update_module = $this->MY_get('auto_update_module', 0);
 
@@ -593,9 +624,10 @@ class Posts extends Admin
                 //
                 $url_next_post = $this->action_update_module($id);
             } else {
+
                 // lấy các bài khác cùng nhóm để xử lý cho tiện -> nhiều khi muốn sửa thì sửa luôn
                 $prev_post = $this->post_model->select_post(0, [
-                    'ID <' => $data['ID'],
+                    'posts.ID <' => $data['ID'],
                     'post_type' => $this->post_type,
                     'lang_key' => $this->lang_key,
                 ], [
@@ -606,19 +638,19 @@ class Posts extends Admin
                             PostType::PENDING,
                         )
                     ),
-                    'order_by' => array(
-                        'menu_order' => 'DESC',
-                        'time_order' => 'DESC',
-                        'ID' => 'ASC'
-                    ),
+//                    'order_by' => array(
+//                        'menu_order' => 'DESC',
+//                        'time_order' => 'DESC',
+//                        'ID' => 'ASC'
+//                    ),
                     //'show_query' => 1,
                     'limit' => 5,
-                ], 'ID, post_title, post_name');
-                //print_r($prev_post);
+                ], 'posts.ID, posts.post_title, posts.post_name');
 
+                //print_r($prev_post);
                 //
                 $next_post = $this->post_model->select_post(0, [
-                    'ID >' => $data['ID'],
+                    'posts.ID >' => $data['ID'],
                     'post_type' => $this->post_type,
                     'lang_key' => $this->lang_key,
                 ], [
@@ -636,7 +668,7 @@ class Posts extends Admin
                     ),
                     //'show_query' => 1,
                     'limit' => 5,
-                ], 'ID, post_title, post_name');
+                ], 'posts.ID, posts.post_title, posts.post_name');
                 //print_r($next_post);
             }
         }
@@ -711,7 +743,7 @@ class Posts extends Admin
         //echo ADMIN_ROOT_VIEWS;
 
         // tạo dữ liệu danh mục của bài viết mục đích dùng để tạo menu
-        $contentAction = $data['post_content'];
+//        $contentAction = $data['post_content'];
 //        $resultCategory = $this->createCategoryArray($contentAction);
 //        $data['post_content'] = $resultCategory['post_content'];
         // dùng để foreah ra danh mục của bài viết
@@ -720,7 +752,7 @@ class Posts extends Admin
 //        foreach (REPLACE_CONTENT as $k => $v) {
 //            $data['post_content'] = str_replace($k, view($v), $data['post_content']);
 //        }
-
+        $data['post_content'] = $this->replace_content($data['post_content']);
         //
         $this->teamplate_admin['content'] = view(
             'admin/' . $this->add_view_path . '/' . $file_view,
@@ -1004,13 +1036,20 @@ class Posts extends Admin
     // xóa (tạm ẩn) 1 bản ghi
     public function delete()
     {
-
+        // phân quyền xóa bài viết
+        if ($this->session_data['userLevel'] != UsersType::ADMIN_LEVEL) {
+            die('Not Permission');
+        }
         return $this->before_delete_restore(PostType::DELETED);
     }
 
     // phục hồi 1 bản ghi
     public function restore()
     {
+        // phân quyền xóa bài viết
+        if ($this->session_data['userLevel'] != UsersType::ADMIN_LEVEL) {
+            die('Not Permission');
+        }
         return $this->before_delete_restore(PostType::DRAFT);
     }
 

@@ -164,7 +164,7 @@ defined('MEMBER_URI') || define('MEMBER_URI', 'admin/posts');
 
 // các keyword để replace content nhanh
 define('REPLACE_CONTENT', array(
-    '^congty' => "ReplaceContent/lien-he.php",
+    '^lienhe' => "ReplaceContent/lien-he.php",
     '^sdt' => "ReplaceContent/sdt.php",
     '^email' => "ReplaceContent/email.php",
     '^seo' => "ReplaceContent/seo.php"
