@@ -24,7 +24,6 @@ class Sitemap extends Csrf
             header($pcol . ' 404 Not Found');
             die('ERROR ' . __LINE__ . '! Sitemap not available because site not public...');
         }
-
         // định dạng ngày tháng
         $this->sitemap_date_format = 'c';
         $this->sitemap_current_time = date($this->sitemap_date_format, time());
@@ -83,7 +82,6 @@ class Sitemap extends Csrf
 
         // manual -> chuẩn hơn trong trường hợp không có bài viết tương ứng thì sitemap không được kích hoạt
         $get_list_sitemap .= $this->WGR_echo_sitemap_node($this->web_link . 'sitemap/tags', $this->sitemap_current_time);
-
 
         /*
          * sitemap cho phần bài viết
@@ -354,13 +352,13 @@ class Sitemap extends Csrf
     //
     private function WGR_echo_sitemap_css()
     {
+
         header("Content-type: text/xml");
         //die( __CLASS__ . ':' . __LINE__ );
 
         //
         $main_sitemap_xsl = PUBLIC_HTML_PATH . 'public/css/main-sitemap.xsl';
         $cache_sitemap_xsl = PUBLIC_HTML_PATH . 'public/upload/main-sitemap.xsl';
-
         // thay thế nội dung trong sitemap thành của partner
         if ($this->base_model->scache(__FUNCTION__) === NULL) {
             $c = file_get_contents($main_sitemap_xsl, 1);
@@ -384,6 +382,7 @@ class Sitemap extends Csrf
             //
             $this->base_model->scache(__FUNCTION__, time(), 3600);
         }
+
 
         //
         echo $this->tmp(file_get_contents(__DIR__ . '/sitemap/css.xml', 1), [
