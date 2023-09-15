@@ -1,6 +1,7 @@
 <?php 
 use App\Libraries\PostType; 
 use App\Libraries\UsersType;
+$session = new \App\Models\Session();
 $base_model->add_css('admin/css/' . $post_type . '.css');
 include ADMIN_ROOT_VIEWS . 'posts/add_breadcrumb.php';
 ?> 
@@ -57,7 +58,7 @@ if ($data['ID'] > 0) {
 <div class="control-group control-group-post_content"> 
 <label class="control-label">Nội dung</label> 
 <div class="controls f80"> 
-<textarea id="Resolution" rows="30" data-height="<?php echo $post_type == PostType::ADS ? '250' : '550'; ?>" class="ckeditor auto-ckeditor" placeholder="Nhập thông tin chi tiết..." name="data[post_content]"><?php echo $data['post_content']; ?></textarea> 
+<textarea id="postContent" rows="30" data-height="<?php echo $post_type == PostType::ADS ? '250' : '550'; ?>" class="ckeditor auto-ckeditor" placeholder="Nhập thông tin chi tiết..." name="data[post_content]"><?php echo $data['post_content']; ?></textarea>
 </div> 
 </div> 
 <div class="control-group"> 
@@ -136,7 +137,7 @@ continue;
 } ?> 
 <div class="control-group post_meta_<?php echo $k; ?>"> 
 <label for="post_meta_<?php echo $k; ?>" class="control-label"> 
-<?php echo $v; ?> 
+<?php echo implode(" ", array_slice(explode(" ", $v), 0, 4)); ?>
 </label> 
 <div class="controls"> 
 <?php 
@@ -282,4 +283,52 @@ $base_model->adds_js([
 'admin/js/posts_add.js', 
 'admin/js/' . $post_type . '.js', 
 'admin/js/' . $post_type . '_add.js', 
-]);
+]); ?>
+<script type="text/javascript">
+    <?php if ($session->MY_session('deleteLocalStorage')) { ?>
+    // Kiểm tra xem key cụ thể có tồn tại trong localStorage không
+    if (localStorage.getItem('post_content')) {
+        // Nếu tồn tại, xóa key đó khỏi localStorage
+        localStorage.removeItem('post_content');
+    }
+    // xóa cả key local storage của tiny_mce tự động tạo
+    // Lấy danh sách tất cả các key trong localStorage
+    var keysToRemove = [];
+    for (var i = 0; i < localStorage.length; i++) {
+        var key = localStorage.key(i);
+        // Kiểm tra nếu key bắt đầu bằng "tinymce-autosave-"
+        if (key.startsWith("tinymce-autosave-")) {
+            keysToRemove.push(key);
+        }
+    }
+
+    // Xóa các key có đoạn đầu "tinymce-autosave-"
+    keysToRemove.forEach(function(key) {
+        localStorage.removeItem(key);
+    });
+
+
+    <?php }
+    // xóa session
+    unset($_SESSION['deleteLocalStorage']);
+    ?>
+    // hiển thị dữ liệu soạn dở tạo mới
+    document.addEventListener("DOMContentLoaded", function (event) {
+        // lưu content ở bài viết admin
+        var postContent = localStorage.getItem('post_content');
+        if (postContent) {
+            // Nếu người dùng chọn OK, tiến hành xử lý hành động
+            setTimeout(() => {
+                var editor = tinymce.get('postContent');
+                if (editor) {
+                    let result = confirm("Có dữ liệu đang soạn dở bạn có muốn khôi phục không?");
+                    if (result) {
+                        tinymce.get('postContent').setContent(postContent);
+                    }
+                }
+            }, 1000);
+
+        }
+    });
+</script>
+

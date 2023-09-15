@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 echo $taxonomy_slider; 
  
 if ( 
@@ -17,8 +18,9 @@ $base_model->adds_js([
 'cdn' => CDN_BASE_URL, 
 ], [ 
 'defer' 
-]); 
-} 
+]);
+
+}
 else { 
 if ($debug_enable === true) { 
 echo '<div class="wgr-view-path">' . str_replace(PUBLIC_HTML_PATH, '', __DIR__ . '/term_view.php') . '</div>'; 

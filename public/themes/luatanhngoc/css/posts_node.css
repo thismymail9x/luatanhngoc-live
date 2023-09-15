@@ -148,7 +148,7 @@
         background-size: 100% 100%;
         height: 24px;
         width: 20px;
-        background-image: url("../../images/home/calendar.svg");
+         background-image: url("../../../upload/2023/09/calendar.svg");
     }
 
     .blog__child .blog__content .create-time {
@@ -245,7 +245,7 @@
         background-size: 100% 100%;
         height: 24px;
         width: 20px;
-        background-image: url("../../images/home/calendar.svg");
+         background-image: url("../../../upload/2023/09/calendar.svg");
     }
 
     .blog__child .other__blogs .create-time {
@@ -384,7 +384,7 @@
         background-size: 100% 100%;
         height: 24px;
         width: 20px;
-        background-image: url("../../images/home/calendar.svg");
+         background-image: url("../../../upload/2023/09/calendar.svg");
     }
 
     .blog__child .blog__content .create-time {
@@ -481,7 +481,7 @@
         background-size: 100% 100%;
         height: 24px;
         width: 20px;
-        background-image: url("../../images/home/calendar.svg");
+         background-image: url("../../../upload/2023/09/calendar.svg");
     }
 
     .blog__child .other__blogs .create-time {
@@ -622,7 +622,7 @@
         background-size: 100% 100%;
         height: 24px;
         width: 20px;
-        background-image: url("../../images/home/calendar.svg");
+         background-image: url("../../../upload/2023/09/calendar.svg");
     }
 
     .blog__child .blog__content .create-time {
@@ -719,7 +719,7 @@
         background-size: 100% 100%;
         height: 24px;
         width: 20px;
-        background-image: url("../../images/home/calendar.svg");
+         background-image: url("../../../upload/2023/09/calendar.svg");
     }
 
     .blog__child .other__blogs .create-time {
@@ -833,6 +833,7 @@
     /*======*/
     .blog__content img {
         width: 100%;
+        height: auto;
     }
     .blog__child .blog__breadcrumb {
         border-top: 1px solid #e6e6e6;
@@ -860,7 +861,7 @@
         background-size: 100% 100%;
         height: 24px;
         width: 20px;
-        background-image: url("../../images/home/calendar.svg");
+         background-image: url("../../../upload/2023/09/calendar.svg");
     }
 
     .blog__child .blog__content .create-time {
@@ -953,7 +954,7 @@
         background-size: 100% 100%;
         height: 24px;
         width: 20px;
-        background-image: url("../../images/home/calendar.svg");
+         background-image: url("../../../upload/2023/09/calendar.svg");
     }
 
     .blog__child .other__blogs .create-time {
@@ -1093,7 +1094,7 @@
         background-size: 100% 100%;
         height: 24px;
         width: 20px;
-        background-image: url("../../images/home/calendar.svg");
+         background-image: url("../../../upload/2023/09/calendar.svg");
     }
 
     .blog__child .blog__content .create-time {
@@ -1187,7 +1188,7 @@
         background-size: 100% 100%;
         height: 24px;
         width: 20px;
-        background-image: url("../../images/home/calendar.svg");
+         background-image: url("../../../upload/2023/09/calendar.svg");
     }
 
     .blog__child .other__blogs .create-time {
@@ -1263,15 +1264,16 @@
         color: #ffff00;
         margin-bottom: 4px;
         margin-top: 4px;
-        font-size: 18px;
+        font-size: 90%;
+        /*font-size: 18px;*/
     }
     .menuPost .children {
         color: rgba(255, 193, 7,.8);
         margin-bottom: 4px;
         margin-top: 4px;
         padding-left: 16px;
-
-        font-size: 16px;
+        font-size: 90%;
+        /*font-size: 16px;*/
     }
     .menuPost .contentCategory .item-bottom {
         max-height: 0;
@@ -1331,7 +1333,7 @@
         background-size: 100% 100%;
         height: 24px;
         width: 20px;
-        background-image: url("../../images/home/calendar.svg");
+         background-image: url("../../../upload/2023/09/calendar.svg");
     }
 
     .blog__child .blog__content .create-time {
@@ -1422,7 +1424,7 @@
         background-size: 100% 100%;
         height: 24px;
         width: 20px;
-        background-image: url("../../images/home/calendar.svg");
+        background-image: url("../../../upload/2023/09/calendar.svg");
     }
 
     .blog__child .other__blogs .create-time {

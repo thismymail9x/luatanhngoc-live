@@ -33,6 +33,7 @@
     }
 
     .page__bottom .page__bottom-item .button-92 {
+        display: inline-block;
         font-weight: bold;
         font-size: 20px;
         margin: 0;
@@ -351,7 +352,7 @@
     }
 
     .page__bottom .page__bottom-item .button-92 {
-        font-weight: bold;
+        display: inline-block;
         font-size: 20px;
         margin: 0;
         cursor: pointer;
@@ -664,7 +665,7 @@
     }
 
     .page__bottom .page__bottom-item .button-92 {
-        font-weight: bold;
+        display: inline-block;
         font-size: 25px;
         margin: 0;
         cursor: pointer;
@@ -969,7 +970,7 @@
     }
 
     .page__bottom .page__bottom-item .button-92 {
-        font-weight: bold;
+        display: inline-block;
         font-size: 25px;
         margin: 0;
         cursor: pointer;
@@ -1274,7 +1275,7 @@
     }
 
     .page__bottom .page__bottom-item .button-92 {
-        font-weight: bold;
+        display: inline-block;
         font-size: 2rem;
         margin: 0;
         cursor: pointer;
@@ -1495,7 +1496,7 @@
     }
 
     .list__post .content__item-big .text__time {
-        font-size: 11px;
+        font-size: 12px;
     }
 
     .list__post .content__item-big .text__title {
@@ -1586,7 +1587,7 @@
     }
 
     .page__bottom .page__bottom-item .button-92 {
-        font-weight: bold;
+        display: inline-block;
         font-size: 2rem;
         margin: 0;
         cursor: pointer;
@@ -1670,8 +1671,8 @@
     }
 
     .page__bottom {
-        height: 550px;
-        width: 1000px;
+        /*height: 550px;*/
+        /*width: 1000px;*/
         position: relative;
     }
 
@@ -1686,7 +1687,7 @@
         width: 500px;
         position: absolute;
         top: 215px;
-        right: 0;
+        right: 45px;
 
     }
 
@@ -1761,18 +1762,20 @@
 
     .list__post .owl-theme .owl-nav .owl-prev {
         left: 10px;
-        font-size: 26px;
+        font-size: 38px;
         position: absolute;
         top: 40%;
         color: rgba(204, 179, 255, 0.7);
+        padding: 0 12px!important;
     }
 
     .list__post .owl-theme .owl-nav .owl-next {
         right: 10px;
-        font-size: 26px;
+        font-size: 38px;
         position: absolute;
         top: 40%;
         color: rgba(204, 179, 255, 0.7);
+        padding: 0 12px!important;
     }
 
     .list__post .item__home-big {
@@ -1807,7 +1810,7 @@
     }
 
     .list__post .content__item-big .text__time {
-        font-size: 10px;
+        font-size: 12px;
     }
 
     .posts-list-desc {
@@ -1859,14 +1862,32 @@
     }
 
     .list__post .item__home-small .content__item-small .text__time {
-        font-size: 10px;
+        font-size: 12px;
     }
 
     .list__post .item__home-small .content__item-small .text__title {
         font-weight: 600;
     }
 }
+.posts-list-desc {
+    text-align: justify;
+}
+.blog__content img {
+    height: auto;
+}
+@media screen and (max-width: 768px) {
+    #contentPost table,#contentPost th, #contentPost td {
+        width: auto!important;
+    }
+}
+#contentPost table{
+    border-collapse: collapse!important; /* Để nối các đường viền thành một đường liền */
+    width: 100% !important; /* Đảm bảo bảng rộng 100% của phần tử cha */
+}
 
+#contentPost table,#contentPost th, #contentPost td {
+    border: 1px solid #fff!important; /* Thêm đường viền 1px với màu đen cho table, th, và td */
+}
 .fz-13 {
     font-size: 13px;
 }
@@ -1942,9 +1963,16 @@ button:focus {
     /*background-image: url("../../images/anhngoc/upper-gradient.svg");*/
     background-repeat: no-repeat;
     background-size: 55%;
-    color: #e6e6e6;
+    /*color: rgb(255 255 255);*/
+    color: rgb(186 217 252);
 }
-
+.title__post, .text__title,.posts-list-title *,.title, h1,.title-news,.bg-info {
+    color: rgb(255 255 255);
+}
+::selection {
+    background-color: #ffff66; /* Màu nền khi bôi đen */
+    color: black; /* Màu chữ khi bôi đen */
+}
 .select2-container, .selection, .select2-selection, .select2-selection__clear,
 .select2-selection__clear span, .select2-selection__choice, .select2-selection__choice__remove,
 .select2-selection__choice__remove span, .select2-selection__choice__display, .select2-results, .select2-results__options,

@@ -38,10 +38,11 @@ class Category extends Home
         }
 
         $customModel = new CustomCode();
-        $resultConvert =  $customModel->createCategoryArray($data['description']);
-        $data['description'] = $resultConvert['post_content'];
-        $data['pElement'] =  $customModel->getPElement($data['description']);
-        $data['contentCategory'] = $resultConvert['category_array'];
+        $dataConvert =  $customModel->processContent($data['description']);
+        $data['pElement'] =  $dataConvert['pElement'];
+        $data['description'] =  $dataConvert['content'];
+        $data['contentCategory'] = $dataConvert['category_array'];
+
         //
         if (!empty($data)) {
             return $this->category($data, PostType::POST, TaxonomyType::POSTS, 'category_view', [

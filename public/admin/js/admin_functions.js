@@ -583,6 +583,27 @@ function WGR_load_textediter(for_id, ops) {
 			ed.on('keyup', function (e) {
 				localStorage.setItem('post_content', ed.getContent());
 			});
+			// lưu dữ liệu bài viết vào local storage ( nhằm mục đích lưu lại dữ liệu đang soạn dở, chỉ áp dụng cho bài post
+			if (ed.id == 'postContent'){
+				var scriptLoader = new tinymce.dom.ScriptLoader();
+				//scriptLoader.add(base);
+				scriptLoader.loadQueue();
+				// lưu dữ liệu vào local storage
+				ed.on('keyup', function (e) {
+					localStorage.setItem('post_content', ed.getContent());
+				});
+			}
+
+			if (ed.id == 'postContentPublic'){
+				var scriptLoader = new tinymce.dom.ScriptLoader();
+				//scriptLoader.add(base);
+				scriptLoader.loadQueue();
+				// lưu dữ liệu vào local storage
+				ed.on('keyup', function (e) {
+					localStorage.setItem('post_content_public', ed.getContent());
+				});
+			}
+
 		},
 		init_instance_callback: function (editor) {
 			editor.addShortcut("ctrl+s", "Custom Ctrl+S", "custom_ctrl_s");

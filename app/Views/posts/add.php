@@ -1,5 +1,5 @@
 <?php
-
+$session = new \App\Models\Session();
 use App\Libraries\PostType;
 use App\Libraries\UsersType;
 //
@@ -62,7 +62,7 @@ $base_model->add_css(  'themes/' . THEMENAME . '/css/post_list.css');
                         <div class="control-group control-group-post_content">
                             <label class="control-label">Nội dung</label>
                             <div class="controls ">
-                        <textarea id="Resolution" rows="20"
+                        <textarea id="postContentPublic" rows="20"
                                   data-height="550"
                                   class="ckeditor auto-ckeditor" placeholder="Nhập thông tin chi tiết..."
                                   name="data[post_content]"><?php echo $data['post_content']; ?></textarea>
@@ -113,7 +113,7 @@ $base_model->add_css(  'themes/' . THEMENAME . '/css/post_list.css');
                             } ?>
                             <div class="control-group post_meta_<?php echo $k; ?>">
                                 <label for="post_meta_<?php echo $k; ?>" class="control-label">
-                                    <?php echo $v; ?>
+                                    <?php echo implode(" ", array_slice(explode(" ", $v), 0, 4)); ?>
                                 </label>
                                 <div class="controls">
                                     <?php
@@ -180,7 +180,6 @@ $base_model->add_css(  'themes/' . THEMENAME . '/css/post_list.css');
                 </div>
             </div>
         </div>
-
     </div>
     <br>
 </div>
@@ -227,3 +226,52 @@ $base_model->adds_js([
 ]);
 
 ?>
+<script type="text/javascript">
+    <?php if ($session->MY_session('deleteLocalStorage')) { ?>
+    // Kiểm tra xem key cụ thể có tồn tại trong localStorage không
+    if (localStorage.getItem('post_content_public')) {
+        // Nếu tồn tại, xóa key đó khỏi localStorage
+        localStorage.removeItem('post_content_public');
+    }
+    // xóa cả key local storage của tiny_mce tự động tạo
+    // Lấy danh sách tất cả các key trong localStorage
+    var keysToRemove = [];
+    for (var i = 0; i < localStorage.length; i++) {
+        var key = localStorage.key(i);
+        // Kiểm tra nếu key bắt đầu bằng "tinymce-autosave-"
+        if (key.startsWith("tinymce-autosave-")) {
+            keysToRemove.push(key);
+        }
+    }
+
+    // Xóa các key có đoạn đầu "tinymce-autosave-"
+    keysToRemove.forEach(function(key) {
+        localStorage.removeItem(key);
+    });
+
+
+    <?php }
+    // xóa session
+    unset($_SESSION['deleteLocalStorage']);
+    ?>
+
+    // hiển thị dữ liệu soạn dở tạo mới
+    document.addEventListener("DOMContentLoaded", function (event) {
+        // lưu content ở bài viết frontend
+        var postContentPublic = localStorage.getItem('post_content_public');
+        if (postContentPublic) {
+            // Nếu người dùng chọn OK, tiến hành xử lý hành động
+            setTimeout(() => {
+                var editorPublic = tinymce.get('postContentPublic');
+                if (editorPublic) {
+                    let resultPublic = confirm("Có dữ liệu đang soạn dở bạn có muốn khôi phục không?");
+                    if (resultPublic) {
+                        tinymce.get('postContentPublic').setContent(postContentPublic);
+                    }
+                }
+            }, 1000);
+
+        }
+    });
+</script>
+

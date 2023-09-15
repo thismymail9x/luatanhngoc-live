@@ -43,7 +43,9 @@ function each_to_group_taxonomy() {
 
 //
 $(document).ready(function () {
-
+    // load giá trị selected
+    WGR_set_prop_for_select("#salary_type");
+    WGR_set_prop_for_select("#post_status");
     //
     each_to_group_taxonomy();
 
@@ -146,6 +148,50 @@ $(document).ready(function () {
             }
 
     });
+
+    /* hàm duyệt cập nhật lại kpi của bài viết*/
+    $(".changePostSalary").click(function () {
+        var a = $(this).attr("data-id") || "";
+        var post = $(this).attr("data-title") || "";
+        if (confirm('Xác nhận cập nhật lại KPI bài viết: '+ post)){
+            if (a != "") {
+                var v = $(this).val();
+                $(this).addClass("pending").val(v);
+
+                //
+                jQuery.ajax({
+                    type: "POST",
+                    url: "admin/asjaxs/post_success",
+                    dataType: "json",
+                    data: {
+                        id: a * 1,
+                        task:'calculateKPI'
+                    },
+                    timeout: 33 * 1000,
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        jQueryAjaxError(
+                            jqXHR,
+                            textStatus,
+                            errorThrown,
+                            new Error().stack
+                        );
+                    },
+                    success: function (data) {
+                        if (typeof data.error != "undefined") {
+                            WGR_alert(data.error, "error");
+                        } else {
+                            WGR_alert("Cập nhật KPI thành công");
+                            $('.changePostSalary_'+ a).hide();
+                        }
+                        $(".changePostStatus").removeClass("pending");
+                    },
+                });
+
+            }
+        }
+
+    });
+
     /* hàm check các thông số bài viết tự động*/
     $(".checkPostInformation").click(function () {
         alert('Đang phát triển')

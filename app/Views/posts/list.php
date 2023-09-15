@@ -39,7 +39,7 @@ $base_model->add_css(  'themes/' . THEMENAME . '/css/post_list.css');
                                     </select>
                                 </div>
                                 <div class="lf f25">
-                                    <select class="custom_element" name="post_status" :data-select="post_status"
+                                    <select class="custom_element" id="post_status" name="post_status" :data-select="post_status"
                                             onChange="document.frm_admin_search_controller.submit();">
                                         <option value="">- Trạng thái
                                             <?php echo $name_type; ?> -
@@ -49,6 +49,26 @@ $base_model->add_css(  'themes/' . THEMENAME . '/css/post_list.css');
                                 </div>
                                 <div class="lf f20">
                                     <button type="submit" class="btn btn-success custom_element_small"><i class="fa fa-search"></i> Tìm kiếm</button>
+                                </div>
+                            </div>
+                            <div class="cf mt-2">
+                                <div class="lf f25 mr-3">
+                                    <input autocomplete="off" title="Ngày duyệt từ" type="date" id="startDate" class="form-control custom_element  mb-0"
+                                           name="start_date"
+                                           placeholder="Ngày duyệt từ" value="<?= @$start_date ?>">
+                                </div>
+                                <div class="lf f30">
+                                    <input autocomplete="off" title="Ngày duyệt đến" type="date" id="endDate" class="form-control  custom_element  mb-0"
+                                           name="end_date"
+                                           placeholder="Ngày duyệt đến" value="<?= @$end_date ?>">
+                                </div>
+                                <div class="lf f25">
+                                    <select onChange="document.frm_admin_search_controller.submit();" class="form-control custom_element" id="salary_type" name="salary_type" :data-select="salary_type">
+                                        <option value="">- Kiểu KPI
+                                            -
+                                        </option>
+                                        <option :value="k" v-for="(v, k) in SALARY_TYPE">{{v}}</option>
+                                    </select>
                                 </div>
                             </div>
                         </form>
@@ -101,19 +121,26 @@ $base_model->JSON_parse(
     [
         'json_data' => $data,
         'PostType_arrStatus' => $post_arr_status,
-        'UserType'=>\App\Libraries\UsersType::typeList()
+        'UserType'=>\App\Libraries\UsersType::typeList(),
+        'SALARY_TYPE' => SALARY_TYPE,
     ]
 );
 ?>
     <script>
         WGR_vuejs('#app', {
             post_type: '<?php echo $post_type; ?>',
+            currentPage : '<?php echo $currentPage ; ?>',
+            post_per_page : '<?php echo $post_per_page; ?>',
             post_status: '<?php echo $post_status; ?>',
+            salary_type: '<?php echo $salary_type; ?>',
             taxonomy: '<?php echo $taxonomy; ?>',
             controller_slug: '<?php echo $controller_slug; ?>',
             for_action: '<?php echo $for_action; ?>',
             PostType_DELETED: '<?php echo PostType::DELETED; ?>',
             PostType_arrStatus: PostType_arrStatus,
+            draftStatus: draftStatus,
+            SALARY_TYPE: SALARY_TYPE,
+            privateStatus: privateStatus,
             data: json_data,
         });
     </script>

@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Libraries\CommentType;
+
 class Comment extends EbModel
 {
     public $table = 'comments';
@@ -58,15 +60,12 @@ class Comment extends EbModel
                 $data[$k] = $v;
             }
         }
-
         //
         $data = $this->sync_comment_data($data);
         //print_r($data);
         //die(__CLASS__ . ':' . __LINE__);
-
         //
         $result_id = $this->base_model->insert($this->table, $data, true);
-
         //
         if ($result_id !== false) {
             // tính lại tổng số comment cho bài viết

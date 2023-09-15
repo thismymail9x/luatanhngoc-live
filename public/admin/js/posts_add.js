@@ -11,6 +11,7 @@ function set_new_post_url(url, post_name) {
 }
 
 function after_update_post() {
+	window.location.reload();
 	if (typeof reload_preview_if_isset == "function") {
 		reload_preview_if_isset();
 	}

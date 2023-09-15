@@ -167,7 +167,8 @@ define('REPLACE_CONTENT', array(
     '^lienhe' => "ReplaceContent/lien-he.php",
     '^sdt' => "ReplaceContent/sdt.php",
     '^email' => "ReplaceContent/email.php",
-    '^seo' => "ReplaceContent/seo.php"
+    '^seo' => "ReplaceContent/seo.php",
+    '^nam' => "ReplaceContent/year.php"
 ));
 // website của nhà phát triển
 defined('PARTNER_WEBSITE') || define('PARTNER_WEBSITE', 'https://luatanhngoc.vn/');
@@ -323,7 +324,7 @@ define('WGR_TERM_VIEW', WGR_TABLE_PREFIX . 'zzz_v_terms');
 define('WGR_POST_VIEW', WGR_TABLE_PREFIX . 'zzz_v_posts');
 
 // Một số thư mục chỉ cho phép 1 số định dạng file được phép truy cập
-defined('HTACCESSS_ALLOW') || define('HTACCESSS_ALLOW', 'zip|xlsx|xls|mp3|css|js|map|htm?l|xml|json|webmanifest|tff|eot|woff?|gif|jpe?g|tiff?|png|webp|bmp|ico|svg');
+defined('HTACCESSS_ALLOW') || define('HTACCESSS_ALLOW', 'zip|xlsx|xls|mp3|css|js|map|htm?l|xml|json|webmanifest|tff|eot|woff?|gif|jpe?g|tiff?|png|webp|bmp|ico|svg|otf|OTF|xsl');
 
 // https://scotthelme.co.uk/content-security-policy-an-introduction/
 // Content-Security-Policy

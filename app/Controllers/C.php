@@ -3,14 +3,19 @@
 namespace App\Controllers;
 
 // Libraries
+use App\Libraries\CommentType;
 use App\Libraries\LanguageCost;
 use App\Libraries\PostType;
 use App\Libraries\TaxonomyType;
 use App\Libraries\UsersType;
+use App\Models\CustomCode;
+use App\Models\User;
 
 //
 class C extends Home
 {
+    protected $userModel = '';
+    protected $customModel = '';
     // các thuộc tính viết bài
     protected $table = 'posts';
     protected $metaTable = 'postmeta';
@@ -45,6 +50,8 @@ class C extends Home
         // chỉnh lại bảng select của model
         $this->post_model->table = $this->table;
         $this->post_model->metaTable = $this->metaTable;
+        $this->customModel = new CustomCode();
+        $this->userModel = new User();
     }
 
     public function custom_taxonomy($taxonomy_type, $id, $slug = '', $page_name = '', $page_num = 1)
@@ -145,7 +152,7 @@ class C extends Home
         $this->teamplate['breadcrumb'] = view(
             'breadcrumb_view',
             array(
-                'breadcrumb' => $this->breadcrumb
+                'breadcrumb' => ['<li><a href="c/user_add">Tạo mới bài viết</a></li>']
             )
         );
         $this->teamplate['main'] = view(
@@ -190,6 +197,7 @@ class C extends Home
         $data['post_status'] = PostType::PRIVATELY;
         // random lượt xem bài viết
         $data['post_viewed'] = rand(1000, 5000);
+        $data['post_success'] = date('Y-m-d H:i:s');
 
         $result_id = $this->post_model->insert_post($data, [], true);
         if (is_array($result_id) && isset($result_id['error'])) {
@@ -198,6 +206,8 @@ class C extends Home
 
         if ($result_id > 0) {
             // tạo thành công thì xuất thông báo, và chuyển đến trang danh sách bài viết
+            // tạo session để xóa dữ liệu tự động lưu của tinymce
+            $this->MY_session('deleteLocalStorage',true);
             $this->base_model->alert('Tạo bài viết thành công!', $this->get_user_permalink($result_id));
         }
         $this->base_model->alert('Lỗi tạo bài viết mới', 'error');
@@ -241,10 +251,9 @@ class C extends Home
 
     protected function update($id)
     {
+
         $this->updating($id);
         $data = $this->MY_post('data');
-        // hungtd add logic là với quyền Tác giả bài viết sẽ ở trạng thái chờ duyệt
-        $data['post_status'] = PostType::PENDING;
         // nạp lại trang nếu có đổi slug duplicate
         if (
             // url vẫn còn duplicate
@@ -286,7 +295,6 @@ class C extends Home
         $data = $this->MY_post('data');
         //print_r( $data );
         //print_r( $_POST );
-
         // nhận dữ liệu default từ javascript khởi tạo và truyền vào trong quá trình submit
         if (isset($data['default_post_data'])) {
             foreach ($data['default_post_data'] as $k => $v) {
@@ -323,6 +331,8 @@ class C extends Home
         if ($result_id !== true && is_array($result_id) && isset($result_id['error'])) {
             $this->base_model->alert($result_id['error'], 'error');
         }
+        // tạo session để xóa dữ liệu tự động lưu của tinymce
+        $this->MY_session('deleteLocalStorage',true);
 
         // dọn dẹp cache liên quan đến post này -> reset cache
         $this->cleanup_cache($this->post_model->key_cache($id));
@@ -352,7 +362,10 @@ class C extends Home
         $by_keyword = $this->MY_get('s');
         $post_status = $this->MY_get('post_status');
         $by_term_id = $this->MY_get('term_id', 0);
-
+        // params truyền riêng để tìm kiếm phần kpi
+        $start_date = $this->MY_get('start_date', '');
+        $end_date = $this->MY_get('end_date', '');
+        $salary_type = $this->MY_get('salary_type', '');
         // các kiểu điều kiện where
         if (!isset($ops['where'])) {
             $where = [];
@@ -408,11 +421,25 @@ class C extends Home
             ];
         }
 
+        // tìm kiếm kiểu KPI
+        if ($salary_type != '') {
+            $where[$this->table . '.salary_type'] = $salary_type;
+        }
+        // tìm kiếm theo thời gian duyệt bài
+
+        if ($start_date !='') {
+            $where[$this->table . '.post_success >='] = date('Y-m-d',strtotime($start_date));
+        }
+        if ($end_date !='') {
+            $where[$this->table . '.post_success <='] = date('Y-m-d',strtotime($end_date));
+        }
+
         $where_in[$this->table . '.post_status'] = $by_post_status;
 
         // mặc định sẽ hiển thị bài viết của người ấy tạo hoặc bài viết chưa được phân (để nhận bài)
         $where[$this->table . '.post_author'] = $this->session_data['ID'];
-        if ($post_status == '' && $by_keyword == '' && $by_term_id == 0) {
+        // khi các ko search theo các điều kiện bên dưới thì mới lấy ra kết quả các bài nháp để nhận
+        if ($post_status == '' && $by_keyword == '' && $by_term_id == 0 && $start_date == '' && $end_date == '' && $salary_type == '') {
             $or[$this->table . '.post_status'] = PostType::DRAFT;
         }
         // tổng kết filter
@@ -512,7 +539,6 @@ class C extends Home
             //echo $totalThread . '<br>' . PHP_EOL;
             //echo $totalPage . '<br>' . PHP_EOL;
             $offset = ($page_num - 1) * $post_per_page;
-
             // chạy vòng lặp gán nốt các thông số khác trên url vào phân trang
             $urlPartPage = $this->base_model->auto_add_params($urlPartPage);
 
@@ -547,6 +573,13 @@ class C extends Home
 
             // xử lý dữ liệu cho angularjs
             foreach ($data as $k => $v) {
+                // lấy comment cuối cùng của bài viết
+                $comment = $this->base_model->select('comment_author','comments',['comment_post_ID'=>$v['ID'],'comment_type'=>CommentType::COMMENT],['order_by'=>['comment_date'=>'DESC'],'limit'=>1]);
+                if (!empty($comment)) {
+                    $v['last_comment'] = $comment['comment_author'];
+                } else {
+                    $v['last_comment'] = 0;
+                }
                 // không cần hiển thị nội dung
                 $v['post_content'] = '';
                 $v['post_excerpt'] = '';
@@ -586,6 +619,7 @@ class C extends Home
                 'breadcrumb' => $this->breadcrumb
             )
         );
+//
         $this->teamplate['main'] = view(
             'posts/list',
             array(
@@ -593,6 +627,11 @@ class C extends Home
                 'for_action' => $for_action,
                 'by_post_status' => $by_post_status,
                 'post_status' => $post_status,
+                'currentPage' => $page_num,
+                'post_per_page' => $post_per_page,
+                'salary_type' => $salary_type,
+                'start_date' => $start_date,
+                'end_date' => $end_date,
                 'by_keyword' => $by_keyword,
                 'by_term_id' => $by_term_id,
                 'controller_slug' => $this->controller_slug,
@@ -685,7 +724,8 @@ class C extends Home
         } else {
             $this->post_model->update_post($id, [
                 'post_status'=>PostType::PRIVATELY,
-                'post_author'=>$this->session_data['ID']
+                'post_author'=>$this->session_data['ID'],
+                'post_success'=>date('Y-m-d H:i:s')
             ], [
             ]);
             $this->result_json_type([
@@ -724,6 +764,80 @@ class C extends Home
 
     public function statistic()
     {
-        return redirect()->to(base_url('/c/lists'));
+        $start_date = $this->MY_get('start_date');
+        $end_date = $this->MY_get('end_date');
+        // các kiểu điều kiện where
+        // theo ngày bắt đầu duyệt bài
+        if (!isset($start_date) || $start_date == '') {
+            $where['post_success >='] = date('Y-m-01');
+            $start_date = date('Y-m-01');
+        } else {
+            $where['post_success >='] = date('Y-m-d', strtotime($start_date));
+        }
+        // theo ngày kết thúc duyệt bài
+        if (!isset($end_date) || $end_date == '') {
+            $where['post_success <='] = date('Y-m-t');
+            $end_date = date('Y-m-t');
+        } else {
+            $where['post_success <='] = date('Y-m-d', strtotime($end_date));
+        }
+        // mặc định sẽ lấy theo user đang đăng nhập
+        $where['post_author'] = $this->session_data['ID'];
+        // user bị xóa sẽ không lấy nữa
+        $where['user_deleted'] = 0;
+        $where['post_type'] = PostType::POST;
+        $dataPosts = $this->customModel->getDataChart($where);
+        $author = $this->userModel->get_user_by_id($this->session_data['ID']);
+        $totalPost = 0;
+        $public = 0;
+        $nonPublic = 0;
+        $type0 = 0;
+        $type1 = 0;
+        $type2 = 0;
+        $type3 = 0;
+        if (!empty($dataPosts)) {
+            foreach ($dataPosts as $k => $v) {
+                $totalPost += $v['non_public'] + $v['public'];
+                $public += $v['public'];
+                $nonPublic += $v['non_public'];
+                $type0 += $v['type0'];
+                $type1 += $v['type1'];
+                $type2 += $v['type2'];
+                $type3 += $v['type3'];
+            }
+        }
+
+        $salary0 = $type0 * SALARY_TYPE[SALARY_TYPE_0];
+        $salary1 = $type1 * SALARY_TYPE[SALARY_TYPE_1];
+        $salary2 = $type2 * SALARY_TYPE[SALARY_TYPE_2];
+        $salary3 = $type3 * SALARY_TYPE[SALARY_TYPE_3];
+        $salary = $salary0 + $salary1 + $salary2 + $salary3;
+        $this->teamplate['breadcrumb'] = view(
+            'breadcrumb_view',
+            array(
+                'breadcrumb' =>['<li><a href="c/statistic">Thống kê KPI</a></li>']
+            )
+        );
+        $this->teamplate['main'] = view('posts/kpi', array(
+            'seo' => $this->base_model->default_seo('Thống kê KPI', $this->getClassName(__CLASS__) . '/' . __FUNCTION__),
+            'session_data' => $this->session_data,
+            'author' => $author,
+            'dataPosts' => $dataPosts,
+            'totalPost' => $totalPost,
+            'public' => $public,
+            'nonPublic' => $nonPublic,
+            'type0' => $type0,
+            'type1' => $type1,
+            'type2' => $type2,
+            'type3' => $type3,
+            'salary0' => $salary0,
+            'salary1' => $salary1,
+            'salary2' => $salary2,
+            'salary3' => $salary3,
+            'salary' => $salary,
+            'start_date' => $start_date,
+            'end_date' => $end_date,
+        ));
+        return view('layout_view', $this->teamplate);
     }
 }

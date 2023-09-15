@@ -3,6 +3,7 @@
 namespace App\Controllers\Admin;
 
 // Libraries
+use App\Libraries\CommentType;
 use App\Libraries\PostType;
 use App\Libraries\UsersType;
 use App\Libraries\TaxonomyType;
@@ -104,6 +105,10 @@ class Posts extends Admin
         $post_author = $this->MY_get('post_author');
         $by_term_id = $this->MY_get('term_id', 0);
         $by_user_id = $this->MY_get('user_id', 0);
+        // params truyền riêng để tìm kiếm phần kpi
+        $start_date = $this->MY_get('start_date', '');
+        $end_date = $this->MY_get('end_date', '');
+        $salary_type = $this->MY_get('salary_type', '');
 
         // các kiểu điều kiện where
         if (!isset($ops['where'])) {
@@ -207,6 +212,20 @@ class Posts extends Admin
         if ($post_author != '') {
             $where[$this->table . '.post_author'] = $post_author;
         }
+
+        // tìm kiếm kiểu KPI
+        if ($salary_type != '') {
+            $where[$this->table . '.salary_type'] = $salary_type;
+        }
+        // tìm kiếm theo thời gian duyệt bài
+
+        if ($start_date !='') {
+            $where[$this->table . '.post_success >='] = date('Y-m-d',strtotime($start_date));
+        }
+        if ($end_date !='') {
+            $where[$this->table . '.post_success <='] = date('Y-m-d',strtotime($end_date));
+        }
+
         $where_in[$this->table . '.post_status'] = $by_post_status;
 
         // tổng kết filter
@@ -353,6 +372,13 @@ class Posts extends Admin
 
             // xử lý dữ liệu cho angularjs
             foreach ($data as $k => $v) {
+                // lấy comment cuối cùng của bài viết
+                $comment = $this->base_model->select('comment_author','comments',['comment_post_ID'=>$v['ID'],'comment_type'=>CommentType::COMMENT],['order_by'=>['comment_date'=>'DESC'],'limit'=>1]);
+               if (!empty($comment)) {
+                   $v['last_comment'] = $comment['comment_author'];
+               } else {
+                   $v['last_comment'] = 0;
+               }
                 // không cần hiển thị nội dung
                 $v['post_content'] = '';
                 $v['post_excerpt'] = '';
@@ -384,6 +410,8 @@ class Posts extends Admin
             $data = [];
             $pagination = '';
         }
+//        print_r($data);
+//        die('cc');
         $authors = $this->base_model->select(
             'users.* ',
             'users',
@@ -414,6 +442,9 @@ class Posts extends Admin
                 'by_post_status' => $by_post_status,
                 'post_status' => $post_status,
                 'post_author' => $post_author,
+                'salary_type' => $salary_type,
+                'start_date' => $start_date,
+                'end_date' => $end_date,
                 'by_keyword' => $by_keyword,
                 'by_term_id' => $by_term_id,
                 'by_user_id' => $by_user_id,
@@ -814,7 +845,10 @@ class Posts extends Admin
 
         //
         if ($result_id > 0) {
+            // tạo session để xóa dữ liệu tự động lưu của tinymce
+            $this->MY_session('deleteLocalStorage',true);
             $this->base_model->alert('', $this->buildAdminPermalink($result_id));
+
         }
         $this->base_model->alert('Lỗi tạo ' . $this->name_type . ' mới', 'error');
     }
@@ -897,15 +931,8 @@ class Posts extends Admin
     protected function update($id)
     {
         $this->updating($id);
-
         //
         $data = $this->MY_post('data');
-        //print_r($data);
-        //print_r( $_POST );
-        // hungtd add logic là với quyền Tác giả bài viết sẽ ở trạng thái chờ duyệt
-        if ($this->session_data['member_type'] == UsersType::AUTHOR) {
-            $data['post_status'] = PostType::PENDING;
-        }
         // nạp lại trang nếu có đổi slug duplicate
         if (
             // url vẫn còn duplicate
@@ -916,6 +943,7 @@ class Posts extends Admin
             // nạp lại trang
             //$this->base_model->alert('', DYNAMIC_BASE_URL . ltrim($_SERVER['REQUEST_URI'], '/'));
             //$this->base_model->alert('', $this->post_model->get_admin_permalink($this->post_type, $id, $this->controller_slug));
+            // tạo session để xóa dữ liệu tự động lưu
             $this->base_model->alert('', $this->buildAdminPermalink($id));
         } else {
             // so sánh url cũ và mới
@@ -930,12 +958,12 @@ class Posts extends Admin
                 ]);
                 //print_r($new_data);
 
-                // -> lấy url mới -> thiết lập lại url ở fronend
+                // -> lấy url mới -> thiết lập lại url ở frontend
                 echo '<script>top.set_new_post_url("' . $this->post_model->update_post_permalink($new_data) . '", "' . $new_data['post_name'] . '");</script>';
             }
         }
-
-        //
+        // tạo session để xóa dữ liệu tự động lưu của tinymce
+        $this->MY_session('deleteLocalStorage',true);
         echo '<script>top.after_update_post();</script>';
 
         //

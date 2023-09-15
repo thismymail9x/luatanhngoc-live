@@ -94,6 +94,7 @@ class UsersType
             $arr[] = 'Posts';
             $arr[] = 'Terms';
             $arr[] = 'Uploads';
+            $arr[] = 'Statisticals';
         }
 
         // biên tập viên -> cho thêm quyền điều khiển thành viên

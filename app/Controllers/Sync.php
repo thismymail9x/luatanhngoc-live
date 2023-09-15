@@ -275,7 +275,7 @@ class Sync extends BaseController
             }
         }
         // hungtd add cố định lấy các thông tin của users
-        $arr_author = ['u.user_nicename','u.display_name','u.avatar'];
+        $arr_author = ['u.user_nicename','u.display_name','u.avatar','u.is_deleted AS user_deleted,u.member_type'];
 
         //print_r( $arr_term_relationships );
 
@@ -293,6 +293,7 @@ class Sync extends BaseController
                     'term_taxonomy t' => 'r.term_taxonomy_id = t.term_taxonomy_id',
                     'users u' => 'u.ID = posts.post_author',
                 ),
+                'group_by'=>['posts.ID'],
                 // hiển thị mã SQL để check
                 //'show_query' => 1,
                 // trả về câu query để sử dụng cho mục đích khác
@@ -304,7 +305,6 @@ class Sync extends BaseController
         //echo $sql . '<br>' . PHP_EOL;
         //
         //return false;
-
         //
         $sql = "CREATE OR REPLACE VIEW " . WGR_POST_VIEW . " AS " . $sql;
         echo $sql . '<br>' . PHP_EOL;
@@ -327,6 +327,7 @@ class Sync extends BaseController
 
         // tạo bảng nếu chưa có
         $this->tbl_webhook_zalooa();
+
         $this->cloneDbTable('posts', 'orders');
         $this->cloneDbTable('options', 'options_deleted');
         $this->tbl_sessions();
@@ -448,25 +449,25 @@ class Sync extends BaseController
          */
         $private_theme_db = THEMEPATH . 'Database_Migrations.php';
         //echo $private_theme_db . '<br>' . PHP_EOL;
-        if (file_exists($private_theme_db)) {
-            include $private_theme_db;
-
-            //
-            //print_r( $arr_custom_alter_database );
-            foreach ($arr_custom_alter_database as $k => $v) {
-                //echo $k . '<br>' . PHP_EOL;
-                //print_r( $v );
-                if (!isset($arr_add_cloumn[$k])) {
-                    $arr_add_cloumn[$k] = [];
-                }
-
-                //
-                foreach ($v as $k2 => $v2) {
-                    //echo $k2 . '<br>' . PHP_EOL;
-                    $arr_add_cloumn[$k][$k2] = $v2;
-                }
-            }
-        }
+//        if (file_exists($private_theme_db)) {
+//            include $private_theme_db;
+//
+//            //
+//            //print_r( $arr_custom_alter_database );
+//            foreach ($arr_custom_alter_database as $k => $v) {
+//                //echo $k . '<br>' . PHP_EOL;
+//                //print_r( $v );
+//                if (!isset($arr_add_cloumn[$k])) {
+//                    $arr_add_cloumn[$k] = [];
+//                }
+//
+//                //
+//                foreach ($v as $k2 => $v2) {
+//                    //echo $k2 . '<br>' . PHP_EOL;
+//                    $arr_add_cloumn[$k][$k2] = $v2;
+//                }
+//            }
+//        }
 
         //
         $arr_add_cloumn[$prefix . 'options_deleted'] = $arr_add_cloumn[$prefix . 'options'];
@@ -527,7 +528,6 @@ class Sync extends BaseController
         echo 'Query failed! Please re-check query <br>' . PHP_EOL;
         }
         */
-
         // kiểm tra và tạo view nếu bảng có sự thay đổi
         $this->view_terms($has_table_change);
         $this->view_posts($has_table_change);

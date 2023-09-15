@@ -13,6 +13,7 @@ $base_model->add_js('themes/' . THEMENAME . '/js/templates/post.js', [
 ], [
     'defer'
 ]);
+
 // top bài xem nhiều
 $in_cache_dataTop = $term_model->key_cache('in_cache_dataTop');
 $dataTop = $base_model->scache($in_cache_dataTop);
@@ -41,7 +42,6 @@ if (empty($dataTop)) {
                 <div id="term_main"
                      class="posts-list main-posts-list <?php $option_model->posts_in_line($getconfig); ?>">
                     <?php
-
                     foreach ($child_data as $child_key => $child_val) {
                         if ($child_val === NULL) {
                             continue;
@@ -104,7 +104,9 @@ if (empty($dataTop)) {
                 <h1>
                     <?= $data['name'] ?>
                 </h1>
-                <?= $data['pElement'] ?>
+                <p>
+                    <?= $data['pElement'] ?>
+                </p>
                 <div class="menuPost">
                     <div id="contentCategory" class="contentCategory collapsed">
                         <div class="item-top">
@@ -114,14 +116,9 @@ if (empty($dataTop)) {
                         </div>
                         <div class="item-bottom">
                             <?php foreach (@$data['contentCategory'] as $key => $value) { ?>
-                                <p class="parent"><a title="
-                                            <?= $value['name'] ?>" href="#
-                <?= $value['id'] ?>">
-                                        <?= $value['name'] ?></a></p>
+                                <p class="parent"><a title="<?= $value['name'] ?>" href="#<?= $value['id'] ?>"><?= $value['name'] ?></a></p>
                                 <?php foreach ($value['children'] as $k => $v) { ?>
-                                    <p class="children"><a title="
-                                            <?= $v['name'] ?>" href="#<?= $v['id'] ?>">
-                                            <?= $v['name'] ?></a></p>
+                                    <p class="children"><a title="<?= $v['name'] ?>" href="#<?= $v['id'] ?>"><?= $v['name'] ?></a></p>
                                 <?php }
                             } ?>
                         </div>

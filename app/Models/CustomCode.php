@@ -73,7 +73,7 @@ class CustomCode extends Post
     }
 
     /* hàm tính kpi cho bài viết*/
-    public function getSalaryType($content)
+    public function getSalaryType($content, $description = '')
     {
         // type = 0 là ko tính tiền, type = 10 thì là 20k, type = 20 thì 30k, type = 30 thì là 40k
         // các mốc type Số lượng từ	Thù lao (VND)
@@ -81,20 +81,33 @@ class CustomCode extends Post
         //2.200 -3000 từ + 3 hình ảnh	30.000/1 bài viết
         //Trên 3.000 từ + 3 hình ảnh	40.000/1 bài viết
         $type = SALARY_TYPE_0;
-        // số lượng thẻ img
-        $dom = new \DOMDocument();
-        libxml_use_internal_errors(true);
-        $dom->loadHTML(mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8'));
-        $numberImg = $dom->getElementsByTagName('img');
-        $numberImg = count($numberImg);
-        // lấy số lượng từ
-        $text = strip_tags($content);
-        $text = preg_replace('/\s+/', ' ', $text); // Loại bỏ các khoảng trắng thừa và thay thế bằng một khoảng trắng duy nhất
-        $text = trim($text); // Loại bỏ khoảng trắng ở đầu và cuối chuỗi
-        $words = explode(' ', $text);
-        $wordCount = count($words);
-        // nếu chỉ có 2 hình ảnh thì chỉ check số từ, đủ điều kiện thì cho type = 2
+        $wordCount = 0;
+        if ($content != '') {
+            // số lượng thẻ img
+            $dom = new \DOMDocument();
+            libxml_use_internal_errors(true);
+            $dom->loadHTML(mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8'));
+            $numberImg = $dom->getElementsByTagName('img');
+            $numberImg = count($numberImg);
+            // lấy số lượng từ
+            $text = strip_tags($content);
+            $text = preg_replace('/\s+/', ' ', $text); // Loại bỏ các khoảng trắng thừa và thay thế bằng một khoảng trắng duy nhất
+            $text = trim($text); // Loại bỏ khoảng trắng ở đầu và cuối chuỗi
+            $words = explode(' ', $text);
+            $wordCount = count($words);
+        }
+        // check thêm đếm cả số lượng từ của phần mô tả
+        if ($description != '') {
+            // lấy số lượng từ
+            $textDescription = strip_tags($description);
+            $textDescription = preg_replace('/\s+/', ' ', $textDescription); // Loại bỏ các khoảng trắng thừa và thay thế bằng một khoảng trắng duy nhất
+            $textDescription = trim($textDescription); // Loại bỏ khoảng trắng ở đầu và cuối chuỗi
+            $wordsDescription = explode(' ', $textDescription);
+            $wordCountDescription = count($wordsDescription);
+            $wordCount += $wordCountDescription;
+        }
 
+        // nếu chỉ có 2 hình ảnh thì chỉ check số từ, đủ điều kiện thì cho type = 2
         if ($numberImg == 2) {
             if ($wordCount >= 1600) {
                 $type = SALARY_TYPE_1;
@@ -114,12 +127,12 @@ class CustomCode extends Post
     }
 
     // hàm tạo thẻ h2 h3 là danh mục cho bài viết
-    public function createCategoryArray($post_content)
+    public function createCategoryArray($content)
     {
         $category_array = array();
         $dom = new \DOMDocument();
         libxml_use_internal_errors(true);
-        $dom->loadHTML(mb_convert_encoding($post_content, 'HTML-ENTITIES', 'UTF-8'));
+        $dom->loadHTML(mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8'));
         $h2_list = $dom->getElementsByTagName('h2');
         foreach ($h2_list as $index => $h2) {
             $h2_id = $this->convert_vi_to_en_slug($h2->nodeValue, true);
@@ -143,25 +156,41 @@ class CustomCode extends Post
                 }
                 $next_node = $next_node->nextSibling;
             }
-            $post_content = $dom->saveHTML();
+            $content = $dom->saveHTML();
         }
-        return array('category_array' => $category_array, 'post_content' => $post_content);
+        return array('category_array' => $category_array, 'post_content' => $content);
     }
 
     /*hàm lấy 3 thẻ p đầu tiên*/
-    public function getPElement($html)
+    public function getPElement($content)
     {
-
         // Tạo một đối tượng DOMDocument
         $dom = new \DOMDocument();
+        libxml_use_internal_errors(true);
+        $dom->loadHTML(mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8'));
 
-// Tải chuỗi HTML vào đối tượng DOMDocument
-        $dom->loadHTML($html);
+        // Lấy thẻ <p> đầu tiên
+        $paragraph = $dom->getElementsByTagName('p')->item(0);
 
-// Lấy tất cả các thẻ <p>
-        $paragraphs = $dom->getElementsByTagName('p');
+        // Khai báo một biến để lưu trữ giá trị của chuỗi con
+        $paragraphValue = '';
 
-        return $dom->saveHTML($paragraphs->item(0));
+        // Nếu có thẻ <p> đầu tiên
+        if ($paragraph !== null) {
+            // Lấy giá trị của thẻ <p>
+            $paragraphValue = $paragraph->nodeValue;
+
+            // Xóa thẻ <p> khỏi cây DOM
+            $paragraph->parentNode->removeChild($paragraph);
+        }
+
+        // Chuyển cây DOM thành chuỗi
+        $modifiedHtml = $dom->saveHTML();
+
+        return [
+            'content' => $modifiedHtml,
+            'pElement' => $paragraphValue,
+        ];
 
     }
 
@@ -193,5 +222,80 @@ class CustomCode extends Post
         $str = preg_replace("/[.,?!]/", "-", $str);
         $str = strtolower($str);
         return $str;
+    }
+
+    // hàm làm cả 3 tác vu tạo thẻ h2 h3 là danh mục cho bài viết,lấy 1 thẻ p đầu tiên và xóa thẻ p đó khỏi content
+    // chỉ áp dụng cho danh mục bài viết
+    public function processContent($content)
+    {
+        // Tạo một đối tượng DOMDocument
+        $dom = new \DOMDocument();
+        libxml_use_internal_errors(true);
+        $dom->loadHTML(mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8'));
+
+        // Xử lý tạo mảng danh mục
+        $category_array = array();
+        $h2_list = $dom->getElementsByTagName('h2');
+        foreach ($h2_list as $index => $h2) {
+            $h2_id = $this->convert_vi_to_en_slug($h2->nodeValue, true);
+            $h2->setAttribute('id', $h2_id);
+            $category_array[$h2_id] = array(
+                'id' => $h2_id,
+                'name' => $h2->nodeValue,
+                'children' => array(),
+            );
+            $next_node = $h2->nextSibling;
+            while ($next_node) {
+                if ($next_node->nodeName == 'h3') {
+                    $h3_id = $this->convert_vi_to_en_slug($next_node->nodeValue, true);
+                    $next_node->setAttribute('id', $h3_id);
+                    $category_array[$h2_id]['children'][$h3_id] = array(
+                        'id' => $h3_id,
+                        'name' => $next_node->nodeValue,
+                    );
+                } elseif ($next_node->nodeName == 'h2') {
+                    break;
+                }
+                $next_node = $next_node->nextSibling;
+            }
+        }
+
+        // Xử lý lấy thẻ <p> đầu tiên
+        $paragraph = $dom->getElementsByTagName('p')->item(0);
+        $paragraphValue = '';
+
+        if ($paragraph !== null) {
+            $paragraphValue = $paragraph->nodeValue;
+            $paragraph->parentNode->removeChild($paragraph);
+        }
+
+        // Chuyển cây DOM thành chuỗi
+        $modifiedHtml = $dom->saveHTML();
+
+        return [
+            'category_array' => $category_array,
+            'content' => $modifiedHtml,
+            'pElement' => $paragraphValue,
+        ];
+    }
+
+    // hàm random giá trị
+    public function getRandomValue($value = [], $type = '')
+    {
+
+    }
+
+    public function getDataChart($where)
+    {
+       return $this->base_model->select("user_nicename, 
+        SUM(CASE WHEN (post_status != 'publish' AND post_status != 'trash') THEN 1 ELSE 0 END) AS non_public,
+        SUM(CASE WHEN post_status = 'publish' THEN 1 ELSE 0 END) AS public,
+        SUM(CASE WHEN post_status = 'publish' AND salary_type = ".SALARY_TYPE_0." THEN 1 ELSE 0 END) AS type0,
+        SUM(CASE WHEN post_status = 'publish' AND salary_type = ".SALARY_TYPE_1." THEN 1 ELSE 0 END) AS type1,
+        SUM(CASE WHEN post_status = 'publish' AND salary_type = ".SALARY_TYPE_2." THEN 1 ELSE 0 END) AS type2,
+        SUM(CASE WHEN post_status = 'publish' AND salary_type = ".SALARY_TYPE_3." THEN 1 ELSE 0 END) AS type3
+        ",WGR_POST_VIEW,$where,[
+            'group_by'=>['post_author'],
+        ]);
     }
 }

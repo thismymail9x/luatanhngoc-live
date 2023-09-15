@@ -2,7 +2,7 @@
 if ($debug_enable === true) { 
 echo '<div class="wgr-view-path">' . str_replace(PUBLIC_HTML_PATH, '', __FILE__) . '</div>'; 
 } 
-$totalThread = $data['count']; 
+$totalThread = $data['count'];
 if ($totalThread > 0) { 
 $totalPage = ceil($totalThread / $post_per_page); 
 if ($totalPage < 1) { 
@@ -23,7 +23,8 @@ if ($child_data === NULL) {
 $child_data = $post_model->post_category($post_type, $data, [ 
 'offset' => $offset, 
 'limit' => $post_per_page 
-]); 
+]);
+
 if (empty($child_data)) { 
 $totalThread = $post_model->fix_term_count($data, $post_type); 
 } 

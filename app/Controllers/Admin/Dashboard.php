@@ -84,7 +84,6 @@ class Dashboard extends Optimize
     {
         // TEST thời gian chạy module -> host dùng ftp chạy có vẻ lâu
         //$begin_t = time();
-
         echo '<!-- ' . PHP_EOL;
         $this->vendor_sync();
         //echo 'begin t: ' . (time() - $begin_t) . PHP_EOL;

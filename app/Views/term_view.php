@@ -1,9 +1,10 @@
-<?php 
- 
- 
-$post_per_page = $base_model->get_config($getconfig, 'eb_posts_per_page', 20); 
+<?php
+
+
+$post_per_page = $base_model->get_config($getconfig, 'eb_posts_per_page', 20);
 include __DIR__ . '/term_data_view.php'; 
-$term_template = ''; 
+$term_template = '';
+
 if (isset($data['term_meta']['term_template']) && $data['term_meta']['term_template'] != '') { 
 $term_template = $data['term_meta']['term_template']; 
 } 
@@ -22,7 +23,8 @@ $base_model->add_js(THEMEPATH . 'term-templates/' . $term_template . '.js', [
 ], [ 
 'defer' 
 ]); 
-} else { 
+} else {
+
 $theme_default_view = VIEWS_PATH . 'default/' . $taxonomy . '_view.php'; 
 include VIEWS_PATH . 'private_view.php'; 
 } 

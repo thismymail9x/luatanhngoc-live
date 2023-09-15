@@ -11,11 +11,11 @@ $base_model->add_css('themes/' . THEMENAME . '/css/our-story.css', [
 <div class="padding-global-content cf "> 
 <div class="col-main-content custom-width-global-main custom-width-page-main fullsize-if-mobile"> 
 <div class="col-main-padding col-page-padding"> 
-<h1 data-type="<?php echo $data['post_type']; ?>" data-id="<?php echo $data['ID']; ?>" class="mb-3">
-<?php 
-echo $data['post_title']; 
-?> 
-</h1> 
+<!--<h1 data-type="--><?php //echo $data['post_type']; ?><!--" data-id="--><?php //echo $data['ID']; ?><!--" class="mb-3">-->
+<?php //
+//echo $data['post_title'];
+//?><!-- -->
+<!--</h1> -->
 <div class="img-max-width global-details-content <?php echo $data['post_type']; ?>-details-content ul-default-style">
 <?php 
 echo $data['post_content']; 

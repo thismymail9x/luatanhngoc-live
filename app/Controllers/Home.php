@@ -6,6 +6,7 @@ namespace App\Controllers;
 use App\Libraries\DeletedStatus;
 use App\Libraries\TaxonomyType;
 use App\Libraries\PostType;
+use App\Models\CustomCode;
 
 //
 class Home extends Posts
@@ -106,23 +107,23 @@ class Home extends Posts
         $dynamic_schema = [
             $schema_person
         ];
-
         // nếu có phần fake review
         //if ($this->getconfig->home_rating_value > 0 && $this->getconfig->home_rating_count > 0 && $this->getconfig->home_review_count) {
         //if (!empty($this->getconfig->home_rating_value) && $this->getconfig->home_rating_value > 0) {
-        if (!empty($this->getconfig->home_rating_value)) {
-            $dynamic_schema[] = [
-                '@context' => 'http://schema.org',
-                '@type' => 'CreativeWorkSeries',
-                'aggregateRating' => [
-                    "@type" => "AggregateRating",
-                    "ratingValue" => $this->getconfig->home_rating_value,
-                    "bestRating" => 5,
-                    "ratingCount" => $this->getconfig->home_rating_count,
-                    "reviewCount" => $this->getconfig->home_review_count
-                ]
-            ];
-        }
+        // trang chủ ko dung review được
+//        if (!empty($this->getconfig->home_rating_value)) {
+//            $dynamic_schema[] = [
+//                '@context' => 'http://schema.org',
+//                '@type' => 'CreativeWorkSeries',
+//                'aggregateRating' => [
+//                    "@type" => "AggregateRating",
+//                    "ratingValue" => $this->getconfig->home_rating_value,
+//                    "bestRating" => 5,
+//                    "ratingCount" => $this->getconfig->home_rating_count,
+//                    "reviewCount" => $this->getconfig->home_review_count
+//                ]
+//            ];
+//        }
 
         //
         $seo = $this->base_model->default_seo($getconfig->title, $this->getClassName(__CLASS__), [
@@ -614,6 +615,15 @@ class Home extends Posts
                 )
             );
 
+            foreach (REPLACE_CONTENT as $k => $v) {
+                $data['description'] = str_replace($k, view($v), $data['description']);
+            }
+
+            $customModel = new CustomCode();
+            $dataConvert =  $customModel->processContent($data['description']);
+            $data['pElement'] =  $dataConvert['pElement'];
+            $data['description'] =  $dataConvert['content'];
+            $data['contentCategory'] = $dataConvert['category_array'];
             //
             $this->term_model->update_count_post_in_term($data);
 

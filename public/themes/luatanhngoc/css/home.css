@@ -4,7 +4,7 @@
     }
     .home__category .top .title__company {
         font-size: 22px;
-        color: #ffff00;
+        color: var(--mainColor);
         font-weight: 600;
         text-transform: none;
     }
@@ -12,6 +12,10 @@
         font-size: 15px;
         color: #bfbfbf;
         line-height: 1.4em;
+    }
+    .home__category .top .text-slogan {
+        font-size: 15px;
+        margin: 4px 0;
     }
     .home__category .bottom {
         margin: 40px 0 20px;
@@ -149,9 +153,13 @@
     }
     .home__category .top .title__company {
         font-size: 22px;
-        color: #ffff00;
+        color: var(--mainColor);
         font-weight: 600;
         text-transform: none;
+    }
+    .home__category .top .text-slogan {
+        font-size: 16px;
+        margin: 6px 0;
     }
     .home__category .top .text {
         font-size: 15px;
@@ -294,9 +302,13 @@
     }
     .home__category .top .title__company {
         font-size: 22px;
-        color: #ffff00;
+        color: var(--mainColor);
         font-weight: 600;
         text-transform: none;
+    }
+    .home__category .top .text-slogan {
+        font-size: 16px;
+        margin: 6px 0;
     }
     .home__category .top .text {
         font-size: 15px;
@@ -440,9 +452,13 @@
     }
     .home__category .top .title__company {
         font-size: 22px;
-        color: #ffff00;
+        color: var(--mainColor);
         font-weight: 600;
         text-transform: none;
+    }
+    .home__category .top .text-slogan {
+        font-size: 18px;
+        margin: 6px 0;
     }
     .home__category .top .text {
         font-size: 15px;
@@ -585,9 +601,13 @@
     }
     .home__category .top .title__company {
         font-size: 24px;
-        color: #ffff00;
+        color: var(--mainColor);
         font-weight: 600;
         text-transform: none;
+    }
+    .home__category .top .text-slogan {
+        font-size: 20px;
+        margin: 10px 0;
     }
     .home__category .top .text {
         font-size: 16px;
@@ -729,9 +749,13 @@
     }
     .home__category .top .title__company {
         font-size: 30px;
-        color: #ffff00;
+        color: var(--mainColor);
         font-weight: 600;
         text-transform: none;
+    }
+    .home__category .top .text-slogan {
+        font-size: 20px;
+        margin: 10px 0;
     }
     /*.home__category .top .text {*/
     /*   */

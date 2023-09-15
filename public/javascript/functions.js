@@ -81,6 +81,7 @@ function WGR_show_or_hide_to_top() {
     }
 }
 
+
 function WGR_set_prop_for_select(for_id) {
     $(for_id).each(function () {
         var a = $(this).attr("data-select") || "";

@@ -29,7 +29,7 @@ $taxonomy_child_custom_post_size = $val['term_meta']['taxonomy_custom_post_size'
 </div> 
 <br> 
 <div class="category_main posts-list main-posts-list <?php $option_model->posts_in_line($getconfig); ?>"> 
-<?php 
+<?php
 foreach ($child_data as $child_key => $child_val) { 
 $post_model->the_node($child_val, [ 
 'taxonomy_post_size' => $taxonomy_child_custom_post_size != '' ? $taxonomy_child_custom_post_size : $taxonomy_post_size, 

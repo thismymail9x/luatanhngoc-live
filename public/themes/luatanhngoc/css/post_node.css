@@ -84,11 +84,9 @@
 }
 .blog__content {
     transition: .3s;
-
 }
 .blog__content.showall {
     height: auto;
-
 }
 .article__content h1 {
     font-size: 25px;

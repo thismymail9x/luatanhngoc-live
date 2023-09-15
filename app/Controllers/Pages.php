@@ -27,8 +27,7 @@ class Pages extends Home
             $data = $this->post_model->select_public_post(0, [
                 'post_name' => $slug,
                 'post_type' => PostType::PAGE,
-            ]);
-
+            ],'wp_posts.*,wp_users.user_nicename');
             //
             $this->base_model->scache($in_cache, $data, 300);
         }

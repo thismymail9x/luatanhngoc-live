@@ -59,9 +59,9 @@ if (empty($data)) {
                                     <div class="background__gradient">
                                     </div>
                                     <?php
-                                    $attachments = [$v['post_meta']['image_medium'],$v['post_meta']['image_large'],$v['post_meta']['image']];
+                                    $attachments = [$v['post_meta']['image_medium'],$v['post_meta']['image_medium'],$v['post_meta']['image']];
                                     $width = ['700w', '1024w', '1w']; ?>
-                                    <img alt="<?= $v['post_title']; ?>" title="<?= $v['post_title']; ?>"
+                                    <img alt="<?php echo implode(" ", array_slice(explode(" ", $v['post_title']), 0, 5)); ?>" title="<?= $v['post_title']; ?>"
                                          src="<?php echo $attachments[2] ?>"
                                          srcset="<?php foreach ($attachments as $key => $value) {
                                              echo $value . ' ' . $width[$key] . ',';} ?>">
@@ -85,9 +85,9 @@ if (empty($data)) {
                     <a href="<?= base_url('/' . $v['post_permalink'] ); ?>" >
                         <div class="item__home-big">
                             <?php
-                            $attachments = [$v['post_meta']['image_medium'],$v['post_meta']['image_large'],$v['post_meta']['image']];
+                            $attachments = [$v['post_meta']['image_thumbnail'],$v['post_meta']['image_thumbnail'],$v['post_meta']['image']];
                             $width = ['700w', '1024w', '1w']; ?>
-                            <img class="item__home-big-img" alt="<?= $v['post_title']; ?>"
+                            <img class="item__home-big-img" alt="<?php echo implode(" ", array_slice(explode(" ", $v['post_title']), 0, 5)); ?>"
                                  title="<?= $v['post_title']; ?>"
                                  src="<?php echo $attachments[2] ?>"
                                  srcset="<?php foreach ($attachments as $key => $value) {
@@ -126,9 +126,9 @@ if (empty($data)) {
                     <a href="<?= base_url('/' . $v['post_permalink'] ); ?>" >
                         <div class="item__home-small">
                             <?php
-                            $attachments = [$v['post_meta']['image_medium'],$v['post_meta']['image_large'],$v['post_meta']['image']];
+                            $attachments = [$v['post_meta']['image_thumbnail'],$v['post_meta']['image_thumbnail'],$v['post_meta']['image']];
                             $width = ['700w', '1024w', '1w']; ?>
-                            <img class="item__home-small-img" alt="<?= $v['post_title']; ?>"
+                            <img class="item__home-small-img" alt="<?php echo implode(" ", array_slice(explode(" ", $v['post_title']), 0, 5)); ?>"
                                  title="<?= $v['post_title']; ?>"
                                  src="<?php echo $attachments[2] ?>"
                                  srcset="<?php foreach ($attachments as $key => $value) {
@@ -167,9 +167,9 @@ if (empty($data)) {
 
 <section class="row home__category">
     <div class="top">
-        <p class="title__company"><?=$getconfig->company_name;?></p>
+        <h1 class="title__company"><?=$getconfig->company_name;?></h1>
         <div class="line"></div>
-        <p class="text"><?=$getconfig->solugan;?></p>
+        <h2 class="text-slogan"><?=$getconfig->solugan;?></h2>
         <p class="text introduce_company">
             Công ty Luật Ánh Ngọc J&T là một đơn vị chuyên cung cấp các dịch vụ pháp lý uy tín và chất lượng tại Việt Nam. Với kinh nghiệm nhiều năm trong lĩnh vực pháp luật, chúng tôi tự hào là một trong những Công ty luật hàng đầu, chuyên
             <a title="tư vấn pháp luật" href="<?= base_url()?>category/tu-van-luat-dan-su">tư vấn pháp luật</a> và cung cấp <a title="dịch vụ pháp lý" href="<?= base_url()?>category/dich-vu-phap-ly-doanh-nghiep">dịch vụ pháp lý</a> đa dạng. <br>
@@ -358,7 +358,7 @@ if (empty($data)) {
                     <article class="item-news">
                         <span class="number-top-view"><?php echo ++$key; ?></span>
                         <h4 class="title-news">
-                            <a href=""><?php echo $top['post_title']; ?></a>
+                            <a title="<?= $top['post_title']; ?>" href="<?=  $top['post_permalink']?>"><?= $top['post_title']; ?></a>
                             <span><i class="fa fa-eye" aria-hidden="true"></i> <?php echo $top['post_viewed']; ?></span>
                         </h4>
                     </article>
@@ -625,7 +625,7 @@ if (empty($data)) {
         $post_child_four = $base_model->scache($in_cache_child_four);
         if (empty($post_child_four)) {
             $post_child_four = $post_model->get_posts_by($term_four, [
-                'limit' => 5,
+                'limit' => 7,
             ]);
             //
             $base_model->scache($in_cache_child_four, $post_child_four, 300);
@@ -658,7 +658,7 @@ if (empty($data)) {
                     </div>
                     <div class="col medium-3 small-12 large-3 pb-0 element__2">
                         <div class="col-inner">
-                            <div class="row posts-list posts-list100 cf anhtren_chuduoi">
+                            <div class="posts-list cf anhtren_chuduoi min-height251">
                                 <?php
                                 // hiển thị 2 bài tiep
                                 $i = 0;
@@ -682,7 +682,7 @@ if (empty($data)) {
                     </div>
                     <div class="col medium-3 small-12 large-3 pb-0 element__3">
                         <div class="col-inner">
-                            <div class="row posts-list posts-list100 cf ">
+                            <div class="row posts-list posts-list100 cf min-height117">
                                 <?php
                                 // hiển thị 4 bai con lai
                                 foreach ($post_child_four as $keyy => $v) {
@@ -704,17 +704,14 @@ if (empty($data)) {
     </div>
 </div>
 <div class="row hide__if-mobile">
-    <div class="col">
-        <hr>
-    </div>
-
+    <hr>
 </div>
 <div class="row">
     <div class="page__bottom">
-        <img src="<?= base_url() ?>upload/2023/09/lienhe.png" alt="lien-he">
+        <img src="<?= base_url() ?>upload/2023/09/hinh-anh-lien-he-large.png" alt="lien-he">
         <div class="page__bottom-item">
             <p>Hãy gửi vấn đề của bạn cho chúng tôi để được hỗ trợ và tư vấn nhanh nhất</p>
-            <a  title="Click để tạo liên hệ" role="button" class="button-92">Liên hệ</a>
+            <a target="_blank" href="<?=base_url()?>pages/lien-he" title="Click để tạo liên hệ" role="button" class="button-92">Liên hệ</a>
         </div>
     </div>
 </div>

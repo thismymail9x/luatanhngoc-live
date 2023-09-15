@@ -29,7 +29,7 @@ class Posts extends Csrf
         //echo $id . ' <br>' . PHP_EOL;
         //echo $slug . ' <br>' . PHP_EOL;
         //echo 'post details <br>' . PHP_EOL;
-
+        $customModel = new CustomCode();
         //
         $this->cache_key = $this->post_model->key_cache($id);
         $cache_value = $this->MY_cache($this->cache_key);
@@ -40,13 +40,12 @@ class Posts extends Csrf
         if ($this->hasFlashSession() === false && $cache_value !== NULL) {
             return $this->show_cache($cache_value);
         }
-
         //
         if ($data === NULL) {
             $data = $this->post_model->select_public_post($id, [
                 //'post_name' => $slug_1,
                 'post_type' => $this->post_type,
-            ]);
+            ],'posts.*,users.user_nicename');
             //print_r($data);
         }
         //print_r( $data );
@@ -220,7 +219,23 @@ class Posts extends Csrf
         //
         $this->create_breadcrumb($data['post_title'], $full_link);
         $seo = $this->base_model->post_seo($data, $full_link);
-
+        // fake đánh giá
+        if (!empty($this->getconfig->home_rating_value)) {
+            $dynamic_schema[] = [
+                '@context' => 'http://schema.org',
+                '@type' => 'CreativeWorkSeries',
+                'aggregateRating' => [
+                    "@type" => "AggregateRating",
+                    "ratingValue" => isset($data['post_meta']['rating_value']) ? $data['post_meta']['rating_value'] : 4.2,
+                    "bestRating" => 5,
+                    "ratingCount" => isset($data['post_meta']['rating_count']) ? $data['post_meta']['rating_count'] : 120,
+                    "reviewCount" => isset($data['post_meta']['review_count']) ? $data['post_meta']['review_count'] : 50
+                ]
+            ];
+        }
+        if (!empty($dynamic_schema)) {
+            $seo['dynamic_schema'] = $this->base_model->dynamicSchema($dynamic_schema);
+        }
         //
         //$structured_data = $this->structuredData($data, 'Article.html', '', true);
         $structured_data = $this->structuredGetData($data);
@@ -229,8 +244,8 @@ class Posts extends Csrf
         if (!isset($seo['dynamic_schema'])) {
             $seo['dynamic_schema'] = '';
         }
-        $seo['dynamic_schema'] .= $structured_data;
 
+        $seo['dynamic_schema'] .= $structured_data;
         // -> views
         $this->teamplate['breadcrumb'] = view(
             'breadcrumb_view',
@@ -240,9 +255,10 @@ class Posts extends Csrf
         );
         foreach (REPLACE_CONTENT as $k => $v) {
             $data['post_content'] = str_replace($k, view($v), $data['post_content']);
+            $data['post_title'] = str_replace($k, view($v), $data['post_title']);
         }
 
-        $customModel = new CustomCode();
+
         $resultConvert =  $customModel->createCategoryArray($data['post_content']);
         $data['post_content'] =$resultConvert['post_content'];
         $this->teamplate['main'] = view(

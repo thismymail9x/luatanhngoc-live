@@ -4,9 +4,10 @@
 <div class="col-main-padding col-<?php echo $data['taxonomy']; ?>-padding"> 
 <h1 data-type="<?php echo $data['taxonomy']; ?>" data-id="<?php echo $data['term_id']; ?>" class="<?php echo $data['taxonomy']; ?>-taxonomy-title global-taxonomy-title global-module-title text-center"><?php echo $data['name']; ?></h1> 
 <br> 
-<?php 
+<?php
 if (!empty($child_data)) { 
-$child_data = $post_model->list_meta_post($child_data); 
+$child_data = $post_model->list_meta_post($child_data);
+
 ?> 
 <div id="term_main" class="posts-list main-posts-list <?php $option_model->posts_in_line($getconfig); ?>"> 
 <?php 

@@ -5,6 +5,7 @@ namespace App\Controllers\Admin;
 // Libraries
 use App\Libraries\CommentType;
 use App\Libraries\DeletedStatus;
+use App\Libraries\UsersType;
 
 //
 class Comments extends Admin
@@ -258,4 +259,5 @@ class Comments extends Admin
         ));
         return view('admin/admin_teamplate', $this->teamplate_admin);
     }
+
 }

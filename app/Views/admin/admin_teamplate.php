@@ -1,5 +1,4 @@
 <?php
-
 if ($session_data['member_type'] != $is_admin) {
 
     foreach ($arr_admin_menu as $k => $v) {

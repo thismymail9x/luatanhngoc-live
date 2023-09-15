@@ -33,14 +33,12 @@ $post_model->update_views($data['ID']);
                         <span class="rf">Cỡ chữ: <i title="Giảm" class="decreaseSizeBtn fa fa-angle-double-down cursor p-1"></i> <i title="Tăng" class="increaseSizeBtn fa fa-angle-double-up cursor p-1"></i></span>
                     </p>
                 </div>
-                <p>
-                               Tác giả: <span><?=@$data['user_nicename']?></span>
-                </p>
+                <p>Tác giả: <span><?=@$data['user_nicename']?></span></p>
                 <h1 class="title"><?= @$data['post_title'] ?></h1>
 
                 <div class="blog-avatar">
                     <?php
-                    $attachments = [$data['post_meta']['image_medium'], $data['post_meta']['image_medium_large'], $data['post_meta']['image_large']];
+                    $attachments = [@$data['post_meta']['image_medium'], @$data['post_meta']['image_medium_large'], @$data['post_meta']['image_large']];
                     $width = ['700w', '1024w', '1200w']; ?>
                     <img class="img__child" alt="<?= @$data['post_title'] ?>" src="<?php echo $attachments[2] ?>"
                          srcset="<?php foreach ($attachments as $key => $value) {
@@ -59,13 +57,9 @@ $post_model->update_views($data['ID']);
                         </div>
                         <div class="item-bottom">
                             <?php foreach (@$contentCategory as $key => $value) { ?>
-                                                            <p class="parent"><a title="
-                            <?=$value['name']?>" href="#<?=$value['id']?>">
-                            <?=$value['name']?></a></p>
+                                                            <p class="parent"><a title="<?=$value['name']?>" href="#<?=$value['id']?>"><?=$value['name']?></a></p>
                                                             <?php foreach ($value['children'] as $k => $v) { ?>
-                                                                <p class="children"><a title="
-                            <?=$v['name']?>" href="#<?=$v['id']?>">
-                            <?=$v['name']?></a></p>
+                                                                <p class="children"><a title="<?=$v['name']?>" href="#<?=$v['id']?>"><?=$v['name']?></a></p>
                                                             <?php } } ?>
                         </div>
                     </div>
@@ -78,21 +72,14 @@ $post_model->update_views($data['ID']);
     </div>
 
     <div class="col medium-3 small-12 large-3 more_post hide__if-mobile">
-        <div class="col-inner">
-            <div class="menu__top">
+        <div class="col-inner menuPost" >
+            <div class="menu__top" id="menuCategory">
                 <h5 class="title__menu-flash">Mục lục</h5>
-                <!--                    --><?php //foreach (@$data_comment as $k => $v) { $k++;?>
-                <!--                        <div data-key="-->
-                <?php //echo $k; ?><!--" class="section__comment-small">-->
-                <!--                            <div class="badged_small-menu" data-stt="--><?php //echo $k; ?><!--">-->
-                <!--                                --><?php //echo $k; ?>
-                <!--                            </div>-->
-                <!--                            <h4 class="comment_title-small">-->
-                <!--                                <a title="--><?php //echo $v['comment_title']; ?><!--">-->
-                <?php //echo $v['comment_title']; ?><!--</a>-->
-                <!--                            </h4>-->
-                <!--                        </div>-->
-                <!--                    --><?php //} ?>
+                <?php foreach (@$contentCategory as $key => $value) { ?>
+                    <p class="parent"><a title="<?=$value['name']?>" href="#<?=$value['id']?>"><?=$value['name']?></a></p>
+                    <?php foreach ($value['children'] as $k => $v) { ?>
+                        <p class="children"><a title="<?=$v['name']?>" href="#<?=$v['id']?>"><?=$v['name']?></a></p>
+                    <?php } } ?>
             </div>
             <?php
             if (!empty($same_cat_data)) {
@@ -103,11 +90,6 @@ $post_model->update_views($data['ID']);
                     <?php
 
                     foreach ($same_cat_data as $child_key => $child_val) {
-//                        echo '<!-- ';
-//                        print_r( $child_val );
-//                        echo ' -->';
-
-                        //
                         $post_model->the_node($child_val, [
                             'taxonomy_post_size' => $taxonomy_post_size,
                         ]);

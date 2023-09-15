@@ -35,28 +35,66 @@ $('.decreaseSizeBtn').on('click',function () {
 window.addEventListener('load', function() {
     // ẩn hiện mục lục
     const contentCategory = document.getElementById('contentCategory');
+    const menuCategory = document.getElementById('menuCategory');
     const itemTop = contentCategory.querySelector('.item-top');
     const iconRotate = contentCategory.querySelector('.icon__rotate');
     itemTop.addEventListener('click', function() {
         contentCategory.classList.toggle('collapsed');
         iconRotate.classList.toggle('rotate');
     });
-    // click mục lục scroll đến offset 170px
     const tocLinks = contentCategory.querySelectorAll('a');
+
     tocLinks.forEach(link => {
         link.addEventListener('click', event => {
             event.preventDefault();
-            const targetId = link.getAttribute('href').substring(1); // Xóa ký tự "_" ở đầu chuỗi
+            const targetId = link.getAttribute('href').substring(1); // Xóa ký tự "#" ở đầu chuỗi
             const targetElement = document.getElementById(targetId);
             if (targetElement) {
-                const offset = targetElement.getBoundingClientRect().top + window.pageYOffset - 90;
-                window.scrollTo({
-                    top: offset,
-                    behavior: 'smooth' // Thêm thuộc tính behavior để tạo hiệu ứng cuộn mượt mà
-                });
+                scrollTo(targetElement, 500); // Sử dụng hàm scrollTo với thời gian cuộn là 500ms (0.5 giây)
             }
         });
     });
+
+    function scrollTo(element, duration) {
+        const start = window.pageYOffset;
+        const target = element.getBoundingClientRect().top + window.pageYOffset - 60;
+        const startTime = 'now' in window.performance ? performance.now() : new Date().getTime();
+        const easeInOutQuad = function (t, b, c, d) {
+            t /= d / 2;
+            if (t < 1) return c / 2 * t * t + b;
+            t--;
+            return -c / 2 * (t * (t - 2) - 1) + b;
+        };
+
+        function scroll() {
+            const currentTime = 'now' in window.performance ? performance.now() : new Date().getTime();
+            const timeElapsed = currentTime - startTime;
+            const percentage = Math.min(timeElapsed / duration, 1);
+            const newPosition = easeInOutQuad(percentage, start, target - start, 1);
+            window.scroll(0, newPosition);
+
+            if (percentage < 1) {
+                requestAnimationFrame(scroll);
+            }
+        }
+
+        scroll();
+    }
+    // click menu bên phải:
+    if (menuCategory) {
+        const tocLinksMenu = menuCategory.querySelectorAll('a');
+        tocLinksMenu.forEach(link => {
+            link.addEventListener('click', event => {
+                event.preventDefault();
+                const targetId = link.getAttribute('href').substring(1); // Xóa ký tự "#" ở đầu chuỗi
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    scrollTo(targetElement, 500); // Sử dụng hàm scrollTo với thời gian cuộn là 500ms (0.5 giây)
+                }
+            });
+        });
+    }
+
 });
 $('.bg-article').on('click',function () {
     $('.blog__content').toggleClass('short');
@@ -71,3 +109,27 @@ $('.bg-article').on('click',function () {
         $(".btn-seemore").text("Xem thêm ⮇");
     }
 });
+
+
+
+
+
+$(document).ready(function () {
+    // Bắt sự kiện scroll
+    $(window).scroll(function () {
+        scroll_post();
+    });
+});
+//function scroll ẩn hiển menu
+function scroll_post() {
+    const contentPostBase = document.getElementById('contentPost');
+    var scroll_top = window.scrollY || jQuery(window).scrollTop();
+    if (scroll_top > contentPostBase.offsetTop) {
+        jQuery("body").addClass("show-hide__menu");
+        _global_js_eb.ebBgLazzyLoad(scroll_top);
+
+    } else {
+        jQuery("body").removeClass("show-hide__menu");
+    }
+}
+

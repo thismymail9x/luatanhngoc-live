@@ -60,13 +60,22 @@ class Asjaxs extends Admin
 
         //
         //$client = \Config\Services::curlrequest();
+        $max_len = strlen(DYNAMIC_BASE_URL) * 2;
+        $http_response = $this->check_via_curl($test_url);
+        if (strlen($http_response) > $max_len) {
+            $http_response = $test_url;
+        }
+        $www_response = $this->check_via_curl($www_url);
+        if (strlen($www_response) > $max_len) {
+            $www_response = $www_url;
+        }
 
         // rồi lấy url xem nó có tự redirect về url chuẩn mình mong muốn không
         $this->result_json_type([
             'http_url' => $test_url,
-            'http_response' => $this->check_via_curl($test_url),
+            'http_response' => $http_response,
             'www_url' => $www_url,
-            'www_response' => $this->check_via_curl($www_url),
+            'www_response' => $www_response,
             //'base_url' => file_get_contents( $test_url . 'admin/asjaxs/the_base_url', 1 ),
             /*
              'base_url' => $client->request( 'GET', $test_url, [
@@ -230,11 +239,13 @@ class Asjaxs extends Admin
         ]);
     }
 
-    /* hàm duyệt bài viết*/
+    /* hàm duyệt bài viết và tính lại kpi của bài viết*/
+
     public function post_success()
     {
         $customModel = new CustomCode();
         $id = $this->MY_post('id', 0);
+        $task = $this->MY_post('id', '');
         if ($id <= 0) {
             $this->result_json_type([
                 'code' => __LINE__,
@@ -246,14 +257,20 @@ class Asjaxs extends Admin
             'post_type' => PostType::POST,
             //'lang_key' => $this->lang_key,
         ]);
-        $salaryType = $customModel->getSalaryType($post['post_content']);
+        $salaryType = $customModel->getSalaryType($post['post_content'],$post['post_excerpt']);
         // UPDATE
-        $result_id = $this->base_model->update_multiple('posts', [
+        $dataUpdate = [
             // SET
             'post_status' => PostType::PUBLICITY,
             'salary_type' => $salaryType,
             'post_success'=> date('Y-m-d H:i:s')
-        ], [
+        ];
+        if ($task != '' && $task == 'calculateKPI') {
+            $dataUpdate = [
+                'salary_type' => $salaryType,
+            ];
+        }
+        $result_id = $this->base_model->update_multiple('posts',$dataUpdate, [
             // WHERE
             'ID' => $id,
         ], [
@@ -276,9 +293,10 @@ class Asjaxs extends Admin
         //
         $this->result_json_type([
             'code' => __LINE__,
-            'error' => 'Lỗi cập nhật trạng thái cho bài viết!'
+            'error' => $task == 'calculateKPI' ? 'Lỗi cập nhật KPI bài viết!' :'Lỗi cập nhật trạng thái cho bài viết!'
         ]);
     }
+
 
     /* hàm lấy danh sách comment của bài viết*/
     public function get_post_comments()

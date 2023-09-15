@@ -48,13 +48,22 @@ class AdminMenu
                     ],
                 ]
             ],
-            'admin/orders' => [
+//            'admin/orders' => [
+//                'role' => [
+//                    UsersType::AUTHOR,
+//                    UsersType::MOD,
+//                ],
+//                'name' => 'Đơn hàng',
+//                'icon' => 'fa fa-shopping-bag',
+//                'arr' => []
+//            ],
+            'admin/statisticals' => [
                 'role' => [
                     UsersType::AUTHOR,
                     UsersType::MOD,
                 ],
-                'name' => 'Đơn hàng',
-                'icon' => 'fa fa-shopping-bag',
+                'name' => 'Thống kê',
+                'icon' => 'fa fa-bar-chart',
                 'arr' => []
             ],
             'admin/adss' => [

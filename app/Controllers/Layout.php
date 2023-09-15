@@ -349,8 +349,6 @@ class Layout extends Sync
         //
         //print_r($data);
         $data = $this->term_model->get_child_terms([$data], []);
-        //print_r($data);
-
         $data = $data[0];
         //print_r($data);
 
@@ -836,6 +834,12 @@ class Layout extends Sync
             }
             // các file khác không cần resize
             else {
+                if (empty($get_file_info)) {
+                    $get_file_info = [
+                        0,
+                        0
+                    ];
+                }
                 $resize_img = [
                     'width' => $get_file_info[0],
                     'height' => $get_file_info[1],

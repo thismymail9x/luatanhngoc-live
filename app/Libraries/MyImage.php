@@ -171,16 +171,21 @@ class MyImage
 
             //
             $image = new \Imagick($source);
+            $write_images = false;
             if ($mime_type == 'image/jpg' || $mime_type == 'image/jpeg') {
+                $write_images = true;
                 $image->setImageFormat('jpg');
                 $image->setImageCompression(\Imagick::COMPRESSION_JPEG);
                 $image->setImageCompressionQuality($compression);
-            } else {
+            } else if ($mime_type == 'image/png') {
+                $write_images = true;
                 $image->setImageCompression(\Imagick::COMPRESSION_UNDEFINED);
                 $image->optimizeImageLayers();
             }
-            $image->stripImage();
-            $image->writeImages($desc, true);
+            if ($write_images === true) {
+                $image->stripImage();
+                $image->writeImages($desc, true);
+            }
             $image->destroy();
         } else {
             // https://codeigniter4.github.io/userguide/libraries/images.html#image-quality
