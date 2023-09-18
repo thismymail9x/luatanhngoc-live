@@ -33,9 +33,9 @@ class Database extends Config
     public $default = [
         'DSN' => '',
         'hostname' => 'localhost',
-        'username' => 'luatanhn_site',
-        'password' => 'abcABC123@@',
-        'database' => 'luatanhn_site',
+        'username' => 'luatanborqy7_db',
+        'password' => 'HRyeeR1GDy',
+        'database' => 'luatanborqy7_db',
         'DBDriver' => MY_DB_DRIVER,
         'DBPrefix' => WGR_TABLE_PREFIX,
         'pConnect' => false,

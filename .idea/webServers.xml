@@ -2,15 +2,15 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="a24dac0c-5fc3-49f1-ae1d-b08c4290fd78" name="ftp" url="http://103.77.162.18">
-        <fileTransfer host="103.77.162.18" port="21">
+      <webServer id="a24dac0c-5fc3-49f1-ae1d-b08c4290fd78" name="ftp" url="http://42.112.30.41">
+        <fileTransfer host="42.112.30.41" port="21">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
         </fileTransfer>
       </webServer>
-      <webServer id="9f08158b-f665-4f60-8547-5875aec42ef1" name="luatanhngoc.vn" url="http://103.77.162.18">
-        <fileTransfer host="103.77.162.18" port="21">
+      <webServer id="9f08158b-f665-4f60-8547-5875aec42ef1" name="luatanhngoc.vn" url="http://42.112.30.41">
+        <fileTransfer host="42.112.30.41" port="21">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>

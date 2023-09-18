@@ -1113,6 +1113,7 @@ header .top-user-menu .eb-sub-menu {
     padding-left: 30px;
     list-style: unset;
 }
+
 @media only screen and (min-width: 748px) {
     .section__comment {
         position: relative;
@@ -1214,8 +1215,16 @@ header .top-user-menu .eb-sub-menu {
     .line__five .min-height117 .global-a-posi{
         min-height: 117px;
     }
+
+    .line__five .min-height117 .f30{
+        width: 100%;
+    }
+    .line__five .min-height117 .f70{
+        width: 0;
+    }
+
     .line__five .min-height117 .global-a-posi .posts-list-avt {
-        padding-top: 75px;
+        padding-top: 127px;
     }
     .line__five .min-height117 .limit-text-2 {
         overflow: hidden;
@@ -1630,6 +1639,29 @@ header .top-user-menu .eb-sub-menu {
 
 /* mobile, table only */
 @media only screen and (max-width: 788px) {
+    .mobile-show-menu .sub-menu {
+        padding-left: 20px;
+    }
+    .mobile-show-menu .eb-sub-menu:nth-child(1) li:nth-child(1){
+        display: none;
+    }
+    #mobileMenuModal .modal-footer {
+        justify-content: space-around;
+        padding: 0;
+    }
+    .mobile-show-menu .sub-menu li a{
+        color: #ffffb3!important;
+        font-size: 14px;
+    }
+    .mobile-show-menu li {
+        padding: 4px 0 ;
+    }
+    .mobile-show-menu li a {
+        color: var(--mainColor)!important;
+        font-size: 16px;
+        line-height: 20px;
+        border-bottom: 0.2px solid #b3b3b3;
+    }
     #term_main .first__category {
         padding: 0;
     }
@@ -1678,7 +1710,7 @@ header .top-user-menu .eb-sub-menu {
     .home__view .ty-le-h1, .category_group .ty-le-h1, .line__five .ty-le-h1, .category__main .ty-le-h1 {
         margin-top: 0;
         border-radius: 4px;
-        padding-top: 50%;
+        padding-top: 60%;
     }
     .global-a-posi .limit-text-5 {
         overflow: hidden;
@@ -1752,12 +1784,21 @@ header .top-user-menu .eb-sub-menu {
     }
 
     #mobileMenuModal .modal-content {
+        background: var(--mainColorOpacity);
         border: unset;
         border-radius: unset;
+        cursor: pointer;
     }
 
     #wgr__top .mobile_user .user__mobile {
-        background-image: url("../../upload/2023/08/dang-nhap-medium.png");
+        background-image: url("../../upload/2023/09/dang-nhap.png");
+        width: 25px;
+        height: 25px;
+        background-size: contain;
+        cursor: pointer;
+    }
+    #wgr__top .mobile_user .user__logout {
+        background-image: url("../../upload/2023/09/logout-removebg-preview.png ");
         width: 25px;
         height: 25px;
         background-size: contain;
@@ -1770,13 +1811,13 @@ header .top-user-menu .eb-sub-menu {
     }
 
     #wgr__top .mobile-menu {
-        height: 48px;
-        background: #fff;
+        padding: 6px 0;
+        background: var(--mainColorOpacity);
         border-bottom: 1px solid #e7e7e7;
         transition-duration: 350ms;
         transition-property: all;
         transition-timing-function: cubic-bezier(0.7, 1, 0.7, 1);
-        padding: 0;
+
         z-index: 1001;
     }
 
@@ -1784,9 +1825,9 @@ header .top-user-menu .eb-sub-menu {
         width: 100%;
     }
 
-    #wgr__top .modal-header {
-        padding: 4px 1rem;
-    }
+    /*#wgr__top .modal-header {*/
+    /*    padding: 4px 1rem;*/
+    /*}*/
 
     #wgr__top .modal-header .btn-close {
         font-size: 16px;

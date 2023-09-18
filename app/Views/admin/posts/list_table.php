@@ -17,11 +17,11 @@
 </tr> 
 </thead> 
 <tbody id="admin_main_list"> 
-<tr :data-id="v.ID" v-for="v in data"> 
+<tr :data-id="v.ID" v-for="v,k in data">
 <td width="50" class="text-center"><input type="checkbox" :value="v.ID" class="input-checkbox-control" /> 
 </td> 
 <td> 
-<div><a :href="v.admin_permalink" class="bold">{{v.post_title}} <i class="fa fa-edit"></i></a></div> 
+<div><a :href="v.admin_permalink" class="bold">  {{ (currentPage - 1) * post_per_page + k + 1 }}. {{v.post_title}} <i class="fa fa-edit"></i></a></div>
 <div><a :href="v.the_permalink" target="_blank" class="small blackcolor">{{v.the_permalink}} <i class="fa fa-eye"></i></a>
     <br>
     <span><i class="fa fa-user"></i> {{v.user_nicename}}</span>

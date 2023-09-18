@@ -115,7 +115,7 @@ echo(($html_lang == 'vn' || $html_lang == '') ? 'vi' : $html_lang);
 </head>
 <body class="is-admin <?php echo $body_class; ?>">
 <div id="admin-header" class="cf whitecolor awhitecolor">
-    <div class="lf f33">
+    <div class="lf f50">
         <?php if ($session_data['member_type'] == \App\Libraries\UsersType::ADMIN) { ?>
             <div class="d-inline"><a href="./<?php echo CUSTOM_ADMIN_URI; ?>"><i
                             class="fa fa-cog"></i> <?php $lang_model->the_text('admin_quan_tri_he_thong', 'Quản trị hệ thống'); ?>
@@ -131,7 +131,7 @@ echo(($html_lang == 'vn' || $html_lang == '') ? 'vi' : $html_lang);
             </select>
         </div>
     </div>
-    <div class="lf f33">
+    <div class="lf f20">
         <div class="admin-menu-search text-center">
             <input type="search" id="admin_menu_search"
                    placeholder="Search in admin menu. Ex: post, product, setting, config, user..."/>
@@ -145,7 +145,7 @@ echo(($html_lang == 'vn' || $html_lang == '') ? 'vi' : $html_lang);
             </div>
         </div>
     </div>
-    <div class="lf f33 text-right"><?php $lang_model->the_text('admin_xin_chao', 'Xin chào'); ?>: <a
+    <div class="lf f30 text-right"><?php $lang_model->the_text('admin_xin_chao', 'Xin chào'); ?>: <a
                 title="<?php $lang_model->the_text('admin_thong_tin_ca_nhan', 'Thông tin cá nhân'); ?>"
                 href="./users/profile">
             <?php

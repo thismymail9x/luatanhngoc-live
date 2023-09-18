@@ -13,7 +13,7 @@ $base_model->add_css('admin/css/' . $post_type . '.css');
     </ul>
     <div id="app" class="ng-main-content">
         <div class="cf admin-search-form">
-            <div class="lf f62">
+            <div class="lf f75">
                 <form name="frm_admin_search_controller" action="./admin/<?php echo $controller_slug; ?>" method="get">
                     <div class="cf">
                         <div class="lf f25">
@@ -21,7 +21,7 @@ $base_model->add_css('admin/css/' . $post_type . '.css');
                                    placeholder="Tìm kiếm <?php echo $name_type; ?>" autofocus aria-required="true"
                                    >
                         </div>
-                        <div class="lf f25 hide-if-no-taxonomy">
+                        <div class="lf f20 hide-if-no-taxonomy">
                             <select name="term_id" data-select="<?php echo $by_term_id; ?>" :data-taxonomy="taxonomy"
                                     onChange="document.frm_admin_search_controller.submit();"
                                     class="each-to-group-taxonomy">
@@ -48,7 +48,7 @@ $base_model->add_css('admin/css/' . $post_type . '.css');
                                 <option :value="v.ID" v-for="(v, k) in authors">{{v.user_nicename}}</option>
                             </select>
                         </div>
-                        <div class="lf f10">
+                        <div class="lf f15">
                             <button type="submit" class="btn-success"><i class="fa fa-search"></i> Tìm kiếm</button>
                         </div>
                     </div>
@@ -58,7 +58,7 @@ $base_model->add_css('admin/css/' . $post_type . '.css');
                                    name="start_date"
                                    placeholder="Ngày duyệt từ" value="<?= @$start_date ?>">
                         </div>
-                        <div class="lf f25">
+                        <div class="lf f20">
                             <input autocomplete="off" type="date" id="endDate" class="form-control mb-0"
                                    name="end_date"
                                    placeholder="Ngày duyệt đến" value="<?= @$end_date ?>">
@@ -75,7 +75,7 @@ $base_model->add_css('admin/css/' . $post_type . '.css');
                     </div>
                 </form>
             </div>
-            <div class="lf f38 text-right">
+            <div class="lf f25 text-right">
                 <?php
                 include ADMIN_ROOT_VIEWS . 'posts/list_right_button.php';
                 ?>
@@ -112,6 +112,8 @@ $base_model->JSON_parse(
             allow_mysql_delete: allow_mysql_delete,
             post_type: '<?php echo $post_type; ?>',
             post_status: '<?php echo $post_status; ?>',
+            currentPage : '<?php echo $currentPage ; ?>',
+            post_per_page : '<?php echo $post_per_page; ?>',
             salary_type: '<?php echo $salary_type; ?>',
             post_author: '<?php echo $post_author; ?>',
             taxonomy: '<?php echo $taxonomy; ?>',

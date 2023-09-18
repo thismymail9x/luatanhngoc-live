@@ -316,6 +316,7 @@
         line-height: 1.4em;
     }
     .home__category .bottom {
+        width: 100% !important;
         margin: 40px 0 20px;
     }
     .home__category .bottom .item {
@@ -466,6 +467,7 @@
         line-height: 1.4em;
     }
     .home__category .bottom {
+        width: 100%!important;
         margin: 40px 0 20px;
     }
     .home__category .bottom .item {
@@ -615,6 +617,7 @@
         line-height: 1.4em;
     }
     .home__category .bottom {
+        width: 100%!important;
         margin: 40px 90px 20px;
     }
     .home__category .bottom .item {

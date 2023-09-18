@@ -237,7 +237,7 @@
     }
 
     .list__post .item__home-big .item__home-big-img {
-        width: 40%;
+        width: 50%;
         border-radius: 6px;
         object-fit: fill;
     }
@@ -284,7 +284,7 @@
 
     .list__post .item__home-small .item__home-small-img {
         border-radius: 6px;
-        width: 40%;
+        width: 50%;
         object-fit: fill;
     }
 
@@ -311,7 +311,8 @@
 
     .list__post .item__home-small .eye-star {
         position: absolute;
-        right: 28px;
+        display: grid;
+        left: 54%;
         bottom: 12px;
         font-size: 12px;
         color: rgba(186, 217, 252, .75);
@@ -553,7 +554,7 @@
     }
 
     .list__post .item__home-big .item__home-big-img {
-        width: 30%;
+        width: 50%;
         border-radius: 6px;
         object-fit: fill;
     }
@@ -596,7 +597,7 @@
 
     .list__post .item__home-small .item__home-small-img {
         border-radius: 6px;
-        width: 30%;
+        width: 50%;
         object-fit: fill;
     }
 
@@ -623,7 +624,8 @@
 
     .list__post .item__home-small .eye-star {
         position: absolute;
-        right: 28px;
+        left: 54%;
+        display: grid;
         bottom: 12px;
         font-size: 12px;
         color: rgba(186, 217, 252, .75);
@@ -857,7 +859,7 @@
     }
 
     .list__post .item__home-big .item__home-big-img {
-        width: 30%;
+        width: 50%;
         border-radius: 6px;
         object-fit: fill;
     }
@@ -900,7 +902,7 @@
 
     .list__post .item__home-small .item__home-small-img {
         border-radius: 6px;
-        width: 30%;
+        width: 50%;
         object-fit: fill;
     }
 
@@ -920,7 +922,7 @@
     .list__post .content__item-big .eye-star {
         display: block;
         float: right;
-        margin-top: 20px;
+        margin-top: 2px;
         font-size: 12px;
         color: rgba(186, 217, 252, .75);
     }
@@ -1223,7 +1225,7 @@
     .list__post .content__item-big .eye-star {
         display: block;
         float: right;
-        margin-top: 20px;
+        margin-top: 2px;
         font-size: 12px;
         color: rgba(186, 217, 252, .75);
     }
@@ -1539,14 +1541,16 @@
     .list__post .content__item-big .eye-star {
         display: block;
         float: right;
-        margin-top: 20px;
+        margin-top: 4px;
         font-size: 14px;
         color: rgba(186, 217, 252, .75);
     }
 
     .list__post .item__home-small .eye-star {
         position: absolute;
-        bottom: 12px;
+        display: grid;
+        left: 16px;
+        bottom: 10px;
         font-size: 14px;
         color: rgba(186, 217, 252, .75);
     }
@@ -1859,6 +1863,7 @@
         border-radius: 6px;
         width: 33.33%;
         height: 66.66%;
+        object-fit: cover;
     }
 
     .list__post .item__home-small .content__item-small .text__time {
@@ -2095,4 +2100,7 @@ body {
     font-style: normal;
     /*font-family:  "Merriweather", serif;;*/
     /*font-family: "Lato",Arial;*/
+}
+.list__post .item__home-small .item__home-small-img {
+    object-fit: cover;
 }

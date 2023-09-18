@@ -178,14 +178,14 @@ class Posts extends Admin
                     // nếu là số -> chỉ tìm theo ID
                     if (is_numeric($by_like) === true) {
                         $where_or_like = [
-                            'ID' => $by_like * 1,
-                            'post_author' => $by_like,
-                            'post_parent' => $by_like,
+                            $this->table . '.ID' => $by_like * 1,
+                            $this->table .'.post_author' => $by_like,
+                             $this->table .'.post_parent' => $by_like,
                         ];
                     } else {
                         $where_or_like = [
-                            'post_name' => $by_like,
-                            'post_title' => $by_keyword,
+                            $this->table . '.post_name' => $by_like,
+                            $this->table .  '.post_title' => $by_keyword,
                         ];
                     }
                 }
@@ -442,6 +442,8 @@ class Posts extends Admin
                 'by_post_status' => $by_post_status,
                 'post_status' => $post_status,
                 'post_author' => $post_author,
+                'post_per_page' => $post_per_page,
+                'currentPage' => $page_num,
                 'salary_type' => $salary_type,
                 'start_date' => $start_date,
                 'end_date' => $end_date,

@@ -173,7 +173,7 @@ if (empty($data)) {
         <p class="text introduce_company">
             Công ty Luật Ánh Ngọc J&T là một đơn vị chuyên cung cấp các dịch vụ pháp lý uy tín và chất lượng tại Việt Nam. Với kinh nghiệm nhiều năm trong lĩnh vực pháp luật, chúng tôi tự hào là một trong những Công ty luật hàng đầu, chuyên
             <a title="tư vấn pháp luật" href="<?= base_url()?>category/tu-van-luat-dan-su">tư vấn pháp luật</a> và cung cấp <a title="dịch vụ pháp lý" href="<?= base_url()?>category/dich-vu-phap-ly-doanh-nghiep">dịch vụ pháp lý</a> đa dạng. <br>
-            Chúng tôi cam kết mang đến cho khách hàng những giải pháp pháp lý toàn diện, bao gồm <a title="dịch vụ đăng ký sở hữu trí tuệ" href="<?= base_url()?>category/tu-van-luat-so-huu-tri-true">dịch vụ đăng ký sở hữu trí tuệ</a>,
+            Chúng tôi cam kết mang đến cho khách hàng những giải pháp pháp lý toàn diện, bao gồm <a title="dịch vụ đăng ký sở hữu trí tuệ" href="<?= base_url()?>category/tu-van-luat-so-huu-tri-tue">dịch vụ đăng ký sở hữu trí tuệ</a>,
             <a href="<?= base_url()?>category/dich-vu-phap-ly-doanh-nghiep">dịch vụ đăng ký thành lập công ty</a>, và hỗ trợ thủ tục <a href="<?= base_url()?>category/dich-vu-phap-ly-doanh-nghiep">làm giấy phép quảng cáo</a>. <br>Với đội ngũ luật sư có chuyên môn cao và am hiểu sâu về lĩnh vực này, chúng tôi cam kết luôn đồng hành và tư vấn một cách tận tâm để giúp khách hàng giải quyết mọi vấn đề pháp lý một cách hiệu quả và nhanh chóng.
             <br>
             Hãy để <a href="<?= base_url()?>pages/ve-cong-ty-luat">Công ty Luật</a> Ánh Ngọc J&T trở thành đối tác đáng tin cậy của bạn trong mọi vấn đề liên quan đến pháp luật. Chúng tôi sẽ luôn sẵn sàng hỗ trợ bạn, đồng hành cùng bạn trên con đường phát triển kinh doanh và bảo vệ quyền lợi của bạn một cách tốt nhất.
@@ -182,7 +182,7 @@ if (empty($data)) {
     <div class="bottom row">
         <div class="col-6 col-md-3 col-xl-3 item"><a href="<?= base_url()?>category/dich-vu-phap-ly-doanh-nghiep"> <span class="circle"><i class="fa fa-building"></i></span> <span class="pElement">Tư vấn Doanh nghiệp</span> </a></div>
         <div class="col-6 col-md-3 col-xl-3 item"><a href="<?= base_url()?>category/tu-van-hon-nhan-gia-dinh"><span class="circle"><i class="fa fa-heartbeat"></i></span> <span class="pElement">H&ocirc;n nh&acirc;n gia đ&igrave;nh</span> </a></div>
-        <div class="col-6 col-md-3 col-xl-3 item"><a href="<?= base_url()?>category/tu-van-luat-so-huu-tri-true"><span class="circle"><i class="fa fa-deaf"></i></span> <span class="pElement">Tư vấn Sở hữu tr&iacute; tuệ</span> </a></div>
+        <div class="col-6 col-md-3 col-xl-3 item"><a href="<?= base_url()?>category/tu-van-luat-so-huu-tri-tue"><span class="circle"><i class="fa fa-deaf"></i></span> <span class="pElement">Tư vấn Sở hữu tr&iacute; tuệ</span> </a></div>
         <div class="col-6 col-md-3 col-xl-3 item"><a href="<?= base_url()?>category/dich-vu-thu-tuc-hanh-chinh"><span class="circle"><i class="fa fa-university"></i></span><span class="pElement">Thủ thục h&agrave;nh ch&iacute;nh</span></a></div>
         <div class="col-6 col-md-3 col-xl-3 item"><a href="<?= base_url()?>category/tu-van-luat-lao-dong"><span class="circle"><i class="fa fa-blind"></i></span> <span class="pElement ">Tư vấn Luật lao động</span> </a></div>
         <div class="col-6 col-md-3 col-xl-3 item"><a href="<?= base_url()?>category/tu-van-luat-hinh-su"><span class="circle"><i class="fa fa-user-secret"></i></span> <span class="pElement ">Tư vấn Luật h&igrave;nh sự</span> </a></div>
@@ -193,7 +193,7 @@ if (empty($data)) {
 
 <!--main row-->
 <div class="row">
-    <div class="col medium-4 small-12 large-4 hide__if-mobile">
+    <div class="col medium-12 small-12 large-4 hide__if-mobile">
         <div class="col-inner">
             <div class="left_under row posts-list posts-list100 cf">
                 <?php
@@ -234,7 +234,7 @@ if (empty($data)) {
 
         </div>
     </div>
-    <div class="col medium-8 small-12 large-8">
+    <div class="col medium-12 small-12 large-8">
         <div class="col-inner">
 <!--            <div class="second__slider">-->
 <!--                --><?php
@@ -275,7 +275,7 @@ if (empty($data)) {
                            class="parent_name"><?= $term_new['name'] ?></a>
                     </h3>
                     <div class="row posts-list cf">
-                        <div class="col medium-8 small-12 large-8 border__element pb-0">
+                        <div class="col medium-12 small-12 large-8 border__element pb-0">
                             <div class="col-inner">
                                 <div class="posts-home-middle row posts-list posts-list100 cf">
                                     <?php
@@ -292,7 +292,7 @@ if (empty($data)) {
                                 </div>
                             </div>
                         </div>
-                        <div class="col medium-4 small-12 large-4 pb-0">
+                        <div class="col medium-12 small-12 large-4 pb-0">
                             <div class="col-inner">
                                 <div class="hidden__img posts-home-middle-right row posts-list posts-list100 cf anhtren_chuduoi">
                                     <?php
@@ -543,7 +543,7 @@ if (empty($data)) {
                        class="parent_name"><?= $term_three['name'] ?></a>
                 </h3>
                 <div class="row posts-list cf">
-                    <div class="col medium-8 small-12 large-8 border__element pb-0">
+                    <div class="col medium-12 small-12 large-8 border__element pb-0">
                         <div class="col-inner">
                             <div class="posts-home-middle row posts-list posts-list100 cf">
                                 <?php
@@ -562,7 +562,7 @@ if (empty($data)) {
                             </div>
                         </div>
                     </div>
-                    <div class="col medium-4 small-12 large-4 pb-0">
+                    <div class="col medium-12 small-12 large-4 pb-0">
                         <div class="col-inner">
                             <div class="hidden__img posts-home-middle-right row posts-list posts-list100 cf anhtren_chuduoi">
                                 <?php
@@ -625,7 +625,7 @@ if (empty($data)) {
         $post_child_four = $base_model->scache($in_cache_child_four);
         if (empty($post_child_four)) {
             $post_child_four = $post_model->get_posts_by($term_four, [
-                'limit' => 7,
+                'limit' => 6,
             ]);
             //
             $base_model->scache($in_cache_child_four, $post_child_four, 300);
@@ -639,7 +639,7 @@ if (empty($data)) {
 
                 </h3>
                 <div class="row posts-list cf">
-                    <div class="col medium-6 small-12 large-6 border__element pb-0 element__1">
+                    <div class="col medium-12 small-12 large-6 border__element pb-0 element__1">
                         <div class="col-inner">
                             <div class="row posts-list posts-list100 cf anhtren_chuduoi">
                                 <?php
@@ -656,7 +656,7 @@ if (empty($data)) {
                             </div>
                         </div>
                     </div>
-                    <div class="col medium-3 small-12 large-3 pb-0 element__2">
+                    <div class="col medium-12 small-12 large-3 pb-0 element__2">
                         <div class="col-inner">
                             <div class="posts-list cf anhtren_chuduoi min-height251">
                                 <?php
@@ -680,7 +680,7 @@ if (empty($data)) {
                             </div>
                         </div>
                     </div>
-                    <div class="col medium-3 small-12 large-3 pb-0 element__3">
+                    <div class="col medium-12 small-12 large-3 pb-0 element__3">
                         <div class="col-inner">
                             <div class="row posts-list posts-list100 cf min-height117">
                                 <?php

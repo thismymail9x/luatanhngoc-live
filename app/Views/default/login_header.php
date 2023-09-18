@@ -8,8 +8,8 @@ include $theme_private_view;
 else { 
 ?> 
 <br> 
-<div class="partner login_header-partner"> 
-<h1><a href="<?php echo PARTNER_WEBSITE; ?>?utm_source=ci4forwordpress&utm_medium=logo&utm_campaign=wp-login&utm_term=copyright&utm_content=<?php echo $_SERVER['HTTP_HOST']; ?>" target="_blank">Xây dựng bằng Codeingiter4</a></h1> 
-</div> 
+<!--<div class="partner login_header-partner"> -->
+<!--<h1><a href="--><?php //echo PARTNER_WEBSITE; ?><!--?utm_source=ci4forwordpress&utm_medium=logo&utm_campaign=wp-login&utm_term=copyright&utm_content=--><?php //echo $_SERVER['HTTP_HOST']; ?><!--" target="_blank">Xây dựng bằng Codeingiter4</a></h1> -->
+<!--</div> -->
 <?php 
 }

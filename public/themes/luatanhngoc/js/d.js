@@ -11,3 +11,15 @@ window.addEventListener('scroll', () => {
         }
 });
 // console.log('ccc')
+window.addEventListener('scroll', () => {
+    const mobile_fixed_menu = document.querySelector('.mobile-fixed-menu');
+    const scrollPosition = window.scrollY;
+    if (mobile_fixed_menu !== null) {
+        if (scrollPosition > 0) {
+            mobile_fixed_menu.classList.add('sticky');
+        } else {
+            mobile_fixed_menu.classList.remove('sticky');
+        }
+    }
+
+});

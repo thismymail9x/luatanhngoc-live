@@ -32,7 +32,7 @@ if ($isMobile == true) {
                             <i class="fa fa-search"></i>
                         </div>
                         <div class="elementInput">
-                            <input type="search" name="s" placeholder='VD: hôn ly hôn đơn phương, tư vấn luật, tư vấn pháp luật, đơn khởi kiện, công ty luật, luật sư tư vấn'>
+                            <input type="search" name="s" placeholder='VD: ly hôn đơn phương, tư vấn luật, tư vấn pháp luật, đơn khởi kiện, công ty luật, luật sư tư vấn'>
                         </div>
                     </div>
                 </form>
@@ -40,9 +40,9 @@ if ($isMobile == true) {
         </div>
         <div class="col medium-5 small-12 large-5">
             <div class="col-inner top-user-menu cf d-flex">
-                <a target="_blank" href="/" title="Đăng ký ộ công thương" class="dmca-badge">
-                    <img style="height: 50px;width: 100%;" src ="<?= base_url() ?>upload/2023/09/dich-vu-thong-bao-bo-cong-thuong-removebg-preview-thumbnail.png"  alt="Đăng ký bộ công thương" />
-                </a>
+<!--                <a target="_blank" href="/" title="Đăng ký ộ công thương" class="dmca-badge">-->
+<!--                    <img style="height: 50px;width: 100%;" src ="--><?php //= base_url() ?><!--upload/2023/09/dich-vu-thong-bao-bo-cong-thuong-removebg-preview-thumbnail.png"  alt="Đăng ký bộ công thương" />-->
+<!--                </a>-->
                 <a target="_blank" href="https://www.dmca.com/Protection/Status.aspx?ID=64e71b30-ebd3-42bc-b908-4c0d404f0a0e&refurl=https://luatanhngoc.vn" title="DMCA.com Protection Status" class="dmca-badge">
                     <img style="height: 30px;width: 100%;" src ="https://images.dmca.com/Badges/DMCA_logo-grn-btn120w.png?ID=64e71b30-ebd3-42bc-b908-4c0d404f0a0e"  alt="DMCA.com Protection Status" />
                 </a>
