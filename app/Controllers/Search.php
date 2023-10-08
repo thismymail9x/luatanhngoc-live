@@ -22,6 +22,7 @@ class Search extends Csrf
     // tìm kiếm
     public function index($add_where = [], $add_filter = [], $base_slug = '')
     {
+
         //print_r( $_GET );
         //die(__CLASS__ . ':' . __LINE__);
 
@@ -203,7 +204,7 @@ class Search extends Csrf
                 //print_r( $filter );
 
                 //
-                $data = $this->base_model->select('*', 'posts', $where, $filter);
+                $data = $this->base_model->select('posts.*, users.user_nicename', 'posts', $where, $filter);
 
                 //
                 $data = $this->post_model->list_meta_post($data);

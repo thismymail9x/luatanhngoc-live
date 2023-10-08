@@ -457,6 +457,7 @@ class Option extends EbModel
 
     public function get_the_logo($cog, $key = 'logo')
     {
+
         //if ( !isset( $cog->$key ) || $cog->$key == '' ) {
         if ($cog->$key == '') {
             $cog->$key = $cog->logo;
@@ -472,7 +473,6 @@ class Option extends EbModel
         } else {
             $height = $cog->logo_main_height;
         }
-
         //
         echo '<a href="./" class="web-logo" aria-label="Home" style="background-image: url(\'' . $this->get_the_logo($cog, $key) . '\'); height: ' . $height . 'px;">&nbsp;</a>';
     }

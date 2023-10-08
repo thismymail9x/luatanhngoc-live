@@ -11,10 +11,15 @@ if ($isMobile == true) {
 
     <div class="row row-collapse align-middle py-2">
         <div class="col medium-2 small-12 large-2">
-            <div class="col-inner">
+            <div class="col-inner dark">
                 <?php
                 $option_model->the_logo($getconfig);
                 ?>
+            </div>
+            <div class="col-inner light">
+            <?php
+            $option_model->the_footer_logo($getconfig);
+            ?>
             </div>
         </div>
         <div class="col medium-2 small-12 large-2">
@@ -63,6 +68,7 @@ if ($isMobile == true) {
                 }
 
                 ?>
+                <a title="Chuyển giao diện" class="btn btn-sm cursor" id="changeTheme"><i class="fa fa-themeisle" aria-hidden="true"></i></a>
             </div>
         </div>
     </div>
@@ -105,3 +111,27 @@ if ($isMobile == true) {
         </div>
     </div>
 <?php } ?>
+<script>
+    // chuyển theme
+    const currentTheme = localStorage.getItem('theme');
+    const body = document.body;
+    if (currentTheme === 'dark') {
+        body.classList.add('page_dark');
+        body.classList.remove('page_light');
+    } else {
+        body.classList.add('page_light');
+        body.classList.remove('page_dark');
+    }
+
+    document.getElementById('changeTheme').addEventListener('click', () => {
+        if (body.classList.contains('page_light')) {
+            body.classList.remove('page_light');
+            body.classList.add('page_dark');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            body.classList.remove('page_dark');
+            body.classList.add('page_light');
+            localStorage.setItem('theme', 'light');
+        }
+    });
+</script>

@@ -110,9 +110,9 @@ if (empty($dataTop)) {
                 <div class="menuPost">
                     <div id="contentCategory" class="contentCategory collapsed">
                         <div class="item-top">
-                            <i class="fa fa-list-ol" style="color: #ffff00;"></i>
+                            <i class="fa fa-list-ol mainColor" ></i>
                             <span>Mục lục bài viết</span>
-                            <i class="fa fa-angle-down icon__rotate" style="color: #ffff00;font-size: 24px;"></i>
+                            <i class="fa fa-angle-down icon__rotate mainColor" style="font-size: 24px;"></i>
                         </div>
                         <div class="item-bottom">
                             <?php foreach (@$data['contentCategory'] as $key => $value) { ?>

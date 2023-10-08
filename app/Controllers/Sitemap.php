@@ -51,10 +51,10 @@ class Sitemap extends Csrf
 
     public function index($post_type = '', $page_page = '', $page_num = 1)
     {
+
         global $arr_custom_post_type;
         //print_r( $arr_custom_post_type );
         //echo __CLASS__ . ':' . __LINE__ . '<br>' . PHP_EOL;
-
         //
         $this->WGR_echo_sitemap_css();
 
@@ -352,13 +352,13 @@ class Sitemap extends Csrf
     //
     private function WGR_echo_sitemap_css()
     {
-
         header("Content-type: text/xml");
         //die( __CLASS__ . ':' . __LINE__ );
 
         //
         $main_sitemap_xsl = PUBLIC_HTML_PATH . 'public/css/main-sitemap.xsl';
         $cache_sitemap_xsl = PUBLIC_HTML_PATH . 'public/upload/main-sitemap.xsl';
+
         // thay thế nội dung trong sitemap thành của partner
         if ($this->base_model->scache(__FUNCTION__) === NULL) {
             $c = file_get_contents($main_sitemap_xsl, 1);

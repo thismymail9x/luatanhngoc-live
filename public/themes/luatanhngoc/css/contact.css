@@ -233,6 +233,7 @@
     .contact__base .contact__form .left {
         font-size: 14px;
         margin-top: 16px;
+        padding: 0 16px;
     }
 }
 
@@ -473,6 +474,7 @@
     .contact__base .contact__form .left {
         font-size: 14px;
         margin-top: 16px;
+        padding: 0 16px;
     }
 }
 
@@ -709,6 +711,7 @@
         font-size: 15px;
         padding-right: 0;
         margin-top: 20px;
+        padding: 0 16px;
     }
 }
 
@@ -943,6 +946,7 @@
         font-size: 15px;
         padding-right: 0;
         margin-top: 20px;
+        padding: 0 16px;
     }
 
 }

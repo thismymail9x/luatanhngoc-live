@@ -110,10 +110,6 @@ $('.bg-article').on('click',function () {
     }
 });
 
-
-
-
-
 $(document).ready(function () {
     // Bắt sự kiện scroll
     $(window).scroll(function () {
@@ -132,4 +128,39 @@ function scroll_post() {
         jQuery("body").removeClass("show-hide__menu");
     }
 }
+
+
+// thao tác scroll để thêm hiệu ứng cho menu danh mục trong bài viết
+// Lấy danh sách các thẻ h2 và h3
+const headings = document.querySelectorAll('h2, h3');
+
+// Lưu trạng thái của phần tử đang được highlight
+let currentHighlight = null;
+
+// Hàm kiểm tra vị trí và thêm/xóa class highlighted khi scroll xuống
+function checkScrollPosition() {
+    headings.forEach((heading, index) => {
+        const rect = heading.getBoundingClientRect();
+        const top = rect.top;
+
+        if (top <= 80) {
+            // Xóa class highlighted khỏi phần tử hiện tại (nếu có)
+            if (currentHighlight) {
+
+                const currentLink = document.querySelector(`#menuCategory a[href="#${currentHighlight.id}"]`);
+                currentLink.classList.remove('highlighted');
+            }
+            // Thêm class highlighted vào phần tử mới
+            const link = document.querySelector(`#menuCategory a[href="#${heading.id}"]`);
+            link.classList.add('highlighted');
+            currentHighlight = heading;
+        }
+    });
+}
+
+// Thêm sự kiện scroll để kiểm tra vị trí khi scroll xuống
+window.addEventListener('scroll', checkScrollPosition);
+
+// Gọi hàm kiểm tra lần đầu khi tải trang
+checkScrollPosition();
 

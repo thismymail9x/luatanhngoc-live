@@ -379,13 +379,13 @@ class Users extends Csrf
 
             // xóa cookie lưu ID đăng nhập
             //delete_cookie( $this->wrg_cookie_login_key );
-
+            $this->MY_redirect(base_url('guest/login'), 301);
             //
-            if (isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER'])) {
-                $this->MY_redirect($_SERVER['HTTP_REFERER'], 301);
-            } else {
-                $this->MY_redirect(base_url('guest/login'), 301);
-            }
+//            if (isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER'])) {
+//                $this->MY_redirect($_SERVER['HTTP_REFERER'], 301);
+//            } else {
+//                $this->MY_redirect(base_url('guest/login'), 301);
+//            }
         }
     }
 

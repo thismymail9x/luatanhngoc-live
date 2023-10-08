@@ -195,7 +195,7 @@ if (empty($data)) {
 <div class="row">
     <div class="col medium-12 small-12 large-4 hide__if-mobile">
         <div class="col-inner">
-            <div class="left_under row posts-list posts-list100 cf">
+            <div class="left_under cf">
                 <?php
                 // 5 bài tiếp theo
                 $t = 0;
@@ -704,14 +704,18 @@ if (empty($data)) {
     </div>
 </div>
 <div class="row hide__if-mobile">
-    <hr>
+    <div class="col">
+        <hr>
+    </div>
 </div>
 <div class="row">
     <div class="page__bottom">
-        <img src="<?= base_url() ?>upload/2023/09/hinh-anh-lien-he-large.png" alt="lien-he">
-        <div class="page__bottom-item">
-            <p>Hãy gửi vấn đề của bạn cho chúng tôi để được hỗ trợ và tư vấn nhanh nhất</p>
-            <a target="_blank" href="<?=base_url()?>pages/lien-he" title="Click để tạo liên hệ" role="button" class="button-92">Liên hệ</a>
-        </div>
+       <div class="col">
+           <img src="<?= base_url() ?>upload/2023/09/hinh-anh-lien-he-large.png" alt="lien-he">
+           <div class="page__bottom-item">
+               <p>Hãy gửi vấn đề của bạn cho chúng tôi để được hỗ trợ và tư vấn nhanh nhất</p>
+               <a target="_blank" href="<?=base_url()?>pages/lien-he" title="Click để tạo liên hệ" role="button" id="button-92" class="button-92">Liên hệ</a>
+           </div>
+       </div>
     </div>
 </div>

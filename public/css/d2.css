@@ -90,7 +90,7 @@
 }
 
 .ebshow-top-scroll #oi_scroll_top {
-    display: block
+    display: none
 }
 
 .ebfixed-top-menu .fixed-top-menu, .ebfixed-top-menu .fix-top-menu {

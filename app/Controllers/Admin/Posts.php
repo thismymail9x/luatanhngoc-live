@@ -9,6 +9,7 @@ use App\Libraries\UsersType;
 use App\Libraries\TaxonomyType;
 use App\Libraries\LanguageCost;
 use App\Libraries\DeletedStatus;
+use App\Models\CustomCode;
 
 //
 class Posts extends Admin
@@ -223,7 +224,7 @@ class Posts extends Admin
             $where[$this->table . '.post_success >='] = date('Y-m-d',strtotime($start_date));
         }
         if ($end_date !='') {
-            $where[$this->table . '.post_success <='] = date('Y-m-d',strtotime($end_date));
+            $where[$this->table . '.post_success <='] = date('Y-m-d 23:59:00',strtotime($end_date));
         }
 
         $where_in[$this->table . '.post_status'] = $by_post_status;
@@ -312,9 +313,8 @@ class Posts extends Admin
         //print_r( $totalThread );
 
         //
+        $page_num = $this->MY_get('page_num', 1);
         if ($totalThread > 0) {
-            $page_num = $this->MY_get('page_num', 1);
-
             $totalPage = ceil($totalThread / $post_per_page);
             if ($totalPage < 1) {
                 $totalPage = 1;
@@ -1464,4 +1464,5 @@ class Posts extends Admin
         $str = strtolower($str);
         return $str;
     }
+
 }

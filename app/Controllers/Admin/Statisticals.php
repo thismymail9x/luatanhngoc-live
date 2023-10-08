@@ -47,10 +47,10 @@ class Statisticals extends Admin
         }
         // theo ngày kết thúc duyệt bài
         if (!isset($end_date) || $end_date == '') {
-            $where['post_success <='] = date('Y-m-t');
+            $where['post_success <='] = date('Y-m-t 23:59:00');
             $end_date = date('Y-m-t');
         } else {
-            $where['post_success <='] = date('Y-m-d', strtotime($end_date));
+            $where['post_success <='] = date('Y-m-d 23:59:00', strtotime($end_date));
         }
         // tìm theo người
         if (!isset($author_id) || $author_id != '') {

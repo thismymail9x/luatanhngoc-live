@@ -224,6 +224,7 @@ class Posts extends Csrf
             $dynamic_schema[] = [
                 '@context' => 'http://schema.org',
                 '@type' => 'CreativeWorkSeries',
+                "name"=> isset($data['post_title']) ? $data['post_title']: "Công ty Luật Ánh Ngọc, công ty Luật Hà Nội",
                 'aggregateRating' => [
                     "@type" => "AggregateRating",
                     "ratingValue" => isset($data['post_meta']['rating_value']) ? $data['post_meta']['rating_value'] : 4.2,

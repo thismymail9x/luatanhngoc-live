@@ -51,9 +51,9 @@ $post_model->update_views($data['ID']);
                 <div class="menuPost">
                     <div id="contentCategory" class="contentCategory collapsed">
                         <div class="item-top">
-                            <i class="fa fa-list-ol" style="color: #ffff00;"></i>
+                            <i class="fa fa-list-ol mainColor" ></i>
                             <span>Mục lục bài viết</span>
-                            <i class="fa fa-angle-down icon__rotate" style="color: #ffff00;font-size: 24px;"></i>
+                            <i class="fa fa-angle-down icon__rotate mainColor" style="font-size: 24px;"></i>
                         </div>
                         <div class="item-bottom">
                             <?php foreach (@$contentCategory as $key => $value) { ?>
@@ -66,6 +66,9 @@ $post_model->update_views($data['ID']);
                 </div>
                 <div id="contentPost" class="content">
                     <p><?= @$data['post_content'] ?></p>
+                    <p class="fz-15"><i>Bài viết chỉ mang tính chất tham khảo.</i></p>
+                    <p class="fz-15"><i>Trường hợp cần giải đáp thắc mắc về vấn đề có liên quan vui lòng
+                            <a title="Liên hệ" target="_blank" href="<?= base_url()?>pages/lien-he">Liên hệ</a> trực tiếp với chúng tôi.</i></p>
                 </div>
             </div>
         </div>
@@ -147,3 +150,4 @@ $post_model->update_views($data['ID']);
     <!--        </div>-->
     <!--    </div>-->
 </div>
+

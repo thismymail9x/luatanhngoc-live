@@ -1770,7 +1770,7 @@
         position: absolute;
         top: 40%;
         color: rgba(204, 179, 255, 0.7);
-        padding: 0 12px!important;
+        padding: 0 12px !important;
     }
 
     .list__post .owl-theme .owl-nav .owl-next {
@@ -1779,7 +1779,7 @@
         position: absolute;
         top: 40%;
         color: rgba(204, 179, 255, 0.7);
-        padding: 0 12px!important;
+        padding: 0 12px !important;
     }
 
     .list__post .item__home-big {
@@ -1874,28 +1874,34 @@
         font-weight: 600;
     }
 }
+
 .posts-list-desc {
     text-align: justify;
 }
+
 .blog__content img {
     height: auto;
 }
+
 @media screen and (max-width: 768px) {
-    #contentPost table,#contentPost th, #contentPost td {
-        width: auto!important;
+    #contentPost table, #contentPost th, #contentPost td {
+        width: auto !important;
     }
 }
-#contentPost table{
-    border-collapse: collapse!important; /* Để nối các đường viền thành một đường liền */
+
+#contentPost table {
+    border-collapse: collapse !important; /* Để nối các đường viền thành một đường liền */
     width: 100% !important; /* Đảm bảo bảng rộng 100% của phần tử cha */
 }
 
-#contentPost table,#contentPost th, #contentPost td {
-    border: 1px solid #fff!important; /* Thêm đường viền 1px với màu đen cho table, th, và td */
+#contentPost table, #contentPost th, #contentPost td {
+    border: 1px solid #fff !important; /* Thêm đường viền 1px với màu đen cho table, th, và td */
 }
+
 .fz-13 {
     font-size: 13px;
 }
+
 .limit-text-1 {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1971,13 +1977,16 @@ button:focus {
     /*color: rgb(255 255 255);*/
     color: rgb(186 217 252);
 }
-.title__post, .text__title,.posts-list-title *,.title, h1,.title-news,.bg-info {
+
+.title__post, .text__title, .posts-list-title *, .title, h1, .title-news, .bg-info {
     color: rgb(255 255 255);
 }
+
 ::selection {
     background-color: #ffff66; /* Màu nền khi bôi đen */
     color: black; /* Màu chữ khi bôi đen */
 }
+
 .select2-container, .selection, .select2-selection, .select2-selection__clear,
 .select2-selection__clear span, .select2-selection__choice, .select2-selection__choice__remove,
 .select2-selection__choice__remove span, .select2-selection__choice__display, .select2-results, .select2-results__options,
@@ -2092,6 +2101,7 @@ a {
     /*font-display: swap;*/
     src: url("../font/SF_Pro_Text/SF-Pro-Text-Regular.otf");
 }
+
 body {
     font-family: "SF Pro Text", "SF Pro Display", sans-serif;
     font-size: 17px;
@@ -2101,6 +2111,121 @@ body {
     /*font-family:  "Merriweather", serif;;*/
     /*font-family: "Lato",Arial;*/
 }
+
 .list__post .item__home-small .item__home-small-img {
     object-fit: cover;
+}
+
+@media (min-width: 768px) {
+    .wiget_contact {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        padding: 12px;
+        width: 230px;
+    }
+
+    @keyframes heartbeat {
+        0% {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+            -webkit-transform-origin: center center;
+            transform-origin: center center;
+            -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+        }
+        10% {
+            -webkit-transform: scale(.91);
+            transform: scale(.91);
+            -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+        }
+        17% {
+            -webkit-transform: scale(.98);
+            transform: scale(.98);
+            -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+        }
+        33% {
+            -webkit-transform: scale(.87);
+            transform: scale(.87);
+            -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+        }
+        45% {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+            -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+        }
+    }
+
+    .wiget_contact img {
+        animation: heartbeat 1.5s ease-in-out 5s infinite both;
+    }
+
+
+    .mobile_wiget {
+        display: none;
+    }
+    #wgr__footer .zalo-chat-widget {
+        bottom: 70px!important;
+        right: 12px!important;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .wiget_contact {
+        display: none;
+    }
+    #wgr__footer .zalo-chat-widget {
+        bottom: 50px!important;
+        right: 8px!important;
+    }
+
+    .mobile_wiget {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: #151f32;
+        padding: 4px;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .mobile_wiget .item {
+        cursor: pointer;
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .mobile_wiget a {
+        font-size: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .mobile_wiget .fa-mobile{
+        background: #4DAF4F;
+    }
+    .mobile_wiget .fa-paperclip{
+        background: #0068FF;
+    }
+    .mobile_wiget i {
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        display: flex;
+        text-align: center;
+        font-weight: bold;
+        font-size: 20px;
+        padding: 10px;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        background: red;
+        justify-content: center;
+        align-items: center;
+        margin-right: 10px;
+    }
+}
+#menuCategory .highlighted {
+    color: black!important; /* Bạn có thể thay đổi màu sắc theo ý muốn */
+    background: white;
 }

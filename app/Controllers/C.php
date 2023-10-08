@@ -352,7 +352,7 @@ class C extends Home
     public function lists()
     {
         //
-        $post_per_page = 20;
+        $post_per_page = 50;
         // URL cho các action dùng chung
         $for_action = '';
         // URL cho phân trang
@@ -520,7 +520,7 @@ class C extends Home
         //print_r( $totalThread );
         $totalThread = $totalThread[0]['c'];
         //print_r( $totalThread );
-
+        $page_num = 1;
         //
         if ($totalThread > 0) {
             $page_num = $this->MY_get('page_num', 1);
@@ -623,7 +623,7 @@ class C extends Home
         $this->teamplate['main'] = view(
             'posts/list',
             array(
-                'seo' => $this->base_model->default_seo('Thông tin tài khoản', $this->getClassName(__CLASS__) . '/' . __FUNCTION__),
+                'seo' => $this->base_model->default_seo('Danh sách bài viết', $this->getClassName(__CLASS__) . '/' . __FUNCTION__),
                 'for_action' => $for_action,
                 'by_post_status' => $by_post_status,
                 'post_status' => $post_status,
@@ -776,10 +776,10 @@ class C extends Home
         }
         // theo ngày kết thúc duyệt bài
         if (!isset($end_date) || $end_date == '') {
-            $where['post_success <='] = date('Y-m-t');
+            $where['post_success <='] = date('Y-m-t 23:59:00');
             $end_date = date('Y-m-t');
         } else {
-            $where['post_success <='] = date('Y-m-d', strtotime($end_date));
+            $where['post_success <='] = date('Y-m-d 23:59:00', strtotime($end_date));
         }
         // mặc định sẽ lấy theo user đang đăng nhập
         $where['post_author'] = $this->session_data['ID'];

@@ -6,11 +6,40 @@
         </div>
     </div>
     <div class="col small-8 medium-8 large-8">
-        <div class="col-inner">
+
+        <div class="col-inner dark">
             <?php
-            $option_model->the_logo($getconfig, 'logo_mobile', 'logo_mobile_height');
+            $option_model->the_logo($getconfig,'logo','logo_mobile_height');
             ?>
         </div>
+        <div class="col-inner light">
+            <?php
+            $option_model->the_logo($getconfig,'logofooter','logo_mobile_height');
+            ?>
+        </div>
+
+
+
+<!--        <div class="col-inner dark">-->
+<!--            --><?php
+//            $option_model->the_logo($getconfig,'logo', 'logo_mobile_height');
+//            ?>
+<!--        </div>-->
+<!--        <div class="col-inner light">-->
+<!--            --><?php
+//            $option_model->the_logo($getconfig,'logofooter', 'logo_mobile_height');
+//            ?>
+<!--        </div>-->
+<!--        <div class="col-inner">-->
+<!---->
+<!--            --><?php
+//            $option_model->the_logo($getconfig, 'logo_mobile', 'logo_mobile_height');
+//            ?>
+<!---->
+<!---->
+<!---->
+<!---->
+<!--        </div>-->
     </div>
     <div class="col small-2 medium-2 large-2 ">
         <div class="col-inner text-center mobile_user">
@@ -32,9 +61,14 @@
                     </div>
                 </div>
                 <div class="col small-8 medium-8 large-8">
-                    <div class="col-inner">
+                    <div class="col-inner dark">
                         <?php
-                        $option_model->the_logo($getconfig, 'logo_mobile', 'logo_mobile_height');
+                        $option_model->the_logo($getconfig,'logo', 'logo_mobile_height');
+                        ?>
+                    </div>
+                    <div class="col-inner light">
+                        <?php
+                        $option_model->the_logo($getconfig,'logofooter', 'logo_mobile_height');
                         ?>
                     </div>
                 </div>
@@ -66,7 +100,6 @@
                 ?>
 
             </div>
-
             <div class="modal-footer">
                 <a target="_blank" href="/" title="Đăng ký ộ công thương" class="dmca-badge">
                     <img style="height: 50px;width: 100%;"
@@ -79,7 +112,10 @@
                     <img style="height: 30px;width: 100%;"
                          src="https://images.dmca.com/Badges/DMCA_logo-grn-btn120w.png?ID=64e71b30-ebd3-42bc-b908-4c0d404f0a0e"
                          alt="DMCA.com Protection Status"/>
-                </a></div>
+                </a>
+                <a title="Chuyển giao diện" class="btn btn-sm cursor" id="changeTheme"><i class="fa fa-themeisle" aria-hidden="true"></i></a>
+
+            </div>
         </div>
     </div>
 </div>

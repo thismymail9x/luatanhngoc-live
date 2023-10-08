@@ -44,8 +44,8 @@ class Admin extends Ajaxs
 
         // nếu không có quyền admin -> báo lỗi nếu đang vào admin
         //hungtd tạm thời comment
-        if ($this->session_data['userLevel'] != UsersType::ADMIN_LEVEL &&  $this->session_data['member_type'] == UsersType::GUEST) {
-            die('404 error line ' . __CLASS__ . ':' . __LINE__);
+        if ($this->session_data['userLevel'] != UsersType::ADMIN_LEVEL && $this->session_data['member_type'] == UsersType::GUEST) {
+            die('404 error luatanhngoc ');
         }
 
         //

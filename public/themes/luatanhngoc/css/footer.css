@@ -102,6 +102,7 @@
         padding: 0;
     }
     #footer .footer-bottom {
+        padding-bottom: 50px;
         border-top: 1px solid rgba(255, 255, 255, 0.2);
     }
     #footer .second-row {
@@ -314,6 +315,7 @@
         padding: 0;
     }
     #footer .footer-bottom {
+        padding-bottom: 50px;
         border-top: 1px solid rgba(255, 255, 255, 0.2);
     }
     #footer .second-row {
@@ -529,6 +531,7 @@
         padding: 0;
     }
     #footer .footer-bottom {
+        padding-bottom: 20px;
         border-top: 1px solid rgba(255, 255, 255, 0.2);
     }
     #footer .second-row {

@@ -121,9 +121,9 @@ class PostType
         $arr['meta_title'] = 'Meta title';
         $arr['meta_description'] = 'Meta description';
         $arr['meta_keyword'] = 'Meta keyword';
-        $arr['rating_value'] = 'Giá trị đánh giá (số thập phân nhỏ hơn 5. Ví dụ: 4.8 hoặc 4.5 hoặc 3.3)';
-        $arr['rating_count'] = 'Số lượng đánh giá (số nguyên nhập trong khoảng 160 - 300)';
-        $arr['review_count'] = 'Số lượng nhận xét (số nguyên nhập dưới 70)';
+        $arr['rating_value'] = 'Giá trị đánh giá (số thập phân nhỏ hơn 5 và lớn hơn 4. Ví dụ: 4.0 hoặc 4.5)';
+        $arr['rating_count'] = 'Số lượng đánh giá (số nguyên nhập trong khoảng 2 - 500)';
+        $arr['review_count'] = 'Số lượng nhận xét (số nguyên nhập = 30% SL đánh giá)';
 
         //
         if (
