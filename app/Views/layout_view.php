@@ -11,6 +11,7 @@ echo (($html_lang == 'vn' || $html_lang == '') ? 'vi' : $html_lang);
         gtag('js', new Date());
         gtag('config', 'G-WJHT5RKM95');
     </script>
+
     <!-- Histats.com  START  (aync)-->
     <script type="text/javascript">var _Hasync= _Hasync|| [];
         _Hasync.push(['Histats.start', '1,4805676,4,0,0,0,00010000']);
