@@ -140,9 +140,9 @@ if (empty($data)) {
 
                             </div>
                             <span class="eye-star">
-                                        <span title="Đánh giá">
+                                        <span  title="Tác giả">
                                              <i style="color: #ffff00" class="fa fa-star"></i>
-                                           <?= $v['user_nicename']?>
+                                            <?= $v['user_nicename']?>
                                         </span>
                                         <span title="Lượt xem">
                                            <i class="ml-1 fa fa-eye"></i> <?=$v['post_viewed']?>

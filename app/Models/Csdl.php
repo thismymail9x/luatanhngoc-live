@@ -554,8 +554,8 @@ class Csdl extends Session
             foreach ($ops['order_by'] as $k => $v) {
                 $builder->orderBy($k, $v);
             }
-        }
 
+        }
         // offset -> limit
         if (!isset($ops['offset']) || $ops['offset'] < 0) {
             $ops['offset'] = 0;
@@ -620,7 +620,6 @@ class Csdl extends Session
         //print_r( $a );
         return $a;
     }
-
     public function query_error($arr)
     {
         if ($arr['code'] > 0) {

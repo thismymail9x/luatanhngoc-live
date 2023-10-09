@@ -660,7 +660,7 @@ class Layout extends Sync
                             // các file khác chưa xác định thì cứ gọi là bỏ qua đã
                             else {
                                 // thêm vào tệp mở rộng để không cho truy cập file trực tiếp
-                                $file_other_ext = 'daidq-ext';
+                                $file_other_ext = 'luatanhngoc';
                                 $file_new_path = $file_path . '.' . $file_other_ext;
                                 //echo $file_new_path . '<br>' . PHP_EOL;
                                 if (file_exists($file_new_path)) {

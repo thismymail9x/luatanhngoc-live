@@ -9,3 +9,9 @@ $routes->post('/c/receivePost', 'C::receivePost',['filter' => 'auth']);
 $routes->post('/c/sendAccept', 'C::sendAccept',['filter' => 'auth']);
 $routes->get('/c/statistic', 'C::statistic',['filter' => 'auth']);
 $routes->get('/c/user_add', 'C::user_add',['filter' => 'auth']);
+$routes->get('tacgia/list', 'Tacgia::list');
+if (WGR_AUTHOR_PERMALINK != '%slug%') {
+    $a = str_replace('%slug%', '(:segment)', WGR_AUTHOR_PERMALINK);
+    $routes->get($a, 'Tacgia::author/$1');
+    // $routes->get($a . '/page/(:num)', 'AuthorCustom::category_list/$1/page/$2');
+}

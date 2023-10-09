@@ -5,6 +5,7 @@ namespace App\Models;
 //
 use App\Libraries\ConfigType;
 use App\Helpers\HtmlTemplate;
+use App\Libraries\PostType;
 
 //
 class CustomCode extends Post
@@ -297,5 +298,40 @@ class CustomCode extends Post
         ",WGR_POST_VIEW,$where,[
             'group_by'=>['post_author'],
         ]);
+    }
+
+    /**
+     * @return array|array[]|string
+     * hàm lấy ra danh sách user có só lượng view cao nhất
+     */
+    public function getTopOfAuthor()
+    {
+        $sql = "SELECT SUM(wp_posts.post_viewed) as total,wp_users.* 
+                FROM wp_users INNER JOIN wp_posts ON wp_posts.post_author = wp_users.ID 
+                WHERE wp_users.is_deleted = 0 AND wp_posts.post_status = ? AND wp_posts.post_type = ?";
+        $sql .= " GROUP BY wp_users.ID
+                ORDER BY total DESC
+                LIMIT 5
+                ";
+        return $this->base_model->MY_result($sql, [PostType::PUBLICITY, PostType::POST]);
+    }
+
+    /**
+     * @param $id
+     * @return array|int|mixed|string
+     * hàm lấy số lượng bài viết của user
+     */
+    public function getCountPostOfUser($id)
+    {
+       return $this->base_model->select(
+            'COUNT(ID) AS count',
+            'posts',
+            array(
+                // các kiểu điều kiện where
+                'post_status' => PostType::PUBLICITY,
+                'post_author' => $id,
+                'post_type' => PostType::POST
+            ), ['limit' => 1]
+        );
     }
 }

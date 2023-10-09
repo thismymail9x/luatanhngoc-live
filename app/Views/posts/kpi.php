@@ -3,6 +3,8 @@
 use App\Libraries\PostType;
 $base_model->add_css('admin/css/posts_list.css');
 $base_model->add_css(  'themes/' . THEMENAME . '/css/post_list.css');
+$base_model->add_css(  'themes/' . THEMENAME . '/css/users.css');
+
 ?>
     <style>
         .input-group-text {
@@ -47,12 +49,10 @@ $base_model->add_css(  'themes/' . THEMENAME . '/css/post_list.css');
 <div class="w90">
     <div class="widget-box ng-main-content" id="myApp">
         <div class="row">
-            <div class="col-2">
-                <ul class="menuPost">
-                    <li><a href="<?=base_url('/c/lists')?>"><i class="fa fa-list-ul" aria-hidden="true"></i> Danh sách</a></li>
-                    <li><a href="<?=base_url('/c/user_add')?>"><i class="fa fa-plus" aria-hidden="true"></i> Tạo mới</a></li>
-                    <li><a href="<?=base_url('/c/statistic')?>"><i class="fa fa-bar-chart" aria-hidden="true"></i> Thống kê</a></li>
-                </ul>
+            <div class="col small-12 medium-2 large-2 global-profile-menu">
+                <?php
+                $menu_model->the_menu( 'user-profile-menu' );
+                ?>
             </div>
             <div class="col-10">
                 <div class="widget-content nopadding">

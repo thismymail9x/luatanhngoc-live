@@ -1,1 +1,39 @@
-#click-chose-media img{background:url("../images/noavatar.png") center no-repeat;background-size:contain;display:block;margin-bottom:10px;border:1px #ccc solid}.global-profile-menu ul{margin-bottom:20px}.global-profile-menu li a{display:block;font-size:16px;color:#000;padding:5px 0 5px 20px}body.dark-theme .global-profile-menu li a{color:#fff}.global-profile-menu li a:hover{text-decoration:underline}.global-profile-menu li a:before{content:"\f105";font-family:FontAwesome;display:inline-block;margin-right:10px}.global-profile-menu .sub-menu{display:none}@media only screen and (max-width:588px){.global-profile_view .row .large-4{padding-bottom:2px}.global-profile_view .row .large-8{padding-bottom:15px}}
+.global-profile-menu .user-profile-menu .sub-menu {
+    display: unset;
+}
+.global-profile-menu .user-profile-menu .sub-menu li{
+    padding-left: 12px;
+}
+.global-profile-menu .user-profile-menu li a:before {
+    content: unset;
+}
+.global-profile-menu .user-profile-menu li {
+    font-size: 16px;
+    font-weight: 700;
+}
+.global-profile-menu .user-profile-menu li a{
+    text-decoration: none;
+}
+
+.global-profile-menu .user-profile-menu li a {
+    padding: 5px;
+    font-size: 12px;
+    color: unset;
+    display: block;
+}
+
+.global-profile-menu li a:hover{
+    border-radius: 4px;
+    background: rgba(77, 77, 0,0.5);
+}
+
+.global-profile-menu .active-menu-item {
+    border-radius: 4px;
+    background: var(--mainColorOpacity);
+}
+.form-control {
+    font-size: 14px;
+}
+.fz-14 {
+    font-size: 14px;
+}

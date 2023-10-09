@@ -274,6 +274,8 @@ if (WGR_CATEGORY_PREFIX != '') {
  */
 // category
 defined('WGR_CATEGORY_PERMALINK') || define('WGR_CATEGORY_PERMALINK', 'category/%slug%');
+// author
+defined('WGR_AUTHOR_PERMALINK') || define('WGR_AUTHOR_PERMALINK', 'tacgia/%slug%');
 // blogs
 //defined('WGR_BLOGS_PERMALINK') || define('WGR_BLOGS_PERMALINK', '%taxonomy%/%slug%');
 // product_cat
@@ -356,7 +358,6 @@ defined('WGR_CSP_CHILD_SRC') || define('WGR_CSP_CHILD_SRC', "'self' *.youtube.co
 
 // Khi cần thay đổi URL cho trang login thì đổi tham số này -> có thể tận dụng HTML của trang login thay vì tự code mới
 defined('ACTION_LOGIN_FORM') || define('ACTION_LOGIN_FORM', './guest/login');
-
 
 // constant tính lương
 define('SALARY_TYPE', array(

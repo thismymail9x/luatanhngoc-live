@@ -29,6 +29,7 @@ class C extends Home
     protected $default_post_data = [];
     // dùng để chọn xem hiển thị nhóm sản phẩm nào ra ở phần danh mục
     protected $main_category_key = 'post_category';
+
     public function __construct()
     {
         parent::__construct();
@@ -207,7 +208,7 @@ class C extends Home
         if ($result_id > 0) {
             // tạo thành công thì xuất thông báo, và chuyển đến trang danh sách bài viết
             // tạo session để xóa dữ liệu tự động lưu của tinymce
-            $this->MY_session('deleteLocalStorage',true);
+            $this->MY_session('deleteLocalStorage', true);
             $this->base_model->alert('Tạo bài viết thành công!', $this->get_user_permalink($result_id));
         }
         $this->base_model->alert('Lỗi tạo bài viết mới', 'error');
@@ -332,7 +333,7 @@ class C extends Home
             $this->base_model->alert($result_id['error'], 'error');
         }
         // tạo session để xóa dữ liệu tự động lưu của tinymce
-        $this->MY_session('deleteLocalStorage',true);
+        $this->MY_session('deleteLocalStorage', true);
 
         // dọn dẹp cache liên quan đến post này -> reset cache
         $this->cleanup_cache($this->post_model->key_cache($id));
@@ -348,6 +349,7 @@ class C extends Home
         //
         return true;
     }
+
     // danh sách bài viết của user + các bài viết có trạng viết theo thuần CI4
     public function lists()
     {
@@ -356,7 +358,7 @@ class C extends Home
         // URL cho các action dùng chung
         $for_action = '';
         // URL cho phân trang
-        $urlPartPage =  $this->controller_slug . '/lists?part_type=' . $this->post_type;
+        $urlPartPage = $this->controller_slug . '/lists?part_type=' . $this->post_type;
 
         //
         $by_keyword = $this->MY_get('s');
@@ -384,24 +386,24 @@ class C extends Home
 
             // nếu là email -> tìm theo email thành viên
 
-                $by_like = $this->base_model->_eb_non_mark_seo($by_keyword);
-                // tối thiểu từ 1 ký tự trở lên mới kích hoạt tìm kiếm
-                if (strlen($by_like) > 0) {
-                    //var_dump( strlen( $by_like ) );
-                    // nếu là số -> chỉ tìm theo ID
-                    if (is_numeric($by_like) === true) {
-                        $where_or_like = [
-                            'ID' => $by_like * 1,
-                            'post_author' => $by_like,
-                            'post_parent' => $by_like,
-                        ];
-                    } else {
-                        $where_or_like = [
-                            'post_name' => $by_like,
-                            'post_title' => $by_keyword,
-                        ];
-                    }
+            $by_like = $this->base_model->_eb_non_mark_seo($by_keyword);
+            // tối thiểu từ 1 ký tự trở lên mới kích hoạt tìm kiếm
+            if (strlen($by_like) > 0) {
+                //var_dump( strlen( $by_like ) );
+                // nếu là số -> chỉ tìm theo ID
+                if (is_numeric($by_like) === true) {
+                    $where_or_like = [
+                        'ID' => $by_like * 1,
+                        'post_author' => $by_like,
+                        'post_parent' => $by_like,
+                    ];
+                } else {
+                    $where_or_like = [
+                        'post_name' => $by_like,
+                        'post_title' => $by_keyword,
+                    ];
                 }
+            }
         }
 
         //
@@ -427,11 +429,11 @@ class C extends Home
         }
         // tìm kiếm theo thời gian duyệt bài
 
-        if ($start_date !='') {
-            $where[$this->table . '.post_success >='] = date('Y-m-d',strtotime($start_date));
+        if ($start_date != '') {
+            $where[$this->table . '.post_success >='] = date('Y-m-d', strtotime($start_date));
         }
-        if ($end_date !='') {
-            $where[$this->table . '.post_success <='] = date('Y-m-d',strtotime($end_date));
+        if ($end_date != '') {
+            $where[$this->table . '.post_success <='] = date('Y-m-d', strtotime($end_date));
         }
 
         $where_in[$this->table . '.post_status'] = $by_post_status;
@@ -444,7 +446,7 @@ class C extends Home
         }
         // tổng kết filter
         $filter = [
-            'join'=>[
+            'join' => [
                 'users' => 'users.ID = ' . $this->table . '.post_author',
             ],
             'where_in' => $where_in,
@@ -503,7 +505,7 @@ class C extends Home
             $filter['join'] = array_merge([
                 'term_relationships' => 'term_relationships.object_id = ' . $this->table . '.ID',
                 'term_taxonomy' => 'term_relationships.term_taxonomy_id = term_taxonomy.term_taxonomy_id',
-            ],$filter['join']);
+            ], $filter['join']);
         }
 
         //
@@ -556,8 +558,7 @@ class C extends Home
                 $order_by = [
                     $this->table . '.' . $order_by => 'DESC',
                 ];
-            }
-            // mặc định sắp xếp theo stt và thời gian tạo
+            } // mặc định sắp xếp theo stt và thời gian tạo
             else {
                 $order_by = [
                     $this->table . '.menu_order' => 'DESC',
@@ -574,7 +575,7 @@ class C extends Home
             // xử lý dữ liệu cho angularjs
             foreach ($data as $k => $v) {
                 // lấy comment cuối cùng của bài viết
-                $comment = $this->base_model->select('comment_author','comments',['comment_post_ID'=>$v['ID'],'comment_type'=>CommentType::COMMENT],['order_by'=>['comment_date'=>'DESC'],'limit'=>1]);
+                $comment = $this->base_model->select('comment_author', 'comments', ['comment_post_ID' => $v['ID'], 'comment_type' => CommentType::COMMENT], ['order_by' => ['comment_date' => 'DESC'], 'limit' => 1]);
                 if (!empty($comment)) {
                     $v['last_comment'] = $comment['comment_author'];
                 } else {
@@ -587,7 +588,7 @@ class C extends Home
                 //continue;
 
                 // lấy 1 số dữ liệu khác gán vào, để angularjs chỉ việc hiển thị
-                $v['admin_permalink'] = $this->get_user_permalink( $v['ID']);
+                $v['admin_permalink'] = $this->get_user_permalink($v['ID']);
                 if ($v['post_type'] == PostType::ORDER) {
                     $v['the_permalink'] = '#';
                 } else {
@@ -650,6 +651,7 @@ class C extends Home
         //return $this->teamplate_admin[ 'content' ];
         return view('layout_view', $this->teamplate);
     }
+
     public function cleanup_cache($for = '', $clean_all = false)
     {
         if ($for != '' || !empty($this->MY_post('data'))) {
@@ -663,11 +665,10 @@ class C extends Home
                 if ($has_cache === NULL) {
                     return false;
                 }
-              //  echo 'Using cache delete Matching `' . $for . '` --- Total clear: ' . $has_cache . '<br>' . PHP_EOL;
+                //  echo 'Using cache delete Matching `' . $for . '` --- Total clear: ' . $has_cache . '<br>' . PHP_EOL;
                 //var_dump( $has_cache );
                 //die( $for );
-            }
-            // xóa toàn bộ cache
+            } // xóa toàn bộ cache
             else {
                 //var_dump( $this->base_model->cache->getCacheInfo() );
                 //die( __CLASS__ . ':' . __LINE__ );
@@ -692,13 +693,13 @@ class C extends Home
 
             // nếu có giá trị của for -> thường là gọi từ admin lúc update -> không alert
             if ($for != '') {
-                $this->base_model->alert('Cập nhật dữ liệu bài viết thành công',base_url('c/lists'));
+                $this->base_model->alert('Cập nhật dữ liệu bài viết thành công', base_url('c/lists'));
                 return false;
             }
 
             //
             if ($has_cache === true) {
-                $this->base_model->alert('Toàn bộ file cache đã được xóa',base_url('c/lists'));
+                $this->base_model->alert('Toàn bộ file cache đã được xóa', base_url('c/lists'));
 
                 // đồng bộ lại tổng số nhóm con cho các danh mục trước đã
                 $this->term_model->sync_term_child_count();
@@ -708,6 +709,7 @@ class C extends Home
             die(__CLASS__ . ':' . __LINE__);
         }
     }
+
     /* hàm nhận bài viết*/
     public function receivePost()
     {
@@ -723,9 +725,9 @@ class C extends Home
             ]);
         } else {
             $this->post_model->update_post($id, [
-                'post_status'=>PostType::PRIVATELY,
-                'post_author'=>$this->session_data['ID'],
-                'post_success'=>date('Y-m-d H:i:s')
+                'post_status' => PostType::PRIVATELY,
+                'post_author' => $this->session_data['ID'],
+                'post_success' => date('Y-m-d H:i:s')
             ], [
             ]);
             $this->result_json_type([
@@ -736,6 +738,7 @@ class C extends Home
 
 
     }
+
     /* xác nhận yêu cầu duyệt bài*/
     public function sendAccept()
     {
@@ -751,7 +754,7 @@ class C extends Home
             ]);
         } else {
             $this->post_model->update_post($id, [
-                'post_status'=>PostType::PENDING,
+                'post_status' => PostType::PENDING,
             ], [
             ]);
             $this->result_json_type([
@@ -815,7 +818,7 @@ class C extends Home
         $this->teamplate['breadcrumb'] = view(
             'breadcrumb_view',
             array(
-                'breadcrumb' =>['<li><a href="c/statistic">Thống kê KPI</a></li>']
+                'breadcrumb' => ['<li><a href="c/statistic">Thống kê KPI</a></li>']
             )
         );
         $this->teamplate['main'] = view('posts/kpi', array(
@@ -839,5 +842,87 @@ class C extends Home
             'end_date' => $end_date,
         ));
         return view('layout_view', $this->teamplate);
+    }
+
+    /**
+     * @return void
+     * function tải về file
+     */
+    public function download($post_id)
+    {
+
+        $file_view = 'download';
+        $post = $this->base_model->select('*', 'posts', ['ID' => $post_id], ['limit' => 1]);
+        if (!empty($post)) {
+            // lấy path của file
+            $file_path = str_replace(base_url(), '', $post['guid']);
+            // lấy tên file
+            $file_name = str_replace('.luatanhngoc', '', $post['post_title']);
+            // lâ dung lượng và chuyển đổi thông số của file
+            $file_size_formatted = 0;
+            if (file_exists($file_path)) {
+                $file_size = filesize($file_path);
+
+                // Chuyển đổi dung lượng sang KB hoặc MB
+                if ($file_size < 1024) {
+                    $file_size_formatted = $file_size . " bytes";
+                } elseif ($file_size < 1024 * 1024) {
+                    $file_size_formatted = round($file_size / 1024, 2) . " KB";
+                } else {
+                    $file_size_formatted = round($file_size / (1024 * 1024), 2) . " MB";
+                }
+            }
+            $post['file_name'] = $file_name;
+            $post['file_size'] = $file_size_formatted;
+        }
+        $this->teamplate['breadcrumb'] = view(
+            'breadcrumb_view',
+            array(
+                'breadcrumb' => ['<li><a href="/">Tải về</a></li>']
+            )
+        );
+        $arraySlug = ['van-ban-phap-luat','bieu-mau'];
+        $randomIndex = array_rand($arraySlug);
+        $category_slug = $arraySlug[$randomIndex];
+        $this->teamplate['main'] = view(
+            'custom/' . $file_view,
+            array(
+                'seo' => $this->base_model->default_seo('Tải về'),
+                'post' => $post,
+                'category_slug' => $category_slug,
+            )
+        );
+        return view('layout_view', $this->teamplate);
+
+    }
+
+    public function goDownload($post_id)
+    {
+        $post = $this->base_model->select('*', 'posts', ['ID' => $post_id], ['limit' => 1]);
+        if (empty($post)) {
+            echo 'File không tồn tại.<a href="' . base_url() . '">Trang chủ</a>';
+            exit;
+        }
+        // Đường dẫn đến tệp tin bạn muốn tải xuống
+
+        $file_path = str_replace(base_url(), '', $post['guid']);
+        $file_path_name = str_replace('.luatanhngoc', '', $file_path);
+//        print_r($file_path);
+//        die('cc');
+        // Thiết lập tiêu đề HTTP để cho phép tải xuống
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/octet-stream');
+        header('Content-Disposition: attachment; filename="' . basename($file_path_name) . '"');
+        header('Content-Transfer-Encoding: binary');
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+        header('Pragma: public');
+        header('Content-Length: ' . filesize($file_path));
+
+// Đọc và gửi nội dung tệp tin cho trình duyệt
+        readfile($file_path);
+
+// Kết thúc quá trình thực hiện
+        exit;
     }
 }

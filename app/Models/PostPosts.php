@@ -60,7 +60,11 @@ class PostPosts extends PostSlider
         $data['itemprop_logo'] = $itemprop_logo;
         $data['itemprop_author'] = $itemprop_author;
         $data['itemprop_image'] = $itemprop_image;
-
+        // lấy thông tin tác giả
+        $base_model = new Base();
+        $author = $base_model->select('*','users',['ID'=>$data['post_author']],['limit'=>1]);
+        $data['user_link']= base_url().'tacgia/'.$author['ID'];
+        $data['user_nicename']= $author['user_nicename'];
         // gán các giá trị mặc định phòng trường hợp không có dữ liệu tương ứng
         $default_arr['price'] = 0;
         $default_arr['price_sale'] = 0;

@@ -57,7 +57,7 @@ class Users extends Csrf
     public function profile()
     {
         $id = $this->current_user_id;
-
+        $metaDescription =  $this->user_model->get_user_meta($id,'description');
         //
         if (!empty($this->MY_post('data'))) {
             //print_r( $this->MY_post( 'data' ) );
@@ -85,7 +85,11 @@ class Users extends Csrf
         if (empty($data)) {
             return $this->page404('ERROR ' . strtolower(__FUNCTION__) . ':' . __LINE__ . '! Không xác định được thông tin thành viên...');
         }
-
+        // lấy dữ liệu meta description của user
+        $data['description'] = '';
+        if (!empty($metaDescription)) {
+            $data['description']= $metaDescription['meta_value'];
+        }
         //
         $this->teamplate['breadcrumb'] = view(
             'breadcrumb_view',
@@ -110,6 +114,7 @@ class Users extends Csrf
     private function update($id)
     {
         $data = $this->MY_post('data');
+        $user_meta = $this->MY_post('user_meta');
         //print_r( $data );
         //die( __CLASS__ . ':' . __LINE__ );
 
@@ -142,7 +147,6 @@ class Users extends Csrf
             $this->user_model->update_member($id, [
                 'ci_pass' => $data['ci_pass'],
             ]);
-
             //
             echo '<script>top.$(\'#data_ci_pass\').val(\'\');</script>';
             $this->base_model->alert('Cập nhật mật khẩu mới thành công');
@@ -336,7 +340,9 @@ class Users extends Csrf
 
         // cập nhật thông tin mới cho user
         $this->user_model->update_member($id, $data_update);
-
+        foreach ($user_meta as $key =>$val) {
+            $this->user_model->set_user_meta($id, $key, $val);
+        }
         /*
          * lưu thông tin đăng nhập mới vào session
          */

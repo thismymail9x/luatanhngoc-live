@@ -14,7 +14,9 @@
         </div>
         <div class="posts-list-info">
             <div class="posts-list-time cf">
-                <div class="lf">{{user_nicename}}</div>
+                <div class="lf">
+                    <a style="position: relative" class="author" href="{{user_link}}" title="Tác giả"> {{user_nicename}}</a>
+                </div>
                 <div class="lf"><i class="fa fa-eye"></i> {{post_viewed}}</div>
             </div>
             <div class="posts-list-desc limit-text-5" itemprop="description">{{post_excerpt}}</div>

@@ -7,6 +7,6 @@ foreach ($all_src as $size_name => $file) {
 echo ' data-' . $size_name . '="' . $file . '"' . PHP_EOL; 
 } 
 ?> data-srcset="<?php echo implode(', ', $data_srcset); ?>" data-sizes="(max-width: <?php echo $attachment_metadata['width']; ?>px) 100vw, <?php echo $attachment_metadata['width']; ?>px" onDblClick="return click_set_img_for_input('<?php echo $v['ID']; ?>');" class="media-attachment-img" style="<?php echo $background_image; ?>">&nbsp;</div> 
-</div> 
+</div>
 <div class="d-none show-if-hover-upload show-attachment-title"><?php echo $v['post_name']; ?></div> 
 </div>

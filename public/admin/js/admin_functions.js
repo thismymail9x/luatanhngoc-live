@@ -176,7 +176,6 @@ function click_set_img_for_input(img_id) {
 	var mime_type = img.attr("data-mime_type") || "";
 	var file_type = "";
 	var file_ext = "";
-	//console.log(file_type);
 	if (mime_type != "") {
 		file_type = mime_type.split("/");
 		if (file_type.length > 1) {
@@ -245,7 +244,7 @@ function click_set_img_for_input(img_id) {
 			if (data_src.split("//").length == 1) {
 				data_src = $("base").attr("href") + data_src;
 			}
-			data_src = data_src.replace(".daidq-ext", "");
+			data_src = data_src.replace(".luatanhngoc", "");
 
 			//
 			var return_html = "";
@@ -268,13 +267,17 @@ function click_set_img_for_input(img_id) {
 					'">Your browser does not support the audio element.</audio>';
 			}
 			// mặc định thì trả về ảnh
-			else {
+			else if (file_type == "image") {
 				return_html =
 					'<img src="' +
 					data_src +
 					'"' +
 					img_attr.join(" ") +
 					' class="eb-push-img" />';
+			}
+			else {
+				return_html =
+					'<a title="Tải về" target="_blank" href="c/download/'+img_id+'">Tải về</a>';
 			}
 			top.tinymce.get(insert_to).insertContent(return_html);
 		} else {

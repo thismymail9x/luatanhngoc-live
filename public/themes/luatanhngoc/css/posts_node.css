@@ -205,13 +205,13 @@
         font-size: 16px!important;
         font-weight: bold;
         color: #ffff00!important;
-        line-height: 1.4;
+        padding: 4px 0;
     }
     .blog__child .blog__content .content h3 span, .blog__child .blog__content .content h3  {
         font-size: 15px!important;
         font-weight: bold;
         color: rgba(255, 255, 0,0.7) !important;
-        line-height: 1.4;
+        padding: 4px 0;
     }
 
     .blog__child .blog__content .content a {
@@ -441,13 +441,13 @@
         font-size: 16px!important;
         font-weight: bold;
         color: #ffff00!important;
-        line-height: 1.4;
+        padding: 4px 0;
     }
     .blog__child .blog__content .content h3 span, .blog__child .blog__content .content h3  {
         font-size: 15px!important;
         font-weight: bold;
         color: rgba(255, 255, 0,0.7) !important;
-        line-height: 1.4;
+        padding: 4px 0;
     }
 
     .blog__child .blog__content .content a {
@@ -678,13 +678,13 @@
         font-size: 18px!important;
         font-weight: bold;
         color: #ffff00!important;
-        line-height: 1.4;
+        padding: 4px 0;
     }
     .blog__child .blog__content .content h3 span, .blog__child .blog__content .content h3  {
         font-size: 18px!important;
         font-weight: bold;
         color: rgba(255, 255, 0,0.7) !important;
-        line-height: 1.4;
+        padding: 4px 0;
     }
 
     .blog__child .blog__content .content a {
@@ -917,13 +917,13 @@
         font-size: 20px!important;
         font-weight: bold;
         color: #ffff00!important;
-        line-height: 1.4;
+        padding: 4px 0;
     }
     .blog__child .blog__content .content h3 span, .blog__child .blog__content .content h3  {
         font-size: 18px!important;
         font-weight: bold;
         color: rgba(255, 255, 0,0.7) !important;
-        line-height: 1.4;
+        padding: 4px 0;
     }
 
     .blog__child .blog__content .content a {
@@ -1150,13 +1150,13 @@
         font-size: 20px!important;
         font-weight: bold;
         color: #ffff00!important;
-        line-height: 2;
+        padding: 4px 0;
     }
     .blog__child .blog__content .content h3 span, .blog__child .blog__content .content h3  {
         font-size: 20px!important;
         font-weight: bold;
         color: rgba(255, 255, 0,0.7) !important;
-        line-height: 1.8;
+        padding: 4px 0;
     }
 
     .blog__child .blog__content .content a {
@@ -1253,6 +1253,7 @@
         padding: 16px 32px;
         background-color: rgba(51, 153, 255,.1);
         border-radius: 8px;
+        margin-bottom: 4px;
     }
     .menuPost .contentCategory:hover {
         cursor: pointer;
@@ -1388,13 +1389,13 @@
         font-size: 22px!important;
         /*font-weight: bold;*/
         color: #ffff00!important;
-        line-height: 1.5;
+        padding: 4px 0;
     }
     .blog__child .blog__content .content h3 span, .blog__child .blog__content .content h3  {
         font-size: 20px!important;
         /*font-weight: bold;*/
         color: rgba(255, 255, 0,0.7) !important;
-        line-height: 1.5;
+        padding: 4px 0;
     }
 
     .blog__child .blog__content .content a {
