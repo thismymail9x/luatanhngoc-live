@@ -78,6 +78,9 @@ class Statisticals extends Admin
         $type1 = 0;
         $type2 = 0;
         $type3 = 0;
+        $type4 = 0;
+        $type5 = 0;
+        $type6 = 0;
         if (!empty($dataPosts)) {
             foreach ($dataPosts as $k => $v) {
                 $totalPost += $v['non_public'] + $v['public'];
@@ -87,6 +90,9 @@ class Statisticals extends Admin
                 $type1 += $v['type1'];
                 $type2 += $v['type2'];
                 $type3 += $v['type3'];
+                $type4 += $v['type4'];
+                $type5 += $v['type5'];
+                $type6 += $v['type6'];
             }
         }
 
@@ -94,7 +100,10 @@ class Statisticals extends Admin
         $salary1 = $type1 * SALARY_TYPE[SALARY_TYPE_1];
         $salary2 = $type2 * SALARY_TYPE[SALARY_TYPE_2];
         $salary3 = $type3 * SALARY_TYPE[SALARY_TYPE_3];
-        $salary = $salary0 + $salary1 + $salary2 + $salary3;
+        $salary4 = $type4 * SALARY_TYPE[SALARY_TYPE_4];
+        $salary5 = $type5 * SALARY_TYPE[SALARY_TYPE_5];
+        $salary6 = $type6 * SALARY_TYPE[SALARY_TYPE_6];
+        $salary = $salary0 + $salary1 + $salary2 + $salary3 + $salary4 + $salary5 + $salary6;
 
         $this->teamplate_admin['content'] = view('admin/' . $this->list_view_path . '/kpi', array(
             'list_view_path' => $this->list_view_path,
@@ -109,10 +118,16 @@ class Statisticals extends Admin
             'type1' => $type1,
             'type2' => $type2,
             'type3' => $type3,
+            'type4' => $type4,
+            'type5' => $type5,
+            'type6' => $type6,
             'salary0' => $salary0,
             'salary1' => $salary1,
             'salary2' => $salary2,
             'salary3' => $salary3,
+            'salary4' => $salary4,
+            'salary5' => $salary5,
+            'salary6' => $salary6,
             'salary' => $salary,
             'dataSearch' => [
                 'author_id' => $author_id,

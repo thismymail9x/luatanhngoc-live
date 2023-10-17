@@ -1,0 +1,1 @@
+<a target="_blank" title="" href="<?=base_url()?>pages/dat-lich">liên hệ</a>

@@ -566,4 +566,38 @@ class Tacgia extends Home
             ]);
         }
     }
+
+    /**
+     * @return string
+     *  hiện thị view yêu cầu liên hệ cho admin với tk là guest
+     */
+    public function join()
+    {
+        // -> views
+        $this->teamplate['breadcrumb'] = view(
+            'breadcrumb_view',
+            array(
+                'breadcrumb' => $this->breadcrumb
+            )
+        );
+        $topAuthor = $this->customModel->getTopOfAuthor();
+        //echo $file_view . '<br>' . PHP_EOL;
+        $this->teamplate['main'] = view(
+            'custom/join_view',
+            array(
+                'seo' => $this->base_model->default_seo('Liên hệ viết bài', $this->getClassName(__CLASS__) . '/' . __FUNCTION__),
+                'topAuthor' => $topAuthor,
+            )
+        );
+
+        // nếu có flash session -> trả về view luôn
+        if ($this->hasFlashSession() === true) {
+            return view('layout_view', $this->teamplate);
+        }
+        // còn không sẽ tiến hành lưu cache
+        $cache_value = view('layout_view', $this->teamplate);
+
+        $cache_save = $this->MY_cache($this->cache_key, $cache_value . '<!-- Served from: ' . __FUNCTION__ . ' -->');
+        return $cache_value;
+    }
 }

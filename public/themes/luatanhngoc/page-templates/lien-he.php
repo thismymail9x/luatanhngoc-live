@@ -19,6 +19,7 @@ echo $data['post_content'];
                         <div class="lf f45 fullsize-if-mobile">
                             <div class="order-2 order-xl-1 left">
                                 <p class="contact_title text-color">BIỂU PHÍ TƯ VẤN QUA EMAIL/GỌI ĐIỆN QUA ZALO</p>
+                                <p style="text-align: center">Tham khảo tại : <a href="<?=base_url()?>/pages/bao-gia">Bảng giá</a></p>
                                 <p><strong>1. Tư vấn qua email:</strong> Hỏi đáp của Luật sư sẽ được thể hiện bằng văn
                                     bản và gửi lại qua email cho khách hàng phí dịch vụ tối thiểu là<span
                                             class="span text-color"> 300.000 VNĐ/Email</span>
@@ -71,13 +72,13 @@ echo $data['post_content'];
 
                                         </div>
                                         <div class="form-group">
-                                            <label class="label">Tiêu đề thông điệp:</label>
+                                            <label class="label">Tiêu đề:</label>
                                             <input type="search" name="data[title]" class="form-control" value=""
                                                    aria-required="true" required>
                                         </div>
                                         <div class="fullsize-if-mobile">
                                             <div class="form-group">
-                                                <label class="label">Nội dung thông điệp:</label>
+                                                <label class="label">Dịch vụ đăng ký:</label>
                                                 <textarea name="data[content]" class="form-control" rows="7"
                                                           aria-required="true" required></textarea>
                                             </div>

@@ -714,7 +714,7 @@ if (empty($data)) {
            <img src="<?= base_url() ?>upload/2023/09/hinh-anh-lien-he-large.png" alt="lien-he">
            <div class="page__bottom-item">
                <p>Hãy gửi vấn đề của bạn cho chúng tôi để được hỗ trợ và tư vấn nhanh nhất</p>
-               <a target="_blank" href="<?=base_url()?>pages/lien-he" title="Click để tạo liên hệ" role="button" id="button-92" class="button-92">Liên hệ</a>
+               <a target="_blank" href="<?=base_url()?>pages/dat-lich" title="Click để tạo liên hệ" role="button" id="button-92" class="button-92">Liên hệ</a>
            </div>
        </div>
     </div>

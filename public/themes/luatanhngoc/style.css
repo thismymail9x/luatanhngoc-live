@@ -2271,3 +2271,6 @@ header .top-user-menu .eb-sub-menu {
 .page_light .global-profile-menu .active-menu-item {
     background: #cccccc;
 }
+.page_light .contact__base .contact__form .form-control {
+    color: unset;
+}

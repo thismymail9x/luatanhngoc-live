@@ -10,6 +10,8 @@ window.addEventListener('scroll', () => {
             bborder.classList.remove('sticky');
         }
 });
+
+
 // console.log('ccc')
 window.addEventListener('scroll', () => {
     const mobile_fixed_menu = document.querySelector('.mobile-fixed-menu');

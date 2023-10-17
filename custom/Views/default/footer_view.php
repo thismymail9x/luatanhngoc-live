@@ -65,7 +65,7 @@
 </div>
 
 <div class="wiget_contact">
-    <a href="<?=base_url()?>pages/lien-he" target="_blank" title="Tư vấn miễn phí" >
+    <a href="<?=base_url()?>pages/dat-lich" target="_blank" title="Tư vấn miễn phí" >
         <img  src="<?=base_url()?>upload/2023/09/tu-van-mien-phi.png" alt="Tư vấn miễn phí">
     </a>
 </div>

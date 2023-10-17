@@ -21,11 +21,12 @@ $base_model->add_css('themes/' . THEMENAME . '/css/our-story.css', [
 echo $data['post_content']; 
 ?> 
 </div> 
-<br /> 
+<br />
+
 <?php 
 ?> 
 <br> 
-<div class="global-page-widget"> 
+<div class="global-page-widget">
 <?php 
 ?> 
 </div> 

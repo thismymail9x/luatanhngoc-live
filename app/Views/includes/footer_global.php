@@ -2,7 +2,7 @@
 <?php 
 $base_model->adds_js([ 
 'javascript/functions_footer.js', 
-'thirdparty/bootstrap/js/bootstrap.min.js', 
+'thirdparty/bootstrap/js/bootstrap.min.js',
 'javascript/footer.js', 
 'javascript/footer_audio.js', 
 'javascript/pagination.js', 

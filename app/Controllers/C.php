@@ -39,6 +39,26 @@ class C extends Home
         }
         $this->name_type = PostType::typeList($this->post_type);
 
+
+        if ($this->current_user_id <= 0) {
+            // tạo url sau khi đăng nhập xong sẽ trỏ tới
+            $login_redirect = DYNAMIC_BASE_URL . ltrim($_SERVER['REQUEST_URI'], '/');
+            //die($login_redirect);
+
+            //
+            $login_url = base_url('guest/login') . '?login_redirect=' . urlencode($login_redirect) . '&msg=' . urlencode('Permission deny! ' . basename(__FILE__, '.php') . ':' . __LINE__);
+            //die( $login_url );
+
+            //
+            die(header('Location: ' . $login_url));
+            //die( 'Permission deny! ' . basename( __FILE__, '.php' ) . ':' . __LINE__ );
+        }
+        // nếu là guest muốn viết bài thì sẽ cho đến view yêu cầu viết bài
+        if ($this->session_data['userLevel'] != UsersType::ADMIN_LEVEL && $this->session_data['member_type'] == UsersType::GUEST ) {
+            die(header('Location: ' . base_url('/').'tacgia/join'));
+        }
+
+
         // báo lỗi nếu không xác định được post_type
         //if ( $this->post_type == '' || $this->name_type == '' ) {
         if ($this->name_type == '') {
@@ -798,6 +818,9 @@ class C extends Home
         $type1 = 0;
         $type2 = 0;
         $type3 = 0;
+        $type4 = 0;
+        $type5 = 0;
+        $type6 = 0;
         if (!empty($dataPosts)) {
             foreach ($dataPosts as $k => $v) {
                 $totalPost += $v['non_public'] + $v['public'];
@@ -807,6 +830,9 @@ class C extends Home
                 $type1 += $v['type1'];
                 $type2 += $v['type2'];
                 $type3 += $v['type3'];
+                $type4 += $v['type4'];
+                $type5 += $v['type5'];
+                $type6 += $v['type6'];
             }
         }
 
@@ -814,7 +840,10 @@ class C extends Home
         $salary1 = $type1 * SALARY_TYPE[SALARY_TYPE_1];
         $salary2 = $type2 * SALARY_TYPE[SALARY_TYPE_2];
         $salary3 = $type3 * SALARY_TYPE[SALARY_TYPE_3];
-        $salary = $salary0 + $salary1 + $salary2 + $salary3;
+        $salary4 = $type4 * SALARY_TYPE[SALARY_TYPE_4];
+        $salary5 = $type5 * SALARY_TYPE[SALARY_TYPE_5];
+        $salary6 = $type6 * SALARY_TYPE[SALARY_TYPE_6];
+        $salary = $salary0 + $salary1 + $salary2 + $salary3 + $salary4 + $salary5 + $salary6;
         $this->teamplate['breadcrumb'] = view(
             'breadcrumb_view',
             array(
@@ -833,10 +862,16 @@ class C extends Home
             'type1' => $type1,
             'type2' => $type2,
             'type3' => $type3,
+            'type4' => $type4,
+            'type5' => $type5,
+            'type6' => $type6,
             'salary0' => $salary0,
             'salary1' => $salary1,
             'salary2' => $salary2,
             'salary3' => $salary3,
+            'salary4' => $salary4,
+            'salary5' => $salary5,
+            'salary6' => $salary6,
             'salary' => $salary,
             'start_date' => $start_date,
             'end_date' => $end_date,

@@ -148,12 +148,17 @@ function checkScrollPosition() {
             if (currentHighlight) {
 
                 const currentLink = document.querySelector(`#menuCategory a[href="#${currentHighlight.id}"]`);
-                currentLink.classList.remove('highlighted');
+                if (currentLink) {
+                    currentLink.classList.remove('highlighted');
+
+                }
             }
             // Thêm class highlighted vào phần tử mới
             const link = document.querySelector(`#menuCategory a[href="#${heading.id}"]`);
-            link.classList.add('highlighted');
-            currentHighlight = heading;
+            if (link) {
+                link.classList.add('highlighted');
+                currentHighlight = heading;
+            }
         }
     });
 }

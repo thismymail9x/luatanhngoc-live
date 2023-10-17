@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 //
 use App\Libraries\CommentType;
+use App\Libraries\ConfigType;
 use App\Libraries\PHPMaillerSend;
 use App\Language\Translate;
 
@@ -105,16 +106,16 @@ class ContactBase extends Home
                 $check_rules[$k] = $v;
             }
         }
-        //print_r($check_rules);
-        //die(__CLASS__ . ':' . __LINE__);
+//        print_r($check_rules);
+//        die(__CLASS__ . ':' . __LINE__);
 
         // kiểm tra recaptcha (nếu có)
-        $check_recaptcha = $this->googleCaptachStore();
-        // != true -> có lỗi -> in ra lỗi
-        if ($check_recaptcha !== true) {
-            $this->base_model->msg_error_session($check_recaptcha, $this->form_target);
-            return $this->done_action_login();
-        }
+//        $check_recaptcha = $this->googleCaptachStore();
+//        // != true -> có lỗi -> in ra lỗi
+//        if ($check_recaptcha !== true) {
+//            $this->base_model->msg_error_session($check_recaptcha, $this->form_target);
+//            return $this->done_action_login();
+//        }
 
         //
         $data = $this->MY_post('data');
@@ -145,8 +146,10 @@ class ContactBase extends Home
         if (!empty($check_rules) && !$this->validation->run($data)) {
             $this->set_validation_error($this->validation->getErrors(), $this->form_target);
         } else {
+            // config của riêng phần mail
             $smtp_config = $this->option_model->get_smtp();
-
+            // config cua website
+            $config = $this->option_model->obj_config(ConfigType::CONFIG);;
             $submit = $this->MY_comment([
                 'redirect_to' => $redirect_to,
                 'comment_type' => CommentType::CONTACT
@@ -155,7 +158,7 @@ class ContactBase extends Home
             // thiết lập thông tin người nhận
             $data_send = [
                 //'to' => $data[ 'email' ],
-                'to' => $smtp_config->emailcontact,
+                'to' => $config->emailcontact,
                 //'to_name' => $data[ 'fullname' ],
                 'subject' => $data['title'],
                 'message' => $submit['message'],
@@ -226,7 +229,7 @@ class ContactBase extends Home
         $data_insert = [
             'comment_author_url' => $redirect_to,
             //'comment_author_IP' => $this->request->getIPAddress(),
-            //'comment_date' => date( EBE_DATETIME_FORMAT ),
+            'comment_date' => date( EBE_DATETIME_FORMAT ),
             'comment_content' => '',
             //'comment_agent' => $_SERVER[ 'HTTP_USER_AGENT' ],
             'comment_type' => $ops['comment_type'],

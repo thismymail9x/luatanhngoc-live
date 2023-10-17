@@ -24,9 +24,9 @@ $base_model->add_css(  'themes/' . THEMENAME . '/css/users.css');
             // Some raw data (not necessarily accurate)
             var data = google.visualization.arrayToDataTable([
 
-                ['Nhân viên', 'Chưa duyệt', 'Đã duyệt', 'Chưa đạt tiêu chuẩn', 'KPI 20.000', 'KPI 30.000', 'KPI 40.000'],
+                ['Nhân viên', 'Chưa duyệt', 'Đã duyệt', 'Chưa đạt tiêu chuẩn', 'KPI 20.000', 'KPI 30.000', 'KPI 40.000', 'KPI 35.000', 'KPI 45.000', 'KPI 45.000+Youtube'],
                 <?php foreach ($dataPosts as $k =>$v) { ?>
-                ['<?= $v['user_nicename']?>', <?= $v['non_public']?>, <?= $v['public']?>, <?= $v['type0']?>, <?= $v['type1']?>, <?= $v['type2']?>, <?= $v['type3']?>],
+                ['<?= $v['user_nicename']?>', <?= $v['non_public']?>, <?= $v['public']?>, <?= $v['type0']?>, <?= $v['type1']?>, <?= $v['type2']?>, <?= $v['type3']?>, <?= $v['type4']?>, <?= $v['type5']?>, <?= $v['type6']?>],
                 <?php } ?>
             ]);
 
@@ -123,6 +123,13 @@ $base_model->add_css(  'themes/' . THEMENAME . '/css/users.css');
                                             = <?= number_format(@$salary3, 0, ',', '.') . ' đ' ?> <a class="badge text-primary text-decoration-underline" target="_blank" title="Click để xem" href="<?php base_url() ?>c/lists?start_date=<?=$start_date?>&end_date=<?=$end_date?>&salary_type=<?=SALARY_TYPE_3?>">Chi tiết</a></p>
                                         <p class="text-success bold">Tổng
                                             tiền: <?= number_format(@$salary, 0, ',', '.') . ' đ' ?> </p>
+                                        <p>KPI 35.000: <?= @$type4 ?> * <?= number_format(SALARY_TYPE[SALARY_TYPE_4], 0, ',', '.') . ' đ' ?>
+                                            = <?= number_format(@$salary4, 0, ',', '.') . ' đ' ?></p>
+                                        <p>KPI 45.000: <?= @$type5 ?> * <?= number_format(SALARY_TYPE[SALARY_TYPE_5], 0, ',', '.') . ' đ' ?>
+                                            = <?= number_format(@$salary5, 0, ',', '.') . ' đ' ?></p>
+                                        <p>KPI 45.000,Youtube: <?= @$type6 ?> * <?= number_format(SALARY_TYPE[SALARY_TYPE_6], 0, ',', '.') . ' đ' ?>
+                                            = <?= number_format(@$salary6, 0, ',', '.') . ' đ' ?></p>
+
                                     </div>
                                     <hr>
                                     <div class="col-12">
@@ -131,6 +138,9 @@ $base_model->add_css(  'themes/' . THEMENAME . '/css/users.css');
                                         <p><i> 1.600 -2.200 từ >= 2 hình ảnh 20.000/1 bài viết </i></p>
                                         <p><i> 2.200 -3000 từ >= 3 hình ảnh 30.000/1 bài viết </i></p>
                                         <p><i> Trên 3.000 từ >= 3 hình ảnh 40.000/1 bài viết </i></p>
+                                        <p><i> 500-1000 từ + 5 hình ảnh/hoạt ảnh/sơ đồ cây 35.000/1 bài viết</i></p>
+                                        <p><i> 500-1000 từ + 6 hình ảnh/hoạt ảnh/sơ đồ cây 45.000/1 bài viết</i></p>
+                                        <p><i> 500-1000 từ + 4 hình ảnh/hoạt ảnh/sơ đồ cây + 1 Video 45.000/1 bài viết</i></p>
                                         <p class="text-danger"><i> Không đáp ứng một trong các điều kiện trên ko tính KPI </i></p>
                                     </div>
                                 </div>

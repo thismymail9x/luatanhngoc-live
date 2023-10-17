@@ -10,7 +10,7 @@ Disallow: /search?s=*
 Disallow: *?replytocom
 Disallow: */attachment/*
 Disallow: /images/
-
+Disallow: /tacgia/
 Allow: /*.js$
 Allow: /*.css$
 Sitemap: https://luatanhngoc.vn/sitemap

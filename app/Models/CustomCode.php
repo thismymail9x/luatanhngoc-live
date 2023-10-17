@@ -81,6 +81,11 @@ class CustomCode extends Post
         //1.600 -2.200 từ + 2 hình ảnh	20.000/1 bài viết
         //2.200 -3000 từ + 3 hình ảnh	30.000/1 bài viết
         //Trên 3.000 từ + 3 hình ảnh	40.000/1 bài viết
+        // 17/10/2023 bổ sung thêm 3 mốc kpi nữa
+        // + Số lượng từ: từ 500-1000 từ + 5 hình ảnh/hoạt ảnh/sơ đồ cây = 35.000/1 bài viết
+        //+ Số lượng từ: từ 500-1000 từ + 6 hình ảnh/hoạt ảnh/sơ đồ cây,video = 45.000/1 bài viết
+        // + Số lượng từ: từ 500-1000 từ + 4 hình ảnh/hoạt ảnh/sơ đồ cây + 1 Video = 45.000/1 bài viết
+
         $type = SALARY_TYPE_0;
         $wordCount = 0;
         if ($content != '') {
@@ -96,6 +101,18 @@ class CustomCode extends Post
             $text = trim($text); // Loại bỏ khoảng trắng ở đầu và cuối chuỗi
             $words = explode(' ', $text);
             $wordCount = count($words);
+
+            // Lấy danh sách tất cả các thẻ <iframe> trong nội dung
+            $iframes = $dom->getElementsByTagName('iframe');
+            $isYoutube = false;
+            // Duyệt qua danh sách thẻ <iframe> và kiểm tra xem có liên kết YouTube hay không
+            foreach ($iframes as $iframe) {
+                $src = $iframe->getAttribute('src');
+                // Kiểm tra xem liên kết có chứa "youtube.com" hay không
+                if (strpos($src, 'youtube.com') !== false) {
+                    $isYoutube = true;
+                }
+            }
         }
         // check thêm đếm cả số lượng từ của phần mô tả
         if ($description != '') {
@@ -122,6 +139,25 @@ class CustomCode extends Post
                 $type = SALARY_TYPE_2;
             } elseif ($wordCount >= 3000) {
                 $type = SALARY_TYPE_3;
+            }
+        }
+
+        // kpi của 5 hình ảnh
+        if ($numberImg == 5) {
+            if ($wordCount >= 500 && $wordCount < 1600) {
+                $type = SALARY_TYPE_4;
+            }
+        }
+        // kpi của 6 hình ảnh
+        if ($numberImg >= 6) {
+            if ($wordCount >= 500 && $wordCount < 1600) {
+                $type = SALARY_TYPE_5;
+            }
+        }
+        // kpi của youtube + 4 hình ảnh
+        if ($numberImg >= 4) {
+            if ($isYoutube == true && $wordCount >= 500 && $wordCount < 1600) {
+                $type = SALARY_TYPE_6;
             }
         }
         return $type;
@@ -288,15 +324,18 @@ class CustomCode extends Post
 
     public function getDataChart($where)
     {
-       return $this->base_model->select("user_nicename, 
+        return $this->base_model->select("user_nicename, 
         SUM(CASE WHEN (post_status != 'publish' AND post_status != 'trash') THEN 1 ELSE 0 END) AS non_public,
         SUM(CASE WHEN post_status = 'publish' THEN 1 ELSE 0 END) AS public,
-        SUM(CASE WHEN post_status = 'publish' AND salary_type = ".SALARY_TYPE_0." THEN 1 ELSE 0 END) AS type0,
-        SUM(CASE WHEN post_status = 'publish' AND salary_type = ".SALARY_TYPE_1." THEN 1 ELSE 0 END) AS type1,
-        SUM(CASE WHEN post_status = 'publish' AND salary_type = ".SALARY_TYPE_2." THEN 1 ELSE 0 END) AS type2,
-        SUM(CASE WHEN post_status = 'publish' AND salary_type = ".SALARY_TYPE_3." THEN 1 ELSE 0 END) AS type3
-        ",WGR_POST_VIEW,$where,[
-            'group_by'=>['post_author'],
+        SUM(CASE WHEN post_status = 'publish' AND salary_type = " . SALARY_TYPE_0 . " THEN 1 ELSE 0 END) AS type0,
+        SUM(CASE WHEN post_status = 'publish' AND salary_type = " . SALARY_TYPE_1 . " THEN 1 ELSE 0 END) AS type1,
+        SUM(CASE WHEN post_status = 'publish' AND salary_type = " . SALARY_TYPE_2 . " THEN 1 ELSE 0 END) AS type2,
+        SUM(CASE WHEN post_status = 'publish' AND salary_type = " . SALARY_TYPE_3 . " THEN 1 ELSE 0 END) AS type3,
+        SUM(CASE WHEN post_status = 'publish' AND salary_type = " . SALARY_TYPE_4 . " THEN 1 ELSE 0 END) AS type4,
+        SUM(CASE WHEN post_status = 'publish' AND salary_type = " . SALARY_TYPE_5 . " THEN 1 ELSE 0 END) AS type5,
+        SUM(CASE WHEN post_status = 'publish' AND salary_type = " . SALARY_TYPE_6 . " THEN 1 ELSE 0 END) AS type6
+        ", WGR_POST_VIEW, $where, [
+            'group_by' => ['post_author'],
         ]);
     }
 
@@ -323,7 +362,7 @@ class CustomCode extends Post
      */
     public function getCountPostOfUser($id)
     {
-       return $this->base_model->select(
+        return $this->base_model->select(
             'COUNT(ID) AS count',
             'posts',
             array(

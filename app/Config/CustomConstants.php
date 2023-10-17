@@ -168,7 +168,8 @@ define('REPLACE_CONTENT', array(
     '^sdt' => "ReplaceContent/sdt.php",
     '^email' => "ReplaceContent/email.php",
     '^seo' => "ReplaceContent/seo.php",
-    '^nam' => "ReplaceContent/year.php"
+    '^nam' => "ReplaceContent/year.php",
+    '^form' => "ReplaceContent/form.php",
 ));
 // website của nhà phát triển
 defined('PARTNER_WEBSITE') || define('PARTNER_WEBSITE', 'https://luatanhngoc.vn/');
@@ -364,10 +365,16 @@ define('SALARY_TYPE', array(
     '1' => 0,
     '10' => 20000,
     '20' => 30000,
-    '30' => 40000
+    '30' => 40000,
+    '40' => 35000,
+    '50' => 45000,
+    '60' => 45000,
 ));
 
 defined('SALARY_TYPE_0')        || define('SALARY_TYPE_0', 1); // thông số tinh lương cho kiểu 0 VND
 defined('SALARY_TYPE_1')        || define('SALARY_TYPE_1', 10); // thông số tinh lương cho kiểu 20000 VND
 defined('SALARY_TYPE_2')        || define('SALARY_TYPE_2', 20); // thông số tinh lương cho kiểu 30000 VND
 defined('SALARY_TYPE_3')        || define('SALARY_TYPE_3', 30); // thông số tinh lương cho kiểu 40000 VND
+defined('SALARY_TYPE_4')        || define('SALARY_TYPE_4', 40); // thông số tinh lương cho kiểu 35000 VND
+defined('SALARY_TYPE_5')        || define('SALARY_TYPE_5', 50); // thông số tinh lương cho kiểu 45000 VND
+defined('SALARY_TYPE_6')        || define('SALARY_TYPE_6', 60); // thông số tinh lương cho kiểu 45000 VND + youtube

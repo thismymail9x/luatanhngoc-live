@@ -3,14 +3,16 @@
 echo (($html_lang == 'vn' || $html_lang == '') ? 'vi' : $html_lang); 
 ?>" data-lang="<?php echo $html_lang; ?>" data-default-lang="<?php echo SITE_LANGUAGE_DEFAULT; ?>" class="no-js no-svg" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#"> 
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WJHT5RKM95"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-WJHT5RKM95');
-    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5681131500788092"
+            crossorigin="anonymous"></script>
+    <!-- Google anlatic (gtag.js) -->
+<!--    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WJHT5RKM95"></script>-->
+<!--    <script>-->
+<!--        window.dataLayer = window.dataLayer || [];-->
+<!--        function gtag(){dataLayer.push(arguments);}-->
+<!--        gtag('js', new Date());-->
+<!--        gtag('config', 'G-WJHT5RKM95');-->
+<!--    </script>-->
 
     <!-- Histats.com  START  (aync)-->
     <script type="text/javascript">var _Hasync= _Hasync|| [];
@@ -25,19 +27,19 @@ echo (($html_lang == 'vn' || $html_lang == '') ? 'vi' : $html_lang);
     <noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?4805676&101" alt="" border="0"></a></noscript>
     <!-- Histats.com  END  -->
 
-
+<!--    Zalo-->
     <script async="" src="https://s.zzcdn.me/ztr/ztracker.js?id=7112644760908759040"></script>
 
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11311324682"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'AW-11311324682');
-    </script>
+<!--    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11311324682"></script>-->
+<!--    <script>-->
+<!--        window.dataLayer = window.dataLayer || [];-->
+<!--        function gtag(){dataLayer.push(arguments);}-->
+<!--        gtag('js', new Date());-->
+<!---->
+<!--        gtag('config', 'AW-11311324682');-->
+<!--    </script>-->
 
     <?php
  
@@ -54,9 +56,10 @@ if (isset($seo['dynamic_schema'])) {
 echo $seo['dynamic_schema']; 
 } 
 ?>
+    <link rel="preload" href="<?=base_url()?>themes/luatanhngoc/font/SF_Pro_Text/SF-Pro-Text-Regular.otf" as="font" type="font/otf" crossorigin="anonymous">
 
 </head> 
-<body data-session="<?php echo session_id(); ?>" class="page_dark <?php echo $seo['body_class']; ?> is-<?php echo $current_user_type . ' ' . $current_user_logged; ?>">
+<body data-session="<?php echo session_id(); ?>" class="page_light <?php echo $seo['body_class']; ?> is-<?php echo $current_user_type . ' ' . $current_user_logged; ?>">
 <?php 
 echo $header; 
 echo $breadcrumb; 
