@@ -118,7 +118,7 @@ class PostType
         $arr['image'] = 'Ảnh đại diện'; // fullsize
         $arr['image_size'] = 'Kích cỡ'; // lựa chọn size ảnh
         // SEO
-        $arr['meta_title'] = 'Meta title';
+//        $arr['meta_title'] = 'Meta title';
         $arr['meta_description'] = 'Meta description';
         $arr['meta_keyword'] = 'Meta keyword';
         $arr['rating_value'] = 'Giá trị đánh giá (số thập phân nhỏ hơn 5 và lớn hơn 4. Ví dụ: 4.0 hoặc 4.5)';

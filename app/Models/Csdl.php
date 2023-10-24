@@ -575,7 +575,7 @@ class Csdl extends Session
             $builder->limit($ops['limit'], $ops['offset']);
         }
 //        print_r($builder->getCompiledSelect());
-//        die('cc');
+//        die('cdmdmdmc');
         // trả về kết quả
         $a = array();
         $query = $builder->get();

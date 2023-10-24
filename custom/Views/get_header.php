@@ -23,3 +23,4 @@ var arr_all_taxonomy = {
     '<?php echo TaxonomyType::POSTS; ?>': arr_category_taxonomy,
 };
 </script>
+

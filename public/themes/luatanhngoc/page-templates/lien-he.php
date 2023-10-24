@@ -65,11 +65,15 @@ echo $data['post_content'];
                                                        aria-required="true" required>
                                             </div>
                                             <div class="form-group col-md-6">
-                                                <label class="label">Địa chỉ email:</label>
-                                                <input type="email" name="data[email]" class="form-control" value=""
+                                                <label class="label">Số điện thoại:</label>
+                                                <input type="number" name="data[phone]" class="form-control" value=""
                                                        aria-required="true" required>
                                             </div>
-
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="label">Địa chỉ email:</label>
+                                            <input type="email" name="data[email]" class="form-control" value=""
+                                                   aria-required="true" required>
                                         </div>
                                         <div class="form-group">
                                             <label class="label">Tiêu đề:</label>

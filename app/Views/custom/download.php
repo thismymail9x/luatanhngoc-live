@@ -38,7 +38,7 @@ if (empty($dataMore)) {
                 <br>
                 <?php if (!empty($post)){ ?>
                 <div class="waiting">
-                    <p> Hãy chờ một tí để tải về tài liệu và khám phá thế giới pháp luật trong tầm tay của bạn.</p>
+                    <p> Vui lòng chờ trong giây lát để tải về tài liệu và khám phá thế giới pháp luật trong tầm tay của bạn.</p>
                     <div class="waiting-content">
                         Thời gian đợi: <span id="countdown">60</span> giây
                     </div>

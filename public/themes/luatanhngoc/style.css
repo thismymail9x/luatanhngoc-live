@@ -16,6 +16,7 @@
     --textColorLight: #222;
     --mainColorOpacity: #4d4d00;
     --bgBase: #f2f2f2;
+    --kca:0rem
 }
 
 /* Merriweather Regular */
@@ -2273,4 +2274,15 @@ header .top-user-menu .eb-sub-menu {
 }
 .page_light .contact__base .contact__form .form-control {
     color: unset;
+}
+
+
+.page_dark .product__top .banner_top_title p {
+    color: #fff;
+}
+.page_dark .ads-why-do .section-title p {
+    color: #0a0a0a;
+}
+.page_dark .ads-handling-violation .list_item .last_contact h3 {
+    color: #FFFFFF;
 }

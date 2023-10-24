@@ -49,11 +49,13 @@ class Base extends Csdl
         }
         return '<link ' . $rel . ' href="' . $ops['cdn'] . $f . '?v=' . filemtime(PUBLIC_PUBLIC_PATH . $f) . '"' . implode(' ', $attr) . ' />';
     }
+
     // chế độ nạp css thông thường
     public function add_css($f, $ops = [], $attr = [])
     {
         echo $this->get_add_css($f, $ops, $attr) . PHP_EOL;
     }
+
     // thêm nhiều file cùng 1 thuộc tính
     public function adds_css($fs, $ops = [], $attr = [])
     {
@@ -61,6 +63,7 @@ class Base extends Csdl
             echo $this->get_add_css($f, $ops, $attr) . PHP_EOL;
         }
     }
+
     // chế độ nạp trước css
     public function preload_css($f, $ops = [])
     {
@@ -104,13 +107,15 @@ class Base extends Csdl
         if (isset($ops['preload'])) {
             return '<link rel="preload" as="script" href="' . $ops['cdn'] . $f . '?v=' . filemtime(PUBLIC_PUBLIC_PATH . $f) . '">';
         }
-        return '<script src="' . $ops['cdn'] .DYNAMIC_BASE_URL. $f . '?v=' . filemtime(PUBLIC_PUBLIC_PATH . $f) . '" ' . implode(' ', $attr) . '></script>';
+        return '<script src="' . $ops['cdn'] . DYNAMIC_BASE_URL . $f . '?v=' . filemtime(PUBLIC_PUBLIC_PATH . $f) . '" ' . implode(' ', $attr) . '></script>';
     }
+
     // thêm 1 file
     public function add_js($f, $ops = [], $attr = [])
     {
         echo $this->get_add_js($f, $ops, $attr) . PHP_EOL;
     }
+
     // thêm nhiều file cùng 1 thuộc tính
     public function adds_js($fs, $ops = [], $attr = [])
     {
@@ -118,6 +123,7 @@ class Base extends Csdl
             echo $this->get_add_js($f, $ops, $attr) . PHP_EOL;
         }
     }
+
     // chế độ nạp trước css
     public function preload_js($f, $ops = [])
     {
@@ -284,8 +290,7 @@ class Base extends Csdl
         // nếu path được chỉ định -> dùng path
         if ($path != '') {
             $f = $path . $sub_path . $file_name . $file_type;
-        }
-        // nếu không
+        } // nếu không
         else {
             // ưu tiên file trong child-theme
             $f = VIEWS_CUSTOM_PATH . $sub_path . $file_name . $file_type;
@@ -301,11 +306,13 @@ class Base extends Csdl
         }
         return file_get_contents($f, 1);
     }
+
     // trả về mẫu HTML ở theme cha
     public function parent_html_tmp($file_name)
     {
         return $this->get_html_tmp($file_name, VIEWS_PATH);
     }
+
     // trả về mẫu HTML ở theme con
     public function custom_html_tmp($file_name)
     {
@@ -413,8 +420,7 @@ class Base extends Csdl
         // chỉ lấy file
         if ($type == 'file') {
             $arr = array_filter($arr, 'is_file');
-        }
-        // chỉ lấy thư mục
+        } // chỉ lấy thư mục
         else if ($type == 'dir') {
             $arr = array_filter($arr, 'is_dir');
         }
@@ -525,16 +531,39 @@ class Base extends Csdl
         return $seo;
     }
 
+    /**
+     * @param $text
+     * @return string
+     * hàm lấy 160 kí tự cho meta description
+     */
+    public function getRealDescription($text)
+    {
+        $lastSpace = mb_strrpos(mb_substr($text, 0, 160, 'UTF-8'), ' ');
+        if ($lastSpace !== false) {
+            // Lấy 160 ký tự đầu tiên đến trước từ cuối cùng
+            $result = mb_substr($text, 0, $lastSpace, 'UTF-8');
+        } else {
+            // Nếu không có từ nào được tìm thấy, lấy toàn bộ chuỗi (160 ký tự)
+            $result = mb_substr($text, 0, 160, 'UTF-8');
+        }
+        return $result;
+    }
     public function post_seo($data, $url)
     {
         //print_r($data);
 
         //
+
+        if ($data['post_excerpt'] != '') {
+            $text = trim(strip_tags($data['post_excerpt']));
+            $result = $this->getRealDescription($text);
+        }
+
         $seo = array(
             'index' => 'on',
             'title' => $data['post_title'],
             //'description' => $data['post_title'],
-            'description' => ($data['post_excerpt'] != '' ? trim(strip_tags($data['post_excerpt'])) : $data['post_title']),
+            'description' => $data['post_excerpt'] != '' ? $result : $data['post_title'],
             //'keyword' => $pageDetail[ 0 ][ 'keyword' ],
             'keyword' => '',
             //'name' => $pageDetail[ 0 ][ 'name' ],
@@ -549,13 +578,14 @@ class Base extends Csdl
 
         //
         if (isset($data['post_meta'])) {
-            if (isset($data['post_meta']['meta_title']) && $data['post_meta']['meta_title'] != '') {
-                $seo['title'] = $data['post_meta']['meta_title'];
-            }
+            // hungtd tạm thời dùng dùng meta title để làm title vì đang bị lỗi
+//            if (isset($data['post_meta']['meta_title']) && $data['post_meta']['meta_title'] != '') {
+//                $seo['title'] = $data['post_meta']['meta_title'];
+//            }
 
             //
             if (isset($data['post_meta']['meta_description']) && $data['post_meta']['meta_description'] != '') {
-                $seo['description'] = $data['post_meta']['meta_description'];
+                $seo['description'] = $this->getRealDescription($data['post_meta']['meta_description']);
             }
 
             //
@@ -568,7 +598,7 @@ class Base extends Csdl
 
         //
         if (isset($data['post_meta']['image_medium_large']) && $data['post_meta']['image_medium_large'] != '') {
-            $seo['og_image'] =  $data['post_meta']['image_medium_large'];
+            $seo['og_image'] = $data['post_meta']['image_medium_large'];
             if (strpos($seo['og_image'], '//') === false) {
                 $seo['og_image'] = base_url() . '/' . ltrim($seo['og_image'], '/');
             }
@@ -640,12 +670,14 @@ class Base extends Csdl
     {
         return $this->eb_create_file($file_, $content_, $ops);
     }
+
     // tạo file có hỗ trợ của ftp
     public function ftp_create_file($file_, $content_, $ops = [])
     {
         $ops['ftp'] = 1;
         return $this->eb_create_file($file_, $content_, $ops);
     }
+
     public function eb_create_file($file_, $content_, $ops = [])
     {
         if ($content_ == '') {
@@ -655,10 +687,10 @@ class Base extends Csdl
 
         // các option mặc định nếu không có giá trị truyền vào
         foreach ([
-            'add_line' => '',
-            'set_permission' => DEFAULT_FILE_PERMISSION,
-            'ftp' => 0,
-        ] as $k => $v) {
+                     'add_line' => '',
+                     'set_permission' => DEFAULT_FILE_PERMISSION,
+                     'ftp' => 0,
+                 ] as $k => $v) {
             if (!isset($ops[$k])) {
                 $ops[$k] = $v;
             }
@@ -699,6 +731,7 @@ class Base extends Csdl
         }
         return $a;
     }
+
     // trả về số
     public function _eb_number_only($str = '', $re = '/[^0-9]+/')
     {
@@ -710,6 +743,7 @@ class Base extends Csdl
         }
         return $a;
     }
+
     public function _eb_float_only($str = '', $lam_tron = 0)
     {
         $str = trim($str);
@@ -720,27 +754,29 @@ class Base extends Csdl
         // làm tròn hết sang số nguyên
         if ($lam_tron == 1) {
             $a = ceil($a);
-        }
-        // làm tròn phần số nguyên, số thập phân giữ nguyên
+        } // làm tròn phần số nguyên, số thập phân giữ nguyên
         else if ($lam_tron == 2) {
             $a = explode('.', $a);
             if (isset($a[1])) {
-                $a = (int) $a[0] . '.' . $a[1];
+                $a = (int)$a[0] . '.' . $a[1];
             } else {
-                $a = (int) $a[0];
+                $a = (int)$a[0];
             }
         }
 
         return $a;
     }
+
     public function un_money_format($str)
     {
         return $this->_eb_number_only($str);
     }
+
     public function unmoney_format($str)
     {
         return $this->_eb_number_only($str);
     }
+
     public function text_only($str = '')
     {
         return $this->_eb_text_only($str);
@@ -755,6 +791,7 @@ class Base extends Csdl
         }
         return $this->MY_session('msg_error', $value);
     }
+
     // lưu hoặc lấy session thông báo
     public function msg_session($value = NULL, $alert = false)
     {
@@ -859,7 +896,7 @@ class Base extends Csdl
 
     public function wp_check_invalid_utf8($text, $strip = false)
     {
-        $text = (string) $text;
+        $text = (string)$text;
 
         if (0 === strlen($text)) {
             return '';
@@ -886,7 +923,7 @@ class Base extends Csdl
 
     public function wp_specialchars($text, $quote_style = ENT_NOQUOTES, $charset = false, $double_encode = false)
     {
-        $text = (string) $text;
+        $text = (string)$text;
         if (0 === strlen($text)) {
             return '';
         }
@@ -911,7 +948,7 @@ class Base extends Csdl
         $_quote_style = $quote_style;
 
         if ('double' === $quote_style) {
-            $quote_style  = ENT_COMPAT;
+            $quote_style = ENT_COMPAT;
             $_quote_style = ENT_COMPAT;
         } elseif ('single' === $quote_style) {
             $quote_style = ENT_NOQUOTES;
@@ -932,6 +969,7 @@ class Base extends Csdl
         $safe_text = $this->wp_check_invalid_utf8($text);
         return $this->wp_specialchars($safe_text, ENT_QUOTES);
     }
+
     public function the_esc_html($text)
     {
         echo $this->wp_esc_html($text);

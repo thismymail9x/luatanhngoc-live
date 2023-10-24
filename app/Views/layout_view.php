@@ -6,13 +6,13 @@ echo (($html_lang == 'vn' || $html_lang == '') ? 'vi' : $html_lang);
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5681131500788092"
             crossorigin="anonymous"></script>
     <!-- Google anlatic (gtag.js) -->
-<!--    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WJHT5RKM95"></script>-->
-<!--    <script>-->
-<!--        window.dataLayer = window.dataLayer || [];-->
-<!--        function gtag(){dataLayer.push(arguments);}-->
-<!--        gtag('js', new Date());-->
-<!--        gtag('config', 'G-WJHT5RKM95');-->
-<!--    </script>-->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WJHT5RKM95"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-WJHT5RKM95');
+    </script>
 
     <!-- Histats.com  START  (aync)-->
     <script type="text/javascript">var _Hasync= _Hasync|| [];

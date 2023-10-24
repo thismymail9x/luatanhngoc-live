@@ -1,3 +1,34 @@
+@media (min-width: 640px) {
+    .container, .row, .row.row-collapse, .row.row-12, .w90, .w99 {
+        max-width: 640px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container, .row, .row.row-collapse, .row.row-12, .w90, .w99 {
+        max-width: 768px;
+    }
+}
+
+@media (min-width: 1024px) {
+    body .container, body .row, body .row.row-collapse, body .row.row-12, body .w90, body .w99 {
+        max-width: 1024px;
+    }
+}
+
+@media (min-width: 1280px) {
+    body .container, body .row, body .row.row-collapse, body .row.row-12, body .w90, body .w99 {
+        max-width: 1280px;
+    }
+}
+
+/*@media (min-width: 1536px) {*/
+/*    body .container,body .row,body .row.row-collapse,body  .row.row-12,body  .w90,body  .w99 {*/
+/*        max-width: 1536px;*/
+/*    }*/
+/*}*/
+
+
 @media (max-width: 374.98px) {
 
     .page__bottom .page__bottom-item .button-92 {
@@ -1982,11 +2013,6 @@ button:focus {
     color: rgb(255 255 255);
 }
 
-::selection {
-    background-color: #ffff66; /* Màu nền khi bôi đen */
-    color: black; /* Màu chữ khi bôi đen */
-}
-
 .select2-container, .selection, .select2-selection, .select2-selection__clear,
 .select2-selection__clear span, .select2-selection__choice, .select2-selection__choice__remove,
 .select2-selection__choice__remove span, .select2-selection__choice__display, .select2-results, .select2-results__options,
@@ -2168,9 +2194,10 @@ body {
     .mobile_wiget {
         display: none;
     }
+
     #wgr__footer .zalo-chat-widget {
-        bottom: 70px!important;
-        right: 12px!important;
+        bottom: 70px !important;
+        right: 12px !important;
     }
 }
 
@@ -2178,9 +2205,10 @@ body {
     .wiget_contact {
         display: none;
     }
+
     #wgr__footer .zalo-chat-widget {
-        bottom: 50px!important;
-        right: 8px!important;
+        bottom: 50px !important;
+        right: 8px !important;
     }
 
     .mobile_wiget {
@@ -2197,18 +2225,22 @@ body {
         display: flex;
         justify-content: space-evenly;
     }
+
     .mobile_wiget a {
         font-size: 15px;
         display: flex;
         justify-content: center;
         align-items: center;
     }
-    .mobile_wiget .fa-mobile{
+
+    .mobile_wiget .fa-mobile {
         background: #4DAF4F;
     }
-    .mobile_wiget .fa-paperclip{
+
+    .mobile_wiget .fa-paperclip {
         background: #0068FF;
     }
+
     .mobile_wiget i {
         border: 1px solid rgba(255, 255, 255, 0.2);
         display: flex;
@@ -2225,7 +2257,58 @@ body {
         margin-right: 10px;
     }
 }
+
 #menuCategory .highlighted {
-    color: black!important; /* Bạn có thể thay đổi màu sắc theo ý muốn */
+    color: black !important; /* Bạn có thể thay đổi màu sắc theo ý muốn */
     background: white;
+}
+
+/* nut button liên hệ*/
+.button-92 {
+    --c: #fff;
+    /* text color */
+    background: linear-gradient(90deg, #0000 33%, #fff5, #0000 67%) var(--_p, 100%)/300% no-repeat,
+    #004dff;
+    /* background color */
+    color: #fff !important;
+    border: none;
+    transform: perspective(500px) rotateY(calc(20deg * var(--_i, -1)));
+    text-shadow: calc(var(--_i, -1) * 0.08em) -.01em 0 var(--c),
+    calc(var(--_i, -1) * -0.08em) .01em 2px #0004;
+    outline-offset: .1em;
+    transition: 0.3s;
+}
+
+.button-92:focus {
+    outline: none;
+}
+
+.button-92:hover,
+.button-92:focus-visible {
+    --_p: 0%;
+    --_i: 1;
+}
+
+.button-92:active {
+    text-shadow: none;
+    color: var(--c);
+    box-shadow: inset 0 0 9 e9q #0005;
+    transition: 0s;
+}
+
+.button-92 {
+    display: inline-block;
+    font-size: 2rem;
+    margin: 0;
+    cursor: pointer;
+    padding: .1em 16px;
+    border-radius: 6px;
+}
+.qc-item {
+    margin-bottom: 16px;
+    display: block;
+}
+.qc-item img{
+    border-radius: 10px;
+    width: 100%;
 }

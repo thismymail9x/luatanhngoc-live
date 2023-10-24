@@ -11,6 +11,8 @@ $routes->get('/c/statistic', 'C::statistic');
 $routes->get('/c/user_add', 'C::user_add');
 $routes->get('tacgia/list', 'Tacgia::list');
 $routes->get('tacgia/join', 'Tacgia::join');
+$routes->get('tacgia/trial', 'Tacgia::trial');// view tạo test
+
 if (WGR_AUTHOR_PERMALINK != '%slug%') {
     $a = str_replace('%slug%', '(:segment)', WGR_AUTHOR_PERMALINK);
     $routes->get($a, 'Tacgia::author/$1');

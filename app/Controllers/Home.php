@@ -737,4 +737,5 @@ class Home extends Posts
             'debug_backtrace' => debug_backtrace()[1]['function']
         ]);
     }
+
 }

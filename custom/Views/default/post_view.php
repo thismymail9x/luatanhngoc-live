@@ -15,6 +15,16 @@ $base_model->add_js('themes/' . THEMENAME . '/js/templates/post.js', [
 ], [
     'defer'
 ]);
+
+$base_model->add_css('themes/' . THEMENAME . '/plugins/baguetteBox/dist/baguetteBox.min.css', [
+    'cdn' => CDN_BASE_URL,
+]);
+$base_model->add_js('themes/' . THEMENAME . '/plugins/baguetteBox/dist/baguetteBox.min.js', [
+    'cdn' => CDN_BASE_URL,
+], [
+    'defer'
+]);
+
 // update lượt xem
 $post_model->update_views($data['ID']);
 
@@ -150,4 +160,21 @@ $post_model->update_views($data['ID']);
     <!--        </div>-->
     <!--    </div>-->
 </div>
+
+<div class="blog-avatar">
+    <a href="">
+        <img src="" alt="23232323">
+    </a>
+</div>
+
+
+<script>
+    console.log(baguetteBox,'cccc');
+    window.onload = function() {
+        baguetteBox.run('.blog-avatar', {
+            animation: 'fadeIn',
+            noScrollbars: true
+        });
+    }
+</script>
 

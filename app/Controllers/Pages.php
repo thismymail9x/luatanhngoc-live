@@ -23,15 +23,14 @@ class Pages extends Home
         //
         $in_cache = __FUNCTION__ . '-' . $slug;
         $data = $this->base_model->scache($in_cache);
-        if ($data === NULL) {
+//        if ($data === NULL) {
             $data = $this->post_model->select_public_post(0, [
                 'post_name' => $slug,
                 'post_type' => PostType::PAGE,
             ],'wp_posts.*,wp_users.user_nicename');
             //
             $this->base_model->scache($in_cache, $data, 300);
-        }
-
+//        }
         //
         if (!empty($data)) {
             //print_r( $data );

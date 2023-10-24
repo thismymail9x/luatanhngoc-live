@@ -37,20 +37,20 @@ if (empty($data)) {
 <?php //print_r($data);die('ccc'); ?>
 
 <section class="list__post">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="owl-carousel owl-theme" id="owl-carousel-post">
-                <?php
-                $i = 0;
-                foreach (@$data as $k => $v) {
-                    if ($v === NULL) {
-                        continue;
-                    }
-                    $i++;
-                    if ($i >= 14) {
-                        break;
-                    }
-                    ?>
+        <div class="row">
+            <div class="col-12 col-xs-6 col-md-6">
+                <div class="owl-carousel owl-theme" id="owl-carousel-post">
+                    <?php
+                    $i = 0;
+                    foreach (@$data as $k => $v) {
+                        if ($v === NULL) {
+                            continue;
+                        }
+                        $i++;
+                        if ($i >= 14) {
+                            break;
+                        }
+                        ?>
 
                         <a href="<?= base_url('/' . $v['post_permalink'] ); ?>" >
                             <div class="item">
@@ -68,19 +68,65 @@ if (empty($data)) {
                                 </div>
                             </div>
                         </a>
-                    <?php $data[$k] = NULL;} ?>
+                        <?php $data[$k] = NULL;} ?>
+                </div>
             </div>
-        </div>
-        <?php $h = 0;
-        foreach (@$data as $k => $v) {
-            if ($v === NULL) {
-                continue;
-            }
-            $h ++;
-            if ($h > 5) {
-                break;
-            }
-            ?>
+            <?php $h = 0;
+            foreach (@$data as $k => $v) {
+                if ($v === NULL) {
+                    continue;
+                }
+                $h ++;
+                if ($h > 1) {
+                    break;
+                }
+                ?>
+                <div class="col-12 col-xs-6 col-md-3">
+                    <a href="<?= base_url('/' . $v['post_permalink'] ); ?>" >
+                        <div class="item__home-big">
+                            <?php
+                            $attachments = [$v['post_meta']['image_thumbnail'],$v['post_meta']['image_thumbnail'],$v['post_meta']['image']];
+                            $width = ['700w', '1024w', '1w']; ?>
+                            <img class="item__home-big-img" alt="<?php echo implode(" ", array_slice(explode(" ", $v['post_title']), 0, 5)); ?>"
+                                 title="<?= $v['post_title']; ?>"
+                                 src="<?php echo $attachments[2] ?>"
+                                 srcset="<?php foreach ($attachments as $key => $value) {
+                                     echo $value . ' ' . $width[$key] . ',';} ?>">
+                            <div class="content__item-big">
+                                <i class="text__time"><?= $v['post_date']; ?></i>
+                                <p class="text__title limit-text-2"
+                                   title="<?= $v['post_title']; ?>"><?= $v['post_title']; ?></p>
+                                <span class="eye-star">
+                                        <span title="Tác giả">
+                                             <i style="color: #ffff00" class="fa fa-star"></i>
+                                            <?= $v['user_nicename']?>
+
+                                        </span>
+                                        <span title="Lượt xem">
+                                            <i class="ml-1 fa fa-eye"></i> <?=$v['post_viewed']?>
+                                        </span>
+                                    </span>
+                            </div>
+
+                        </div>
+                    </a>
+                </div>
+                <?php  $data[$k] = NULL; } ?>
+            <div class="col-12 col-xs-6 col-md-3">
+                <a target="_blank" class="qc-item" href="<?=base_url()?>pages/bao-gia">
+                    <img width="100%" src="<?=base_url()?>/images/gif/tvpl.gif" alt="dịch vụ an toàn vệ sinh thực phẩm">
+                </a>
+            </div>
+            <?php $m = 0;
+            foreach (@$data as $k => $v) {
+                if ($v === NULL) {
+                    continue;
+                }
+                $m ++;
+                if ($m > 3) {
+                    break;
+                }
+                ?>
                 <div class="col-md-3">
                     <a href="<?= base_url('/' . $v['post_permalink'] ); ?>" >
                         <div class="item__home-big">
@@ -111,18 +157,17 @@ if (empty($data)) {
                         </div>
                     </a>
                 </div>
-            <?php  $data[$k] = NULL; } ?>
-
-        <div class="col-md-3">
-            <?php $m = 0; foreach (@$data as $k => $v) {
-                if ($v === NULL) {
-                    continue;
-                }
-                $m ++;
-                if ($m > 2) {
-                    break;
-                }
-                ?>
+                <?php  $data[$k] = NULL; } ?>
+            <div class="col-12 col-xs-6 col-md-3">
+                <?php $p = 0; foreach (@$data as $k => $v) {
+                    if ($v === NULL) {
+                        continue;
+                    }
+                    $p ++;
+                    if ($p > 2) {
+                        break;
+                    }
+                    ?>
                     <a href="<?= base_url('/' . $v['post_permalink'] ); ?>" >
                         <div class="item__home-small">
                             <?php
@@ -151,19 +196,11 @@ if (empty($data)) {
                         </div>
 
                     </a>
-                <?php $data[$k] = NULL;
-            } ?>
+                    <?php $data[$k] = NULL;
+                } ?>
+            </div>
         </div>
-    </div>
 </section>
-
-<!--line row-->
-<!--<div class="row hide__if-mobile">-->
-<!--    <div class="col">-->
-<!--        <hr>-->
-<!--    </div>-->
-<!--</div>-->
-
 
 <section class="row home__category">
     <div class="top">
@@ -179,23 +216,32 @@ if (empty($data)) {
             Hãy để <a href="<?= base_url()?>pages/ve-cong-ty-luat">Công ty Luật</a> Ánh Ngọc J&T trở thành đối tác đáng tin cậy của bạn trong mọi vấn đề liên quan đến pháp luật. Chúng tôi sẽ luôn sẵn sàng hỗ trợ bạn, đồng hành cùng bạn trên con đường phát triển kinh doanh và bảo vệ quyền lợi của bạn một cách tốt nhất.
         </p>
     </div>
-    <div class="bottom row">
-        <div class="col-6 col-md-3 col-xl-3 item"><a href="<?= base_url()?>category/dich-vu-phap-ly-doanh-nghiep"> <span class="circle"><i class="fa fa-building"></i></span> <span class="pElement">Tư vấn Doanh nghiệp</span> </a></div>
-        <div class="col-6 col-md-3 col-xl-3 item"><a href="<?= base_url()?>category/tu-van-hon-nhan-gia-dinh"><span class="circle"><i class="fa fa-heartbeat"></i></span> <span class="pElement">H&ocirc;n nh&acirc;n gia đ&igrave;nh</span> </a></div>
-        <div class="col-6 col-md-3 col-xl-3 item"><a href="<?= base_url()?>category/tu-van-luat-so-huu-tri-tue"><span class="circle"><i class="fa fa-deaf"></i></span> <span class="pElement">Tư vấn Sở hữu tr&iacute; tuệ</span> </a></div>
-        <div class="col-6 col-md-3 col-xl-3 item"><a href="<?= base_url()?>category/dich-vu-thu-tuc-hanh-chinh"><span class="circle"><i class="fa fa-university"></i></span><span class="pElement">Thủ thục h&agrave;nh ch&iacute;nh</span></a></div>
-        <div class="col-6 col-md-3 col-xl-3 item"><a href="<?= base_url()?>category/tu-van-luat-lao-dong"><span class="circle"><i class="fa fa-blind"></i></span> <span class="pElement ">Tư vấn Luật lao động</span> </a></div>
-        <div class="col-6 col-md-3 col-xl-3 item"><a href="<?= base_url()?>category/tu-van-luat-hinh-su"><span class="circle"><i class="fa fa-user-secret"></i></span> <span class="pElement ">Tư vấn Luật h&igrave;nh sự</span> </a></div>
-        <div class="col-6 col-md-3 col-xl-3 item"><a href="<?= base_url()?>category/tu-van-luat-dan-su"><span class="circle"><i class="fa fa-male"></i></span> <span class="pElement ">Tư vấn Luật d&acirc;n sự</span> </a></div>
-        <div class="col-6 col-md-3 col-xl-3 item"><a href="<?= base_url()?>category/tu-van-luat-dat-dai"> <span class="circle"><i class="fa fa-globe"></i></span> <span class="pElement">Tư vấn luật đất đai</span> </a></div>
-    </div>
+        <div class="bottom row">
+            <div class="col-6 col-md-3 col-xl-3 item"><a href="<?= base_url()?>category/dich-vu-phap-ly-doanh-nghiep"> <span class="circle"><i class="fa fa-building"></i></span> <span class="pElement">Tư vấn Doanh nghiệp</span> </a></div>
+            <div class="col-6 col-md-3 col-xl-3 item"><a href="<?= base_url()?>category/tu-van-hon-nhan-gia-dinh"><span class="circle"><i class="fa fa-heartbeat"></i></span> <span class="pElement">H&ocirc;n nh&acirc;n gia đ&igrave;nh</span> </a></div>
+            <div class="col-6 col-md-3 col-xl-3 item"><a href="<?= base_url()?>category/tu-van-luat-so-huu-tri-tue"><span class="circle"><i class="fa fa-deaf"></i></span> <span class="pElement">Tư vấn Sở hữu tr&iacute; tuệ</span> </a></div>
+            <div class="col-6 col-md-3 col-xl-3 item"><a href="<?= base_url()?>category/dich-vu-thu-tuc-hanh-chinh"><span class="circle"><i class="fa fa-university"></i></span><span class="pElement">Thủ thục h&agrave;nh ch&iacute;nh</span></a></div>
+            <div class="col-6 col-md-3 col-xl-3 item"><a href="<?= base_url()?>category/tu-van-luat-lao-dong"><span class="circle"><i class="fa fa-blind"></i></span> <span class="pElement ">Tư vấn Luật lao động</span> </a></div>
+            <div class="col-6 col-md-3 col-xl-3 item"><a href="<?= base_url()?>category/tu-van-luat-hinh-su"><span class="circle"><i class="fa fa-user-secret"></i></span> <span class="pElement ">Tư vấn Luật h&igrave;nh sự</span> </a></div>
+            <div class="col-6 col-md-3 col-xl-3 item"><a href="<?= base_url()?>category/tu-van-luat-dan-su"><span class="circle"><i class="fa fa-male"></i></span> <span class="pElement ">Tư vấn Luật d&acirc;n sự</span> </a></div>
+            <div class="col-6 col-md-3 col-xl-3 item"><a href="<?= base_url()?>category/tu-van-luat-dat-dai"> <span class="circle"><i class="fa fa-globe"></i></span> <span class="pElement">Tư vấn luật đất đai</span> </a></div>
+        </div>
 </section>
 
 <!--main row-->
 <div class="row">
-    <div class="col medium-12 small-12 large-4 hide__if-mobile">
+    <div class="col medium-12 small-12 large-4">
         <div class="col-inner">
-            <div class="left_under cf">
+            <a target="_blank" class="qc-item" href="<?=base_url()?>pages/dich-vu-xin-giay-phep-an-toan-ve-sinh-thuc-pham">
+                <img src="<?=base_url()?>/images/gif/atvstp.gif" alt="dịch vụ an toàn vệ sinh thực phẩm">
+            </a>
+            <a target="_blank" class="qc-item d-block" href="<?=base_url()?>pages/dich-vu-xin-giay-phep-quang-cao-thuc-pham-chuc-nang">
+                <img src="<?=base_url()?>/images/gif/tpcn.gif" alt="dịch vụ quảng cáo thực phẩm chức năng">
+            </a>
+
+
+<!--            --><?php //$post_model->the_ads('thuc-pham-chuc-nang'); ?>
+            <div class="left_under cf hide__if-mobile">
                 <?php
                 // 5 bài tiếp theo
                 $t = 0;
@@ -204,7 +250,7 @@ if (empty($data)) {
                         continue;
                     }
                     $t++;
-                    if ($t > 4) {
+                    if ($t > 2) {
                         break;
                     }
                     //
@@ -219,18 +265,6 @@ if (empty($data)) {
                 ?>
 
             </div>
-<!--            <div class="first__slider">-->
-<!--                --><?php
-//                // sau đó chèn 1 banner
-//                $post_model->the_ads('home-left-center-slider');
-//                ?>
-<!--            </div>-->
-            <!--            <div class="second__slider">-->
-            <!--            --><?php
-            //            // sau đó chèn 1 banner
-            //            $post_model->the_ads('home-left-center-slider');
-            //            ?>
-            <!--            </div>-->
 
         </div>
     </div>
@@ -506,7 +540,6 @@ if (empty($data)) {
     <div class="col">
         <hr>
     </div>
-
 </div>
 <!--four category-->
 <div class="row">

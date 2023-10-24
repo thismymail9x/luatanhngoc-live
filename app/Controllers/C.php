@@ -39,26 +39,6 @@ class C extends Home
         }
         $this->name_type = PostType::typeList($this->post_type);
 
-
-        if ($this->current_user_id <= 0) {
-            // tạo url sau khi đăng nhập xong sẽ trỏ tới
-            $login_redirect = DYNAMIC_BASE_URL . ltrim($_SERVER['REQUEST_URI'], '/');
-            //die($login_redirect);
-
-            //
-            $login_url = base_url('guest/login') . '?login_redirect=' . urlencode($login_redirect) . '&msg=' . urlencode('Permission deny! ' . basename(__FILE__, '.php') . ':' . __LINE__);
-            //die( $login_url );
-
-            //
-            die(header('Location: ' . $login_url));
-            //die( 'Permission deny! ' . basename( __FILE__, '.php' ) . ':' . __LINE__ );
-        }
-        // nếu là guest muốn viết bài thì sẽ cho đến view yêu cầu viết bài
-        if ($this->session_data['userLevel'] != UsersType::ADMIN_LEVEL && $this->session_data['member_type'] == UsersType::GUEST ) {
-            die(header('Location: ' . base_url('/').'tacgia/join'));
-        }
-
-
         // báo lỗi nếu không xác định được post_type
         //if ( $this->post_type == '' || $this->name_type == '' ) {
         if ($this->name_type == '') {
@@ -111,6 +91,25 @@ class C extends Home
      */
     public function user_add()
     {
+        if ($this->current_user_id <= 0) {
+            // tạo url sau khi đăng nhập xong sẽ trỏ tới
+            $login_redirect = DYNAMIC_BASE_URL . ltrim($_SERVER['REQUEST_URI'], '/');
+            //die($login_redirect);
+
+            //
+            $login_url = base_url('guest/login') . '?login_redirect=' . urlencode($login_redirect) . '&msg=' . urlencode('Permission deny! ' . basename(__FILE__, '.php') . ':' . __LINE__);
+            //die( $login_url );
+
+            //
+            die(header('Location: ' . $login_url));
+            //die( 'Permission deny! ' . basename( __FILE__, '.php' ) . ':' . __LINE__ );
+        }
+        // nếu là guest muốn viết bài thì sẽ cho đến view yêu cầu viết bài
+        if ($this->session_data['userLevel'] != UsersType::ADMIN_LEVEL && $this->session_data['member_type'] == UsersType::GUEST ) {
+            die(header('Location: ' . base_url('/').'tacgia/join'));
+        }
+
+
         if (empty($this->session_data)) {
             return redirect()->to(base_url());
         }
@@ -210,6 +209,9 @@ class C extends Home
 
     protected function add_new($data = NULL)
     {
+
+
+
         if ($data === NULL) {
             $data = $this->MY_post('data');
         }
@@ -373,6 +375,25 @@ class C extends Home
     // danh sách bài viết của user + các bài viết có trạng viết theo thuần CI4
     public function lists()
     {
+        if ($this->current_user_id <= 0) {
+            // tạo url sau khi đăng nhập xong sẽ trỏ tới
+            $login_redirect = DYNAMIC_BASE_URL . ltrim($_SERVER['REQUEST_URI'], '/');
+            //die($login_redirect);
+
+            //
+            $login_url = base_url('guest/login') . '?login_redirect=' . urlencode($login_redirect) . '&msg=' . urlencode('Permission deny! ' . basename(__FILE__, '.php') . ':' . __LINE__);
+            //die( $login_url );
+
+            //
+            die(header('Location: ' . $login_url));
+            //die( 'Permission deny! ' . basename( __FILE__, '.php' ) . ':' . __LINE__ );
+        }
+        // nếu là guest muốn viết bài thì sẽ cho đến view yêu cầu viết bài
+        if ($this->session_data['userLevel'] != UsersType::ADMIN_LEVEL && $this->session_data['member_type'] == UsersType::GUEST ) {
+            die(header('Location: ' . base_url('/').'tacgia/join'));
+        }
+
+
         //
         $post_per_page = 50;
         // URL cho các action dùng chung
@@ -787,6 +808,25 @@ class C extends Home
 
     public function statistic()
     {
+        if ($this->current_user_id <= 0) {
+            // tạo url sau khi đăng nhập xong sẽ trỏ tới
+            $login_redirect = DYNAMIC_BASE_URL . ltrim($_SERVER['REQUEST_URI'], '/');
+            //die($login_redirect);
+
+            //
+            $login_url = base_url('guest/login') . '?login_redirect=' . urlencode($login_redirect) . '&msg=' . urlencode('Permission deny! ' . basename(__FILE__, '.php') . ':' . __LINE__);
+            //die( $login_url );
+
+            //
+            die(header('Location: ' . $login_url));
+            //die( 'Permission deny! ' . basename( __FILE__, '.php' ) . ':' . __LINE__ );
+        }
+        // nếu là guest muốn viết bài thì sẽ cho đến view yêu cầu viết bài
+        if ($this->session_data['userLevel'] != UsersType::ADMIN_LEVEL && $this->session_data['member_type'] == UsersType::GUEST ) {
+            die(header('Location: ' . base_url('/').'tacgia/join'));
+        }
+
+
         $start_date = $this->MY_get('start_date');
         $end_date = $this->MY_get('end_date');
         // các kiểu điều kiện where
